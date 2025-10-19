@@ -1,4 +1,3 @@
-cat > scripts/build-wasm.sh <<'EOF'
 #!/usr/bin/env bash
 # Build the Orca→WASM module and stage artifacts for the web app.
 # Usage: bash scripts/build-wasm.sh
@@ -31,6 +30,3 @@ else
   (tail -n 100 build-wasm/CMakeFiles/CMakeOutput.log 2>/dev/null || true)
   exit 1
 fi
-EOF
-
-chmod +x scripts/build-wasm.sh
