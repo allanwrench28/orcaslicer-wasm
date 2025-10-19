@@ -9,31 +9,32 @@ add_compile_options(-pthread)
 set(EM_PTHREAD_FLAGS "-pthread")  # Emscripten 4.x: don't pass -sPTHREADS=1
 
 # --- Boost (built locally for WASM) ---
-# We use the Boost *config* package that got installed by b2 under lib/cmake/Boost-1.83.0
-set(BOOST_ROOT "${CMAKE_SOURCE_DIR}/../deps/boost-wasm/install")
-set(Boost_ROOT "${BOOST_ROOT}")  # CMP0144 prefers CamelCase
-# Help CMake find the config package
-list(PREPEND CMAKE_PREFIX_PATH
-  "${BOOST_ROOT}"
-  "${BOOST_ROOT}/lib/cmake"
-  "${BOOST_ROOT}/lib/cmake/Boost-1.83.0"
-)
+# Use the classic FindBoost module (NOT CONFIG), and point it to our install.
+set(BOOST_ROOT         "${CMAKE_SOURCE_DIR}/../deps/boost-wasm/install")
+set(Boost_ROOT         "${BOOST_ROOT}")        # new policy prefers CamelCase
+set(BOOST_INCLUDEDIR   "${BOOST_ROOT}/include")
+set(BOOST_LIBRARYDIR   "${BOOST_ROOT}/lib")
 
-# Use the CONFIG mode so CMake reads BoostConfig.cmake from our install
-set(Boost_USE_STATIC_LIBS ON)
-set(Boost_NO_SYSTEM_PATHS ON)
-set(Boost_NO_BOOST_CMAKE OFF)
+# Help CMake find headers & libs in our prefix
+list(PREPEND CMAKE_PREFIX_PATH  "${BOOST_ROOT}")
+list(PREPEND CMAKE_INCLUDE_PATH "${BOOST_INCLUDEDIR}")
+list(PREPEND CMAKE_LIBRARY_PATH "${BOOST_LIBRARYDIR}")
 
-find_package(Boost 1.83.0 REQUIRED CONFIG COMPONENTS
+set(Boost_USE_STATIC_LIBS        ON)
+set(Boost_USE_MULTITHREADED      ON)
+set(Boost_USE_STATIC_RUNTIME     OFF)
+set(Boost_NO_SYSTEM_PATHS        ON)
+set(Boost_NO_BOOST_CMAKE         ON)    # force FindBoost over Config mode
+
+find_package(Boost 1.83.0 REQUIRED COMPONENTS
   system filesystem thread regex chrono atomic date_time iostreams program_options nowide
 )
 
 # --- Our subprojects ---
 add_subdirectory(../bridge ${CMAKE_BINARY_DIR}/bridge-build)
-# Orca added EXCLUDE_FROM_ALL to avoid building any host/GUI bits by default
-add_subdirectory(../orca ${CMAKE_BINARY_DIR}/orca-build EXCLUDE_FROM_ALL)
+add_subdirectory(../orca   ${CMAKE_BINARY_DIR}/orca-build  EXCLUDE_FROM_ALL)
 
-# --- Executable (links the bridge; we'll add Orca libs after we see first link errors) ---
+# --- Executable (link bridge; we'll add Orca libs after we see link errors) ---
 add_executable(slicer ../bridge/wasm_wrap.cpp)
 
 target_include_directories(slicer PRIVATE
@@ -41,7 +42,7 @@ target_include_directories(slicer PRIVATE
   ${Boost_INCLUDE_DIRS}
 )
 
-# Link Boost first; Orca core libs will be appended in a follow-up patch
+# Link Boost first; we’ll append Orca libs after the first linker pass
 target_link_libraries(slicer PRIVATE
   ${Boost_LIBRARIES}
 )
