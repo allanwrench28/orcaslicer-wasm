@@ -26,7 +26,7 @@ set(Boost_NO_SYSTEM_PATHS ON             CACHE BOOL ""                       FOR
 set(Boost_USE_STATIC_LIBS ON             CACHE BOOL ""                       FORCE)
 set(Boost_USE_MULTITHREADED ON           CACHE BOOL ""                       FORCE)
 
-# --- Disable TBB usage (let our TBB shim satisfy REQUIRED without linking) ---
+# --- Disable TBB usage (shim will satisfy REQUIRED without linking) ---
 set(SLIC3R_TBB OFF CACHE BOOL "Disable TBB in WASM build" FORCE)
 set(SLIC3R_USE_TBB OFF CACHE BOOL "" FORCE)
 add_compile_definitions(SLIC3R_NO_TBB=1)
@@ -39,7 +39,7 @@ set(SLIC3R_NLS OFF CACHE BOOL "Disable translations for WASM" FORCE)
 add_subdirectory(../bridge ${CMAKE_BINARY_DIR}/bridge-build)
 add_subdirectory(../orca   ${CMAKE_BINARY_DIR}/orca-build  EXCLUDE_FROM_ALL)
 
-# --- Executable (bridge for now; we’ll append Orca libs after the first link pass) ---
+# --- Executable (bridge for now; we'll append Orca libs after first link pass) ---
 add_executable(slicer ../bridge/wasm_wrap.cpp)
 
 target_include_directories(slicer PRIVATE
