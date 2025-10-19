@@ -1,3 +1,6 @@
+# Minimal FindBoost override for Emscripten/WASM.
+# It points to your local Boost install and marks the required components FOUND.
+
 if(NOT DEFINED BOOST_PREFIX)
   set(BOOST_PREFIX "${CMAKE_CURRENT_LIST_DIR}/../../deps/boost-wasm/install")
 endif()
@@ -8,57 +11,41 @@ if(NOT EXISTS "${BOOST_INC}/boost/version.hpp")
   message(FATAL_ERROR "Boost headers not found at ${BOOST_INC}")
 endif()
 
-# Public vars expected by consumers
 set(Boost_FOUND TRUE)
 set(Boost_VERSION 108300)
-set(Boost_INCLUDE_DIR "${BOOST_INC}")
+set(Boost_INCLUDE_DIR  "${BOOST_INC}")
 set(Boost_INCLUDE_DIRS "${BOOST_INC}")
-set(Boost_LIBRARIES "")  # we will append below
-set(Boost_NO_SYSTEM_PATHS ON)
-set(Boost_USE_STATIC_LIBS ON)
-set(Boost_USE_MULTITHREADED ON)
-
-# Helper macro to register a static lib + imported target
-macro(_boost_add component libfile)
-  set(_path "${BOOST_LIB}/${libfile}")
+set(Boost_LIBRARIES "")
+function(_boost_add COMPONENT UPPER LIBNAME)
+  set(_path "${BOOST_LIB}/${LIBNAME}")
   if(EXISTS "${_path}")
-    set(Boost_${component}_FOUND TRUE)
-    list(APPEND Boost_LIBRARIES "${_path}")
-    # Create imported target Boost::<component>
-    add_library(Boost::${component} STATIC IMPORTED)
-    set_target_properties(Boost::${component} PROPERTIES
-      IMPORTED_LOCATION "${_path}"
-      INTERFACE_INCLUDE_DIRECTORIES "${BOOST_INC}"
-    )
+    set(Boost_${UPPER}_FOUND TRUE PARENT_SCOPE)
+    set(Boost_${UPPER}_LIBRARY "${_path}" PARENT_SCOPE)
+    set(_acc "${Boost_LIBRARIES}")
+    list(APPEND _acc "${_path}")
+    set(Boost_LIBRARIES "${_acc}" PARENT_SCOPE)
   else()
-    set(Boost_${component}_FOUND FALSE)
+    set(Boost_${UPPER}_FOUND FALSE PARENT_SCOPE)
   endif()
-endmacro()
+endfunction()
 
-# Register libs we built
-_boost_add(system          libboost_system.a)
-_boost_add(filesystem      libboost_filesystem.a)
-_boost_add(thread          libboost_thread.a)
-_boost_add(regex           libboost_regex.a)
-_boost_add(chrono          libboost_chrono.a)
-_boost_add(atomic          libboost_atomic.a)
-_boost_add(date_time       libboost_date_time.a)
-_boost_add(iostreams       libboost_iostreams.a)
-_boost_add(program_options libboost_program_options.a)
-_boost_add(log             libboost_log.a)
-_boost_add(log_setup       libboost_log_setup.a)
-
+_boost_add(system          SYSTEM          libboost_system.a)
+_boost_add(filesystem      FILESYSTEM      libboost_filesystem.a)
+_boost_add(thread          THREAD          libboost_thread.a)
+_boost_add(regex           REGEX           libboost_regex.a)
+_boost_add(chrono          CHRONO          libboost_chrono.a)
+_boost_add(atomic          ATOMIC          libboost_atomic.a)
+_boost_add(date_time       DATE_TIME       libboost_date_time.a)
+_boost_add(iostreams       IOSTREAMS       libboost_iostreams.a)
+_boost_add(program_options PROGRAM_OPTIONS libboost_program_options.a)
+_boost_add(log             LOG             libboost_log.a)
+_boost_add(log_setup       LOG_SETUP       libboost_log_setup.a)
 # Header-only: nowide
-set(Boost_nowide_FOUND TRUE)
-add_library(Boost::nowide INTERFACE IMPORTED)
-set_target_properties(Boost::nowide PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${BOOST_INC}"
-)
+set(Boost_NOWIDE_FOUND TRUE)
 
-# Optional: locale (we disabled NLS; expose if present)
+# locale optional
 if(EXISTS "${BOOST_LIB}/libboost_locale.a")
-  _boost_add(locale libboost_locale.a)
+  _boost_add(locale LOCALE libboost_locale.a)
 else()
-  set(Boost_locale_FOUND FALSE)
+  set(Boost_LOCALE_FOUND FALSE)
 endif()
-EOF
