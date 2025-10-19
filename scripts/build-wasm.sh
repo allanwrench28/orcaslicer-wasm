@@ -16,7 +16,7 @@ fi
 git submodule update --init --recursive
 
 # 4) Configure and build with Emscripten
-emcmake cmake -S wasm -B build-wasm -DCMAKE_BUILD_TYPE=Release
+emcmake cmake -S wasm -B build-wasm -DCMAKE_BUILD_TYPE=Release -DCMAKE_DISABLE_FIND_PACKAGE_TBB=FALSE
 cmake --build build-wasm -j
 
 # 5) Validate artifacts and stage for the web app
