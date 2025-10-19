@@ -49,3 +49,10 @@ if(EXISTS "${BOOST_LIB}/libboost_locale.a")
 else()
   set(Boost_LOCALE_FOUND FALSE)
 endif()
+# Header-only umbrella target for Boost
+if(NOT TARGET Boost::boost)
+  add_library(Boost::boost INTERFACE IMPORTED)
+  set_target_properties(Boost::boost PROPERTIES
+    INTERFACE_INCLUDE_DIRECTORIES "${BOOST_INC}"
+  )
+endif()

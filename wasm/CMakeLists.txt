@@ -86,3 +86,38 @@ set_target_properties(slicer PROPERTIES
   OUTPUT_NAME "slicer"
   LINK_FLAGS "${EM_FLAGS} -sEXPORTED_FUNCTIONS=['_os_load_mesh','_os_slice_basic','_os_result_gcode','_os_result_preview_layer','_os_free_mesh','_os_free_result'] -sEXPORTED_RUNTIME_METHODS=['cwrap','getValue','setValue','lengthBytesUTF8','stringToUTF8','UTF8ToString']"
 )
+
+# --- Fix em++ options: use target_link_options instead of LINK_FLAGS ---
+# First, clear any previous LINK_FLAGS we set earlier:
+set_target_properties(slicer PROPERTIES LINK_FLAGS "")
+
+# Now add Emscripten link options as separate args (no semicolons)
+target_link_options(slicer PRIVATE
+  -O3
+  -sMODULARIZE=1
+  -sEXPORT_ES6=1
+  -sWASM_BIGINT=1
+  -sALLOW_MEMORY_GROWTH=1
+  -sENVIRONMENT=web,worker
+  -sDISABLE_EXCEPTION_CATCHING=0
+  -fexceptions
+  -pthread
+  "-sEXPORTED_FUNCTIONS=['_os_load_mesh','_os_slice_basic','_os_result_gcode','_os_result_preview_layer','_os_free_mesh','_os_free_result']"
+  "-sEXPORTED_RUNTIME_METHODS=['cwrap','getValue','setValue','lengthBytesUTF8','stringToUTF8','UTF8ToString']"
+)
+# Fix bad LINK_FLAGS (semicolons break em++)
+set_target_properties(slicer PROPERTIES LINK_FLAGS "")
+
+target_link_options(slicer PRIVATE
+  -O3
+  -sMODULARIZE=1
+  -sEXPORT_ES6=1
+  -sWASM_BIGINT=1
+  -sALLOW_MEMORY_GROWTH=1
+  -sENVIRONMENT=web,worker
+  -sDISABLE_EXCEPTION_CATCHING=0
+  -fexceptions
+  -pthread
+  "-sEXPORTED_FUNCTIONS=['_os_load_mesh','_os_slice_basic','_os_result_gcode','_os_result_preview_layer','_os_free_mesh','_os_free_result']"
+  "-sEXPORTED_RUNTIME_METHODS=['cwrap','getValue','setValue','lengthBytesUTF8','stringToUTF8','UTF8ToString']"
+)
