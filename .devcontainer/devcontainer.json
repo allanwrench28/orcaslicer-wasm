@@ -1,0 +1,17 @@
+{
+  "name": "Orca WASM Dev",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint"
+      ]
+    }
+  },
+  "postCreateCommand": "bash -lc 'node -v && npm -v && emcc --version || true'",
+  "remoteUser": "vscode"
+}
