@@ -1,3 +1,78 @@
+# Expect caller to provide BOOST_PREFIX / BOOST_INC / BOOST_LIB in cache or parent CMakeLists.
+if(NOT BOOST_PREFIX)
+  set(BOOST_PREFIX "${CMAKE_SOURCE_DIR}/../deps/boost-wasm/install")
+endif()
+if(NOT BOOST_INC)
+  set(BOOST_INC "${BOOST_PREFIX}/include")
+endif()
+if(NOT BOOST_LIB)
+  set(BOOST_LIB "${BOOST_PREFIX}/lib")
+endif()
+
+# Public variables expected by projects using FindBoost
+set(Boost_INCLUDE_DIR "${BOOST_INC}")
+set(Boost_INCLUDE_DIRS "${BOOST_INC}")
+
+# Helper to register a static library if present
+function(_boost_reg component libname)
+  set(path "${BOOST_LIB}/${libname}")
+  if(EXISTS "${path}")
+    set(Boost_${component}_FOUND ON PARENT_SCOPE)
+    set(Boost_${component}_LIBRARY "${path}" PARENT_SCOPE)
+    # Append to aggregate libs list
+    set(_acc "${Boost_LIBRARIES}")
+    list(APPEND _acc "${path}")
+    set(Boost_LIBRARIES "${_acc}" PARENT_SCOPE)
+  else()
+    set(Boost_${component}_FOUND OFF PARENT_SCOPE)
+  fi()
+endfunction()
+
+# Header-only components: mark FOUND (no library)
+function(_boost_hdr component)
+  set(Boost_${component}_FOUND ON PARENT_SCOPE)
+endfunction()
+
+# Register the libs we actually built
+_boost_reg(system          libboost_system.a)
+_boost_reg(filesystem      libboost_filesystem.a)
+_boost_reg(thread          libboost_thread.a)
+_boost_reg(regex           libboost_regex.a)
+_boost_reg(chrono          libboost_chrono.a)
+_boost_reg(atomic          libboost_atomic.a)
+_boost_reg(date_time       libboost_date_time.a)
+_boost_reg(iostreams       libboost_iostreams.a)
+_boost_reg(program_options libboost_program_options.a)
+_boost_reg(log             libboost_log.a)
+_boost_reg(log_setup       libboost_log_setup.a)
+
+# Header-only
+_boost_hdr(nowide)
+
+# We disable NLS in our parent CMake, so don't require locale.
+# If locale lib exists, we can expose it; otherwise mark as NOTFOUND.
+if(EXISTS "${BOOST_LIB}/libboost_locale.a")
+  _boost_reg(locale libboost_locale.a)
+else()
+  set(Boost_LOCALE_FOUND OFF)
+endif()
+
+# Aggregate flags typically expected by consumers
+set(Boost_FOUND ON)
+set(Boost_VERSION 108300)
+set(Boost_USE_STATIC_LIBS ON)
+set(Boost_USE_MULTITHREADED ON)
+set(Boost_NO_SYSTEM_PATHS ON)
+
+# Export include dirs/definitions
+set(Boost_DEFINITIONS "")
+set(Boost_LIB_VERSION "1_83")
+EOF
+2) Tell your top-level CMake to use the override
+Edit wasm/CMakeLists.txt to prepend our custom module path before adding orca/. Replace the entire file with this version (it also keeps your Boost paths, disables NLS, and links static libs explicitly):
+
+cmake
+Copy code
 cmake_minimum_required(VERSION 3.22)
 project(slicer_wasm)
 
