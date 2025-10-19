@@ -1,0 +1,45 @@
+name: release-wasm
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  build-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout (with submodules)
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Set up emscripten
+        uses: mymindstorm/setup-emsdk@v14
+        with:
+          version: latest
+          actions-cache-folder: emsdk-cache
+
+      - name: Cache Boost (wasm)
+        id: cache-boost
+        uses: actions/cache@v4
+        with:
+          path: deps/boost-wasm/install
+          key: boost-wasm-${{ runner.os }}-${{ hashFiles('deps/boost-wasm/build_boost.sh') }}
+
+      - name: Build Boost (if cache miss)
+        if: steps.cache-boost.outputs.cache-hit != 'true'
+        run: bash deps/boost-wasm/build_boost.sh
+
+      - name: Build WASM module
+        run: bash scripts/build-wasm.sh
+
+      - name: Create Release and Upload Assets
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            web/public/wasm/slicer.js
+            web/public/wasm/slicer.wasm
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
