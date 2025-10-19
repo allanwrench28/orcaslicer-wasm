@@ -6,26 +6,32 @@ set(CMAKE_BUILD_TYPE Release CACHE STRING "")
 
 # --- Pthreads (needed by Boost.Thread) ---
 add_compile_options(-pthread)
-set(EM_PTHREAD_FLAGS "-pthread")  # Emscripten 4.x: don't pass -sPTHREADS=1
+set(EM_PTHREAD_FLAGS "-pthread")  # Emscripten 4.x: do not pass -sPTHREADS=1
 
-# --- Point directly at your locally built Boost for WASM ---
+# --- Point to locally built Boost (headers + static libs) ---
 set(BOOST_PREFIX "${CMAKE_SOURCE_DIR}/../deps/boost-wasm/install")
 set(BOOST_INC    "${BOOST_PREFIX}/include")
 set(BOOST_LIB    "${BOOST_PREFIX}/lib")
 
-# Verify a couple expected libs (optional sanity)
-if(NOT EXISTS "${BOOST_INC}/boost/version.hpp")
-  message(FATAL_ERROR "Boost headers not found at ${BOOST_INC}")
-endif()
-if(NOT EXISTS "${BOOST_LIB}/libboost_system.a")
-  message(FATAL_ERROR "Boost libs not found at ${BOOST_LIB}")
-endif()
+# Make these visible to subprojects (like orca/) using FindBoost
+set(BOOST_ROOT         "${BOOST_PREFIX}" CACHE PATH "Boost root"                 FORCE)
+set(Boost_ROOT         "${BOOST_PREFIX}" CACHE PATH "Boost root (CamelCase)"     FORCE)
+set(BOOST_INCLUDEDIR   "${BOOST_INC}"    CACHE PATH "Boost include dir"          FORCE)
+set(BOOST_LIBRARYDIR   "${BOOST_LIB}"    CACHE PATH "Boost library dir"          FORCE)
+set(Boost_NO_SYSTEM_PATHS ON             CACHE BOOL ""                           FORCE)
+set(Boost_USE_STATIC_LIBS ON             CACHE BOOL ""                           FORCE)
+set(Boost_USE_MULTITHREADED ON           CACHE BOOL ""                           FORCE)
+set(Boost_USE_STATIC_RUNTIME OFF         CACHE BOOL ""                           FORCE)
+
+# --- Tell Orca to avoid localization (no Boost.Locale needed) and avoid GUI ---
+set(SLIC3R_NLS OFF CACHE BOOL "Disable translations for WASM" FORCE)
+set(SLIC3R_GUI OFF CACHE BOOL "Disable GUI for WASM" FORCE)
 
 # --- Our subprojects ---
 add_subdirectory(../bridge ${CMAKE_BINARY_DIR}/bridge-build)
-add_subdirectory(../orca   ${CMAKE_BINARY_DIR}/orca-build  EXCLUDE_FROM_ALL)
+add_subdirectory(../orca   ${CMAKE_BINARY_DIR}/orca-build EXCLUDE_FROM_ALL)
 
-# --- Executable (we will add Orca libs after we see first link errors) ---
+# --- Executable (bridge for now; we'll add Orca libs after the first link pass) ---
 add_executable(slicer ../bridge/wasm_wrap.cpp)
 
 target_include_directories(slicer PRIVATE
@@ -33,8 +39,7 @@ target_include_directories(slicer PRIVATE
   ${BOOST_INC}
 )
 
-# Link Boost static archives explicitly (match what we built)
-# Trim/extend this list if your Orca link asks for more/less later.
+# Link Boost static archives that exist in our install
 target_link_libraries(slicer PRIVATE
   "${BOOST_LIB}/libboost_system.a"
   "${BOOST_LIB}/libboost_filesystem.a"
@@ -45,7 +50,8 @@ target_link_libraries(slicer PRIVATE
   "${BOOST_LIB}/libboost_date_time.a"
   "${BOOST_LIB}/libboost_iostreams.a"
   "${BOOST_LIB}/libboost_program_options.a"
-  "${BOOST_LIB}/libboost_nowide.a"
+  "${BOOST_LIB}/libboost_log.a"
+  "${BOOST_LIB}/libboost_log_setup.a"
 )
 
 # --- Emscripten link flags ---
