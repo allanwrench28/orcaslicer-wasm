@@ -30,6 +30,8 @@ set(SLIC3R_GUI OFF CACHE BOOL "Disable GUI for WASM" FORCE)
 set(SLIC3R_NLS OFF CACHE BOOL "Disable translations for WASM" FORCE)
 
 # --- Subprojects ---
+list(PREPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
+
 add_subdirectory(../bridge ${CMAKE_BINARY_DIR}/bridge-build)
 add_subdirectory(../orca   ${CMAKE_BINARY_DIR}/orca-build  EXCLUDE_FROM_ALL)
 
