@@ -18,6 +18,12 @@ set(BOOST_ROOT         "${BOOST_PREFIX}" CACHE PATH "Boost root"             FOR
 set(Boost_ROOT         "${BOOST_PREFIX}" CACHE PATH "Boost root (CamelCase)" FORCE)
 set(BOOST_INCLUDEDIR   "${BOOST_INC}"    CACHE PATH "Boost include dir"      FORCE)
 set(BOOST_LIBRARYDIR   "${BOOST_LIB}"    CACHE PATH "Boost library dir"      FORCE)
+
+# --- Disable Intel TBB for WASM (shim will satisfy REQUIRED) ---
+set(SLIC3R_TBB OFF CACHE BOOL "Disable TBB in WASM build" FORCE)
+set(SLIC3R_USE_TBB OFF CACHE BOOL "" FORCE)
+add_compile_definitions(SLIC3R_NO_TBB=1)
+
 set(Boost_NO_SYSTEM_PATHS ON             CACHE BOOL ""                       FORCE)
 set(Boost_USE_STATIC_LIBS ON             CACHE BOOL ""                       FORCE)
 set(Boost_USE_MULTITHREADED ON           CACHE BOOL ""                       FORCE)
