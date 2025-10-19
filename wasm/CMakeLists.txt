@@ -1,4 +1,3 @@
-cat > wasm/CMakeLists.txt <<'EOF'
 cmake_minimum_required(VERSION 3.22)
 project(slicer_wasm)
 
@@ -39,7 +38,7 @@ set(SLIC3R_NLS OFF CACHE BOOL "Disable translations for WASM" FORCE)
 add_subdirectory(../bridge ${CMAKE_BINARY_DIR}/bridge-build)
 add_subdirectory(../orca   ${CMAKE_BINARY_DIR}/orca-build  EXCLUDE_FROM_ALL)
 
-# --- Executable (bridge for now; we'll append Orca libs after first link pass) ---
+# --- Executable (bridge for now; we will append Orca libs later) ---
 add_executable(slicer ../bridge/wasm_wrap.cpp)
 
 target_include_directories(slicer PRIVATE
@@ -79,4 +78,3 @@ set_target_properties(slicer PROPERTIES
   OUTPUT_NAME "slicer"
   LINK_FLAGS "${EM_FLAGS} -sEXPORTED_FUNCTIONS=['_os_load_mesh','_os_slice_basic','_os_result_gcode','_os_result_preview_layer','_os_free_mesh','_os_free_result'] -sEXPORTED_RUNTIME_METHODS=['cwrap','getValue','setValue','lengthBytesUTF8','stringToUTF8','UTF8ToString']"
 )
-EOF
