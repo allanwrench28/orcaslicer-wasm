@@ -21,7 +21,11 @@ set(BOOST_LIBRARYDIR   "${BOOST_LIB}"    CACHE PATH "Boost library dir"      FOR
 set(Boost_NO_SYSTEM_PATHS ON             CACHE BOOL ""                       FORCE)
 set(Boost_USE_STATIC_LIBS ON             CACHE BOOL ""                       FORCE)
 set(Boost_USE_MULTITHREADED ON           CACHE BOOL ""                       FORCE)
-
+# --- Disable Intel TBB for WASM ---
+set(CMAKE_DISABLE_FIND_PACKAGE_TBB TRUE CACHE BOOL "" FORCE)
+set(SLIC3R_TBB OFF CACHE BOOL "Disable TBB in WASM build" FORCE)
+set(SLIC3R_USE_TBB OFF CACHE BOOL "" FORCE)
+add_compile_definitions(SLIC3R_NO_TBB=1)
 # --- Use our FindBoost override so orca/ finds the local Boost ---
 list(PREPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
