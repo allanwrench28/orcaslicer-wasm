@@ -35,6 +35,14 @@ set(SLIC3R_GUI OFF CACHE BOOL "Disable GUI for WASM" FORCE)
 set(SLIC3R_NLS OFF CACHE BOOL "Disable translations for WASM" FORCE)
 
 # --- Subprojects ---
+
+# Provide Threads::Threads interface target for Emscripten (no real pthread lib needed)
+if(NOT TARGET Threads::Threads)
+  add_library(Threads::Threads INTERFACE IMPORTED)
+  target_compile_options(Threads::Threads INTERFACE -pthread)
+  target_link_options(Threads::Threads INTERFACE -pthread)
+endif()
+
 add_subdirectory(../bridge ${CMAKE_BINARY_DIR}/bridge-build)
 add_subdirectory(../orca   ${CMAKE_BINARY_DIR}/orca-build  EXCLUDE_FROM_ALL)
 
