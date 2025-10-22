@@ -58,6 +58,29 @@ Emscripten via `deps/toolchain-wasm/build_math.sh`. The script stages the static
 artifacts under `deps/toolchain-wasm/install` and the custom `Find*.cmake` modules point
 CMake toward that prefix.
 
+## Build Instructions
+
+1. **Install prerequisites**
+  - Clone this repository with submodules: `git clone --recurse-submodules -b wasm-wip https://github.com/allanwrench28/orca-wasm-mvp.git`.
+  - Install the Emscripten SDK locally and activate it (`source <emsdk>/emsdk_env.sh`).
+  - Ensure standard build tooling is available (`cmake` ≥ 3.22, `ninja` or `make`, and a recent Python if you rely on helper scripts).
+
+2. **Stage third-party toolchains**
+  - Boost (static archives tuned for WebAssembly): `bash deps/boost-wasm/build_boost.sh`.
+  - Math stack (GMP, MPFR, CGAL): `bash deps/toolchain-wasm/build_math.sh`.
+
+3. **Run the WASM build**
+  - From the repo root execute `bash scripts/build-wasm.sh`.
+  - The script verifies the Emscripten environment, applies `patches/orca-wasm.patch` to the `orca/` submodule if needed, configures CMake via `emcmake`, and compiles the bridge plus `libslic3r`.
+
+4. **Collect artifacts**
+  - On success `web/public/wasm/slicer.js` and `web/public/wasm/slicer.wasm` are produced for use in the web worker frontend (`web/src/workers/slicer.worker.ts`).
+  - Intermediate CMake files live under `build-wasm/`; remove this folder to force a clean reconfigure.
+
+5. **Troubleshooting tips**
+  - If CMake still searches for native TBB/OpenCV, delete `build-wasm/` to clear cached options.
+  - The build is single-threaded by design; exporting `EM_BUILD_CORES=1` or passing `-j1` can reduce peak memory in constrained environments.
+
 ## Build Automation
 
 `scripts/build-wasm.sh` applies `patches/orca-wasm.patch` to the `orca/` submodule, runs
