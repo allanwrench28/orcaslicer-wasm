@@ -1,3 +1,5 @@
 [submodule "orca"]
 	path = orca
 	url = https://github.com/SoftFever/OrcaSlicer.git
+	branch = main
+	shallow = true

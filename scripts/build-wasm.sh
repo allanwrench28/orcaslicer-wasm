@@ -12,8 +12,20 @@ if ! command -v emcc >/dev/null 2>&1; then
   exit 1
 fi
 
-# 3) Ensure Orca submodule is present and patched for WASM
-git submodule update --init --recursive
+# 3) Ensure Orca submodule is present (track main, shallow) and patched for WASM
+# Keep .gitmodules aligned
+git config -f .gitmodules submodule.orca.url https://github.com/SoftFever/OrcaSlicer.git >/dev/null || true
+git config -f .gitmodules submodule.orca.branch main >/dev/null || true
+git config -f .gitmodules submodule.orca.shallow true >/dev/null || true
+
+# Update submodule from remote tracked branch with shallow history
+git submodule update --init --depth 1 --remote --progress -- orca || {
+  echo "WARN: Standard submodule update failed; attempting re-add" >&2
+  git submodule deinit -f -- orca || true
+  rm -rf .git/modules/orca orca || true
+  git submodule add -f -b main https://github.com/SoftFever/OrcaSlicer.git orca
+  git submodule update --init --depth 1 --progress -- orca
+}
 
 PATCH_FILE="patches/orca-wasm.patch"
 if [[ -f ${PATCH_FILE} ]]; then

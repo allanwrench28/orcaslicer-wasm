@@ -88,6 +88,55 @@ CMake through `emcmake`, and stages `slicer.js`/`slicer.wasm`. The patch contain
 source-level guards (_e.g._ the OpenVDB stubs, OCCT fallbacks, STL loader tweaks) and is
 required before any WASM build succeeds.
 
+## Common Issues
+
+### Build Environment Issues
+
+**Emscripten not found**
+- Make sure to run `./setup.ps1` first to install Emscripten
+- On Windows, the script sets up Emscripten in the local `emsdk/` directory
+- If you have an existing Emscripten install, update `wasm/toolchain/emsdk.env`
+
+**Boost build fails on Windows**
+- Boost requires a native compiler for bootstrapping
+- Install Visual Studio Build Tools or use WSL
+- Alternatively, use pre-built Boost libraries (see CMake options)
+
+**Math libraries (GMP, MPFR) build fails**
+- These require autotools and may need WSL on Windows
+- Try `./setup.ps1 -SkipDeps` and use system libraries if available
+- Some builds work without these dependencies (reduced functionality)
+
+**Submodule initialization hangs**
+- Large repository (OrcaSlicer) - be patient or use `--progress` flag
+- Check network connectivity and GitHub access
+- Try shallow clone: `git submodule update --init --depth 1`
+
+### CMake Configuration Issues
+
+**TBB/OpenCV found despite being disabled**
+- Clean build directory: `./build.ps1 -Clean`
+- CMake cache may retain old settings
+
+**Missing dependencies**
+- Check `build-wasm/CMakeFiles/CMakeError.log` for specific missing libraries
+- Some dependencies can be made optional in `wasm/CMakeLists.txt`
+
+**Cross-compilation errors**
+- Ensure Emscripten toolchain is properly activated
+- Check that `emcc --version` works in your shell
+
+### Runtime Issues
+
+**WASM module fails to load**
+- Check browser console for specific errors
+- Verify both `.js` and `.wasm` files are served correctly
+- Some browsers require HTTPS for SharedArrayBuffer features
+
+**Memory errors in browser**
+- WASM builds are single-threaded and memory-constrained
+- Reduce model complexity or enable streaming
+
 ## Residual Risks
 
 - Any feature that depends on the disabled libraries above will silently disappear from
