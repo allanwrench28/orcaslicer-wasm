@@ -142,6 +142,7 @@ vite.config.ts.timestamp-*
 build-wasm/
 web/public/wasm/*.wasm
 web/public/wasm/*.wasm.map
+web/public/wasm/*.js
 web/public/wasm/*.js.map
 build/
 dist/
@@ -151,3 +152,12 @@ node_modules/
 .env
 web/.vite
 wasm/.cache
+.vscode/
+deps/toolchain-wasm/build/
+deps/toolchain-wasm/downloads/
+deps/toolchain-wasm/src/
+deps/toolchain-wasm/install/
+deps/boost-wasm/build/
+deps/boost-wasm/install/
+deps/boost-wasm/boost_*/
+deps/boost-wasm/boost_*.tar.gz

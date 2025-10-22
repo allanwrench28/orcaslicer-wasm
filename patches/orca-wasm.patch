@@ -1,0 +1,1197 @@
+diff --git a/deps_src/hidapi/CMakeLists.txt b/deps_src/hidapi/CMakeLists.txt
+index efb7f62eb..3f2fc36da 100644
+--- a/deps_src/hidapi/CMakeLists.txt
++++ b/deps_src/hidapi/CMakeLists.txt
+@@ -1,3 +1,10 @@
++if (CMAKE_SYSTEM_NAME STREQUAL "Emscripten" OR EMSCRIPTEN)
++    add_library(hidapi INTERFACE)
++    target_include_directories(hidapi INTERFACE
++        ${CMAKE_CURRENT_SOURCE_DIR}/include
++    )
++    return()
++endif()
+ 
+ if (WIN32)
+     set(HIDAPI_IMPL win/hid.c)
+diff --git a/src/libslic3r/AABBTreeLines.hpp b/src/libslic3r/AABBTreeLines.hpp
+index 55cf328f5..2a2efb504 100644
+--- a/src/libslic3r/AABBTreeLines.hpp
++++ b/src/libslic3r/AABBTreeLines.hpp
+@@ -32,7 +32,9 @@ namespace AABBTreeLines {
+             {
+                 Vec<LineType::Dim, typename LineType::Scalar> nearest_point;
+                 const LineType& line = lines[primitive_index];
+-                squared_distance = line_alg::distance_to_squared(line, origin.template cast<typename LineType::Scalar>(), &nearest_point);
++                const Vec<LineType::Dim, typename LineType::Scalar> origin_cast =
++                    origin.template cast<typename LineType::Scalar>();
++                squared_distance = line_alg::distance_to_squared(line, origin_cast, &nearest_point);
+                 return nearest_point.template cast<ScalarType>();
+             }
+         };
+diff --git a/src/libslic3r/CMakeLists.txt b/src/libslic3r/CMakeLists.txt
+index d85c65fd5..146896fb6 100644
+--- a/src/libslic3r/CMakeLists.txt
++++ b/src/libslic3r/CMakeLists.txt
+@@ -20,6 +20,9 @@ endif()
+ 
+ option(BUILD_SHARED_LIBS "Build shared libs" OFF)
+ 
++option(SLIC3R_WITH_OCCT "Enable OCCT CAD features" ON)
++option(SLIC3R_WITH_OPENCV "Enable OpenCV-powered color utilities" ON)
++
+ set(lisbslic3r_sources
+     AABBMesh.cpp
+     AABBMesh.hpp
+@@ -474,7 +477,9 @@ set(CGAL_DO_NOT_WARN_ABOUT_CMAKE_BUILD_TYPE ON CACHE BOOL "" FORCE)
+ cmake_policy(PUSH)
+ cmake_policy(SET CMP0011 NEW)
+ find_package(CGAL REQUIRED)
+-find_package(OpenCV REQUIRED core)
++if (SLIC3R_WITH_OPENCV)
++    find_package(OpenCV REQUIRED core)
++endif()
+ cmake_policy(POP)
+ 
+ add_library(libslic3r_cgal STATIC 
+@@ -515,59 +520,73 @@ target_include_directories(libslic3r PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} PUBLIC
+ target_include_directories(libslic3r SYSTEM PUBLIC ${EXPAT_INCLUDE_DIRS})
+ 
+ # Find the OCCT and related libraries
+-set(OpenCASCADE_DIR "${CMAKE_PREFIX_PATH}/lib/cmake/occt")
+-find_package(OpenCASCADE REQUIRED)
+-target_include_directories(libslic3r SYSTEM PUBLIC ${OpenCASCADE_INCLUDE_DIR})
++find_package(libnoise REQUIRED)
++set(OCCT_PRIVATE_LIBS)
+ 
+-find_package(JPEG REQUIRED)
++if(SLIC3R_WITH_OCCT)
++    # Find the OCCT and related libraries
++    set(OpenCASCADE_DIR "${CMAKE_PREFIX_PATH}/lib/cmake/occt")
++    find_package(OpenCASCADE REQUIRED)
++    target_include_directories(libslic3r SYSTEM PUBLIC ${OpenCASCADE_INCLUDE_DIR})
+ 
+-set(OCCT_LIBS
+-    TKXDESTEP
+-    TKSTEP
+-    TKSTEP209
+-    TKSTEPAttr
+-    TKSTEPBase
+-    TKXCAF
+-    TKXSBase
+-    TKVCAF
+-    TKCAF
+-    TKLCAF
+-    TKCDF
+-    TKV3d
+-    TKService
+-    TKMesh
+-    TKBO
+-    TKPrim
+-    TKHLR
+-    TKShHealing
+-    TKTopAlgo
+-    TKGeomAlgo
+-    TKBRep
+-    TKGeomBase
+-    TKG3d
+-    TKG2d
+-    TKMath
+-    TKernel
+-)
++    find_package(JPEG REQUIRED)
++
++    set(OCCT_LIBS
++        TKXDESTEP
++        TKSTEP
++        TKSTEP209
++        TKSTEPAttr
++        TKSTEPBase
++        TKXCAF
++        TKXSBase
++        TKVCAF
++        TKCAF
++        TKLCAF
++        TKCDF
++        TKV3d
++        TKService
++        TKMesh
++        TKBO
++        TKPrim
++        TKHLR
++        TKShHealing
++        TKTopAlgo
++        TKGeomAlgo
++        TKBRep
++        TKGeomBase
++        TKG3d
++        TKG2d
++        TKMath
++        TKernel
++    )
++
++    list(APPEND OCCT_PRIVATE_LIBS ${OCCT_LIBS} JPEG::JPEG)
++
++    if(NOT WIN32)
++        # Link freetype for OCCT dependency (CAD operations need font rendering)
++        list(APPEND OCCT_PRIVATE_LIBS ${FREETYPE_LIBRARIES} OpenSSL::Crypto)
++        if (NOT APPLE)
++            list(APPEND OCCT_PRIVATE_LIBS fontconfig)
++        endif()
++    endif()
++else()
++    target_compile_definitions(libslic3r PUBLIC SLIC3R_NO_OCCT)
++endif()
+ 
+-find_package(libnoise REQUIRED)
+ target_link_libraries(libslic3r
+     PUBLIC
+         admesh
+         libigl
+         libnest2d
+         miniz
+-        opencv_world
+     PRIVATE
+         ${CMAKE_DL_LIBS}
+         ${EXPAT_LIBRARIES}
+-        ${OCCT_LIBS}
+         boost_libs
+         cereal::cereal
+         clipper
+         eigen
+         glu-libtess
+-        JPEG::JPEG
+         libslic3r_cgal
+         mcut
+         noise::noise
+@@ -578,15 +597,14 @@ target_link_libraries(libslic3r
+         TBB::tbb
+         TBB::tbbmalloc
+         ZLIB::ZLIB
++        ${OCCT_PRIVATE_LIBS}
+     )
+ 
+-if(NOT WIN32)
+-    # Link freetype for OCCT dependency (CAD operations need font rendering)
+-    target_link_libraries(libslic3r PRIVATE ${FREETYPE_LIBRARIES})
+-    target_link_libraries(libslic3r PRIVATE OpenSSL::Crypto)
+-    if (NOT APPLE)
+-        target_link_libraries(libslic3r PRIVATE fontconfig)
+-    endif()
++if (SLIC3R_WITH_OPENCV)
++    target_link_libraries(libslic3r PUBLIC opencv_world)
++    target_compile_definitions(libslic3r PUBLIC SLIC3R_WITH_OPENCV=1)
++else()
++    target_compile_definitions(libslic3r PUBLIC SLIC3R_WITH_OPENCV=0)
+ endif()
+ 
+ if (APPLE)
+diff --git a/src/libslic3r/ExtrusionEntity.hpp b/src/libslic3r/ExtrusionEntity.hpp
+index edd7839cc..a7e568992 100644
+--- a/src/libslic3r/ExtrusionEntity.hpp
++++ b/src/libslic3r/ExtrusionEntity.hpp
+@@ -557,7 +557,7 @@ inline void extrusion_entities_append_paths_with_wipe(ExtrusionEntitiesPtr &dst,
+                 Point temp = polyline.first_point() - last_end_point;
+                 if (Vec2d(temp.x(), temp.y()).norm() <= 3 * scaled(width)) {
+                     multi_path->paths.emplace_back(role, mm3_per_mm, width, height, true);
+-                    multi_path->paths.back().polyline = std::move(Polyline(last_end_point, polyline.first_point()));
++                    multi_path->paths.back().polyline = Polyline(last_end_point, polyline.first_point());
+                 } else {
+                     dst.push_back(multi_path);
+                     multi_path = new ExtrusionMultiPath();
+diff --git a/src/libslic3r/Feature/FuzzySkin/FuzzySkin.cpp b/src/libslic3r/Feature/FuzzySkin/FuzzySkin.cpp
+index 66fc90dc9..af7a61c80 100644
+--- a/src/libslic3r/Feature/FuzzySkin/FuzzySkin.cpp
++++ b/src/libslic3r/Feature/FuzzySkin/FuzzySkin.cpp
+@@ -1,4 +1,7 @@
+ #include <random>
++#ifndef __EMSCRIPTEN__
++#    include <thread>
++#endif
+ 
+ #include "libslic3r/Algorithm/LineSplit.hpp"
+ #include "libslic3r/Arachne/utils/ExtrusionJunction.hpp"
+@@ -21,10 +24,16 @@ using namespace Slic3r;
+ namespace Slic3r::Feature::FuzzySkin {
+ 
+ // Produces a random value between 0 and 1. Thread-safe.
+-static double random_value() {
++static double random_value()
++{
+     thread_local std::random_device rd;
+-    // Hash thread ID for random number seed if no hardware rng seed is available
++#ifndef __EMSCRIPTEN__
++    // Hash thread ID for random number seed if no hardware rng seed is available.
+     thread_local std::mt19937 gen(rd.entropy() > 0 ? rd() : std::hash<std::thread::id>()(std::this_thread::get_id()));
++#else
++    // Emscripten builds are effectively single-threaded, fall back to device entropy.
++    thread_local std::mt19937 gen(rd());
++#endif
+     thread_local std::uniform_real_distribution<double> dist(0.0, 1.0);
+     return dist(gen);
+ }
+diff --git a/src/libslic3r/Feature/Interlocking/InterlockingGenerator.hpp b/src/libslic3r/Feature/Interlocking/InterlockingGenerator.hpp
+index 6f331fb8e..3ba7432a4 100644
+--- a/src/libslic3r/Feature/Interlocking/InterlockingGenerator.hpp
++++ b/src/libslic3r/Feature/Interlocking/InterlockingGenerator.hpp
+@@ -7,6 +7,8 @@
+ #include "libslic3r/Print.hpp"
+ #include "VoxelUtils.hpp"
+ 
++#include <unordered_set>
++
+ namespace Slic3r {
+ 
+ /*!
+diff --git a/src/libslic3r/Fill/Fill.cpp b/src/libslic3r/Fill/Fill.cpp
+index e8294ea67..4abe7345f 100644
+--- a/src/libslic3r/Fill/Fill.cpp
++++ b/src/libslic3r/Fill/Fill.cpp
+@@ -1,6 +1,7 @@
+ #include <assert.h>
+ #include <stdio.h>
+ #include <memory>
++#include <unordered_set>
+ 
+ #include "../ClipperUtils.hpp"
+ #include "../Geometry.hpp"
+diff --git a/src/libslic3r/Fill/FillAdaptive.cpp b/src/libslic3r/Fill/FillAdaptive.cpp
+index 3ec9ec368..3bee953ec 100644
+--- a/src/libslic3r/Fill/FillAdaptive.cpp
++++ b/src/libslic3r/Fill/FillAdaptive.cpp
+@@ -1393,8 +1393,8 @@ void Filler::_fill_surface_single(
+     }
+ #endif /* ADAPTIVE_CUBIC_INFILL_DEBUG_OUTPUT */
+ 
+-    const auto hook_length     = coordf_t(std::min<float>(std::numeric_limits<coord_t>::max(), scale_(params.anchor_length)));
+-    const auto hook_length_max = coordf_t(std::min<float>(std::numeric_limits<coord_t>::max(), scale_(params.anchor_length_max)));
++    const auto hook_length     = coordf_t(std::min<coordf_t>(static_cast<coordf_t>(std::numeric_limits<coord_t>::max()), scale_(params.anchor_length)));
++    const auto hook_length_max = coordf_t(std::min<coordf_t>(static_cast<coordf_t>(std::numeric_limits<coord_t>::max()), scale_(params.anchor_length_max)));
+ 
+     Polylines all_polylines_with_hooks = all_polylines.size() > 1 ? connect_lines_using_hooks(std::move(all_polylines), expolygon, this->spacing, hook_length, hook_length_max) : std::move(all_polylines);
+ 
+diff --git a/src/libslic3r/Format/STEP.cpp b/src/libslic3r/Format/STEP.cpp
+index 5105d2677..e8073130b 100644
+--- a/src/libslic3r/Format/STEP.cpp
++++ b/src/libslic3r/Format/STEP.cpp
+@@ -4,7 +4,10 @@
+ 
+ #include "STEP.hpp"
+ 
++#ifndef SLIC3R_NO_OCCT
++
+ #include <string>
++#include <utility>
+ #include <boost/nowide/cstdio.hpp>
+ #include <boost/nowide/iostream.hpp>
+ #include <boost/nowide/fstream.hpp>
+@@ -518,3 +521,76 @@ unsigned int Step::get_triangle_num_tbb(double linear_defletion, double angle_de
+ }
+ 
+ }; // namespace Slic3r
++
++#else // SLIC3R_NO_OCCT
++
++#include <string>
++
++namespace Slic3r {
++
++bool StepPreProcessor::preprocess(const char* path, std::string &output_path)
++{
++    output_path = path ? std::string(path) : std::string();
++    return true;
++}
++
++bool StepPreProcessor::isUtf8File(const char* /*path*/)
++{
++    return true;
++}
++
++bool StepPreProcessor::isUtf8(const std::string /*str*/)
++{
++    return true;
++}
++
++Step::Step(fs::path path, ImportStepProgressFn stepFn, StepIsUtf8Fn isUtf8Fn)
++    : Step(std::move(path.string()), std::move(stepFn), std::move(isUtf8Fn))
++{
++}
++
++Step::Step(std::string path, ImportStepProgressFn stepFn, StepIsUtf8Fn isUtf8Fn)
++    : m_path(std::move(path))
++    , m_stepFn(std::move(stepFn))
++    , m_utf8Fn(std::move(isUtf8Fn))
++{
++}
++
++bool Step::load()
++{
++    return false;
++}
++
++unsigned int Step::get_triangle_num(double /*linear_defletion*/, double /*angle_defletion*/)
++{
++    return 0;
++}
++
++unsigned int Step::get_triangle_num_tbb(double /*linear_defletion*/, double /*angle_defletion*/)
++{
++    return 0;
++}
++
++void Step::clean_mesh_data()
++{
++}
++
++bool load_step(const char * /*path*/, Model * /*model*/, bool& is_cancel,
++               double /*linear_defletion*/, double /*angle_defletion*/,
++               bool /*isSplitCompound*/, ImportStepProgressFn proFn,
++               StepIsUtf8Fn /*isUtf8Fn*/, long& mesh_face_num)
++{
++    if (proFn) {
++        bool dummy_cancel = false;
++        proFn(LOAD_STEP_STAGE_READ_FILE, 0, 1, dummy_cancel);
++        proFn(LOAD_STEP_STAGE_GET_SOLID, 0, 0, dummy_cancel);
++        proFn(LOAD_STEP_STAGE_GET_MESH, 0, 0, dummy_cancel);
++    }
++
++    is_cancel = false;
++    return false;
++}
++
++} // namespace Slic3r
++
++#endif // SLIC3R_NO_OCCT
+diff --git a/src/libslic3r/Format/STEP.hpp b/src/libslic3r/Format/STEP.hpp
+index 85c8f655e..8142e94c3 100644
+--- a/src/libslic3r/Format/STEP.hpp
++++ b/src/libslic3r/Format/STEP.hpp
+@@ -1,18 +1,26 @@
+ #ifndef slic3r_Format_STEP_hpp_
+ #define slic3r_Format_STEP_hpp_
++#include <atomic>
++#include <functional>
++#include <string>
++#include <vector>
++
++#include <boost/filesystem/path.hpp>
++#include <boost/filesystem.hpp>
++
++#ifndef SLIC3R_NO_OCCT
+ #include "XCAFDoc_DocumentTool.hxx"
+ #include "XCAFApp_Application.hxx"
+ #include "XCAFDoc_ShapeTool.hxx"
+-#include <boost/filesystem/path.hpp>
+-#include <boost/filesystem.hpp>
+ #include <Message_ProgressIndicator.hxx>
+-#include <atomic>
++#endif
+ 
+ namespace fs = boost::filesystem;
+ 
+ namespace Slic3r {
+ 
+ class TriangleMesh;
++class Model;
+ class ModelObject;
+ 
+ // load step stage
+@@ -25,6 +33,8 @@ const int LOAD_STEP_STAGE_UNIT_NUM           = 5;
+ typedef std::function<void(int load_stage, int current, int total, bool& cancel)> ImportStepProgressFn;
+ typedef std::function<void(bool isUtf8)> StepIsUtf8Fn;
+ 
++#ifndef SLIC3R_NO_OCCT
++
+ struct NamedSolid
+ {
+     NamedSolid(const TopoDS_Shape& s,
+@@ -105,6 +115,34 @@ private:
+     std::vector<NamedSolid> m_name_solids;
+ };
+ 
++#else // SLIC3R_NO_OCCT
++
++class StepPreProcessor {
++public:
++    bool preprocess(const char* path, std::string &output_path);
++    static bool isUtf8File(const char* path);
++    static bool isUtf8(const std::string str);
++};
++
++class Step
++{
++public:
++    Step(fs::path path, ImportStepProgressFn stepFn = nullptr, StepIsUtf8Fn isUtf8Fn = nullptr);
++    Step(std::string path, ImportStepProgressFn stepFn = nullptr, StepIsUtf8Fn isUtf8Fn = nullptr);
++    bool load();
++    unsigned int get_triangle_num(double linear_defletion, double angle_defletion);
++    unsigned int get_triangle_num_tbb(double linear_defletion, double angle_defletion);
++    void clean_mesh_data();
++
++    std::atomic<bool> m_stop_mesh{false};
++private:
++    std::string m_path;
++    ImportStepProgressFn m_stepFn;
++    StepIsUtf8Fn m_utf8Fn;
++};
++
++#endif // SLIC3R_NO_OCCT
++
+ }; // namespace Slic3r
+ 
+ #endif /* slic3r_Format_STEP_hpp_ */
+diff --git a/src/libslic3r/Format/svg.cpp b/src/libslic3r/Format/svg.cpp
+index 4a96274b9..43d64bfb8 100644
+--- a/src/libslic3r/Format/svg.cpp
++++ b/src/libslic3r/Format/svg.cpp
+@@ -9,6 +9,7 @@
+ 
+ #include <boost/log/trivial.hpp>
+ 
++#ifndef SLIC3R_NO_OCCT
+ #include "BRepBuilderAPI_MakeWire.hxx"
+ #include "BRepBuilderAPI_MakeEdge.hxx"
+ #include "BRepBuilderAPI_MakeFace.hxx"
+@@ -20,6 +21,9 @@
+ #include "TopoDS.hxx"
+ #include "BRepExtrema_SelfIntersection.hxx"
+ #include "clipper/clipper.hpp"
++#endif
++
++#ifndef SLIC3R_NO_OCCT
+ 
+ using namespace ClipperLib;
+ 
+@@ -400,3 +404,17 @@ bool load_svg(const char *path, Model *model, std::string &message)
+     return true;
+ }
+ } // namespace Slic3r
++
++#else // SLIC3R_NO_OCCT
++
++namespace Slic3r {
++
++bool load_svg(const char * /*path*/, Model * /*model*/, std::string &message)
++{
++    message = "SVG import is not available in this build.";
++    return false;
++}
++
++} // namespace Slic3r
++
++#endif // SLIC3R_NO_OCCT
+diff --git a/src/libslic3r/GCode.cpp b/src/libslic3r/GCode.cpp
+index dda1d0c5e..c341463d1 100644
+--- a/src/libslic3r/GCode.cpp
++++ b/src/libslic3r/GCode.cpp
+@@ -2758,6 +2758,78 @@ void GCode::process_layers(
+     const std::vector<std::pair<coordf_t, std::vector<LayerToPrint>>>   &layers_to_print,
+     GCodeOutputStream                                                   &output_stream)
+ {
++    if (m_spiral_vase) {
++        float nozzle_diameter  = EXTRUDER_CONFIG(nozzle_diameter);
++        float max_xy_smoothing = m_config.get_abs_value("spiral_mode_max_xy_smoothing", nozzle_diameter);
++        this->m_spiral_vase->set_max_xy_smoothing(max_xy_smoothing);
++    }
++
++#ifdef __EMSCRIPTEN__
++    const bool has_spiral = static_cast<bool>(m_spiral_vase);
++    const bool has_pressure_equalizer = static_cast<bool>(m_pressure_equalizer);
++    const bool has_fan_mover = (config().fan_speedup_time.value != 0 || config().fan_kickstart.value > 0);
++
++    auto process_result = [&](LayerResult result) {
++        if (has_spiral && !result.nop_layer_result) {
++            auto &spiral = *m_spiral_vase;
++            spiral.enable(result.spiral_vase_enable);
++            bool last_layer = (result.layer_id == layers_to_print.size() - 1);
++            result.gcode = spiral.process_layer(std::move(result.gcode), last_layer);
++        }
++
++        if (has_pressure_equalizer) {
++            result = m_pressure_equalizer->process_layer(std::move(result));
++        }
++
++        std::string gcode_chunk;
++        if (result.nop_layer_result) {
++            gcode_chunk = std::move(result.gcode);
++        } else {
++            gcode_chunk = m_cooling_buffer->process_layer(std::move(result.gcode), result.layer_id, result.cooling_buffer_flush);
++        }
++
++        if (has_fan_mover) {
++            CNumericLocalesSetter locales_setter;
++            if (m_fan_mover.get() == nullptr) {
++                m_fan_mover.reset(new Slic3r::FanMover(
++                    m_writer,
++                    std::abs((float)config().fan_speedup_time.value),
++                    config().fan_speedup_time.value > 0,
++                    config().use_relative_e_distances.value,
++                    config().fan_speedup_overhangs.value,
++                    (float)config().fan_kickstart.value));
++            }
++            gcode_chunk = m_fan_mover->process_gcode(std::move(gcode_chunk), true);
++        }
++
++        if (!has_spiral && !gcode_chunk.empty()) {
++            gcode_chunk = m_pa_processor->process_layer(std::move(gcode_chunk));
++        } else if (!has_spiral) {
++            gcode_chunk = m_pa_processor->process_layer(std::move(gcode_chunk));
++        }
++
++        if (!gcode_chunk.empty())
++            output_stream.write(gcode_chunk);
++    };
++
++    const size_t flush_layers = has_pressure_equalizer ? 1 : 0;
++    for (size_t layer_idx = 0; layer_idx < layers_to_print.size() + flush_layers; ++layer_idx) {
++        LayerResult result;
++        if (layer_idx >= layers_to_print.size()) {
++            result = LayerResult::make_nop_layer_result();
++        } else {
++            const auto &layer = layers_to_print[layer_idx];
++            const LayerTools &layer_tools = tool_ordering.tools_for_layer(layer.first);
++            print.set_status(80, Slic3r::format(_(L("Generating G-code: layer %1%")), std::to_string(layer_idx + 1)));
++            if (m_wipe_tower && layer_tools.has_wipe_tower)
++                m_wipe_tower->next_layer();
++            check_placeholder_parser_failed();
++            print.throw_if_canceled();
++            result = this->process_layer(print, layer.second, layer_tools, &layer == &layers_to_print.back(), &print_object_instances_ordering, size_t(-1));
++        }
++        process_result(std::move(result));
++    }
++#else
+     // The pipeline is variable: The vase mode filter is optional.
+     size_t layer_to_print_idx = 0;
+     const auto generator = tbb::make_filter<void, LayerResult>(slic3r_tbb_filtermode::serial_in_order,
+@@ -2767,8 +2839,6 @@ void GCode::process_layers(
+                     fc.stop();
+                     return {};
+                 } else {
+-                    // Pressure equalizer need insert empty input. Because it returns one layer back.
+-                    // Insert NOP (no operation) layer;
+                     ++layer_to_print_idx;
+                     return LayerResult::make_nop_layer_result();
+                 }
+@@ -2778,22 +2848,16 @@ void GCode::process_layers(
+                 print.set_status(80, Slic3r::format(_(L("Generating G-code: layer %1%")), std::to_string(layer_to_print_idx)));
+                 if (m_wipe_tower && layer_tools.has_wipe_tower)
+                     m_wipe_tower->next_layer();
+-                //BBS
+                 check_placeholder_parser_failed();
+                 print.throw_if_canceled();
+                 return this->process_layer(print, layer.second, layer_tools, &layer == &layers_to_print.back(), &print_object_instances_ordering, size_t(-1));
+             }
+         });
+-    if (m_spiral_vase) {
+-        float nozzle_diameter  = EXTRUDER_CONFIG(nozzle_diameter);
+-        float max_xy_smoothing = m_config.get_abs_value("spiral_mode_max_xy_smoothing", nozzle_diameter);
+-        this->m_spiral_vase->set_max_xy_smoothing(max_xy_smoothing);
+-    }
+     const auto spiral_mode = tbb::make_filter<LayerResult, LayerResult>(slic3r_tbb_filtermode::serial_in_order,
+         [&spiral_mode = *this->m_spiral_vase.get(), &layers_to_print](LayerResult in) -> LayerResult {
+-        	if (in.nop_layer_result)
++	if (in.nop_layer_result)
+                 return in;
+-                
++
+             spiral_mode.enable(in.spiral_vase_enable);
+             bool last_layer = in.layer_id == layers_to_print.size() - 1;
+             return { spiral_mode.process_layer(std::move(in.gcode), last_layer), in.layer_id, in.spiral_vase_enable, in.cooling_buffer_flush};
+@@ -2804,7 +2868,7 @@ void GCode::process_layers(
+         });
+     const auto cooling = tbb::make_filter<LayerResult, std::string>(slic3r_tbb_filtermode::serial_in_order,
+         [&cooling_buffer = *this->m_cooling_buffer.get()](LayerResult in) -> std::string {
+-        	if (in.nop_layer_result)
++	if (in.nop_layer_result)
+                 return in.gcode;
+             return cooling_buffer.process_layer(std::move(in.gcode), in.layer_id, in.cooling_buffer_flush);
+         });
+@@ -2813,7 +2877,7 @@ void GCode::process_layers(
+                 return pa_processor.process_layer(std::move(in));
+             }
+         );
+-    
++
+     const auto output = tbb::make_filter<std::string, void>(slic3r_tbb_filtermode::serial_in_order,
+         [&output_stream](std::string s) { output_stream.write(s); }
+     );
+@@ -2832,21 +2896,20 @@ void GCode::process_layers(
+                     config.use_relative_e_distances.value,
+                     config.fan_speedup_overhangs.value,
+                     (float)config.fan_kickstart.value));
+-            //flush as it's a whole layer
+             return fan_mover->process_gcode(in, true);
+         }
+         return in;
+     });
+ 
+-    // The pipeline elements are joined using const references, thus no copying is performed.
+     if (m_spiral_vase && m_pressure_equalizer)
+         tbb::parallel_pipeline(12, generator & spiral_mode & pressure_equalizer & cooling & fan_mover & output);
+     else if (m_spiral_vase)
+-    	tbb::parallel_pipeline(12, generator & spiral_mode & cooling & fan_mover & output);
++	tbb::parallel_pipeline(12, generator & spiral_mode & cooling & fan_mover & output);
+     else if	(m_pressure_equalizer)
+         tbb::parallel_pipeline(12, generator & pressure_equalizer & cooling & fan_mover & pa_processor_filter & output);
+     else
+-    	tbb::parallel_pipeline(12, generator & cooling & fan_mover & pa_processor_filter & output);
++	tbb::parallel_pipeline(12, generator & cooling & fan_mover & pa_processor_filter & output);
++#endif
+ }
+ 
+ // Process all layers of a single object instance (sequential mode) with a parallel pipeline:
+@@ -2861,7 +2924,73 @@ void GCode::process_layers(
+     // BBS
+     const bool                               prime_extruder)
+ {
+-    // The pipeline is variable: The vase mode filter is optional.
++#ifdef __EMSCRIPTEN__
++    const bool has_spiral = static_cast<bool>(m_spiral_vase);
++    const bool has_pressure_equalizer = static_cast<bool>(m_pressure_equalizer);
++    const bool has_fan_mover = (config().fan_speedup_time.value != 0 || config().fan_kickstart.value > 0);
++
++    if (m_spiral_vase) {
++        float nozzle_diameter  = EXTRUDER_CONFIG(nozzle_diameter);
++        float max_xy_smoothing = m_config.get_abs_value("spiral_mode_max_xy_smoothing", nozzle_diameter);
++        this->m_spiral_vase->set_max_xy_smoothing(max_xy_smoothing);
++    }
++
++    auto process_result = [&](LayerResult result, size_t last_layer_idx) {
++        if (has_spiral && !result.nop_layer_result) {
++            auto &spiral = *m_spiral_vase;
++            spiral.enable(result.spiral_vase_enable);
++            bool last_layer = (result.layer_id == last_layer_idx);
++            result.gcode = spiral.process_layer(std::move(result.gcode), last_layer);
++        }
++
++        if (has_pressure_equalizer) {
++            result = m_pressure_equalizer->process_layer(std::move(result));
++        }
++
++        std::string gcode_chunk;
++        if (result.nop_layer_result) {
++            gcode_chunk = std::move(result.gcode);
++        } else {
++            gcode_chunk = m_cooling_buffer->process_layer(std::move(result.gcode), result.layer_id, result.cooling_buffer_flush);
++        }
++
++        if (has_fan_mover) {
++            if (m_fan_mover.get() == nullptr) {
++                m_fan_mover.reset(new Slic3r::FanMover(
++                    m_writer,
++                    std::abs((float)config().fan_speedup_time.value),
++                    config().fan_speedup_time.value > 0,
++                    config().use_relative_e_distances.value,
++                    config().fan_speedup_overhangs.value,
++                    (float)config().fan_kickstart.value));
++            }
++            gcode_chunk = m_fan_mover->process_gcode(std::move(gcode_chunk), true);
++        }
++
++        if (!has_spiral) {
++            gcode_chunk = m_pa_processor->process_layer(std::move(gcode_chunk));
++        }
++
++        if (!gcode_chunk.empty())
++            output_stream.write(gcode_chunk);
++    };
++
++    const size_t flush_layers = has_pressure_equalizer ? 1 : 0;
++    const size_t last_real_layer = layers_to_print.empty() ? 0 : layers_to_print.size() - 1;
++    for (size_t idx = 0; idx < layers_to_print.size() + flush_layers; ++idx) {
++        LayerResult result;
++        if (idx >= layers_to_print.size()) {
++            result = LayerResult::make_nop_layer_result();
++        } else {
++            LayerToPrint &layer = layers_to_print[idx];
++            print.set_status(80, Slic3r::format(_(L("Generating G-code: layer %1%")), std::to_string(idx + 1)));
++            check_placeholder_parser_failed();
++            print.throw_if_canceled();
++            result = this->process_layer(print, { std::move(layer) }, tool_ordering.tools_for_layer(layer.print_z()), &layer == &layers_to_print.back(), nullptr, single_object_idx, prime_extruder);
++        }
++        process_result(std::move(result), last_real_layer);
++    }
++#else
+     size_t layer_to_print_idx = 0;
+     const auto generator = tbb::make_filter<void, LayerResult>(slic3r_tbb_filtermode::serial_in_order,
+         [this, &print, &tool_ordering, &layers_to_print, &layer_to_print_idx, single_object_idx, prime_extruder](tbb::flow_control& fc) -> LayerResult {
+@@ -2870,15 +2999,12 @@ void GCode::process_layers(
+                     fc.stop();
+                     return {};
+                 } else {
+-                    // Pressure equalizer need insert empty input. Because it returns one layer back.
+-                    // Insert NOP (no operation) layer;
+                     ++layer_to_print_idx;
+                     return LayerResult::make_nop_layer_result();
+                 }
+             } else {
+                 LayerToPrint &layer = layers_to_print[layer_to_print_idx ++];
+                 print.set_status(80, Slic3r::format(_(L("Generating G-code: layer %1%")), std::to_string(layer_to_print_idx)));
+-                //BBS
+                 check_placeholder_parser_failed();
+                 print.throw_if_canceled();
+                 return this->process_layer(print, { std::move(layer) }, tool_ordering.tools_for_layer(layer.print_z()), &layer == &layers_to_print.back(), nullptr, single_object_idx, prime_extruder);
+@@ -2912,7 +3038,7 @@ void GCode::process_layers(
+             return pa_processor.process_layer(std::move(in));
+         }
+     );
+-    
++
+     const auto output = tbb::make_filter<std::string, void>(slic3r_tbb_filtermode::serial_in_order,
+         [&output_stream](std::string s) { output_stream.write(s); }
+     );
+@@ -2929,21 +3055,20 @@ void GCode::process_layers(
+                     config.use_relative_e_distances.value,
+                     config.fan_speedup_overhangs.value,
+                     (float)config.fan_kickstart.value));
+-            //flush as it's a whole layer
+             return fan_mover->process_gcode(in, true);
+         }
+         return in;
+     });
+ 
+-    // The pipeline elements are joined using const references, thus no copying is performed.
+     if (m_spiral_vase && m_pressure_equalizer)
+         tbb::parallel_pipeline(12, generator & spiral_mode & pressure_equalizer & cooling & fan_mover & output);
+     else if (m_spiral_vase)
+-    	tbb::parallel_pipeline(12, generator & spiral_mode & cooling & fan_mover & output);
++	tbb::parallel_pipeline(12, generator & spiral_mode & cooling & fan_mover & output);
+     else if	(m_pressure_equalizer)
+         tbb::parallel_pipeline(12, generator & pressure_equalizer & cooling & fan_mover & pa_processor_filter & output);
+     else
+-    	tbb::parallel_pipeline(12, generator & cooling & fan_mover & pa_processor_filter & output);
++	tbb::parallel_pipeline(12, generator & cooling & fan_mover & pa_processor_filter & output);
++#endif
+ }
+ 
+ std::string GCode::placeholder_parser_process(const std::string &name, const std::string &templ, unsigned int current_extruder_id, const DynamicConfig *config_override)
+diff --git a/src/libslic3r/GCode.hpp b/src/libslic3r/GCode.hpp
+index f3ce7aaf7..d6b7ef595 100644
+--- a/src/libslic3r/GCode.hpp
++++ b/src/libslic3r/GCode.hpp
+@@ -156,7 +156,7 @@ struct LayerResult {
+     // It is used for the pressure equalizer because it needs to buffer one layer back.
+     bool        nop_layer_result { false };
+ 
+-    static LayerResult make_nop_layer_result() { return {"", std::numeric_limits<coord_t>::max(), false, false, true}; }
++    static LayerResult make_nop_layer_result() { return {"", std::numeric_limits<size_t>::max(), false, false, true}; }
+ };
+ 
+ class GCode {
+diff --git a/src/libslic3r/GCode/ToolOrdering.cpp b/src/libslic3r/GCode/ToolOrdering.cpp
+index debdb863d..73fbc0f6f 100644
+--- a/src/libslic3r/GCode/ToolOrdering.cpp
++++ b/src/libslic3r/GCode/ToolOrdering.cpp
+@@ -43,7 +43,7 @@ static std::vector<unsigned int> solve_extruder_order(const std::vector<std::vec
+ 
+     unsigned int iterations = (1 << all_extruders.size());
+     unsigned int final_state = iterations - 1;
+-    std::vector<std::vector<float>>cache(iterations, std::vector<float>(all_extruders.size(),0x7fffffff));
++    std::vector<std::vector<float>> cache(iterations, std::vector<float>(all_extruders.size(), std::numeric_limits<float>::max()));
+     std::vector<std::vector<int>>prev(iterations, std::vector<int>(all_extruders.size(), -1));
+     cache[1][0] = 0.;
+     for (unsigned int state = 0; state < iterations; ++state) {
+@@ -70,7 +70,7 @@ static std::vector<unsigned int> solve_extruder_order(const std::vector<std::vec
+     for (unsigned int dst = 0; dst < all_extruders.size(); ++dst) {
+         if (all_extruders[dst] != start_extruder_id && cost > cache[final_state][dst]) {
+             cost = cache[final_state][dst];
+-            final_dst = dst;
++            final_dst = static_cast<int>(dst);
+         }
+     }
+ 
+diff --git a/src/libslic3r/Geometry/VoronoiUtilsCgal.cpp b/src/libslic3r/Geometry/VoronoiUtilsCgal.cpp
+index 28a648851..ad08dbfc6 100644
+--- a/src/libslic3r/Geometry/VoronoiUtilsCgal.cpp
++++ b/src/libslic3r/Geometry/VoronoiUtilsCgal.cpp
+@@ -1,11 +1,7 @@
+-// Needed since the CGAL headers are not self-contained.
+-#include <boost/next_prior.hpp>
+-#include <CGAL/Exact_predicates_exact_constructions_kernel.h>
+-#include <CGAL/Arr_segment_traits_2.h>
+-#include <CGAL/Surface_sweep_2_algorithms.h>
+-#include <boost/variant/get.hpp>
+ #include <vector>
+ #include <cassert>
++#include <boost/next_prior.hpp>
++#include <boost/variant/get.hpp>
+ 
+ #include "libslic3r/Geometry/Voronoi.hpp"
+ #include "libslic3r/Geometry/VoronoiUtils.hpp"
+@@ -15,6 +11,45 @@
+ #include "libslic3r/Line.hpp"
+ #include "libslic3r/Point.hpp"
+ 
++#ifdef __EMSCRIPTEN__
++
++using VD = Slic3r::Geometry::VoronoiDiagram;
++
++namespace Slic3r::Geometry {
++
++bool VoronoiUtilsCgal::is_voronoi_diagram_planar_intersection(const VD &)
++{
++    return true;
++}
++
++template<typename SegmentIterator>
++typename boost::polygon::enable_if<
++    typename boost::polygon::gtl_if<typename boost::polygon::is_segment_concept<
++        typename boost::polygon::geometry_concept<typename std::iterator_traits<SegmentIterator>::value_type>::type>::type>::type,
++    bool>::type
++VoronoiUtilsCgal::is_voronoi_diagram_planar_angle(const VD &, SegmentIterator, SegmentIterator)
++{
++    return true;
++}
++
++using PolygonsSegmentIndexConstIt = std::vector<Arachne::PolygonsSegmentIndex>::const_iterator;
++using LinesIt                     = Lines::iterator;
++using ColoredLinesConstIt         = ColoredLines::const_iterator;
++
++// Explicit template instantiation (no-op for WASM).
++template bool VoronoiUtilsCgal::is_voronoi_diagram_planar_angle(const VD &, LinesIt, LinesIt);
++template bool VoronoiUtilsCgal::is_voronoi_diagram_planar_angle(const VD &, VD::SegmentIt, VD::SegmentIt);
++template bool VoronoiUtilsCgal::is_voronoi_diagram_planar_angle(const VD &, ColoredLinesConstIt, ColoredLinesConstIt);
++template bool VoronoiUtilsCgal::is_voronoi_diagram_planar_angle(const VD &, PolygonsSegmentIndexConstIt, PolygonsSegmentIndexConstIt);
++
++} // namespace Slic3r::Geometry
++
++#else
++
++#include <CGAL/Exact_predicates_exact_constructions_kernel.h>
++#include <CGAL/Arr_segment_traits_2.h>
++#include <CGAL/Surface_sweep_2_algorithms.h>
++
+ namespace CGAL {
+ class MP_Float;
+ }  // namespace CGAL
+@@ -332,3 +367,5 @@ VoronoiUtilsCgal::is_voronoi_diagram_planar_angle(const VD             &voronoi_
+ }
+ 
+ } // namespace Slic3r::Geometry
++
++#endif // __EMSCRIPTEN__
+diff --git a/src/libslic3r/LocalesUtils.cpp b/src/libslic3r/LocalesUtils.cpp
+index d32107233..5379b53e3 100644
+--- a/src/libslic3r/LocalesUtils.cpp
++++ b/src/libslic3r/LocalesUtils.cpp
+@@ -3,6 +3,7 @@
+ #ifdef _WIN32
+     #include <charconv>
+ #endif
++#include <sstream>
+ #include <stdexcept>
+ 
+ #include <fast_float/fast_float.h>
+diff --git a/src/libslic3r/Model.cpp b/src/libslic3r/Model.cpp
+index 4edec076a..f7908b217 100644
+--- a/src/libslic3r/Model.cpp
++++ b/src/libslic3r/Model.cpp
+@@ -177,6 +177,7 @@ Model::~Model()
+         Slic3r::remove_backup(*this, true);
+ }
+ 
++#ifndef SLIC3R_NO_OCCT
+ Model Model::read_from_step(const std::string&                                      input_file,
+                             LoadStrategy                                            options,
+                             ImportStepProgressFn                                    stepFn,
+@@ -222,6 +223,19 @@ Model Model::read_from_step(const std::string&
+ 
+     return model;
+ }
++#else
++Model Model::read_from_step(const std::string&                                      input_file,
++                            LoadStrategy                                            /*options*/,
++                            ImportStepProgressFn                                    /*stepFn*/,
++                            StepIsUtf8Fn                                            /*stepIsUtf8Fn*/,
++                            std::function<int(Slic3r::Step&, double&, double&, bool&)>     /*step_mesh_fn*/,
++                            double                                                  /*linear_defletion*/,
++                            double                                                  /*angle_defletion*/,
++                            bool                                                   /*is_split_compound*/)
++{
++    throw Slic3r::RuntimeError(_L("STEP support is not available in this build."));
++}
++#endif
+ 
+ // BBS: add part plate related logic
+ // BBS: backup & restore
+diff --git a/src/libslic3r/MultiPoint.hpp b/src/libslic3r/MultiPoint.hpp
+index 0dfb98f4b..9030703d0 100644
+--- a/src/libslic3r/MultiPoint.hpp
++++ b/src/libslic3r/MultiPoint.hpp
+@@ -22,6 +22,7 @@ public:
+     MultiPoint(MultiPoint &&other) : points(std::move(other.points)) {}
+     MultiPoint(std::initializer_list<Point> list) : points(list) {}
+     explicit MultiPoint(const Points &_points) : points(_points) {}
++    virtual ~MultiPoint() = default;
+     MultiPoint& operator=(const MultiPoint &other) { points = other.points; return *this; }
+     MultiPoint& operator=(MultiPoint &&other) { points = std::move(other.points); return *this; }
+     void scale(double factor);
+@@ -119,6 +120,8 @@ class MultiPoint3
+ public:
+     Points3 points;
+ 
++    virtual ~MultiPoint3() = default;
++
+     void append(const Vec3crd& point) { this->points.push_back(point); }
+ 
+     void translate(double x, double y);
+diff --git a/src/libslic3r/OpenVDBUtils.cpp b/src/libslic3r/OpenVDBUtils.cpp
+index 72c7668a4..ad77a8511 100644
+--- a/src/libslic3r/OpenVDBUtils.cpp
++++ b/src/libslic3r/OpenVDBUtils.cpp
+@@ -1,6 +1,29 @@
+ #define NOMINMAX
+ #include "OpenVDBUtils.hpp"
+ 
++#if defined(__EMSCRIPTEN__) && defined(ORCA_DISABLE_OPENVDB)
++
++namespace Slic3r {
++
++openvdb::FloatGrid::Ptr mesh_to_grid(const indexed_triangle_set &, const openvdb::math::Transform &, float, float, float, int)
++{
++    return {};
++}
++
++indexed_triangle_set grid_to_mesh(const openvdb::FloatGrid &, double, double, bool)
++{
++    return {};
++}
++
++openvdb::FloatGrid::Ptr redistance_grid(const openvdb::FloatGrid &, double, double, double)
++{
++    return {};
++}
++
++} // namespace Slic3r
++
++#else
++
+ #ifdef _MSC_VER
+ // Suppress warning C4146 in OpenVDB: unary minus operator applied to unsigned type, result still unsigned 
+ #pragma warning(push)
+@@ -134,3 +157,5 @@ openvdb::FloatGrid::Ptr redistance_grid(const openvdb::FloatGrid &grid,
+ }
+ 
+ } // namespace Slic3r
++
++#endif // defined(__EMSCRIPTEN__) && defined(ORCA_DISABLE_OPENVDB)
+diff --git a/src/libslic3r/OpenVDBUtils.hpp b/src/libslic3r/OpenVDBUtils.hpp
+index f4441ba96..5c439eef6 100644
+--- a/src/libslic3r/OpenVDBUtils.hpp
++++ b/src/libslic3r/OpenVDBUtils.hpp
+@@ -3,6 +3,45 @@
+ 
+ #include <libslic3r/TriangleMesh.hpp>
+ 
++#if defined(__EMSCRIPTEN__) && defined(ORCA_DISABLE_OPENVDB)
++
++#include <memory>
++
++namespace openvdb {
++class FloatGrid {
++public:
++    using Ptr = std::shared_ptr<FloatGrid>;
++};
++
++namespace math {
++struct Transform {};
++} // namespace math
++
++} // namespace openvdb
++
++namespace Slic3r {
++
++openvdb::FloatGrid::Ptr mesh_to_grid(const indexed_triangle_set &    mesh,
++                                     const openvdb::math::Transform &tr = {},
++                                     float voxel_scale                  = 1.f,
++                                     float exteriorBandWidth = 3.0f,
++                                     float interiorBandWidth = 3.0f,
++                                     int   flags             = 0);
++
++indexed_triangle_set grid_to_mesh(const openvdb::FloatGrid &grid,
++                                  double                    isovalue   = 0.0,
++                                  double                    adaptivity = 0.0,
++                                  bool relaxDisorientedTriangles = true);
++
++openvdb::FloatGrid::Ptr redistance_grid(const openvdb::FloatGrid &grid,
++                                        double                    iso,
++                                        double ext_range = 3.,
++                                        double int_range = 3.);
++
++} // namespace Slic3r
++
++#else // defined(__EMSCRIPTEN__) && defined(ORCA_DISABLE_OPENVDB)
++
+ #ifdef _MSC_VER
+ // Suppress warning C4146 in include/gmp.h(2177,31): unary minus operator applied to unsigned type, result still unsigned 
+ #pragma warning(push)
+@@ -45,4 +84,8 @@ openvdb::FloatGrid::Ptr redistance_grid(const openvdb::FloatGrid &grid,
+ 
+ } // namespace Slic3r
+ 
++#endif // defined(__EMSCRIPTEN__) && defined(ORCA_DISABLE_OPENVDB)
++
+ #endif // OPENVDBUTILS_HPP
++
++
+diff --git a/src/libslic3r/Platform.cpp b/src/libslic3r/Platform.cpp
+index 338752112..1f1e09a3e 100644
+--- a/src/libslic3r/Platform.cpp
++++ b/src/libslic3r/Platform.cpp
+@@ -55,6 +55,10 @@ void detect_platform()
+             }
+         }
+     }
++#elif defined(__EMSCRIPTEN__)
++    BOOST_LOG_TRIVIAL(info) << "Platform: Emscripten";
++    s_platform        = Platform::Linux;
++    s_platform_flavor = PlatformFlavor::GenericLinux;
+ #elif defined(__linux__)
+     BOOST_LOG_TRIVIAL(info) << "Platform: Linux";
+ 	s_platform 		  = Platform::Linux;
+diff --git a/src/libslic3r/Print.hpp b/src/libslic3r/Print.hpp
+index 7261bc2ce..fcecc5148 100644
+--- a/src/libslic3r/Print.hpp
++++ b/src/libslic3r/Print.hpp
+@@ -861,8 +861,8 @@ public:
+     // If preview_data is not null, the preview_data is filled in for the G-code visualization (not used by the command line Slic3r).
+     std::string         export_gcode(const std::string& path_template, GCodeProcessorResult* result, ThumbnailsGeneratorCallback thumbnail_cb = nullptr);
+     //return 0 means successful
+-    int                 export_cached_data(const std::string& dir_path, bool with_space=false);
+-    int                 load_cached_data(const std::string& directory);
++    int                 export_cached_data(const std::string& dir_path, bool with_space=false) override;
++    int                 load_cached_data(const std::string& directory) override;
+ 
+     // methods for handling state
+     bool                is_step_done(PrintStep step) const { return Inherited::is_step_done(step); }
+diff --git a/src/libslic3r/SLA/Hollowing.cpp b/src/libslic3r/SLA/Hollowing.cpp
+index df6212777..ed3a1a2d4 100644
+--- a/src/libslic3r/SLA/Hollowing.cpp
++++ b/src/libslic3r/SLA/Hollowing.cpp
+@@ -19,6 +19,53 @@
+ //! return same string
+ #define L(s) Slic3r::I18N::translate(s)
+ 
++#if defined(__EMSCRIPTEN__) && defined(ORCA_DISABLE_OPENVDB)
++
++namespace Slic3r {
++namespace sla {
++
++struct Interior {
++    indexed_triangle_set mesh;
++};
++
++void InteriorDeleter::operator()(Interior *p)
++{
++    delete p;
++}
++
++indexed_triangle_set &get_mesh(Interior &interior)
++{
++    return interior.mesh;
++}
++
++const indexed_triangle_set &get_mesh(const Interior &interior)
++{
++    return interior.mesh;
++}
++
++InteriorPtr generate_interior(const TriangleMesh &, const HollowingConfig &, const JobController &)
++{
++    return {};
++}
++
++void hollow_mesh(TriangleMesh &, const HollowingConfig &, int) {}
++
++void hollow_mesh(TriangleMesh &, const Interior &, int) {}
++
++void remove_inside_triangles(TriangleMesh &, const Interior &, const std::vector<bool> &) {}
++
++double get_distance(const Vec3f &, const Interior &)
++{
++    return 0.0;
++}
++
++void cut_drainholes(std::vector<ExPolygons> &, const std::vector<float> &, float, const DrainHoles &, std::function<void(void)>) {}
++
++} // namespace sla
++} // namespace Slic3r
++
++#else
++
+ namespace Slic3r {
+ namespace sla {
+ 
+@@ -561,3 +608,5 @@ void remove_inside_triangles(TriangleMesh &mesh, const Interior &interior,
+ }
+ 
+ }} // namespace Slic3r::sla
++
++#endif // defined(__EMSCRIPTEN__) && defined(ORCA_DISABLE_OPENVDB)
+diff --git a/src/libslic3r/Shape/TextShape.cpp b/src/libslic3r/Shape/TextShape.cpp
+index dce731af1..95047f4e0 100644
+--- a/src/libslic3r/Shape/TextShape.cpp
++++ b/src/libslic3r/Shape/TextShape.cpp
+@@ -6,7 +6,9 @@
+ 
+ #include <string>
+ #include <vector>
++#include <map>
+ 
++#ifndef SLIC3R_NO_OCCT
+ #include "Standard_TypeDef.hxx"
+ #include "STEPCAFControl_Reader.hxx"
+ #include "BRepMesh_IncrementalMesh.hxx"
+@@ -27,9 +29,12 @@
+ #include "Font_BRepTextBuilder.hxx"
+ #include "BRepPrimAPI_MakePrism.hxx"
+ #include "Font_FontMgr.hxx"
++#endif
+ 
+ #include <boost/log/trivial.hpp>
+ 
++#ifndef SLIC3R_NO_OCCT
++
+ namespace Slic3r {
+ 
+ static std::map<std::string, std::string> g_occt_fonts_maps; //map<font_name, font_path>
+@@ -270,3 +275,27 @@ void load_text_shape(const char*text, const char* font, const float text_height,
+ }
+ 
+ }; // namespace Slic3r
++
++#else // SLIC3R_NO_OCCT
++
++namespace Slic3r {
++
++std::vector<std::string> init_occt_fonts()
++{
++    return {};
++}
++
++std::map<std::string, std::string> get_occt_fonts_maps()
++{
++    return {};
++}
++
++void load_text_shape(const char * /*text*/, const char * /*font*/, const float /*text_height*/, const float /*thickness*/, bool /*is_bold*/, bool /*is_italic*/, TextResult &text_result)
++{
++    text_result.text_mesh = TriangleMesh{};
++    text_result.text_width = 0.0;
++}
++
++} // namespace Slic3r
++
++#endif // SLIC3R_NO_OCCT
+diff --git a/src/libslic3r/Support/SupportMaterial.cpp b/src/libslic3r/Support/SupportMaterial.cpp
+index 7580976ac..7866e2a97 100644
+--- a/src/libslic3r/Support/SupportMaterial.cpp
++++ b/src/libslic3r/Support/SupportMaterial.cpp
+@@ -1587,7 +1587,7 @@ static inline std::tuple<Polygons, Polygons, double> detect_contacts(
+ 
+         // Cache support trimming polygons derived from lower layer polygons, possible merged with "on build plate only" trimming polygons.
+         auto slices_margin_update =
+-            [&slices_margin, &layer, &lower_layer, &lower_layer_polygons, buildplate_only, has_enforcer, &annotations, layer_id]
++            [&slices_margin, &lower_layer, &lower_layer_polygons, buildplate_only, has_enforcer, &annotations, layer_id]
+         (float slices_margin_offset, float no_interface_offset) {
+             if (slices_margin.offset != slices_margin_offset) {
+                 slices_margin.offset = slices_margin_offset;

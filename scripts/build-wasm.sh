@@ -12,11 +12,27 @@ if ! command -v emcc >/dev/null 2>&1; then
   exit 1
 fi
 
-# 3) Ensure Orca submodule is present
+# 3) Ensure Orca submodule is present and patched for WASM
 git submodule update --init --recursive
 
+PATCH_FILE="patches/orca-wasm.patch"
+if [[ -f ${PATCH_FILE} ]]; then
+  pushd orca >/dev/null
+  if git apply --reverse --check "../${PATCH_FILE}" >/dev/null 2>&1; then
+    echo "INFO: Orca WASM patch already applied"
+  else
+    if git apply --check "../${PATCH_FILE}" >/dev/null 2>&1; then
+      git apply "../${PATCH_FILE}"
+      echo "INFO: Applied Orca WASM patch"
+    else
+      echo "WARN: Orca WASM patch did not apply cleanly; continuing with current workspace" >&2
+    fi
+  fi
+  popd >/dev/null
+fi
+
 # 4) Configure and build with Emscripten
-emcmake cmake -S wasm -B build-wasm -DCMAKE_BUILD_TYPE=Release -DCMAKE_DISABLE_FIND_PACKAGE_TBB=FALSE
+emcmake cmake -S wasm -B build-wasm -DCMAKE_BUILD_TYPE=Release -DCMAKE_DISABLE_FIND_PACKAGE_TBB=TRUE
 cmake --build build-wasm -j
 
 # 5) Validate artifacts and stage for the web app
