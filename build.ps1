@@ -56,10 +56,32 @@ if (Test-Path $emsdkPath) {
     Push-Location $emsdkPath
     try {
         if ($IsWindows -or $env:OS -eq "Windows_NT") {
-            cmd /c "emsdk_env.bat"
-            # Set environment variables for this PowerShell session
-            $env:EMSDK = $emsdkPath
-            $env:PATH = "$emsdkPath;$emsdkPath\upstream\emscripten;$env:PATH"
+            $envScriptPs1 = Join-Path $emsdkPath "emsdk_env.ps1"
+            $envScriptBat = Join-Path $emsdkPath "emsdk_env.bat"
+
+            if (Test-Path $envScriptPs1) {
+                Write-Info "Importing Emscripten environment (emsdk_env.ps1)..."
+                . $envScriptPs1 | Out-Null
+            } elseif (Test-Path $envScriptBat) {
+                Write-Info "Importing Emscripten environment (emsdk_env.bat)..."
+                $envDump = cmd /c "call `"$envScriptBat`" ^&^& set"
+                foreach ($line in $envDump) {
+                    if ($line -match "^(?<name>[^=]+)=(?<value>.*)$") {
+                        Set-Item -Path ("Env:{0}" -f $Matches.name) -Value $Matches.value
+                    }
+                }
+            } else {
+                Write-Warning "emsdk environment script not found; continuing with existing environment variables."
+            }
+
+            if (-not $env:EMSDK) { $env:EMSDK = $emsdkPath }
+            $emscriptenBin = Join-Path $emsdkPath "upstream/emscripten"
+            if ($env:PATH -notmatch [Regex]::Escape($emscriptenBin)) {
+                $env:PATH = "$emscriptenBin;$env:PATH"
+            }
+            if ($env:PATH -notmatch [Regex]::Escape($emsdkPath)) {
+                $env:PATH = "$emsdkPath;$env:PATH"
+            }
         } else {
             . "./emsdk_env.sh"
         }
@@ -96,12 +118,14 @@ if (Test-Path $patchFile) {
     try {
         Push-Location (Join-Path $PWD "orca")
         # Check if patch already applied
-        $reverseCheck = & git apply --reverse --check "..\patches\orca-wasm.patch" 2>$null; $reverseRc = $LASTEXITCODE
+        & git apply --reverse --check "..\patches\orca-wasm.patch" 2>$null
+        $reverseRc = $LASTEXITCODE
         if ($reverseRc -eq 0) {
             Write-Info "Orca WASM patch already applied"
         } else {
             # Verify patch applicability then apply
-            $check = & git apply --check "..\patches\orca-wasm.patch" 2>$null; $rc = $LASTEXITCODE
+            & git apply --check "..\patches\orca-wasm.patch" 2>$null
+            $rc = $LASTEXITCODE
             if ($rc -eq 0) {
                 & git apply "..\patches\orca-wasm.patch"
                 if ($LASTEXITCODE -eq 0) { Write-Success "Applied Orca WASM patch" } else { Write-Warning "Failed to apply Orca WASM patch (git apply). Continuing." }
@@ -284,7 +308,15 @@ $buildType = if ($Debug) { "Debug" } else { "Release" }
 
 # Configure with CMake
 Write-Info "Configuring build with CMake..."
-$cmakeArgs = @(
+$cmakeArgs = @()
+if (!(Test-Path "build-wasm/CMakeCache.txt")) {
+    $ninja = Get-Command ninja -ErrorAction SilentlyContinue
+    if ($ninja) {
+        Write-Info "Ninja detected; using Ninja generator."
+        $cmakeArgs += @("-G", "Ninja")
+    }
+}
+$cmakeArgs += @(
     "-S", "wasm"
     "-B", "build-wasm"
     "-DCMAKE_BUILD_TYPE=$buildType"
@@ -322,7 +354,7 @@ try {
 # Build
 Write-Info "Building WASM module (using $Jobs parallel jobs)..."
 try {
-    cmake --build build-wasm --config $buildType -j $Jobs
+    cmake --build build-wasm --config $buildType --parallel $Jobs
     if ($LASTEXITCODE -ne 0) {
         Write-Error "Build failed"
 
