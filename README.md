@@ -16,8 +16,13 @@ The PowerShell scripts in this repository are cross-platform (Windows, macOS, Li
 
 1. **Clone with submodules**
    ```bash
-   git clone --recurse-submodules -b wasm-wip https://github.com/allanwrench28/orca-wasm-mvp.git
+   git clone --recurse-submodules https://github.com/allanwrench28/orca-wasm-mvp.git
    cd orca-wasm-mvp
+   ```
+   The default `main` branch is the tested, release-quality build. Switch to
+   `wasm-wip` when you want the latest experiments:
+   ```bash
+   git checkout wasm-wip
    ```
 
 2. **Run the setup workflow**
@@ -83,19 +88,22 @@ If you prefer to control each step manually (or are bringing your own toolchains
 
 ### Submodule initialization
 
-The Orca slicer sources live in the `orca/` submodule and track upstream `main`.
+The Orca slicer sources live in the `orca/` submodule and are pinned to the
+latest upstream stable tag (currently `v2.3.1`).
 
-- Refresh the submodule:
-  ```bash
-  git submodule update --init --remote --depth 1 --progress -- orca
-  ```
+- Refresh the submodule and check out the expected tag:
+   ```bash
+   git submodule update --init --depth 1 --progress -- orca
+   (cd orca && git fetch --tags && git checkout v2.3.1)
+   ```
 - If the submodule becomes corrupted, reset it:
-  ```bash
-  git submodule deinit -f -- orca
-  rm -rf .git/modules/orca orca
-  git submodule add -f -b main https://github.com/SoftFever/OrcaSlicer.git orca
-  git submodule update --init --depth 1 --progress -- orca
-  ```
+   ```bash
+   git submodule deinit -f -- orca
+   rm -rf .git/modules/orca orca
+   git submodule add -f https://github.com/SoftFever/OrcaSlicer.git orca
+   git submodule update --init --depth 1 --progress -- orca
+   (cd orca && git fetch --tags && git checkout v2.3.1)
+   ```
 
 ### Toolchain provisioning
 

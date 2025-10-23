@@ -66,7 +66,7 @@ CMake toward that prefix.
   - `./build.ps1` wraps configuration and compilation, exposes `-Clean/-Debug/-Jobs`, and copies artifacts into `web/public/wasm/` when the directory exists.
 
 2. **Manual path (if the scripts are not an option)**
-  - Clone with submodules: `git clone --recurse-submodules -b wasm-wip https://github.com/allanwrench28/orca-wasm-mvp.git`.
+  - Clone with submodules: `git clone --recurse-submodules https://github.com/allanwrench28/orca-wasm-mvp.git` (default `main` branch is the stable WASM drop; switch to `wasm-wip` for the latest in-flight changes).
   - Install/activate Emscripten (`emsdk install/activate latest` → `source emsdk_env.sh`).
   - For Boost: `bash deps/boost-wasm/build_boost.sh`.
   - For GMP/MPFR/CGAL: `bash deps/toolchain-wasm/build_math.sh`.
