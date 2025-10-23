@@ -1,15 +1,20 @@
-name: release-wasm
+name: ci
 
 on:
   push:
-    tags:
-      - 'v*.*.*'
+    branches:
+      - main
+      - wasm-wip
+  pull_request:
+    branches:
+      - main
+      - wasm-wip
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  build-release:
+  build-wasm:
     runs-on: ubuntu-latest
 
     steps:
@@ -40,24 +45,17 @@ jobs:
         shell: pwsh
         run: ./build.ps1 -Clean -Jobs 4
 
-      - name: Package release artifacts
-        run: |
-          set -euo pipefail
-          mkdir -p dist
-          cp web/public/wasm/slicer.js web/public/wasm/slicer.wasm dist/
-          cd dist
-          zip "slicer-wasm-${GITHUB_REF_NAME}.zip" slicer.js slicer.wasm
+      - name: Print toolchain summary
+        run: bash scripts/sanity.sh
 
-      - name: Upload build artifacts (workflow run)
+      - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: slicer-wasm-${{ github.ref_name }}
-          path: dist/slicer-wasm-${{ github.ref_name }}.zip
-
-      - name: Publish GitHub Release
-        uses: softprops/action-gh-release@v2
-        with:
-          files: dist/slicer-wasm-${{ github.ref_name }}.zip
-          generate_release_notes: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          name: wasm-build-${{ github.run_id }}
+          path: |
+            build-wasm/slicer.js
+            build-wasm/slicer.wasm
+            web/public/wasm/slicer.js
+            web/public/wasm/slicer.wasm
+            build-wasm/CMakeFiles/CMakeOutput.log
+            build-wasm/CMakeFiles/CMakeError.log
