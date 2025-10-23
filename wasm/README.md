@@ -38,7 +38,8 @@ When a desktop dependency is too heavy (or unsupported) for WASM we ship a light
   compiling for WASM.
 - **Boost subsets** – the shims under `wasm_shims/boost_runtime/boost/**` delegate to the
   real Boost headers but strip runtime threading APIs that browsers cannot support. We
-  also replace `boost::optional`/`format` with thin adapters backed by the C++17 STL.
+  also replace `boost::optional`/`format` with thin adapters backed by the C++17 STL, and
+  short-circuit `BOOST_LOG_TRIVIAL` to a null sink so the link never pulls in Boost.Log.
 - **OpenSSL MD5** – `wasm_shims/openssl/md5.h` supplies a simple MD5 implementation for
   hashing; it is not intended for cryptographic security.
 - **cereal serialization** – the `wasm_shims/cereal/**` directory provides no-op archive
@@ -60,24 +61,22 @@ CMake toward that prefix.
 
 ## Build Instructions
 
-1. **Install prerequisites**
-  - Clone this repository with submodules: `git clone --recurse-submodules -b wasm-wip https://github.com/allanwrench28/orca-wasm-mvp.git`.
-  - Install the Emscripten SDK locally and activate it (`source <emsdk>/emsdk_env.sh`).
-  - Ensure standard build tooling is available (`cmake` ≥ 3.22, `ninja` or `make`, and a recent Python if you rely on helper scripts).
+1. **Use the scripted workflow first**
+  - `./setup.ps1` provisions Emscripten, refreshes the Orca submodule, writes `wasm/toolchain/emsdk.env`, and optionally builds Boost plus the math stack. On Linux/macOS run it through `pwsh`. Windows users should enable WSL if they want the math libraries built automatically.
+  - `./build.ps1` wraps configuration and compilation, exposes `-Clean/-Debug/-Jobs`, and copies artifacts into `web/public/wasm/` when the directory exists.
 
-2. **Stage third-party toolchains**
-  - Boost (static archives tuned for WebAssembly): `bash deps/boost-wasm/build_boost.sh`.
-  - Math stack (GMP, MPFR, CGAL): `bash deps/toolchain-wasm/build_math.sh`.
+2. **Manual path (if the scripts are not an option)**
+  - Clone with submodules: `git clone --recurse-submodules -b wasm-wip https://github.com/allanwrench28/orca-wasm-mvp.git`.
+  - Install/activate Emscripten (`emsdk install/activate latest` → `source emsdk_env.sh`).
+  - For Boost: `bash deps/boost-wasm/build_boost.sh`.
+  - For GMP/MPFR/CGAL: `bash deps/toolchain-wasm/build_math.sh`.
+  - Configure and build: `mkdir build-wasm && cd build-wasm && emcmake cmake .. -G "Ninja" && emmake ninja slicer`.
 
-3. **Run the WASM build**
-  - From the repo root execute `bash scripts/build-wasm.sh`.
-  - The script verifies the Emscripten environment, applies `patches/orca-wasm.patch` to the `orca/` submodule if needed, configures CMake via `emcmake`, and compiles the bridge plus `libslic3r`.
+3. **Collect artifacts**
+  - Successful builds emit `build-wasm/slicer.js` and `build-wasm/slicer.wasm`, which the web worker (`web/src/workers/slicer.worker.ts`) expects to load.
+  - Wipe `build-wasm/` when switching between Debug/Release or after modifying toolchain paths in `wasm/CMakeLists.txt`.
 
-4. **Collect artifacts**
-  - On success `web/public/wasm/slicer.js` and `web/public/wasm/slicer.wasm` are produced for use in the web worker frontend (`web/src/workers/slicer.worker.ts`).
-  - Intermediate CMake files live under `build-wasm/`; remove this folder to force a clean reconfigure.
-
-5. **Troubleshooting tips**
+4. **Troubleshooting tips**
   - If CMake still searches for native TBB/OpenCV, delete `build-wasm/` to clear cached options.
   - The build is single-threaded by design; exporting `EM_BUILD_CORES=1` or passing `-j1` can reduce peak memory in constrained environments.
 
