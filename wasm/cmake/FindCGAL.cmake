@@ -28,6 +28,25 @@ elseif(EXISTS "${CGAL_INCLUDE_DIR}/CGAL/version.h")
       INTERFACE_INCLUDE_DIRECTORIES "${CGAL_INCLUDE_DIR}"
     )
   endif()
+elseif(EMSCRIPTEN)
+  # Fallback to minimal shim headers bundled in this repo.
+  # Important: Do NOT mark CGAL as found when using shims. Orca's CMake
+  # intentionally builds a no-op libslic3r_cgal when CGAL is not found.
+  get_filename_component(_repo_root "${CMAKE_CURRENT_LIST_DIR}/../.." ABSOLUTE)
+  set(_shim_inc "${_repo_root}/wasm/wasm_shims/CGAL")
+  if(EXISTS "${_shim_inc}/Exact_predicates_inexact_constructions_kernel.h")
+    if(NOT TARGET CGAL::CGAL)
+      add_library(CGAL::CGAL INTERFACE IMPORTED)
+    endif()
+    set_target_properties(CGAL::CGAL PROPERTIES
+      INTERFACE_INCLUDE_DIRECTORIES "${_shim_inc}"
+    )
+    # Don't set CGAL_FOUND. Let consumers decide based on their policy.
+    set(CGAL_FOUND FALSE)
+    set(CGAL_INCLUDE_DIRS "${_shim_inc}")
+  else()
+    set(CGAL_FOUND FALSE)
+  endif()
 else()
   set(CGAL_FOUND FALSE)
 endif()

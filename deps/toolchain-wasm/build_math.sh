@@ -12,19 +12,74 @@ BOOST_PREFIX="${ROOT_DIR}/boost-wasm/install"
 
 mkdir -p "${PREFIX}" "${BUILD_DIR}" "${SRC_DIR}" "${DL_DIR}"
 
-# Load Emscripten environment (try repo-local env file first).
-if [[ -f "${REPO_DIR}/wasm/toolchain/emsdk.env" ]]; then
-  # shellcheck disable=SC1090
-  source "${REPO_DIR}/wasm/toolchain/emsdk.env"
-elif command -v emsdk_env.sh >/dev/null 2>&1; then
-  # shellcheck disable=SC1091
-  source "$(command -v emsdk_env.sh)"
+# Resolve emscripten helper commands for Windows (.bat) vs POSIX
+resolve_em_tools() {
+  if command -v emcc >/dev/null 2>&1; then
+    local emcc_path
+    emcc_path="$(command -v emcc)"
+    local em_dir
+    em_dir="$(cd "$(dirname "${emcc_path}")" && pwd)"
+    # On Windows Git Bash emcc may be emcc.bat; prefer .bat siblings when present
+    if [[ -f "${em_dir}/emconfigure.bat" ]]; then
+      EMCONFIGURE="${em_dir}/emconfigure.bat"
+    else
+      EMCONFIGURE=emconfigure
+    fi
+    if [[ -f "${em_dir}/emmake.bat" ]]; then
+      EMMAKE="${em_dir}/emmake.bat"
+    else
+      EMMAKE=emmake
+    fi
+    if [[ -f "${em_dir}/emcmake.bat" ]]; then
+      EMCMAKE="${em_dir}/emcmake.bat"
+    else
+      EMCMAKE=emcmake
+    fi
+    EM_TOOLCHAIN="${em_dir}/cmake/Modules/Platform/Emscripten.cmake"
+  else
+    EMCONFIGURE=emconfigure
+    EMMAKE=emmake
+    EMCMAKE=emcmake
+    EM_TOOLCHAIN=""
+  fi
+}
+resolve_em_tools
+
+# Load Emscripten environment. Prefer a native (WSL/Linux) emsdk over repo-local Windows emsdk when under WSL.
+if grep -qi microsoft /proc/version 2>/dev/null; then
+  # Running under WSL
+  if [[ -f "$HOME/emsdk/emsdk_env.sh" ]]; then
+    # shellcheck disable=SC1091
+    source "$HOME/emsdk/emsdk_env.sh"
+  elif [[ -f "/opt/emsdk/emsdk_env.sh" ]]; then
+    # shellcheck disable=SC1091
+    source "/opt/emsdk/emsdk_env.sh"
+  elif command -v emsdk_env.sh >/dev/null 2>&1; then
+    # shellcheck disable=SC1091
+    source "$(command -v emsdk_env.sh)"
+  elif [[ -f "${REPO_DIR}/wasm/toolchain/emsdk.env" ]]; then
+    # Fallback to repo-local env as last resort
+    # shellcheck disable=SC1090
+    source "${REPO_DIR}/wasm/toolchain/emsdk.env"
+  fi
+else
+  # Non-WSL: allow repo-local env
+  if [[ -f "${REPO_DIR}/wasm/toolchain/emsdk.env" ]]; then
+    # shellcheck disable=SC1090
+    source "${REPO_DIR}/wasm/toolchain/emsdk.env"
+  elif command -v emsdk_env.sh >/dev/null 2>&1; then
+    # shellcheck disable=SC1091
+    source "$(command -v emsdk_env.sh)"
+  fi
 fi
 
 if ! command -v emcc >/dev/null 2>&1; then
   echo "ERROR: Emscripten environment not found (missing emcc)" >&2
   exit 1
 fi
+
+# Re-resolve after sourcing env
+resolve_em_tools
 
 NPROC=${NPROC:-$(nproc 2>/dev/null || sysctl -n hw.ncpu 2>/dev/null || echo 4)}
 
@@ -79,16 +134,30 @@ build_gmp() {
   extract "${DL_DIR}/${tarball}" "${src}"
   if [[ ! -f "${PREFIX}/lib/libgmp.a" || ! -f "${PREFIX}/lib/libgmpxx.a" ]]; then
     pushd "${src}" >/dev/null
-    emmake make distclean >/dev/null 2>&1 || true
-    emconfigure ./configure \
-      --host=wasm32-unknown-emscripten \
-      --disable-shared \
-      --disable-assembly \
-      --with-pic \
-      --enable-cxx \
-      --prefix="${PREFIX}"
-    emmake make -j "${NPROC}"
-    emmake make install
+    "${EMMAKE}" make distclean >/dev/null 2>&1 || true
+    if command -v "${EMCONFIGURE}" >/dev/null 2>&1 && [[ "${EMCONFIGURE}" != *".bat" ]]; then
+      CC_FOR_BUILD=gcc CXX_FOR_BUILD=g++ \
+      "${EMCONFIGURE}" ./configure \
+        --host=wasm32-unknown-emscripten \
+        --disable-shared \
+        --disable-assembly \
+        --with-pic \
+        --enable-cxx \
+        --prefix="${PREFIX}"
+    else
+      CC_FOR_BUILD=gcc CXX_FOR_BUILD=g++ \
+      ac_cv_prog_cc_works=yes ac_cv_prog_cxx_works=yes ac_cv_c_bigendian=no \
+      CC=emcc CXX=em++ AR=emar RANLIB=emranlib NM=llvm-nm \
+      ./configure \
+        --host=wasm32-unknown-emscripten \
+        --disable-shared \
+        --disable-assembly \
+        --with-pic \
+        --enable-cxx \
+        --prefix="${PREFIX}"
+    fi
+    "${EMMAKE}" make -j "${NPROC}"
+    "${EMMAKE}" make install
     popd >/dev/null
   fi
 }
@@ -105,13 +174,16 @@ build_mpfr() {
   if [[ ! -f "${PREFIX}/lib/libmpfr.a" ]]; then
     pushd "${src}" >/dev/null
     CPPFLAGS="-I${PREFIX}/include" LDFLAGS="-L${PREFIX}/lib" \
-    emconfigure ./configure \
+    CC_FOR_BUILD=gcc CXX_FOR_BUILD=g++ \
+    ac_cv_prog_cc_works=yes ac_cv_prog_cxx_works=yes ac_cv_c_bigendian=no \
+    CC=emcc CXX=em++ AR=emar RANLIB=emranlib NM=llvm-nm \
+    ./configure \
       --host=wasm32-unknown-emscripten \
       --disable-shared \
       --with-gmp="${PREFIX}" \
       --prefix="${PREFIX}"
-    emmake make -j "${NPROC}"
-    emmake make install
+    "${EMMAKE}" make -j "${NPROC}"
+    "${EMMAKE}" make install
     popd >/dev/null
   fi
 }
@@ -127,7 +199,8 @@ build_cgal() {
   local build_path="${BUILD_DIR}/cgal"
   if [[ ! -f "${PREFIX}/lib/libCGAL.a" ]]; then
     rm -rf "${build_path}"
-    emcmake cmake -S "${src}" -B "${build_path}" \
+    cmake -S "${src}" -B "${build_path}" \
+      -DCMAKE_TOOLCHAIN_FILE="${EM_TOOLCHAIN}" \
       -DCMAKE_INSTALL_PREFIX="${PREFIX}" \
       -DCMAKE_BUILD_TYPE=Release \
       -DBUILD_SHARED_LIBS=OFF \

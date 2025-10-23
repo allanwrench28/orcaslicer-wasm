@@ -5,6 +5,7 @@ param(
     [switch]$Clean,
     [switch]$Debug,
     [string]$Jobs = "4",
+    [switch]$StageCGALHeaders,
     [switch]$Help
 )
 
@@ -87,6 +88,190 @@ if (!$emccPath) {
 }
 
 Write-Success "Emscripten found at: $emccPath"
+
+# Ensure Orca WASM patch is applied to the submodule
+$patchFile = Join-Path $PWD "patches/orca-wasm.patch"
+if (Test-Path $patchFile) {
+    Write-Info "Ensuring Orca WASM patch is applied..."
+    try {
+        Push-Location (Join-Path $PWD "orca")
+        # Check if patch already applied
+        $reverseCheck = & git apply --reverse --check "..\patches\orca-wasm.patch" 2>$null; $reverseRc = $LASTEXITCODE
+        if ($reverseRc -eq 0) {
+            Write-Info "Orca WASM patch already applied"
+        } else {
+            # Verify patch applicability then apply
+            $check = & git apply --check "..\patches\orca-wasm.patch" 2>$null; $rc = $LASTEXITCODE
+            if ($rc -eq 0) {
+                & git apply "..\patches\orca-wasm.patch"
+                if ($LASTEXITCODE -eq 0) { Write-Success "Applied Orca WASM patch" } else { Write-Warning "Failed to apply Orca WASM patch (git apply). Continuing." }
+            } else {
+                Write-Warning "Orca WASM patch did not apply cleanly; continuing with current workspace"
+            }
+        }
+    } finally {
+        Pop-Location
+    }
+}
+
+# Ensure Boost headers exist (auto-fetch headers if missing)
+$boostPrefix = Join-Path $PWD "deps/boost-wasm/install"
+$boostInclude = Join-Path $boostPrefix "include"
+$boostVersion = "1.83.0"
+$boostDirName = "boost_" + ($boostVersion.Replace('.', '_'))
+$boostMarker = Join-Path $boostInclude "boost/version.hpp"
+
+if (!(Test-Path $boostMarker)) {
+    Write-Info "Boost headers not found. Fetching Boost $boostVersion headers..."
+    $cacheDir = Join-Path $PWD "deps/.cache"
+    if (!(Test-Path $cacheDir)) { New-Item -ItemType Directory -Path $cacheDir -Force | Out-Null }
+    if (!(Test-Path $boostInclude)) { New-Item -ItemType Directory -Path $boostInclude -Force | Out-Null }
+
+    $archive = Join-Path $cacheDir ("{0}.tar.gz" -f $boostDirName)
+    $urls = @(
+        "https://archives.boost.io/release/$boostVersion/source/$boostDirName.tar.gz",
+        "https://boostorg.jfrog.io/artifactory/main/release/$boostVersion/source/$boostDirName.tar.gz"
+    )
+    if (!(Test-Path $archive)) {
+        $downloaded = $false
+        foreach ($u in $urls) {
+            try {
+                Write-Info "Downloading: $u"
+                Invoke-WebRequest -Uri $u -OutFile $archive -UseBasicParsing -TimeoutSec 180
+                $downloaded = $true
+                break
+            } catch {
+                Write-Warning ("Download failed from {0}: {1}" -f $u, $_.Exception.Message)
+            }
+        }
+        if (-not $downloaded) {
+            Write-Warning "Could not download Boost headers. Build will fall back to WASM shims; some headers may be missing."
+        }
+    }
+
+    $extractedOk = $false
+    if (Test-Path $archive) {
+        $extractRoot = Join-Path $cacheDir $boostDirName
+        if (Test-Path $extractRoot) { Remove-Item -Recurse -Force $extractRoot }
+        # Prefer system tar (available on recent Windows). This extracts to deps/.cache/boost_X_Y_Z
+        $tarCmd = Get-Command tar -ErrorAction SilentlyContinue | Select-Object -First 1
+        if ($tarCmd) {
+            & $tarCmd.Path -xzf $archive -C $cacheDir
+            if ($LASTEXITCODE -ne 0) {
+                Write-Warning "tar extraction failed with code $LASTEXITCODE."
+            } else {
+                $extractedOk = $true
+            }
+        } else {
+            Write-Warning "'tar' not found; cannot extract Boost .tar.gz automatically. Please install 7zip or ensure 'tar' is on PATH."
+        }
+
+        $srcBoostDir = Join-Path $cacheDir ("{0}/boost" -f $boostDirName)
+        if (-not $extractedOk -or -not (Test-Path $srcBoostDir)) {
+            # Fallback to .zip archive + Expand-Archive
+            $zip = Join-Path $cacheDir ("{0}.zip" -f $boostDirName)
+            $downloadedZip = $false
+            foreach ($u in @("https://archives.boost.io/release/$boostVersion/source/$boostDirName.zip",
+                             "https://boostorg.jfrog.io/artifactory/main/release/$boostVersion/source/$boostDirName.zip")) {
+                try {
+                    Write-Info "Downloading ZIP: $u"
+                    Invoke-WebRequest -Uri $u -OutFile $zip -UseBasicParsing -TimeoutSec 180
+                    $downloadedZip = $true
+                    break
+                } catch {
+                    Write-Warning ("Download failed from {0}: {1}" -f $u, $_.Exception.Message)
+                }
+            }
+            if ($downloadedZip) {
+                try {
+                    if (Test-Path $extractRoot) { Remove-Item -Recurse -Force $extractRoot }
+                    Expand-Archive -Path $zip -DestinationPath $cacheDir -Force
+                    $extractedOk = $true
+                } catch {
+                    Write-Warning ("Expand-Archive failed: {0}" -f $_.Exception.Message)
+                }
+            }
+        }
+
+        if (Test-Path $srcBoostDir) {
+            Write-Info "Staging Boost headers into $boostInclude"
+            $destBoostDir = Join-Path $boostInclude "boost"
+            if (Test-Path $destBoostDir) { Remove-Item -Recurse -Force $destBoostDir }
+            Copy-Item -Recurse -Force $srcBoostDir $destBoostDir
+            if (Test-Path $boostMarker) {
+                Write-Success "Boost headers staged."
+            } else {
+                Write-Warning "Boost headers copy completed but marker not found; proceeding anyway."
+            }
+        } else {
+            Write-Warning "Extracted Boost source not found at $srcBoostDir; proceeding with shim fallback."
+        }
+    }
+}
+
+# Optionally stage CGAL headers (only when explicitly requested). By default
+# we rely on WASM shims and build a no-op libslic3r_cgal.
+if ($StageCGALHeaders) {
+    $mathPrefix = Join-Path $PWD "deps/toolchain-wasm/install"
+    $cgalIncludeDir = Join-Path $mathPrefix "include/CGAL"
+    $cgalVersionHeader = Join-Path $mathPrefix "include/CGAL/version.h"
+    if (!(Test-Path $cgalVersionHeader)) {
+        Write-Info "CGAL not staged under deps/toolchain-wasm/install; fetching headers (fallback)."
+        $cacheDir = Join-Path $PWD "deps/.cache"
+        if (!(Test-Path $cacheDir)) { New-Item -ItemType Directory -Path $cacheDir -Force | Out-Null }
+        if (!(Test-Path (Join-Path $mathPrefix "include"))) { New-Item -ItemType Directory -Path (Join-Path $mathPrefix "include") -Force | Out-Null }
+
+        $cgalVersion = "5.4"
+        $cgalBase = "CGAL-$cgalVersion"
+        $cgalTarXz = Join-Path $cacheDir "$cgalBase.tar.xz"
+        $cgalTarGz = Join-Path $cacheDir "$cgalBase.tar.gz"
+        $cgalUrls = @(
+            "https://github.com/CGAL/cgal/releases/download/v$cgalVersion/$cgalBase.tar.xz",
+            "https://github.com/CGAL/cgal/archive/refs/tags/v$cgalVersion.tar.gz"
+        )
+        $downloaded = $false
+        foreach ($u in $cgalUrls) {
+            $dest = $cgalTarXz
+            if ($u.EndsWith('.tar.gz')) { $dest = $cgalTarGz }
+            if (Test-Path $dest) { $downloaded = $true; break }
+            try {
+                Write-Info "Downloading CGAL: $u"
+                Invoke-WebRequest -Uri $u -OutFile $dest -UseBasicParsing -TimeoutSec 180
+                $downloaded = $true
+                break
+            } catch {
+                Write-Warning ("CGAL download failed from {0}: {1}" -f $u, $_.Exception.Message)
+            }
+        }
+
+        $tarCmd = Get-Command tar -ErrorAction SilentlyContinue | Select-Object -First 1
+        if ($downloaded -and $tarCmd) {
+            $archive = (Test-Path $cgalTarXz) ? $cgalTarXz : $cgalTarGz
+            & $tarCmd.Path -xf $archive -C $cacheDir
+            if ($LASTEXITCODE -ne 0) {
+                Write-Warning "Failed to extract CGAL archive ($LASTEXITCODE)."
+            } else {
+                # Determine extracted directory
+                $cgalSrcDir = if (Test-Path (Join-Path $cacheDir $cgalBase)) { Join-Path $cacheDir $cgalBase } else { Join-Path $cacheDir "cgal-$cgalVersion" }
+                $srcInc = Join-Path $cgalSrcDir "include/CGAL"
+                if (Test-Path $srcInc) {
+                    if (Test-Path $cgalIncludeDir) { Remove-Item -Recurse -Force $cgalIncludeDir }
+                    Write-Info "Staging CGAL headers -> $cgalIncludeDir"
+                    Copy-Item -Recurse -Force $srcInc $cgalIncludeDir
+                    if (Test-Path $cgalVersionHeader) {
+                        Write-Success "CGAL headers staged."
+                    } else {
+                        Write-Warning "CGAL version header not found after staging; proceeding anyway."
+                    }
+                } else {
+                    Write-Warning "CGAL include directory not found in extracted archive."
+                }
+            }
+        } else {
+            Write-Warning "Could not download or extract CGAL headers; build may fail if CGAL is required."
+        }
+    }
+}
 
 # Clean build directory if requested
 if ($Clean -and (Test-Path "build-wasm")) {

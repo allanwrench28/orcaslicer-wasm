@@ -161,3 +161,4 @@ deps/boost-wasm/build/
 deps/boost-wasm/install/
 deps/boost-wasm/boost_*/
 deps/boost-wasm/boost_*.tar.gz
+emsdk/

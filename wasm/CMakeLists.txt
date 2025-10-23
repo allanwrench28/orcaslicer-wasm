@@ -7,9 +7,10 @@ set(CMAKE_BUILD_TYPE Release CACHE STRING "")
 # --- Make our custom find-modules visible (Boost/TBB/OpenSSL shims) ---
 list(PREPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
 
-# --- Pthreads (needed by Boost.Thread) ---
-add_compile_options(-pthread)
-set(EM_PTHREAD_FLAGS "-pthread")  # Emscripten 4.x: do not pass -sPTHREADS=1
+# --- Threading model ---
+# For the MVP, build single-threaded to avoid SharedArrayBuffer / shared-memory constraints in browsers
+# and to simplify linking (no atomics/bulk-memory requirements).
+set(EM_PTHREAD_FLAGS "")
 
 # --- Point to locally built Boost (headers + static libs) ---
 set(BOOST_PREFIX "${CMAKE_SOURCE_DIR}/../deps/boost-wasm/install")
@@ -44,7 +45,9 @@ target_compile_definitions(wasm_shims INTERFACE
 
 # --- Prefer our shims for cereal/libigl but keep real Boost visible ---
 include_directories(BEFORE
-  ${CMAKE_SOURCE_DIR}/wasm/wasm_shims
+  ${CMAKE_CURRENT_SOURCE_DIR}/wasm_shims
+  ${CMAKE_CURRENT_SOURCE_DIR}/wasm_shims/boost_runtime
+  ${CMAKE_CURRENT_SOURCE_DIR}/wasm_shims/libslic3r
   ${BOOST_INC}
 )
 
@@ -102,14 +105,14 @@ set(SLIC3R_ENC_CHECK OFF CACHE BOOL "Disable encoding check for WASM" FORCE)
 if(EMSCRIPTEN)
   # Silence unknown warning option spam
   add_compile_options(-Wno-unknown-warning-option)
-  
+
   # Remove problematic warning flags that Emscripten doesn't support
   string(REPLACE "-Werror=enum-constexpr-conversion" "" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
   string(REPLACE "-Werror=enum-constexpr-conversion" "" CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
-  
+
   # Disable PCH for WASM builds to avoid include ordering issues
   set(SLIC3R_PCH OFF CACHE BOOL "Disable PCH for WASM" FORCE)
-  
+
 endif()
 
 # --- Subprojects ---
@@ -117,8 +120,28 @@ endif()
 # Provide Threads::Threads interface target for Emscripten (no real pthread lib needed)
 if(NOT TARGET Threads::Threads)
   add_library(Threads::Threads INTERFACE IMPORTED)
+endif()
+
+if(NOT EMSCRIPTEN)
   target_compile_options(Threads::Threads INTERFACE -pthread)
   target_link_options(Threads::Threads INTERFACE -pthread)
+endif()
+
+# Provide TBB shim targets early so subprojects can link even if find_package(TBB) is disabled
+if(EMSCRIPTEN)
+  if(NOT TARGET TBB::tbb)
+    add_library(TBB::tbb INTERFACE IMPORTED)
+    # Point includes to our wasm shims; they provide minimal containers/APIs
+    set_target_properties(TBB::tbb PROPERTIES
+      INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_CURRENT_LIST_DIR}/wasm_shims;${CMAKE_CURRENT_LIST_DIR}/wasm_shims/tbb;${CMAKE_CURRENT_LIST_DIR}/wasm_shims/oneapi"
+    )
+  endif()
+  if(NOT TARGET TBB::tbbmalloc)
+    add_library(TBB::tbbmalloc INTERFACE IMPORTED)
+    set_target_properties(TBB::tbbmalloc PROPERTIES
+      INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_CURRENT_LIST_DIR}/wasm_shims;${CMAKE_CURRENT_LIST_DIR}/wasm_shims/tbb;${CMAKE_CURRENT_LIST_DIR}/wasm_shims/oneapi"
+    )
+  endif()
 endif()
 
 add_subdirectory(../bridge ${CMAKE_BINARY_DIR}/bridge-build)
@@ -152,11 +175,17 @@ endif()
 if (NOT SLIC3R_WITH_OCCT)
   if (TARGET libslic3r)
     target_compile_definitions(libslic3r PUBLIC SLIC3R_NO_OCCT)
-    target_include_directories(libslic3r PUBLIC ${PROJECT_SOURCE_DIR}/wasm_shims)
+    target_include_directories(libslic3r BEFORE PUBLIC
+      ${PROJECT_SOURCE_DIR}/wasm_shims
+      ${PROJECT_SOURCE_DIR}/wasm_shims/boost_runtime
+    )
   endif()
   if (TARGET libslic3r_cgal)
     target_compile_definitions(libslic3r_cgal PUBLIC SLIC3R_NO_OCCT)
-    target_include_directories(libslic3r_cgal PUBLIC ${PROJECT_SOURCE_DIR}/wasm_shims)
+    target_include_directories(libslic3r_cgal BEFORE PUBLIC
+      ${PROJECT_SOURCE_DIR}/wasm_shims
+      ${PROJECT_SOURCE_DIR}/wasm_shims/boost_runtime
+    )
   endif()
 endif()
 
@@ -178,12 +207,16 @@ endif()
 add_executable(slicer ../bridge/wasm_wrap.cpp)
 
 target_include_directories(slicer PRIVATE
-  ../bridge
-  ${BOOST_INC}
-  ../orca/src
+  # Ensure our WASM shims take precedence over system/Boost includes
   ${CMAKE_CURRENT_SOURCE_DIR}/wasm_shims
+  ${CMAKE_CURRENT_SOURCE_DIR}/wasm_shims/libslic3r
   ${CMAKE_CURRENT_SOURCE_DIR}/wasm_shims/boost_runtime
+  # Project includes
+  ../bridge
+  ../orca/src
   ${CMAKE_BINARY_DIR}/orca-build/src/libslic3r
+  # Finally, real Boost headers if needed
+  ${BOOST_INC}
 )
 
 if(NOT SLIC3R_WITH_OCCT)
@@ -198,10 +231,11 @@ target_link_libraries(slicer PRIVATE
 )
 
 # Link Boost static archives that we know exist
+# Link Boost static archives that are required at link time.
+# Avoid Boost.Thread for single-threaded WASM build; Boost.Log will still function in single-threaded mode.
 target_link_libraries(slicer PRIVATE
   "${BOOST_LIB}/libboost_system.a"
   "${BOOST_LIB}/libboost_filesystem.a"
-  "${BOOST_LIB}/libboost_thread.a"
   "${BOOST_LIB}/libboost_regex.a"
   "${BOOST_LIB}/libboost_chrono.a"
   "${BOOST_LIB}/libboost_atomic.a"
@@ -239,7 +273,6 @@ target_link_options(slicer PRIVATE
   -sEXPORT_NAME=OrcaModule
   -sDISABLE_EXCEPTION_CATCHING=0
   -fexceptions
-  -pthread
   "-sEXPORTED_FUNCTIONS=['_orc_init','_orc_slice','_malloc','_free','_orc_free']"
   "-sEXPORTED_RUNTIME_METHODS=['ccall','cwrap','getValue','setValue']"
 )
