@@ -24,7 +24,7 @@ jobs:
         with:
           script: |
             const release = await github.rest.repos.getLatestRelease({ owner: 'SoftFever', repo: 'OrcaSlicer' });
-            core.setOutput('tag', release.data.tag_name);
+            return release.data.tag_name;
 
       - name: Determine currently pinned Orca tag
         id: current_orca
@@ -41,19 +41,20 @@ jobs:
         id: update_check
         run: |
           set -euo pipefail
-          if [ "${{ steps.upstream_release.outputs.tag }}" = "${{ steps.current_orca.outputs.tag }}" ]; then
+          if [ "${{ steps.upstream_release.outputs.result }}" = "${{ steps.current_orca.outputs.tag }}" ]; then
             echo "needs_update=false" >> "$GITHUB_OUTPUT"
             echo "Orca submodule already at ${{ steps.current_orca.outputs.tag }}"
           else
             echo "needs_update=true" >> "$GITHUB_OUTPUT"
-            echo "Detected new Orca release: ${{ steps.upstream_release.outputs.tag }}"
+            echo "Detected new Orca release: ${{ steps.upstream_release.outputs.result }}"
           fi
 
       - name: Update Orca submodule to latest release
         if: steps.update_check.outputs.needs_update == 'true'
+        env:
+          TAG: ${{ steps.upstream_release.outputs.result }}
         run: |
           set -euo pipefail
-          TAG='${{ steps.upstream_release.outputs.tag }}'
           git -C orca fetch --tags --force
           git -C orca checkout --detach "refs/tags/${TAG}"
           git add orca
@@ -90,21 +91,13 @@ jobs:
 
       - name: Regenerate WASM patch and clean workspace
         if: steps.update_check.outputs.needs_update == 'true'
+        env:
+          TAG: ${{ steps.upstream_release.outputs.result }}
         run: |
           set -euo pipefail
           git -C orca diff --binary > ../patches/orca-wasm.patch
           git -C orca reset --hard HEAD
-          python - <<'PY'
-import pathlib
-import re
-
-TAG = "${{ steps.upstream_release.outputs.tag }}"
-readme = pathlib.Path('README.md')
-text = readme.read_text()
-text = re.sub(r"(latest upstream stable tag \(currently `)v[0-9.]+(`\))", rf"\1{TAG}\2", text)
-text = re.sub(r"(git checkout )v[0-9.]+", rf"\1{TAG}", text)
-readme.write_text(text)
-PY
+          python3 -c "import os, pathlib, re; tag = os.environ['TAG']; readme = pathlib.Path('README.md'); text = readme.read_text(); text = re.sub(r'(latest upstream stable tag \(currently `)v[0-9.]+(`\))', rf'\\1{tag}\\2', text); text = re.sub(r'(git checkout )v[0-9.]+', rf'\\1{tag}', text); readme.write_text(text)"
           rm -rf build-wasm
           rm -f web/public/wasm/slicer.js web/public/wasm/slicer.wasm
           git add README.md patches/orca-wasm.patch orca
@@ -113,12 +106,12 @@ PY
         if: steps.update_check.outputs.needs_update == 'true'
         uses: peter-evans/create-pull-request@v6
         with:
-          branch: bot/orca-${{ steps.upstream_release.outputs.tag }}
-          commit-message: chore: update OrcaSlicer to ${{ steps.upstream_release.outputs.tag }}
-          title: chore: update OrcaSlicer to ${{ steps.upstream_release.outputs.tag }}
+          branch: bot/orca-${{ steps.upstream_release.outputs.result }}
+          commit-message: "chore: update OrcaSlicer to ${{ steps.upstream_release.outputs.result }}"
+          title: "chore: update OrcaSlicer to ${{ steps.upstream_release.outputs.result }}"
           body: |
             ## Summary
-            - bump Orca submodule to `${{ steps.upstream_release.outputs.tag }}`
+            - bump Orca submodule to `${{ steps.upstream_release.outputs.result }}`
             - refresh `patches/orca-wasm.patch`
             - verify WASM build via `./build.ps1 -Clean`
 

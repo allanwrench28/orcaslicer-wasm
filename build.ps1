@@ -52,6 +52,16 @@ if (!(Test-Path "orca/.git")) {
 Write-Info "Setting up Emscripten environment..."
 $emsdkPath = Join-Path $PWD "emsdk"
 
+if (!(Test-Path $emsdkPath) -and $env:EMSDK) {
+    try {
+        $resolved = Resolve-Path $env:EMSDK -ErrorAction Stop
+        $emsdkPath = $resolved.Path
+        Write-Info "Using EMSDK from environment: $emsdkPath"
+    } catch {
+        Write-Warning "EMSDK environment variable points to '$($env:EMSDK)', but the path is unavailable. Falling back to repo-local emsdk folder."
+    }
+}
+
 if (Test-Path $emsdkPath) {
     Push-Location $emsdkPath
     try {
