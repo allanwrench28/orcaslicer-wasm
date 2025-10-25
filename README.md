@@ -8,9 +8,10 @@ The PowerShell scripts in this repository are cross-platform (Windows, macOS, Li
 ### Prerequisites
 - Git with submodule support (`git 2.30+` recommended)
 - PowerShell 7+ (`pwsh`) or Windows PowerShell 5.1
+- Node.js 18+ (required for the post-build smoke test CLI)
 - CMake 3.22 or later (Emscripten ships one, but native install is handy)
 - Ninja or Make (Emscripten provides `emmake make` if neither is available)
-- ~10 GB free disk space for the SDK/toolchain caches
+- ~10 GB free disk space for the SDK/toolchain caches
 
 ### Build Steps
 
@@ -49,7 +50,15 @@ The PowerShell scripts in this repository are cross-platform (Windows, macOS, Li
    - `build-wasm/slicer.wasm`
    - Optional copies are staged by `build.ps1` under `web/public/wasm/` when the directory exists
 
-5. **Run the demo web app** (optional)
+5. **Run the headless smoke test**
+   ```bash
+   node scripts/test-slicer.js --out artifacts/cube.gcode
+   ```
+   This launches the WASM module inside Node.js, slices the bundled `fixtures/cube.stl`,
+   and emits a deterministic `.gcode` file for regression tracking. Use
+   `--stl path/to/model.stl` to test alternative geometries.
+
+6. **Run the demo web app** (optional)
    ```bash
    cd web
    npm install
@@ -63,6 +72,8 @@ The PowerShell scripts in this repository are cross-platform (Windows, macOS, Li
 - `scripts/build-wasm.sh` – Linux/macOS shell equivalent used by CI and by `build.ps1` internally for certain post steps.
 - `scripts/sanity.sh` – runs a minimal slice against fixture STLs to ensure the WASM binary behaves.
 - `scripts/dev-web.sh` – bootstraps the Vite dev server with live reloading while watching `build-wasm/` for fresh artifacts.
+- `scripts/test-slicer.js` – Node-based harness that loads the built WASM module, slices a fixture, and writes `.gcode` for verification.
+- `scripts/dump-bytes.js` / `scripts/find-bytes.js` – helper utilities for inspecting `.wasm` blobs and searching for raw byte patterns while debugging.
 
 ### Troubleshooting
 
@@ -79,6 +90,7 @@ The PowerShell scripts in this repository are cross-platform (Windows, macOS, Li
 **Still stuck?**
 - See [Detailed Build Instructions](#detailed-build-instructions) for manual control.
 - Check [Common Issues](#common-issues) for frequently hit problems.
+- Run `node scripts/test-slicer.js --help` for additional flags (quiet mode, alternate STLs, output directories) when validating builds.
 
 ---
 

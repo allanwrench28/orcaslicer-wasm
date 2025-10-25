@@ -86,6 +86,9 @@ endif()
 add_compile_definitions(
   EIGEN_DONT_ALIGN_STATICALLY=1
   EIGEN_DISABLE_UNALIGNED_ARRAY_ASSERT=1
+  EIGEN_HAS_STD_RESULT_OF=0
+  _LIBCPP_ENABLE_CXX17_REMOVED_FEATURES=1
+  _LIBCPP_DISABLE_DEPRECATION_WARNINGS=1
 )
 
 # --- Disable TBB usage (shim will satisfy REQUIRED without linking) ---
@@ -203,6 +206,15 @@ if(EMSCRIPTEN AND TARGET libslic3r)
   )
 endif()
 
+if(EMSCRIPTEN AND TARGET libslic3r_cgal)
+  target_compile_options(libslic3r_cgal PRIVATE
+    -frounding-math
+    -fno-fast-math
+    -ffp-contract=off
+  )
+  target_compile_definitions(libslic3r_cgal PRIVATE CGAL_DISABLE_ROUNDING_MATH_CHECK)
+endif()
+
 # --- Executable (bridge that links to Orca slicer) ---
 add_executable(slicer ../bridge/wasm_wrap.cpp)
 
@@ -268,11 +280,16 @@ target_link_options(slicer PRIVATE
   -O3
   -sALLOW_MEMORY_GROWTH=1
   -sMALLOC=emmalloc
-  -sENVIRONMENT=web,worker
+  -sSTACK_SIZE=4194304
+  -sINITIAL_MEMORY=268435456
+  -sMAXIMUM_MEMORY=4294967296
+  -sENVIRONMENT=web,worker,node
   -sMODULARIZE=1
   -sEXPORT_NAME=OrcaModule
   -sDISABLE_EXCEPTION_CATCHING=0
+  -sEMULATE_FUNCTION_POINTER_CASTS=1
   -fexceptions
-  "-sEXPORTED_FUNCTIONS=['_orc_init','_orc_slice','_malloc','_free','_orc_free']"
-  "-sEXPORTED_RUNTIME_METHODS=['ccall','cwrap','getValue','setValue']"
+  --preload-file=../orca/resources@/resources
+  "-sEXPORTED_FUNCTIONS=['_orc_init','_orc_slice','_malloc','_free','_orc_free','_orc_decode_exception']"
+  "-sEXPORTED_RUNTIME_METHODS=['ccall','cwrap','getValue','setValue','UTF8ToString','stringToUTF8','lengthBytesUTF8','HEAP8','HEAPU8','HEAP32','HEAPU32']"
 )

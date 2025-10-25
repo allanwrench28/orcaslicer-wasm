@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Orca WASM Slicer Test</title>
+  <style>
+    body { font-family: sans-serif; margin: 2em; }
+    #output { white-space: pre-wrap; background: #f8f8f8; padding: 1em; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <h1>Orca WASM Slicer Test</h1>
+  <input type="file" id="stlInput" accept=".stl,.nstl" />
+  <button id="sliceBtn" disabled>Slice</button>
+  <div id="output"></div>
+  <script src="public/wasm/slicer.js"></script>
+  <script>
+    let slicerModule;
+    let stlData;
+    document.getElementById('stlInput').addEventListener('change', async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      stlData = await file.arrayBuffer();
+      document.getElementById('sliceBtn').disabled = false;
+      document.getElementById('output').textContent = `Loaded file: ${file.name} (${file.size} bytes)`;
+    });
+
+    document.getElementById('sliceBtn').addEventListener('click', async () => {
+      document.getElementById('output').textContent = 'Loading slicer WASM...';
+      try {
+        if (!slicerModule) {
+          slicerModule = await window.createSlicerModule();
+        }
+        document.getElementById('output').textContent = 'Slicing...';
+        // This assumes slicerModule exposes a sliceSTL(buffer) function that returns G-code or result
+        const result = await slicerModule.sliceSTL(new Uint8Array(stlData));
+        document.getElementById('output').textContent = 'G-code output:\n' + result;
+      } catch (err) {
+        document.getElementById('output').textContent = 'Error: ' + err;
+      }
+    });
+  </script>
+</body>
+</html>

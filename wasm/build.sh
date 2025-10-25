@@ -1,12 +1,21 @@
 #!/bin/bash
 set -euo pipefail
 
-source ./toolchain/emsdk.env || source /opt/emsdk/emsdk_env.sh || true
+BUILD_SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd "${BUILD_SCRIPT_DIR}/.." && pwd)"
 
-emcmake cmake -S wasm -B build-wasm -DCMAKE_BUILD_TYPE=Release -DCMAKE_DISABLE_FIND_PACKAGE_TBB=TRUE
+if ! source "${BUILD_SCRIPT_DIR}/toolchain/emsdk.env"; then
+	source /opt/emsdk/emsdk_env.sh || true
+fi
 
-cmake --build build-wasm -j
+emcmake cmake -S "${BUILD_SCRIPT_DIR}" -B "${PROJECT_ROOT}/build-wasm" -DCMAKE_BUILD_TYPE=Release
 
-mkdir -p web/public/wasm && cp build-wasm/slicer.js build-wasm/slicer.wasm web/public/wasm/
+cmake --build "${PROJECT_ROOT}/build-wasm" -j
+
+mkdir -p "${PROJECT_ROOT}/web/public/wasm"
+cp "${PROJECT_ROOT}/build-wasm/slicer.js" \
+	"${PROJECT_ROOT}/build-wasm/slicer.wasm" \
+	"${PROJECT_ROOT}/build-wasm/slicer.data" \
+	"${PROJECT_ROOT}/web/public/wasm/"
 
 echo "WASM build complete."

@@ -44,16 +44,16 @@ if [[ -f ${PATCH_FILE} ]]; then
 fi
 
 # 4) Configure and build with Emscripten
-emcmake cmake -S wasm -B build-wasm -DCMAKE_BUILD_TYPE=Release -DCMAKE_DISABLE_FIND_PACKAGE_TBB=TRUE
+emcmake cmake -S wasm -B build-wasm -DCMAKE_BUILD_TYPE=Release
 cmake --build build-wasm -j
 
 # 5) Validate artifacts and stage for the web app
 mkdir -p web/public/wasm
-if [[ -f build-wasm/slicer.js && -f build-wasm/slicer.wasm ]]; then
-  cp build-wasm/slicer.js build-wasm/slicer.wasm web/public/wasm/
+if [[ -f build-wasm/slicer.js && -f build-wasm/slicer.wasm && -f build-wasm/slicer.data ]]; then
+  cp build-wasm/slicer.js build-wasm/slicer.wasm build-wasm/slicer.data web/public/wasm/
   echo "✅ WASM build complete"
 else
-  echo "❌ WASM build failed: build-wasm/slicer.js or build-wasm/slicer.wasm not found" >&2
+  echo "❌ WASM build failed: required build artifacts missing" >&2
   # Optional: show recent CMake output for quick debugging
   (tail -n 100 build-wasm/CMakeFiles/CMakeOutput.log 2>/dev/null || true)
   exit 1

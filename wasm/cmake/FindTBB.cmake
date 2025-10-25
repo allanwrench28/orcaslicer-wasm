@@ -7,11 +7,14 @@ if(EMSCRIPTEN)
   # consumers (CGAL) because that triggers enabling TBB-dependent code paths
   # inside header-only libraries which rely on runtime TBB features.
 
-  # Provide classic variables for code that checks for them, but set TBB_FOUND
-  # to FALSE so downstream packages don't assume a real TBB runtime is available.
-  set(TBB_FOUND FALSE)
+  # Provide classic variables for code that checks for them. We advertise
+  # TBB_FOUND=TRUE so that find_package(TBB REQUIRED) succeeds, but the shimbed
+  # targets below resolve to header-only stubs.
+  set(TBB_FOUND TRUE)
+  set(TBB_VERSION "0.0-wasm-shim")
   set(TBB_INCLUDE_DIRS "${CMAKE_CURRENT_LIST_DIR}/../wasm_shims")
-  set(TBB_LIBRARIES "")
+  set(TBB_LIBRARIES "TBB::tbb;TBB::tbbmalloc")
+  set(TBB_IMPORTED_TARGETS TBB::tbb TBB::tbbmalloc)
 
   # Create a small interface target 'wasm_shims' (if not present) that exposes
   # the include path. We intentionally do NOT create TBB::tbb or TBB::tbbmalloc

@@ -74,11 +74,13 @@ CMake toward that prefix.
 
 3. **Collect artifacts**
   - Successful builds emit `build-wasm/slicer.js` and `build-wasm/slicer.wasm`, which the web worker (`web/src/workers/slicer.worker.ts`) expects to load.
+  - Run `node scripts/test-slicer.js --out artifacts/cube.gcode` after each build to confirm the module can slice the bundled cube fixture end-to-end.
   - Wipe `build-wasm/` when switching between Debug/Release or after modifying toolchain paths in `wasm/CMakeLists.txt`.
 
 4. **Troubleshooting tips**
   - If CMake still searches for native TBB/OpenCV, delete `build-wasm/` to clear cached options.
   - The build is single-threaded by design; exporting `EM_BUILD_CORES=1` or passing `-j1` can reduce peak memory in constrained environments.
+  - The Node smoke test prints an allocation trace; use `--quiet` to keep logs terse when scripting the check.
 
 ## Build Automation
 

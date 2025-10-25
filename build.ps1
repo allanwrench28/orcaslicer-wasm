@@ -319,18 +319,15 @@ $buildType = if ($Debug) { "Debug" } else { "Release" }
 # Configure with CMake
 Write-Info "Configuring build with CMake..."
 $cmakeArgs = @()
-if (!(Test-Path "build-wasm/CMakeCache.txt")) {
-    $ninja = Get-Command ninja -ErrorAction SilentlyContinue
-    if ($ninja) {
-        Write-Info "Ninja detected; using Ninja generator."
-        $cmakeArgs += @("-G", "Ninja")
-    }
+$ninja = Get-Command ninja -ErrorAction SilentlyContinue
+if ($ninja) {
+    Write-Info "Ninja detected; using Ninja generator."
+    $cmakeArgs += @("-G", "Ninja")
 }
 $cmakeArgs += @(
     "-S", "wasm"
     "-B", "build-wasm"
     "-DCMAKE_BUILD_TYPE=$buildType"
-    "-DCMAKE_DISABLE_FIND_PACKAGE_TBB=TRUE"
     "-DCMAKE_TOOLCHAIN_FILE=$emsdkPath/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake"
 )
 
@@ -389,7 +386,7 @@ if (!(Test-Path $webWasmDir)) {
     New-Item -ItemType Directory -Path $webWasmDir -Force | Out-Null
 }
 
-$wasmFiles = @("slicer.js", "slicer.wasm")
+$wasmFiles = @("slicer.js", "slicer.wasm", "slicer.data")
 $allFilesExist = $true
 
 foreach ($file in $wasmFiles) {
@@ -412,6 +409,7 @@ if ($allFilesExist) {
 Build artifacts available at:
 - web/public/wasm/slicer.js
 - web/public/wasm/slicer.wasm
+- web/public/wasm/slicer.data
 
 You can now serve the web application or use these files in your web worker.
 "@
