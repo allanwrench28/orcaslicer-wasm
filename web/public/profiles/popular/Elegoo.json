@@ -1,0 +1,5281 @@
+{
+  "name": "Elegoo",
+  "version": "02.03.01.10",
+  "printers": [
+    {
+      "id": "Elegoo-Neptune",
+      "name": "Elegoo Neptune",
+      "nozzleSizes": [
+        0.4
+      ],
+      "bedModel": "elegoo_neptune_buildplate_model.stl",
+      "bedTexture": "elegoo_neptune_buildplate_texture.png",
+      "defaultMaterials": [
+        "Generic ABS @Elegoo",
+        "Generic PETG @Elegoo",
+        "Generic PLA @Elegoo"
+      ],
+      "variants": [
+        {
+          "name": "Elegoo Neptune 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "210x0",
+              "210x210",
+              "0x210"
+            ],
+            "printableHeight": "200",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "hardened_steel",
+            "machineMaxSpeedX": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedY": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedZ": [
+              "10",
+              "10"
+            ],
+            "machineMaxSpeedE": [
+              "60",
+              "60"
+            ],
+            "machineMaxAccelX": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelY": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelZ": [
+              "100",
+              "100"
+            ],
+            "machineMaxAccelExtruding": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelRetracting": [
+              "1000",
+              "1000"
+            ],
+            "machineMaxAccelTravel": [
+              "500",
+              "500"
+            ],
+            "machineMaxJerkX": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkY": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkZ": [
+              "0.4",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "5",
+              "5"
+            ],
+            "retractionLength": [
+              "2.5"
+            ],
+            "retractionSpeed": [
+              "60"
+            ],
+            "deretractionSpeed": [
+              "40"
+            ],
+            "retractionMinimumTravel": [
+              "2"
+            ],
+            "retractBeforeWipe": [
+              "70%"
+            ],
+            "maxLayerHeight": [
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "defaultPrintProfile": "0.20mm Standard @Elegoo Neptune",
+            "defaultFilamentProfile": [
+              "Generic PLA @Elegoo"
+            ]
+          },
+          "startGcode": "M413 S0 ; disable Power Loss Recovery\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\nM104 S120 ; set temporary nozzle temp to prevent oozing during homing and auto bed leveling\nM140 S[bed_temperature_initial_layer_single] ; set final bed temp\nG4 S10 ; allow partial nozzle warmup\nG28 ; home all axis\n;G29 ; run abl mesh\nM420 S1 ; load mesh\nG1 Z50 F240\nG1 X2 Y10 F3000\nM104 S[nozzle_temperature_initial_layer] ; set final nozzle temp\nM190 S[bed_temperature_initial_layer_single] ; wait for bed temp to stabilize\nM109 S[nozzle_temperature_initial_layer] ; wait for nozzle temp to stabilize\nG1 Z0.28 F240\nG92 E0\nG1 Y140 E10 F1500 ; prime the nozzle\nG1 X2.3 F5000\nG92 E0\nG1 Y10 E10 F1200 ; prime the nozzle\nG92 E0",
+          "endGcode": "{if max_layer_z < printable_height}G1 Z{z_offset+min(max_layer_z+2, printable_height)} F600 ; Move print head up{endif}\nG1 X5 Y{print_bed_max[1]*0.8} F{travel_speed*60} ; present print\n{if max_layer_z < printable_height-10}G1 Z{z_offset+min(max_layer_z+70, printable_height-10)} F600 ; Move print head further up{endif}\n{if max_layer_z < printable_height*0.6}G1 Z{printable_height*0.6} F600 ; Move print head further up{endif}\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors",
+          "pauseGcode": "M0",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Elegoo Neptune 2 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "220x0",
+              "220x220",
+              "0x220"
+            ],
+            "printableHeight": "250",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "hardened_steel",
+            "machineMaxSpeedX": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedY": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedZ": [
+              "10",
+              "10"
+            ],
+            "machineMaxSpeedE": [
+              "60",
+              "60"
+            ],
+            "machineMaxAccelX": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelY": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelZ": [
+              "100",
+              "100"
+            ],
+            "machineMaxAccelExtruding": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelRetracting": [
+              "1000",
+              "1000"
+            ],
+            "machineMaxAccelTravel": [
+              "500",
+              "500"
+            ],
+            "machineMaxJerkX": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkY": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkZ": [
+              "0.4",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "5",
+              "5"
+            ],
+            "retractionLength": [
+              "2.5"
+            ],
+            "retractionSpeed": [
+              "60"
+            ],
+            "deretractionSpeed": [
+              "40"
+            ],
+            "retractionMinimumTravel": [
+              "2"
+            ],
+            "retractBeforeWipe": [
+              "70%"
+            ],
+            "maxLayerHeight": [
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "defaultPrintProfile": "0.20mm Standard @Elegoo Neptune2",
+            "defaultFilamentProfile": [
+              "Generic PLA @Elegoo"
+            ]
+          },
+          "startGcode": "M413 S0 ; disable Power Loss Recovery\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\nM104 S120 ; set temporary nozzle temp to prevent oozing during homing and auto bed leveling\nM140 S[bed_temperature_initial_layer_single] ; set final bed temp\nG4 S10 ; allow partial nozzle warmup\nG28 ; home all axis\n;G29 ; run abl mesh\nM420 S1 ; load mesh\nG1 Z50 F240\nG1 X2 Y10 F3000\nM104 S[nozzle_temperature_initial_layer] ; set final nozzle temp\nM190 S[bed_temperature_initial_layer_single] ; wait for bed temp to stabilize\nM109 S[nozzle_temperature_initial_layer] ; wait for nozzle temp to stabilize\nG1 Z0.28 F240\nG92 E0\nG1 Y140 E10 F1500 ; prime the nozzle\nG1 X2.3 F5000\nG92 E0\nG1 Y10 E10 F1200 ; prime the nozzle\nG92 E0",
+          "endGcode": "{if max_layer_z < printable_height}G1 Z{z_offset+min(max_layer_z+2, printable_height)} F600 ; Move print head up{endif}\nG1 X5 Y{print_bed_max[1]*0.8} F{travel_speed*60} ; present print\n{if max_layer_z < printable_height-10}G1 Z{z_offset+min(max_layer_z+70, printable_height-10)} F600 ; Move print head further up{endif}\n{if max_layer_z < printable_height*0.6}G1 Z{printable_height*0.6} F600 ; Move print head further up{endif}\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors",
+          "pauseGcode": "M0",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Elegoo Neptune 2",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.4"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Elegoo Neptune 2D 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "220x0",
+              "220x220",
+              "0x220"
+            ],
+            "printableHeight": "250",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4",
+              "0.4"
+            ],
+            "nozzleType": "hardened_steel",
+            "machineMaxSpeedX": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedY": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedZ": [
+              "10",
+              "10"
+            ],
+            "machineMaxSpeedE": [
+              "60",
+              "60"
+            ],
+            "machineMaxAccelX": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelY": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelZ": [
+              "100",
+              "100"
+            ],
+            "machineMaxAccelExtruding": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelRetracting": [
+              "1000",
+              "1000"
+            ],
+            "machineMaxAccelTravel": [
+              "500",
+              "500"
+            ],
+            "machineMaxJerkX": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkY": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkZ": [
+              "0.4",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "5",
+              "5"
+            ],
+            "retractionLength": [
+              "5",
+              "5"
+            ],
+            "retractionSpeed": [
+              "60",
+              "60"
+            ],
+            "deretractionSpeed": [
+              "40",
+              "40"
+            ],
+            "retractionMinimumTravel": [
+              "2",
+              "2"
+            ],
+            "retractBeforeWipe": [
+              "70%",
+              "70%"
+            ],
+            "maxLayerHeight": [
+              "0.32",
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.08",
+              "0.08"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "defaultPrintProfile": "0.20mm Standard @Elegoo Neptune2D",
+            "defaultFilamentProfile": [
+              "Generic PLA @Elegoo"
+            ]
+          },
+          "startGcode": "T[initial_tool] ; set active extruder\nM413 S0 ; disable Power Loss Recovery\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\nM140 S[bed_temperature_initial_layer_single] ; set final bed temp\nM104 S150 ; set temporary nozzle temp to prevent oozing during homing and auto bed leveling\nG4 S10 ; allow partial nozzle warmup\nG28 ; home all axis\n;G29 ; auto bed levelling - remove ; at beginning of line to enable\n;M420 S1 ; enable mesh - remove ; at beginning of line to enable\nG1 Z50 F240\nG1 X2 Y10 F3000\nM104 S[nozzle_temperature_initial_layer] ; set final nozzle temp\nM190 S[bed_temperature_initial_layer_single] ; wait for bed temp to stabilize\nM109 S[nozzle_temperature_initial_layer] ; wait for nozzle temp to stabilize\nG1 Z0.28 F240 ; move down to prime nozzle\nG92 E0 ; reset extruder\nG1 E90 ; load filament\nG92 E0 ; reset extruder\nG1 Y140 E10 F1500 ; prime the nozzle\nG1 X2.3 F5000 ; move over for second prime line\nG92 E0 ; reset extruder\nG1 Y10 E10 F1200 ; prime the nozzle\nG92 E0 ; reset extruder",
+          "endGcode": "{if max_layer_z < printable_height}G1 Z{z_offset+min(max_layer_z+2, printable_height)} F600 ; Move print head up{endif}\nG1 X5 Y{print_bed_max[1]*0.8} F{travel_speed*60} ; present print\nG1 E-80 F2000 ; unload filament\n{if max_layer_z < printable_height-10}G1 Z{z_offset+min(max_layer_z+70, printable_height-10)} F600 ; Move print head further up{endif}\n{if max_layer_z < printable_height*0.6}G1 Z{printable_height*0.6} F600 ; Move print head further up{endif}\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors",
+          "pauseGcode": "M0",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Elegoo Neptune 2D",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.4"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Elegoo Neptune 2S 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "220x0",
+              "220x220",
+              "0x220"
+            ],
+            "printableHeight": "250",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "hardened_steel",
+            "machineMaxSpeedX": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedY": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedZ": [
+              "10",
+              "10"
+            ],
+            "machineMaxSpeedE": [
+              "60",
+              "60"
+            ],
+            "machineMaxAccelX": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelY": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelZ": [
+              "100",
+              "100"
+            ],
+            "machineMaxAccelExtruding": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelRetracting": [
+              "1000",
+              "1000"
+            ],
+            "machineMaxAccelTravel": [
+              "500",
+              "500"
+            ],
+            "machineMaxJerkX": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkY": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkZ": [
+              "0.4",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "5",
+              "5"
+            ],
+            "retractionLength": [
+              "2.5"
+            ],
+            "retractionSpeed": [
+              "60"
+            ],
+            "deretractionSpeed": [
+              "40"
+            ],
+            "retractionMinimumTravel": [
+              "2"
+            ],
+            "retractBeforeWipe": [
+              "70%"
+            ],
+            "maxLayerHeight": [
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "defaultPrintProfile": "0.20mm Standard @Elegoo Neptune2S",
+            "defaultFilamentProfile": [
+              "Generic PLA @Elegoo"
+            ]
+          },
+          "startGcode": "M413 S0 ; disable Power Loss Recovery\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\nM104 S120 ; set temporary nozzle temp to prevent oozing during homing and auto bed leveling\nM140 S[bed_temperature_initial_layer_single] ; set final bed temp\nG4 S10 ; allow partial nozzle warmup\nG28 ; home all axis\n;G29 ; run abl mesh\nM420 S1 ; load mesh\nG1 Z50 F240\nG1 X2 Y10 F3000\nM104 S[nozzle_temperature_initial_layer] ; set final nozzle temp\nM190 S[bed_temperature_initial_layer_single] ; wait for bed temp to stabilize\nM109 S[nozzle_temperature_initial_layer] ; wait for nozzle temp to stabilize\nG1 Z0.28 F240\nG92 E0\nG1 Y140 E10 F1500 ; prime the nozzle\nG1 X2.3 F5000\nG92 E0\nG1 Y10 E10 F1200 ; prime the nozzle\nG92 E0",
+          "endGcode": "{if max_layer_z < printable_height}G1 Z{z_offset+min(max_layer_z+2, printable_height)} F600 ; Move print head up{endif}\nG1 X5 Y{print_bed_max[1]*0.8} F{travel_speed*60} ; present print\n{if max_layer_z < printable_height-10}G1 Z{z_offset+min(max_layer_z+70, printable_height-10)} F600 ; Move print head further up{endif}\n{if max_layer_z < printable_height*0.6}G1 Z{printable_height*0.6} F600 ; Move print head further up{endif}\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors",
+          "pauseGcode": "M0",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Elegoo Neptune 2S",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.4"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Elegoo Neptune 3 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "220x0",
+              "220x220",
+              "0x220"
+            ],
+            "printableHeight": "280",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "hardened_steel",
+            "machineMaxSpeedX": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedY": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedZ": [
+              "10",
+              "10"
+            ],
+            "machineMaxSpeedE": [
+              "60",
+              "60"
+            ],
+            "machineMaxAccelX": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelY": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelZ": [
+              "100",
+              "100"
+            ],
+            "machineMaxAccelExtruding": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelRetracting": [
+              "1000",
+              "1000"
+            ],
+            "machineMaxAccelTravel": [
+              "500",
+              "500"
+            ],
+            "machineMaxJerkX": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkY": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkZ": [
+              "0.4",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "5",
+              "5"
+            ],
+            "retractionLength": [
+              "5"
+            ],
+            "deretractionSpeed": [
+              "0"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "85%"
+            ],
+            "maxLayerHeight": [
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "defaultPrintProfile": "0.20mm Standard @Elegoo Neptune3",
+            "defaultFilamentProfile": [
+              "Generic PLA @Elegoo"
+            ]
+          },
+          "startGcode": "M413 S0 ; disable Power Loss Recovery\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\nM104 S120 ; set temporary nozzle temp to prevent oozing during homing and auto bed leveling\nM140 S[bed_temperature_initial_layer_single] ; set final bed temp\nG4 S10 ; allow partial nozzle warmup\nG28 ; home all axis\n;G29 ; run abl mesh\nM420 S1 ; load mesh\nG1 Z50 F240\nG1 X2 Y10 F3000\nM104 S[nozzle_temperature_initial_layer] ; set final nozzle temp\nM190 S[bed_temperature_initial_layer_single] ; wait for bed temp to stabilize\nM109 S[nozzle_temperature_initial_layer] ; wait for nozzle temp to stabilize\nG1 Z0.28 F240\nG92 E0\nG1 Y140 E10 F1500 ; prime the nozzle\nG1 X2.3 F5000\nG92 E0\nG1 Y10 E10 F1200 ; prime the nozzle\nG92 E0",
+          "endGcode": "{if max_layer_z < printable_height}G1 Z{z_offset+min(max_layer_z+2, printable_height)} F600 ; Move print head up{endif}\nG1 X5 Y{print_bed_max[1]*0.8} F{travel_speed*60} ; present print\n{if max_layer_z < printable_height-10}G1 Z{z_offset+min(max_layer_z+70, printable_height-10)} F600 ; Move print head further up{endif}\n{if max_layer_z < printable_height*0.6}G1 Z{printable_height*0.6} F600 ; Move print head further up{endif}\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors",
+          "pauseGcode": "M0",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Elegoo Neptune 3 Max 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "420x0",
+              "420x420",
+              "0x420"
+            ],
+            "printableHeight": "500",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "hardened_steel",
+            "machineMaxSpeedX": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedY": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedZ": [
+              "10",
+              "10"
+            ],
+            "machineMaxSpeedE": [
+              "60",
+              "60"
+            ],
+            "machineMaxAccelX": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelY": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelZ": [
+              "100",
+              "100"
+            ],
+            "machineMaxAccelExtruding": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelRetracting": [
+              "1000",
+              "1000"
+            ],
+            "machineMaxAccelTravel": [
+              "500",
+              "500"
+            ],
+            "machineMaxJerkX": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkY": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkZ": [
+              "0.4",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "5",
+              "5"
+            ],
+            "retractionLength": [
+              "2.5"
+            ],
+            "retractionSpeed": [
+              "25"
+            ],
+            "deretractionSpeed": [
+              "0"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "85%"
+            ],
+            "maxLayerHeight": [
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "defaultPrintProfile": "0.20mm Standard @Elegoo Neptune3Max",
+            "defaultFilamentProfile": [
+              "Generic PLA @Elegoo"
+            ]
+          },
+          "startGcode": "M413 S0 ; disable Power Loss Recovery\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\nM104 S120 ; set temporary nozzle temp to prevent oozing during homing and auto bed leveling\nM140 S[bed_temperature_initial_layer_single] ; set final bed temp\nG4 S10 ; allow partial nozzle warmup\nG28 ; home all axis\n;G29 ; run abl mesh\nM420 S1 ; load mesh\nG1 Z50 F240\nG1 X2 Y10 F3000\nM104 S[nozzle_temperature_initial_layer] ; set final nozzle temp\nM190 S[bed_temperature_initial_layer_single] ; wait for bed temp to stabilize\nM109 S[nozzle_temperature_initial_layer] ; wait for nozzle temp to stabilize\nG1 Z0.28 F240\nG92 E0\nG1 Y140 E10 F1500 ; prime the nozzle\nG1 X2.3 F5000\nG92 E0\nG1 Y10 E10 F1200 ; prime the nozzle\nG92 E0",
+          "endGcode": "{if max_layer_z < printable_height}G1 Z{z_offset+min(max_layer_z+2, printable_height)} F600 ; Move print head up{endif}\nG1 X5 Y{print_bed_max[1]*0.8} F{travel_speed*60} ; present print\n{if max_layer_z < printable_height-10}G1 Z{z_offset+min(max_layer_z+70, printable_height-10)} F600 ; Move print head further up{endif}\n{if max_layer_z < printable_height*0.6}G1 Z{printable_height*0.6} F600 ; Move print head further up{endif}\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors",
+          "pauseGcode": "M0",
+          "changeFilamentGcode": "M600"
+        },
+        {
+          "name": "Elegoo Neptune 3 Max",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.4"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Elegoo Neptune 3 Plus 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "320x0",
+              "320x320",
+              "0x320"
+            ],
+            "printableHeight": "400",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "hardened_steel",
+            "machineMaxSpeedX": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedY": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedZ": [
+              "10",
+              "10"
+            ],
+            "machineMaxSpeedE": [
+              "60",
+              "60"
+            ],
+            "machineMaxAccelX": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelY": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelZ": [
+              "100",
+              "100"
+            ],
+            "machineMaxAccelExtruding": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelRetracting": [
+              "1000",
+              "1000"
+            ],
+            "machineMaxAccelTravel": [
+              "500",
+              "500"
+            ],
+            "machineMaxJerkX": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkY": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkZ": [
+              "0.4",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "5",
+              "5"
+            ],
+            "retractionLength": [
+              "2.5"
+            ],
+            "retractionSpeed": [
+              "25"
+            ],
+            "deretractionSpeed": [
+              "0"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "85%"
+            ],
+            "maxLayerHeight": [
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "defaultPrintProfile": "0.20mm Standard @Elegoo Neptune3Plus",
+            "defaultFilamentProfile": [
+              "Generic PLA @Elegoo"
+            ]
+          },
+          "startGcode": "M413 S0 ; disable Power Loss Recovery\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\nM104 S120 ; set temporary nozzle temp to prevent oozing during homing and auto bed leveling\nM140 S[bed_temperature_initial_layer_single] ; set final bed temp\nG4 S10 ; allow partial nozzle warmup\nG28 ; home all axis\n;G29 ; run abl mesh\nM420 S1 ; load mesh\nG1 Z50 F240\nG1 X2 Y10 F3000\nM104 S[nozzle_temperature_initial_layer] ; set final nozzle temp\nM190 S[bed_temperature_initial_layer_single] ; wait for bed temp to stabilize\nM109 S[nozzle_temperature_initial_layer] ; wait for nozzle temp to stabilize\nG1 Z0.28 F240\nG92 E0\nG1 Y140 E10 F1500 ; prime the nozzle\nG1 X2.3 F5000\nG92 E0\nG1 Y10 E10 F1200 ; prime the nozzle\nG92 E0",
+          "endGcode": "{if max_layer_z < printable_height}G1 Z{z_offset+min(max_layer_z+2, printable_height)} F600 ; Move print head up{endif}\nG1 X5 Y{print_bed_max[1]*0.8} F{travel_speed*60} ; present print\n{if max_layer_z < printable_height-10}G1 Z{z_offset+min(max_layer_z+70, printable_height-10)} F600 ; Move print head further up{endif}\n{if max_layer_z < printable_height*0.6}G1 Z{printable_height*0.6} F600 ; Move print head further up{endif}\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors",
+          "pauseGcode": "M0",
+          "changeFilamentGcode": "M600"
+        },
+        {
+          "name": "Elegoo Neptune 3 Plus",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.4"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Elegoo Neptune 3 Pro 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "225x0",
+              "225x225",
+              "0x225"
+            ],
+            "printableHeight": "280",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "hardened_steel",
+            "machineMaxSpeedX": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedY": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedZ": [
+              "10",
+              "10"
+            ],
+            "machineMaxSpeedE": [
+              "60",
+              "60"
+            ],
+            "machineMaxAccelX": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelY": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelZ": [
+              "100",
+              "100"
+            ],
+            "machineMaxAccelExtruding": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelRetracting": [
+              "1000",
+              "1000"
+            ],
+            "machineMaxAccelTravel": [
+              "500",
+              "500"
+            ],
+            "machineMaxJerkX": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkY": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkZ": [
+              "0.4",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "5",
+              "5"
+            ],
+            "retractionLength": [
+              "2.5"
+            ],
+            "retractionSpeed": [
+              "25"
+            ],
+            "deretractionSpeed": [
+              "0"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "85%"
+            ],
+            "maxLayerHeight": [
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "defaultPrintProfile": "0.20mm Standard @Elegoo Neptune3Pro",
+            "defaultFilamentProfile": [
+              "Generic PLA @Elegoo"
+            ]
+          },
+          "startGcode": "M413 S0 ; disable Power Loss Recovery\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\nM104 S120 ; set temporary nozzle temp to prevent oozing during homing and auto bed leveling\nM140 S[bed_temperature_initial_layer_single] ; set final bed temp\nG4 S10 ; allow partial nozzle warmup\nG28 ; home all axis\n;G29 ; run abl mesh\nM420 S1 ; load mesh\nG1 Z50 F240\nG1 X2 Y10 F3000\nM104 S[nozzle_temperature_initial_layer] ; set final nozzle temp\nM190 S[bed_temperature_initial_layer_single] ; wait for bed temp to stabilize\nM109 S[nozzle_temperature_initial_layer] ; wait for nozzle temp to stabilize\nG1 Z0.28 F240\nG92 E0\nG1 Y140 E10 F1500 ; prime the nozzle\nG1 X2.3 F5000\nG92 E0\nG1 Y10 E10 F1200 ; prime the nozzle\nG92 E0",
+          "endGcode": "{if max_layer_z < printable_height}G1 Z{z_offset+min(max_layer_z+2, printable_height)} F600 ; Move print head up{endif}\nG1 X5 Y{print_bed_max[1]*0.8} F{travel_speed*60} ; present print\n{if max_layer_z < printable_height-10}G1 Z{z_offset+min(max_layer_z+70, printable_height-10)} F600 ; Move print head further up{endif}\n{if max_layer_z < printable_height*0.6}G1 Z{printable_height*0.6} F600 ; Move print head further up{endif}\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors",
+          "pauseGcode": "M0",
+          "changeFilamentGcode": "M600"
+        },
+        {
+          "name": "Elegoo Neptune 3 Pro",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.4"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Elegoo Neptune 3",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.4"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Elegoo Neptune 4 (0.2 nozzle)",
+          "nozzle": 0.2,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "225x0",
+              "225x225",
+              "0x225"
+            ],
+            "printableHeight": "265",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.2"
+            ],
+            "nozzleType": "hardened_steel",
+            "retractionLength": [
+              "0.8"
+            ],
+            "retractionSpeed": [
+              "60"
+            ],
+            "deretractionSpeed": [
+              "45"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "85%"
+            ],
+            "maxLayerHeight": [
+              "0.16"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "klipper",
+            "defaultPrintProfile": "0.20mm Standard @Elegoo Neptune4 (0.2 nozzle)",
+            "defaultFilamentProfile": [
+              "Generic PLA @Elegoo"
+            ]
+          },
+          "startGcode": ";ELEGOO NEPTUNE 4\nM220 S100 ;Set the feed speed to 100%\nM221 S100 ;Set the flow rate to 100%\nM104 S140\nM190 S[bed_temperature_initial_layer_single]\nG90\nG28 ;home\nG1 Z10 F300\nG1 X67.5 Y0 F6000\nG1 Z0 F300\nM109 S[nozzle_temperature_initial_layer]\nG92 E0 ;Reset Extruder\nG1 X67.5 Y0 Z0.4 F300 ;Move to start position\nG1 X167.5 E30 F400 ;Draw the first line\nG1 Z0.6 F120.0 ;Move to side a little\nG1 X162.5 F3000\nG92 E0 ;Reset Extruder\n",
+          "endGcode": ";PRINT_END\nG91 ;Relative positionning\nG1 E-2 F2700 ;Retract a bit\nG1 E-8 X5 Y5 Z3 F3000 ;Retract\nG90 ;Absolute positionning\nG1 X10 Y220 F6000;Finish print\nM106 S0 ;Turn-off fan\nM104 S0 ;Turn-off hotend\nM140 S0 ;Turn-off bed\nM84 X Y E ;Disable all steppers but Z",
+          "pauseGcode": "PAUSE",
+          "changeFilamentGcode": "M600"
+        },
+        {
+          "name": "Elegoo Neptune 4 (0.4 nozzle)",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "225x0",
+              "225x225",
+              "0x225"
+            ],
+            "printableHeight": "265",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "hardened_steel",
+            "retractionLength": [
+              "0.8"
+            ],
+            "retractionSpeed": [
+              "60"
+            ],
+            "deretractionSpeed": [
+              "45"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "85%"
+            ],
+            "maxLayerHeight": [
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "klipper",
+            "defaultPrintProfile": "0.20mm Standard @Elegoo Neptune4 (0.4 nozzle)",
+            "defaultFilamentProfile": [
+              "Generic PLA @Elegoo"
+            ]
+          },
+          "startGcode": ";ELEGOO NEPTUNE 4\nM220 S100 ;Set the feed speed to 100%\nM221 S100 ;Set the flow rate to 100%\nM104 S140\nM190 S[bed_temperature_initial_layer_single]\nG90\nG28 ;home\nG1 Z10 F300\nG1 X67.5 Y0 F6000\nG1 Z0 F300\nM109 S[nozzle_temperature_initial_layer]\nG92 E0 ;Reset Extruder\nG1 X67.5 Y0 Z0.4 F300 ;Move to start position\nG1 X167.5 E30 F400 ;Draw the first line\nG1 Z0.6 F120.0 ;Move to side a little\nG1 X162.5 F3000\nG92 E0 ;Reset Extruder\n",
+          "endGcode": ";PRINT_END\nG91 ;Relative positionning\nG1 E-2 F2700 ;Retract a bit\nG1 E-8 X5 Y5 Z3 F3000 ;Retract\nG90 ;Absolute positionning\nG1 X10 Y220 F6000;Finish print\nM106 S0 ;Turn-off fan\nM104 S0 ;Turn-off hotend\nM140 S0 ;Turn-off bed\nM84 X Y E ;Disable all steppers but Z",
+          "pauseGcode": "PAUSE",
+          "changeFilamentGcode": "M600"
+        },
+        {
+          "name": "Elegoo Neptune 4 (0.6 nozzle)",
+          "nozzle": 0.6,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "225x0",
+              "225x225",
+              "0x225"
+            ],
+            "printableHeight": "265",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "nozzleType": "hardened_steel",
+            "retractionLength": [
+              "2.5"
+            ],
+            "retractionSpeed": [
+              "60"
+            ],
+            "deretractionSpeed": [
+              "45"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "85%"
+            ],
+            "maxLayerHeight": [
+              "0.4"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "klipper",
+            "defaultPrintProfile": "0.20mm Standard @Elegoo Neptune4 (0.6 nozzle)",
+            "defaultFilamentProfile": [
+              "Generic PLA @Elegoo"
+            ]
+          },
+          "startGcode": ";ELEGOO NEPTUNE 4\nM220 S100 ;Set the feed speed to 100%\nM221 S100 ;Set the flow rate to 100%\nM104 S140\nM190 S[bed_temperature_initial_layer_single]\nG90\nG28 ;home\nG1 Z10 F300\nG1 X67.5 Y0 F6000\nG1 Z0 F300\nM109 S[nozzle_temperature_initial_layer]\nG92 E0 ;Reset Extruder\nG1 X67.5 Y0 Z0.4 F300 ;Move to start position\nG1 X167.5 E30 F400 ;Draw the first line\nG1 Z0.6 F120.0 ;Move to side a little\nG1 X162.5 F3000\nG92 E0 ;Reset Extruder\n",
+          "endGcode": ";PRINT_END\nG91 ;Relative positionning\nG1 E-2 F2700 ;Retract a bit\nG1 E-8 X5 Y5 Z3 F3000 ;Retract\nG90 ;Absolute positionning\nG1 X10 Y220 F6000;Finish print\nM106 S0 ;Turn-off fan\nM104 S0 ;Turn-off hotend\nM140 S0 ;Turn-off bed\nM84 X Y E ;Disable all steppers but Z",
+          "pauseGcode": "PAUSE",
+          "changeFilamentGcode": "M600"
+        },
+        {
+          "name": "Elegoo Neptune 4 (0.8 nozzle)",
+          "nozzle": 0.8,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "225x0",
+              "225x225",
+              "0x225"
+            ],
+            "printableHeight": "265",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "nozzleType": "hardened_steel",
+            "retractionLength": [
+              "0.8"
+            ],
+            "retractionSpeed": [
+              "60"
+            ],
+            "deretractionSpeed": [
+              "45"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "85%"
+            ],
+            "maxLayerHeight": [
+              "0.6"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "klipper",
+            "defaultPrintProfile": "0.20mm Standard @Elegoo Neptune4 (0.8 nozzle)",
+            "defaultFilamentProfile": [
+              "Generic PLA @Elegoo"
+            ]
+          },
+          "startGcode": ";ELEGOO NEPTUNE 4\nM220 S100 ;Set the feed speed to 100%\nM221 S100 ;Set the flow rate to 100%\nM104 S140\nM190 S[bed_temperature_initial_layer_single]\nG90\nG28 ;home\nG1 Z10 F300\nG1 X67.5 Y0 F6000\nG1 Z0 F300\nM109 S[nozzle_temperature_initial_layer]\nG92 E0 ;Reset Extruder\nG1 X67.5 Y0 Z0.4 F300 ;Move to start position\nG1 X167.5 E30 F400 ;Draw the first line\nG1 Z0.6 F120.0 ;Move to side a little\nG1 X162.5 F3000\nG92 E0 ;Reset Extruder\n",
+          "endGcode": ";PRINT_END\nG91 ;Relative positionning\nG1 E-2 F2700 ;Retract a bit\nG1 E-8 X5 Y5 Z3 F3000 ;Retract\nG90 ;Absolute positionning\nG1 X10 Y220 F6000;Finish print\nM106 S0 ;Turn-off fan\nM104 S0 ;Turn-off hotend\nM140 S0 ;Turn-off bed\nM84 X Y E ;Disable all steppers but Z",
+          "pauseGcode": "PAUSE",
+          "changeFilamentGcode": "M600"
+        },
+        {
+          "name": "Elegoo Neptune 4 Max (0.2 nozzle)",
+          "nozzle": 0.2,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "420x0",
+              "420x420",
+              "0x420"
+            ],
+            "printableHeight": "480",
+            "auxiliaryFan": "1",
+            "nozzleDiameter": [
+              "0.2"
+            ],
+            "nozzleType": "brass",
+            "machineMaxSpeedX": [
+              "300",
+              "300"
+            ],
+            "machineMaxSpeedY": [
+              "300",
+              "300"
+            ],
+            "retractionLength": [
+              "0.7"
+            ],
+            "retractionSpeed": [
+              "60"
+            ],
+            "deretractionSpeed": [
+              "45"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "85%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0.4"
+            ],
+            "zHopTypes": [
+              "Normal Lift"
+            ],
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.15"
+            ],
+            "minLayerHeight": [
+              "0.05"
+            ],
+            "extruderClearanceRadius": "47",
+            "extruderClearanceHeightToRod": "34",
+            "extruderClearanceHeightToLid": "34",
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "klipper",
+            "defaultPrintProfile": "0.20mm Standard @Elegoo Neptune4Max (0.6 nozzle)",
+            "defaultFilamentProfile": [
+              "Generic PLA @Elegoo"
+            ]
+          },
+          "startGcode": ";ELEGOO NEPTUNE 4 MAX\nM220 S100 ;Set the feed speed to 100%\nM221 S100 ;Set the flow rate to 100%\nM104 S140\nM190 S[bed_temperature_initial_layer_single]\nG90\nG28 ;home\nG1 Z10 F300\nG1 X165 Y0.5 F6000\nG1 Z0 F300\nM109 S[nozzle_temperature_initial_layer]\nG92 E0 ;Reset Extruder\nG1 X165 Y0.5 Z0.4 F300 ;Move to start position\nG1 X265 E30 F400 ;Draw the first line\nG1 Z0.6 F120.0 ;Move to side a little\nG1 X260 F3000\nG92 E0 ;Reset Extruder",
+          "endGcode": ";PRINT_END\nG91 ;Relative positionning\nG1 E-2 F2700 ;Retract a bit\nG1 E-8 X5 Y5 Z3 F3000 ;Retract\nG90 ;Absolute positionning\nG1 X10 Y400 F6000;Finish print\nM106 S0 ;Turn-off fan\nM104 S0 ;Turn-off hotend\nM140 S0 ;Turn-off bed\nM84 X Y E ;Disable all steppers but Z",
+          "pauseGcode": "PAUSE",
+          "changeFilamentGcode": "M600"
+        },
+        {
+          "name": "Elegoo Neptune 4 Max (0.4 nozzle)",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "420x0",
+              "420x420",
+              "0x420"
+            ],
+            "printableHeight": "480",
+            "auxiliaryFan": "1",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "brass",
+            "machineMaxSpeedX": [
+              "300",
+              "300"
+            ],
+            "machineMaxSpeedY": [
+              "300",
+              "300"
+            ],
+            "retractionLength": [
+              "0.7"
+            ],
+            "retractionSpeed": [
+              "60"
+            ],
+            "deretractionSpeed": [
+              "45"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "85%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0.4"
+            ],
+            "zHopTypes": [
+              "Normal Lift"
+            ],
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "extruderClearanceRadius": "47",
+            "extruderClearanceHeightToRod": "34",
+            "extruderClearanceHeightToLid": "34",
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "klipper",
+            "defaultPrintProfile": "0.20mm Standard @Elegoo Neptune4Max (0.6 nozzle)",
+            "defaultFilamentProfile": [
+              "Generic PLA @Elegoo"
+            ]
+          },
+          "startGcode": ";ELEGOO NEPTUNE 4 MAX\nM220 S100 ;Set the feed speed to 100%\nM221 S100 ;Set the flow rate to 100%\nM104 S140\nM190 S[bed_temperature_initial_layer_single]\nG90\nG28 ;home\nG1 Z10 F300\nG1 X165 Y0.5 F6000\nG1 Z0 F300\nM109 S[nozzle_temperature_initial_layer]\nG92 E0 ;Reset Extruder\nG1 X165 Y0.5 Z0.4 F300 ;Move to start position\nG1 X265 E30 F400 ;Draw the first line\nG1 Z0.6 F120.0 ;Move to side a little\nG1 X260 F3000\nG92 E0 ;Reset Extruder",
+          "endGcode": ";PRINT_END\nG91 ;Relative positionning\nG1 E-2 F2700 ;Retract a bit\nG1 E-8 X5 Y5 Z3 F3000 ;Retract\nG90 ;Absolute positionning\nG1 X10 Y400 F6000;Finish print\nM106 S0 ;Turn-off fan\nM104 S0 ;Turn-off hotend\nM140 S0 ;Turn-off bed\nM84 X Y E ;Disable all steppers but Z",
+          "pauseGcode": "PAUSE",
+          "changeFilamentGcode": "M600"
+        },
+        {
+          "name": "Elegoo Neptune 4 Max (0.6 nozzle)",
+          "nozzle": 0.6,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "420x0",
+              "420x420",
+              "0x420"
+            ],
+            "printableHeight": "480",
+            "auxiliaryFan": "1",
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "nozzleType": "brass",
+            "machineMaxSpeedX": [
+              "300",
+              "300"
+            ],
+            "machineMaxSpeedY": [
+              "300",
+              "300"
+            ],
+            "retractionLength": [
+              "0.7"
+            ],
+            "retractionSpeed": [
+              "60"
+            ],
+            "deretractionSpeed": [
+              "45"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "85%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0.4"
+            ],
+            "zHopTypes": [
+              "Normal Lift"
+            ],
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.48"
+            ],
+            "minLayerHeight": [
+              "0.15"
+            ],
+            "extruderClearanceRadius": "47",
+            "extruderClearanceHeightToRod": "34",
+            "extruderClearanceHeightToLid": "34",
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "klipper",
+            "defaultPrintProfile": "0.20mm Standard @Elegoo Neptune4Max (0.6 nozzle)",
+            "defaultFilamentProfile": [
+              "Generic PLA @Elegoo"
+            ]
+          },
+          "startGcode": ";ELEGOO NEPTUNE 4 MAX\nM220 S100 ;Set the feed speed to 100%\nM221 S100 ;Set the flow rate to 100%\nM104 S140\nM190 S[bed_temperature_initial_layer_single]\nG90\nG28 ;home\nG1 Z10 F300\nG1 X165 Y0.5 F6000\nG1 Z0 F300\nM109 S[nozzle_temperature_initial_layer]\nG92 E0 ;Reset Extruder\nG1 X165 Y0.5 Z0.4 F300 ;Move to start position\nG1 X265 E30 F400 ;Draw the first line\nG1 Z0.6 F120.0 ;Move to side a little\nG1 X260 F3000\nG92 E0 ;Reset Extruder",
+          "endGcode": ";PRINT_END\nG91 ;Relative positionning\nG1 E-2 F2700 ;Retract a bit\nG1 E-8 X5 Y5 Z3 F3000 ;Retract\nG90 ;Absolute positionning\nG1 X10 Y400 F6000;Finish print\nM106 S0 ;Turn-off fan\nM104 S0 ;Turn-off hotend\nM140 S0 ;Turn-off bed\nM84 X Y E ;Disable all steppers but Z",
+          "pauseGcode": "PAUSE",
+          "changeFilamentGcode": "M600"
+        },
+        {
+          "name": "Elegoo Neptune 4 Max (0.8 nozzle)",
+          "nozzle": 0.8,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "420x0",
+              "420x420",
+              "0x420"
+            ],
+            "printableHeight": "480",
+            "auxiliaryFan": "1",
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "nozzleType": "brass",
+            "machineMaxSpeedX": [
+              "300",
+              "300"
+            ],
+            "machineMaxSpeedY": [
+              "300",
+              "300"
+            ],
+            "retractionLength": [
+              "0.7"
+            ],
+            "retractionSpeed": [
+              "60"
+            ],
+            "deretractionSpeed": [
+              "45"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "85%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0.4"
+            ],
+            "zHopTypes": [
+              "Normal Lift"
+            ],
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.64"
+            ],
+            "minLayerHeight": [
+              "0.20"
+            ],
+            "extruderClearanceRadius": "47",
+            "extruderClearanceHeightToRod": "34",
+            "extruderClearanceHeightToLid": "34",
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "klipper",
+            "defaultPrintProfile": "0.20mm Standard @Elegoo Neptune4Max (0.6 nozzle)",
+            "defaultFilamentProfile": [
+              "Generic PLA @Elegoo"
+            ]
+          },
+          "startGcode": ";ELEGOO NEPTUNE 4 MAX\nM220 S100 ;Set the feed speed to 100%\nM221 S100 ;Set the flow rate to 100%\nM104 S140\nM190 S[bed_temperature_initial_layer_single]\nG90\nG28 ;home\nG1 Z10 F300\nG1 X165 Y0.5 F6000\nG1 Z0 F300\nM109 S[nozzle_temperature_initial_layer]\nG92 E0 ;Reset Extruder\nG1 X165 Y0.5 Z0.4 F300 ;Move to start position\nG1 X265 E30 F400 ;Draw the first line\nG1 Z0.6 F120.0 ;Move to side a little\nG1 X260 F3000\nG92 E0 ;Reset Extruder",
+          "endGcode": ";PRINT_END\nG91 ;Relative positionning\nG1 E-2 F2700 ;Retract a bit\nG1 E-8 X5 Y5 Z3 F3000 ;Retract\nG90 ;Absolute positionning\nG1 X10 Y400 F6000;Finish print\nM106 S0 ;Turn-off fan\nM104 S0 ;Turn-off hotend\nM140 S0 ;Turn-off bed\nM84 X Y E ;Disable all steppers but Z",
+          "pauseGcode": "PAUSE",
+          "changeFilamentGcode": "M600"
+        },
+        {
+          "name": "Elegoo Neptune 4 Max",
+          "nozzle": 0,
+          "config": {
+            "bedExcludeArea": [
+              "0x0"
+            ],
+            "nozzleDiameter": "0.2;0.4;0.6;0.8"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Elegoo Neptune 4 Plus (0.2 nozzle)",
+          "nozzle": 0.2,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "320x0",
+              "320x320",
+              "0x320"
+            ],
+            "printableHeight": "385",
+            "auxiliaryFan": "1",
+            "nozzleDiameter": [
+              "0.2"
+            ],
+            "nozzleType": "brass",
+            "machineMaxSpeedX": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedY": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedZ": [
+              "20",
+              "20"
+            ],
+            "machineMaxSpeedE": [
+              "60",
+              "25"
+            ],
+            "machineMaxAccelX": [
+              "7000",
+              "7000"
+            ],
+            "machineMaxAccelY": [
+              "7000",
+              "7000"
+            ],
+            "machineMaxAccelZ": [
+              "300",
+              "300"
+            ],
+            "machineMaxAccelExtruding": [
+              "7000",
+              "7000"
+            ],
+            "machineMaxAccelRetracting": [
+              "7000",
+              "7000"
+            ],
+            "machineMaxAccelTravel": [
+              "7000",
+              "7000"
+            ],
+            "retractionLength": [
+              "0.5"
+            ],
+            "retractionSpeed": [
+              "45"
+            ],
+            "deretractionSpeed": [
+              "45"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "85%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0.4"
+            ],
+            "zHopTypes": [
+              "Normal Lift"
+            ],
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.15"
+            ],
+            "minLayerHeight": [
+              "0.05"
+            ],
+            "extruderClearanceRadius": "60",
+            "extruderClearanceHeightToRod": "10",
+            "extruderClearanceHeightToLid": "380",
+            "machineMinExtrudingRate": [
+              "0",
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0",
+              "0"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "klipper",
+            "defaultPrintProfile": "0.20mm Standard @Elegoo Neptune4 Plus (0.2 nozzle)",
+            "defaultFilamentProfile": [
+              "Generic PLA @Elegoo"
+            ]
+          },
+          "startGcode": ";ELEGOO NEPTUNE 4 PLUS\nM220 S100 ;Set the feed speed to 100%\nM221 S100 ;Set the flow rate to 100%\nM104 S140\nM190 S[bed_temperature_initial_layer_single]\nG90\nG28 ;home\nG1 Z10 F300\nG1 X115 Y0.5 F6000\nG1 Z0 F300\nM109 S[nozzle_temperature_initial_layer]\nG92 E0 ;Reset Extruder\nG1 X115 Y0.5 Z0.4 F300 ;Move to start position\nG1 X215.0 E30 F400 ;Draw the first line\nG1 Z0.6 F120.0 ;Move to side a little\nG1 X210 F3000\nG92 E0 ;Reset Extruder",
+          "endGcode": ";PRINT_END\nG91 ;Relative positionning\nG1 E-2 F2700 ;Retract a bit\nG1 E-8 X5 Y5 Z3 F3000 ;Retract\nG90 ;Absolute positionning\nG1 X10 Y300 F6000;Finish print\nM106 S0 ;Turn-off fan\nM104 S0 ;Turn-off hotend\nM140 S0 ;Turn-off bed\nM84 X Y E ;Disable all steppers but Z",
+          "pauseGcode": "PAUSE",
+          "changeFilamentGcode": "M600"
+        },
+        {
+          "name": "Elegoo Neptune 4 Plus (0.4 nozzle)",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "320x0",
+              "320x320",
+              "0x320"
+            ],
+            "printableHeight": "385",
+            "auxiliaryFan": "1",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "brass",
+            "machineMaxSpeedX": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedY": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedZ": [
+              "20",
+              "20"
+            ],
+            "machineMaxSpeedE": [
+              "60",
+              "25"
+            ],
+            "machineMaxAccelX": [
+              "7000",
+              "7000"
+            ],
+            "machineMaxAccelY": [
+              "7000",
+              "7000"
+            ],
+            "machineMaxAccelZ": [
+              "300",
+              "300"
+            ],
+            "machineMaxAccelExtruding": [
+              "7000",
+              "7000"
+            ],
+            "machineMaxAccelRetracting": [
+              "7000",
+              "7000"
+            ],
+            "machineMaxAccelTravel": [
+              "7000",
+              "7000"
+            ],
+            "retractionLength": [
+              "0.5"
+            ],
+            "retractionSpeed": [
+              "45"
+            ],
+            "deretractionSpeed": [
+              "45"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "85%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0.4"
+            ],
+            "zHopTypes": [
+              "Normal Lift"
+            ],
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "extruderClearanceRadius": "60",
+            "extruderClearanceHeightToRod": "10",
+            "extruderClearanceHeightToLid": "380",
+            "machineMinExtrudingRate": [
+              "0",
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0",
+              "0"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "klipper",
+            "defaultPrintProfile": "0.20mm Standard @Elegoo Neptune4 Plus (0.4 nozzle)",
+            "defaultFilamentProfile": [
+              "Generic PLA @Elegoo"
+            ]
+          },
+          "startGcode": ";ELEGOO NEPTUNE 4 PLUS\nM220 S100 ;Set the feed speed to 100%\nM221 S100 ;Set the flow rate to 100%\nM104 S140\nM190 S[bed_temperature_initial_layer_single]\nG90\nG28 ;home\nG1 Z10 F300\nG1 X115 Y0.5 F6000\nG1 Z0 F300\nM109 S[nozzle_temperature_initial_layer]\nG92 E0 ;Reset Extruder\nG1 X115 Y0.5 Z0.4 F300 ;Move to start position\nG1 X215.0 E30 F400 ;Draw the first line\nG1 Z0.6 F120.0 ;Move to side a little\nG1 X210 F3000\nG92 E0 ;Reset Extruder",
+          "endGcode": ";PRINT_END\nG91 ;Relative positionning\nG1 E-2 F2700 ;Retract a bit\nG1 E-8 X5 Y5 Z3 F3000 ;Retract\nG90 ;Absolute positionning\nG1 X10 Y300 F6000;Finish print\nM106 S0 ;Turn-off fan\nM104 S0 ;Turn-off hotend\nM140 S0 ;Turn-off bed\nM84 X Y E ;Disable all steppers but Z",
+          "pauseGcode": "PAUSE",
+          "changeFilamentGcode": "M600"
+        },
+        {
+          "name": "Elegoo Neptune 4 Plus (0.6 nozzle)",
+          "nozzle": 0.6,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "320x0",
+              "320x320",
+              "0x320"
+            ],
+            "printableHeight": "385",
+            "auxiliaryFan": "1",
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "nozzleType": "brass",
+            "machineMaxSpeedX": [
+              "300",
+              "200"
+            ],
+            "machineMaxSpeedY": [
+              "300",
+              "200"
+            ],
+            "machineMaxSpeedZ": [
+              "25",
+              "12"
+            ],
+            "machineMaxSpeedE": [
+              "60",
+              "25"
+            ],
+            "machineMaxAccelX": [
+              "7000",
+              "7000"
+            ],
+            "machineMaxAccelY": [
+              "7000",
+              "7000"
+            ],
+            "machineMaxAccelZ": [
+              "300",
+              "300"
+            ],
+            "machineMaxAccelExtruding": [
+              "7000",
+              "7000"
+            ],
+            "machineMaxAccelRetracting": [
+              "7000",
+              "7000"
+            ],
+            "machineMaxAccelTravel": [
+              "7000",
+              "7000"
+            ],
+            "retractionLength": [
+              "0.5"
+            ],
+            "retractionSpeed": [
+              "45"
+            ],
+            "deretractionSpeed": [
+              "45"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "85%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0.4"
+            ],
+            "zHopTypes": [
+              "Normal Lift"
+            ],
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.48"
+            ],
+            "minLayerHeight": [
+              "0.15"
+            ],
+            "extruderClearanceRadius": "60",
+            "extruderClearanceHeightToRod": "10",
+            "extruderClearanceHeightToLid": "380",
+            "machineMinExtrudingRate": [
+              "0",
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0",
+              "0"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "klipper",
+            "defaultPrintProfile": "0.20mm Standard @Elegoo Neptune4 Plus (0.6 nozzle)",
+            "defaultFilamentProfile": [
+              "Generic PLA @Elegoo"
+            ]
+          },
+          "startGcode": ";ELEGOO NEPTUNE 4 PLUS\nM220 S100 ;Set the feed speed to 100%\nM221 S100 ;Set the flow rate to 100%\nM104 S140\nM190 S[bed_temperature_initial_layer_single]\nG90\nG28 ;home\nG1 Z10 F300\nG1 X115 Y0.5 F6000\nG1 Z0 F300\nM109 S[nozzle_temperature_initial_layer]\nG92 E0 ;Reset Extruder\nG1 X115 Y0.5 Z0.4 F300 ;Move to start position\nG1 X215.0 E30 F400 ;Draw the first line\nG1 Z0.6 F120.0 ;Move to side a little\nG1 X210 F3000\nG92 E0 ;Reset Extruder",
+          "endGcode": ";PRINT_END\nG91 ;Relative positionning\nG1 E-2 F2700 ;Retract a bit\nG1 E-8 X5 Y5 Z3 F3000 ;Retract\nG90 ;Absolute positionning\nG1 X10 Y300 F6000;Finish print\nM106 S0 ;Turn-off fan\nM104 S0 ;Turn-off hotend\nM140 S0 ;Turn-off bed\nM84 X Y E ;Disable all steppers but Z",
+          "pauseGcode": "PAUSE",
+          "changeFilamentGcode": "M600"
+        },
+        {
+          "name": "Elegoo Neptune 4 Plus (0.8 nozzle)",
+          "nozzle": 0.8,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "320x0",
+              "320x320",
+              "0x320"
+            ],
+            "printableHeight": "385",
+            "auxiliaryFan": "1",
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "nozzleType": "brass",
+            "machineMaxSpeedX": [
+              "300",
+              "200"
+            ],
+            "machineMaxSpeedY": [
+              "300",
+              "200"
+            ],
+            "machineMaxSpeedZ": [
+              "25",
+              "12"
+            ],
+            "machineMaxSpeedE": [
+              "60",
+              "25"
+            ],
+            "machineMaxAccelX": [
+              "7000",
+              "7000"
+            ],
+            "machineMaxAccelY": [
+              "7000",
+              "7000"
+            ],
+            "machineMaxAccelZ": [
+              "300",
+              "300"
+            ],
+            "machineMaxAccelExtruding": [
+              "7000",
+              "7000"
+            ],
+            "machineMaxAccelRetracting": [
+              "7000",
+              "7000"
+            ],
+            "machineMaxAccelTravel": [
+              "7000",
+              "7000"
+            ],
+            "retractionLength": [
+              "0.5"
+            ],
+            "retractionSpeed": [
+              "45"
+            ],
+            "deretractionSpeed": [
+              "45"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "85%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0.4"
+            ],
+            "zHopTypes": [
+              "Normal Lift"
+            ],
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.64"
+            ],
+            "minLayerHeight": [
+              "0.20"
+            ],
+            "extruderClearanceRadius": "60",
+            "extruderClearanceHeightToRod": "10",
+            "extruderClearanceHeightToLid": "380",
+            "machineMinExtrudingRate": [
+              "0",
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0",
+              "0"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "klipper",
+            "defaultPrintProfile": "0.20mm Standard @Elegoo Neptune4 Plus (0.8 nozzle)",
+            "defaultFilamentProfile": [
+              "Generic PLA @Elegoo"
+            ]
+          },
+          "startGcode": ";ELEGOO NEPTUNE 4 PLUS\nM220 S100 ;Set the feed speed to 100%\nM221 S100 ;Set the flow rate to 100%\nM104 S140\nM190 S[bed_temperature_initial_layer_single]\nG90\nG28 ;home\nG1 Z10 F300\nG1 X115 Y0.5 F6000\nG1 Z0 F300\nM109 S[nozzle_temperature_initial_layer]\nG92 E0 ;Reset Extruder\nG1 X115 Y0.5 Z0.4 F300 ;Move to start position\nG1 X215.0 E30 F400 ;Draw the first line\nG1 Z0.6 F120.0 ;Move to side a little\nG1 X210 F3000\nG92 E0 ;Reset Extruder",
+          "endGcode": ";PRINT_END\nG91 ;Relative positionning\nG1 E-2 F2700 ;Retract a bit\nG1 E-8 X5 Y5 Z3 F3000 ;Retract\nG90 ;Absolute positionning\nG1 X10 Y300 F6000;Finish print\nM106 S0 ;Turn-off fan\nM104 S0 ;Turn-off hotend\nM140 S0 ;Turn-off bed\nM84 X Y E ;Disable all steppers but Z",
+          "pauseGcode": "PAUSE",
+          "changeFilamentGcode": "M600"
+        },
+        {
+          "name": "Elegoo Neptune 4 Plus",
+          "nozzle": 0,
+          "config": {
+            "bedExcludeArea": [
+              "0x0"
+            ],
+            "nozzleDiameter": "0.2;0.4;0.6;0.8"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Elegoo Neptune 4 Pro (0.2 nozzle)",
+          "nozzle": 0.2,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "235x0",
+              "235x230",
+              "0x230"
+            ],
+            "printableHeight": "265",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.2"
+            ],
+            "nozzleType": "hardened_steel",
+            "retractionLength": [
+              "0.8"
+            ],
+            "retractionSpeed": [
+              "60"
+            ],
+            "deretractionSpeed": [
+              "45"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "85%"
+            ],
+            "maxLayerHeight": [
+              "0.16"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "klipper",
+            "defaultPrintProfile": "0.20mm Standard @Elegoo Neptune4Pro (0.2 nozzle)",
+            "defaultFilamentProfile": [
+              "Generic PLA @Elegoo"
+            ]
+          },
+          "startGcode": ";ELEGOO NEPTUNE 4 PRO\nM220 S100 ;Set the feed speed to 100%\nM221 S100 ;Set the flow rate to 100%\nM104 S140\nM190 S[bed_temperature_initial_layer_single]\nG90\nG28 ;home\nG1 Z10 F300\nG1 X67.5 Y0 F6000\nG1 Z0 F300\nM109 S[nozzle_temperature_initial_layer]\nG92 E0 ;Reset Extruder\nG1 X67.5 Y0 Z0.4 F300 ;Move to start position\nG1 X167.5 E30 F400 ;Draw the first line\nG1 Z0.6 F120.0 ;Move to side a little\nG1 X162.5 F3000\nG92 E0 ;Reset Extruder",
+          "endGcode": ";PRINT END\nG91 ;Relative positionning\nG1 E-2 F2700 ;Retract a bit\nG1 E-8 X5 Y5 Z3 F3000 ;Retract\nG90 ;Absolute positionning\nG1 X10 Y220 F6000;Finish print\nM106 S0 ;Turn-off fan\nM104 S0 ;Turn-off hotend\nM140 S0 ;Turn-off bed\nM84 X Y E ;Disable all steppers but Z",
+          "pauseGcode": "PAUSE",
+          "changeFilamentGcode": "M600"
+        },
+        {
+          "name": "Elegoo Neptune 4 Pro (0.4 nozzle)",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "235x0",
+              "235x230",
+              "0x230"
+            ],
+            "printableHeight": "265",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "hardened_steel",
+            "retractionLength": [
+              "0.8"
+            ],
+            "retractionSpeed": [
+              "60"
+            ],
+            "deretractionSpeed": [
+              "45"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "85%"
+            ],
+            "maxLayerHeight": [
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "klipper",
+            "defaultPrintProfile": "0.20mm Standard @Elegoo Neptune4Pro (0.4 nozzle)",
+            "defaultFilamentProfile": [
+              "Generic PLA @Elegoo"
+            ]
+          },
+          "startGcode": ";ELEGOO NEPTUNE 4 PRO\nM220 S100 ;Set the feed speed to 100%\nM221 S100 ;Set the flow rate to 100%\nM104 S140\nM190 S[bed_temperature_initial_layer_single]\nG90\nG28 ;home\nG1 Z10 F300\nG1 X67.5 Y0 F6000\nG1 Z0 F300\nM109 S[nozzle_temperature_initial_layer]\nG92 E0 ;Reset Extruder\nG1 X67.5 Y0 Z0.4 F300 ;Move to start position\nG1 X167.5 E30 F400 ;Draw the first line\nG1 Z0.6 F120.0 ;Move to side a little\nG1 X162.5 F3000\nG92 E0 ;Reset Extruder",
+          "endGcode": ";PRINT END\nG91 ;Relative positionning\nG1 E-2 F2700 ;Retract a bit\nG1 E-8 X5 Y5 Z3 F3000 ;Retract\nG90 ;Absolute positionning\nG1 X10 Y220 F6000;Finish print\nM106 S0 ;Turn-off fan\nM104 S0 ;Turn-off hotend\nM140 S0 ;Turn-off bed\nM84 X Y E ;Disable all steppers but Z",
+          "pauseGcode": "PAUSE",
+          "changeFilamentGcode": "M600"
+        },
+        {
+          "name": "Elegoo Neptune 4 Pro (0.6 nozzle)",
+          "nozzle": 0.6,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "235x0",
+              "235x230",
+              "0x230"
+            ],
+            "printableHeight": "265",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "nozzleType": "hardened_steel",
+            "retractionLength": [
+              "2.5"
+            ],
+            "retractionSpeed": [
+              "60"
+            ],
+            "deretractionSpeed": [
+              "45"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "85%"
+            ],
+            "maxLayerHeight": [
+              "0.4"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "klipper",
+            "defaultPrintProfile": "0.20mm Standard @Elegoo Neptune4Pro (0.6 nozzle)",
+            "defaultFilamentProfile": [
+              "Generic PLA @Elegoo"
+            ]
+          },
+          "startGcode": ";ELEGOO NEPTUNE 4 PRO\nM220 S100 ;Set the feed speed to 100%\nM221 S100 ;Set the flow rate to 100%\nM104 S140\nM190 S[bed_temperature_initial_layer_single]\nG90\nG28 ;home\nG1 Z10 F300\nG1 X67.5 Y0 F6000\nG1 Z0 F300\nM109 S[nozzle_temperature_initial_layer]\nG92 E0 ;Reset Extruder\nG1 X67.5 Y0 Z0.4 F300 ;Move to start position\nG1 X167.5 E30 F400 ;Draw the first line\nG1 Z0.6 F120.0 ;Move to side a little\nG1 X162.5 F3000\nG92 E0 ;Reset Extruder",
+          "endGcode": ";PRINT END\nG91 ;Relative positionning\nG1 E-2 F2700 ;Retract a bit\nG1 E-8 X5 Y5 Z3 F3000 ;Retract\nG90 ;Absolute positionning\nG1 X10 Y220 F6000;Finish print\nM106 S0 ;Turn-off fan\nM104 S0 ;Turn-off hotend\nM140 S0 ;Turn-off bed\nM84 X Y E ;Disable all steppers but Z",
+          "pauseGcode": "PAUSE",
+          "changeFilamentGcode": "M600"
+        },
+        {
+          "name": "Elegoo Neptune 4 Pro (0.8 nozzle)",
+          "nozzle": 0.8,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "235x0",
+              "235x230",
+              "0x230"
+            ],
+            "printableHeight": "265",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "nozzleType": "hardened_steel",
+            "machineMaxSpeedX": [
+              "500",
+              "200"
+            ],
+            "machineMaxSpeedY": [
+              "500",
+              "200"
+            ],
+            "machineMaxSpeedZ": [
+              "12",
+              "12"
+            ],
+            "machineMaxSpeedE": [
+              "25",
+              "25"
+            ],
+            "machineMaxAccelX": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxAccelY": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxAccelZ": [
+              "500",
+              "200"
+            ],
+            "machineMaxAccelExtruding": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxAccelRetracting": [
+              "5000",
+              "5000"
+            ],
+            "machineMaxAccelTravel": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxJerkX": [
+              "12",
+              "12"
+            ],
+            "machineMaxJerkY": [
+              "12",
+              "12"
+            ],
+            "machineMaxJerkZ": [
+              "0.2",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "2.5",
+              "2.5"
+            ],
+            "retractionLength": [
+              "0.8"
+            ],
+            "retractionSpeed": [
+              "60"
+            ],
+            "deretractionSpeed": [
+              "45"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "85%"
+            ],
+            "maxLayerHeight": [
+              "0.6"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "klipper",
+            "defaultPrintProfile": "0.20mm Standard @Elegoo Neptune4Pro (0.8 nozzle)",
+            "defaultFilamentProfile": [
+              "Generic PLA @Elegoo"
+            ]
+          },
+          "startGcode": ";ELEGOO NEPTUNE 4 PRO\nM220 S100 ;Set the feed speed to 100%\nM221 S100 ;Set the flow rate to 100%\nM104 S140\nM190 S[bed_temperature_initial_layer_single]\nG90\nG28 ;home\nG1 Z10 F300\nG1 X67.5 Y0 F6000\nG1 Z0 F300\nM109 S[nozzle_temperature_initial_layer]\nG92 E0 ;Reset Extruder\nG1 X67.5 Y0 Z0.4 F300 ;Move to start position\nG1 X167.5 E30 F400 ;Draw the first line\nG1 Z0.6 F120.0 ;Move to side a little\nG1 X162.5 F3000\nG92 E0 ;Reset Extruder",
+          "endGcode": ";PRINT END\nG91 ;Relative positionning\nG1 E-2 F2700 ;Retract a bit\nG1 E-8 X5 Y5 Z3 F3000 ;Retract\nG90 ;Absolute positionning\nG1 X10 Y220 F6000;Finish print\nM106 S0 ;Turn-off fan\nM104 S0 ;Turn-off hotend\nM140 S0 ;Turn-off bed\nM84 X Y E ;Disable all steppers but Z",
+          "pauseGcode": "PAUSE",
+          "changeFilamentGcode": "M600"
+        },
+        {
+          "name": "Elegoo Neptune 4 Pro",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.2;0.4;0.6;0.8"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Elegoo Neptune 4",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.2;0.4;0.6;0.8"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Elegoo Neptune X 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "220x0",
+              "220x220",
+              "0x220"
+            ],
+            "printableHeight": "300",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "hardened_steel",
+            "machineMaxSpeedX": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedY": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedZ": [
+              "10",
+              "10"
+            ],
+            "machineMaxSpeedE": [
+              "60",
+              "60"
+            ],
+            "machineMaxAccelX": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelY": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelZ": [
+              "100",
+              "100"
+            ],
+            "machineMaxAccelExtruding": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelRetracting": [
+              "1000",
+              "1000"
+            ],
+            "machineMaxAccelTravel": [
+              "500",
+              "500"
+            ],
+            "machineMaxJerkX": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkY": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkZ": [
+              "0.4",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "5",
+              "5"
+            ],
+            "retractionLength": [
+              "2.5"
+            ],
+            "retractionSpeed": [
+              "60"
+            ],
+            "deretractionSpeed": [
+              "40"
+            ],
+            "retractionMinimumTravel": [
+              "2"
+            ],
+            "retractBeforeWipe": [
+              "70%"
+            ],
+            "maxLayerHeight": [
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "defaultPrintProfile": "0.20mm Standard @Elegoo NeptuneX",
+            "defaultFilamentProfile": [
+              "Generic PLA @Elegoo"
+            ]
+          },
+          "startGcode": "M413 S0 ; disable Power Loss Recovery\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\nM104 S120 ; set temporary nozzle temp to prevent oozing during homing and auto bed leveling\nM140 S[bed_temperature_initial_layer_single] ; set final bed temp\nG4 S10 ; allow partial nozzle warmup\nG28 ; home all axis\n;G29 ; run abl mesh\nM420 S1 ; load mesh\nG1 Z50 F240\nG1 X2 Y10 F3000\nM104 S[nozzle_temperature_initial_layer] ; set final nozzle temp\nM190 S[bed_temperature_initial_layer_single] ; wait for bed temp to stabilize\nM109 S[nozzle_temperature_initial_layer] ; wait for nozzle temp to stabilize\nG1 Z0.28 F240\nG92 E0\nG1 Y140 E10 F1500 ; prime the nozzle\nG1 X2.3 F5000\nG92 E0\nG1 Y10 E10 F1200 ; prime the nozzle\nG92 E0",
+          "endGcode": "{if max_layer_z < printable_height}G1 Z{z_offset+min(max_layer_z+2, printable_height)} F600 ; Move print head up{endif}\nG1 X5 Y{print_bed_max[1]*0.8} F{travel_speed*60} ; present print\n{if max_layer_z < printable_height-10}G1 Z{z_offset+min(max_layer_z+70, printable_height-10)} F600 ; Move print head further up{endif}\n{if max_layer_z < printable_height*0.6}G1 Z{printable_height*0.6} F600 ; Move print head further up{endif}\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors",
+          "pauseGcode": "M0",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Elegoo Neptune X",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.4"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "Elegoo-Neptune-2",
+      "name": "Elegoo Neptune 2",
+      "nozzleSizes": [
+        0.4
+      ],
+      "bedModel": "elegoo_neptune2_buildplate_model.stl",
+      "bedTexture": "elegoo_neptune2_buildplate_texture.png",
+      "defaultMaterials": [
+        "Generic ABS @Elegoo",
+        "Generic PETG @Elegoo",
+        "Generic PLA @Elegoo"
+      ],
+      "variants": [
+        {
+          "name": "Elegoo Neptune 2 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "220x0",
+              "220x220",
+              "0x220"
+            ],
+            "printableHeight": "250",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "hardened_steel",
+            "machineMaxSpeedX": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedY": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedZ": [
+              "10",
+              "10"
+            ],
+            "machineMaxSpeedE": [
+              "60",
+              "60"
+            ],
+            "machineMaxAccelX": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelY": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelZ": [
+              "100",
+              "100"
+            ],
+            "machineMaxAccelExtruding": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelRetracting": [
+              "1000",
+              "1000"
+            ],
+            "machineMaxAccelTravel": [
+              "500",
+              "500"
+            ],
+            "machineMaxJerkX": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkY": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkZ": [
+              "0.4",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "5",
+              "5"
+            ],
+            "retractionLength": [
+              "2.5"
+            ],
+            "retractionSpeed": [
+              "60"
+            ],
+            "deretractionSpeed": [
+              "40"
+            ],
+            "retractionMinimumTravel": [
+              "2"
+            ],
+            "retractBeforeWipe": [
+              "70%"
+            ],
+            "maxLayerHeight": [
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "defaultPrintProfile": "0.20mm Standard @Elegoo Neptune2",
+            "defaultFilamentProfile": [
+              "Generic PLA @Elegoo"
+            ]
+          },
+          "startGcode": "M413 S0 ; disable Power Loss Recovery\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\nM104 S120 ; set temporary nozzle temp to prevent oozing during homing and auto bed leveling\nM140 S[bed_temperature_initial_layer_single] ; set final bed temp\nG4 S10 ; allow partial nozzle warmup\nG28 ; home all axis\n;G29 ; run abl mesh\nM420 S1 ; load mesh\nG1 Z50 F240\nG1 X2 Y10 F3000\nM104 S[nozzle_temperature_initial_layer] ; set final nozzle temp\nM190 S[bed_temperature_initial_layer_single] ; wait for bed temp to stabilize\nM109 S[nozzle_temperature_initial_layer] ; wait for nozzle temp to stabilize\nG1 Z0.28 F240\nG92 E0\nG1 Y140 E10 F1500 ; prime the nozzle\nG1 X2.3 F5000\nG92 E0\nG1 Y10 E10 F1200 ; prime the nozzle\nG92 E0",
+          "endGcode": "{if max_layer_z < printable_height}G1 Z{z_offset+min(max_layer_z+2, printable_height)} F600 ; Move print head up{endif}\nG1 X5 Y{print_bed_max[1]*0.8} F{travel_speed*60} ; present print\n{if max_layer_z < printable_height-10}G1 Z{z_offset+min(max_layer_z+70, printable_height-10)} F600 ; Move print head further up{endif}\n{if max_layer_z < printable_height*0.6}G1 Z{printable_height*0.6} F600 ; Move print head further up{endif}\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors",
+          "pauseGcode": "M0",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Elegoo Neptune 2D 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "220x0",
+              "220x220",
+              "0x220"
+            ],
+            "printableHeight": "250",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4",
+              "0.4"
+            ],
+            "nozzleType": "hardened_steel",
+            "machineMaxSpeedX": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedY": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedZ": [
+              "10",
+              "10"
+            ],
+            "machineMaxSpeedE": [
+              "60",
+              "60"
+            ],
+            "machineMaxAccelX": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelY": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelZ": [
+              "100",
+              "100"
+            ],
+            "machineMaxAccelExtruding": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelRetracting": [
+              "1000",
+              "1000"
+            ],
+            "machineMaxAccelTravel": [
+              "500",
+              "500"
+            ],
+            "machineMaxJerkX": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkY": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkZ": [
+              "0.4",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "5",
+              "5"
+            ],
+            "retractionLength": [
+              "5",
+              "5"
+            ],
+            "retractionSpeed": [
+              "60",
+              "60"
+            ],
+            "deretractionSpeed": [
+              "40",
+              "40"
+            ],
+            "retractionMinimumTravel": [
+              "2",
+              "2"
+            ],
+            "retractBeforeWipe": [
+              "70%",
+              "70%"
+            ],
+            "maxLayerHeight": [
+              "0.32",
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.08",
+              "0.08"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "defaultPrintProfile": "0.20mm Standard @Elegoo Neptune2D",
+            "defaultFilamentProfile": [
+              "Generic PLA @Elegoo"
+            ]
+          },
+          "startGcode": "T[initial_tool] ; set active extruder\nM413 S0 ; disable Power Loss Recovery\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\nM140 S[bed_temperature_initial_layer_single] ; set final bed temp\nM104 S150 ; set temporary nozzle temp to prevent oozing during homing and auto bed leveling\nG4 S10 ; allow partial nozzle warmup\nG28 ; home all axis\n;G29 ; auto bed levelling - remove ; at beginning of line to enable\n;M420 S1 ; enable mesh - remove ; at beginning of line to enable\nG1 Z50 F240\nG1 X2 Y10 F3000\nM104 S[nozzle_temperature_initial_layer] ; set final nozzle temp\nM190 S[bed_temperature_initial_layer_single] ; wait for bed temp to stabilize\nM109 S[nozzle_temperature_initial_layer] ; wait for nozzle temp to stabilize\nG1 Z0.28 F240 ; move down to prime nozzle\nG92 E0 ; reset extruder\nG1 E90 ; load filament\nG92 E0 ; reset extruder\nG1 Y140 E10 F1500 ; prime the nozzle\nG1 X2.3 F5000 ; move over for second prime line\nG92 E0 ; reset extruder\nG1 Y10 E10 F1200 ; prime the nozzle\nG92 E0 ; reset extruder",
+          "endGcode": "{if max_layer_z < printable_height}G1 Z{z_offset+min(max_layer_z+2, printable_height)} F600 ; Move print head up{endif}\nG1 X5 Y{print_bed_max[1]*0.8} F{travel_speed*60} ; present print\nG1 E-80 F2000 ; unload filament\n{if max_layer_z < printable_height-10}G1 Z{z_offset+min(max_layer_z+70, printable_height-10)} F600 ; Move print head further up{endif}\n{if max_layer_z < printable_height*0.6}G1 Z{printable_height*0.6} F600 ; Move print head further up{endif}\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors",
+          "pauseGcode": "M0",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Elegoo Neptune 2D",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.4"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Elegoo Neptune 2S 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "220x0",
+              "220x220",
+              "0x220"
+            ],
+            "printableHeight": "250",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "hardened_steel",
+            "machineMaxSpeedX": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedY": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedZ": [
+              "10",
+              "10"
+            ],
+            "machineMaxSpeedE": [
+              "60",
+              "60"
+            ],
+            "machineMaxAccelX": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelY": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelZ": [
+              "100",
+              "100"
+            ],
+            "machineMaxAccelExtruding": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelRetracting": [
+              "1000",
+              "1000"
+            ],
+            "machineMaxAccelTravel": [
+              "500",
+              "500"
+            ],
+            "machineMaxJerkX": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkY": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkZ": [
+              "0.4",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "5",
+              "5"
+            ],
+            "retractionLength": [
+              "2.5"
+            ],
+            "retractionSpeed": [
+              "60"
+            ],
+            "deretractionSpeed": [
+              "40"
+            ],
+            "retractionMinimumTravel": [
+              "2"
+            ],
+            "retractBeforeWipe": [
+              "70%"
+            ],
+            "maxLayerHeight": [
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "defaultPrintProfile": "0.20mm Standard @Elegoo Neptune2S",
+            "defaultFilamentProfile": [
+              "Generic PLA @Elegoo"
+            ]
+          },
+          "startGcode": "M413 S0 ; disable Power Loss Recovery\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\nM104 S120 ; set temporary nozzle temp to prevent oozing during homing and auto bed leveling\nM140 S[bed_temperature_initial_layer_single] ; set final bed temp\nG4 S10 ; allow partial nozzle warmup\nG28 ; home all axis\n;G29 ; run abl mesh\nM420 S1 ; load mesh\nG1 Z50 F240\nG1 X2 Y10 F3000\nM104 S[nozzle_temperature_initial_layer] ; set final nozzle temp\nM190 S[bed_temperature_initial_layer_single] ; wait for bed temp to stabilize\nM109 S[nozzle_temperature_initial_layer] ; wait for nozzle temp to stabilize\nG1 Z0.28 F240\nG92 E0\nG1 Y140 E10 F1500 ; prime the nozzle\nG1 X2.3 F5000\nG92 E0\nG1 Y10 E10 F1200 ; prime the nozzle\nG92 E0",
+          "endGcode": "{if max_layer_z < printable_height}G1 Z{z_offset+min(max_layer_z+2, printable_height)} F600 ; Move print head up{endif}\nG1 X5 Y{print_bed_max[1]*0.8} F{travel_speed*60} ; present print\n{if max_layer_z < printable_height-10}G1 Z{z_offset+min(max_layer_z+70, printable_height-10)} F600 ; Move print head further up{endif}\n{if max_layer_z < printable_height*0.6}G1 Z{printable_height*0.6} F600 ; Move print head further up{endif}\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors",
+          "pauseGcode": "M0",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Elegoo Neptune 2S",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.4"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "Elegoo-Neptune-2D",
+      "name": "Elegoo Neptune 2D",
+      "nozzleSizes": [
+        0.4
+      ],
+      "bedModel": "elegoo_neptune2d_buildplate_model.stl",
+      "bedTexture": "elegoo_neptune2d_buildplate_texture.png",
+      "defaultMaterials": [
+        "Generic ABS @Elegoo",
+        "Generic PETG @Elegoo",
+        "Generic PLA @Elegoo"
+      ],
+      "variants": [
+        {
+          "name": "Elegoo Neptune 2D 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "220x0",
+              "220x220",
+              "0x220"
+            ],
+            "printableHeight": "250",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4",
+              "0.4"
+            ],
+            "nozzleType": "hardened_steel",
+            "machineMaxSpeedX": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedY": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedZ": [
+              "10",
+              "10"
+            ],
+            "machineMaxSpeedE": [
+              "60",
+              "60"
+            ],
+            "machineMaxAccelX": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelY": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelZ": [
+              "100",
+              "100"
+            ],
+            "machineMaxAccelExtruding": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelRetracting": [
+              "1000",
+              "1000"
+            ],
+            "machineMaxAccelTravel": [
+              "500",
+              "500"
+            ],
+            "machineMaxJerkX": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkY": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkZ": [
+              "0.4",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "5",
+              "5"
+            ],
+            "retractionLength": [
+              "5",
+              "5"
+            ],
+            "retractionSpeed": [
+              "60",
+              "60"
+            ],
+            "deretractionSpeed": [
+              "40",
+              "40"
+            ],
+            "retractionMinimumTravel": [
+              "2",
+              "2"
+            ],
+            "retractBeforeWipe": [
+              "70%",
+              "70%"
+            ],
+            "maxLayerHeight": [
+              "0.32",
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.08",
+              "0.08"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "defaultPrintProfile": "0.20mm Standard @Elegoo Neptune2D",
+            "defaultFilamentProfile": [
+              "Generic PLA @Elegoo"
+            ]
+          },
+          "startGcode": "T[initial_tool] ; set active extruder\nM413 S0 ; disable Power Loss Recovery\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\nM140 S[bed_temperature_initial_layer_single] ; set final bed temp\nM104 S150 ; set temporary nozzle temp to prevent oozing during homing and auto bed leveling\nG4 S10 ; allow partial nozzle warmup\nG28 ; home all axis\n;G29 ; auto bed levelling - remove ; at beginning of line to enable\n;M420 S1 ; enable mesh - remove ; at beginning of line to enable\nG1 Z50 F240\nG1 X2 Y10 F3000\nM104 S[nozzle_temperature_initial_layer] ; set final nozzle temp\nM190 S[bed_temperature_initial_layer_single] ; wait for bed temp to stabilize\nM109 S[nozzle_temperature_initial_layer] ; wait for nozzle temp to stabilize\nG1 Z0.28 F240 ; move down to prime nozzle\nG92 E0 ; reset extruder\nG1 E90 ; load filament\nG92 E0 ; reset extruder\nG1 Y140 E10 F1500 ; prime the nozzle\nG1 X2.3 F5000 ; move over for second prime line\nG92 E0 ; reset extruder\nG1 Y10 E10 F1200 ; prime the nozzle\nG92 E0 ; reset extruder",
+          "endGcode": "{if max_layer_z < printable_height}G1 Z{z_offset+min(max_layer_z+2, printable_height)} F600 ; Move print head up{endif}\nG1 X5 Y{print_bed_max[1]*0.8} F{travel_speed*60} ; present print\nG1 E-80 F2000 ; unload filament\n{if max_layer_z < printable_height-10}G1 Z{z_offset+min(max_layer_z+70, printable_height-10)} F600 ; Move print head further up{endif}\n{if max_layer_z < printable_height*0.6}G1 Z{printable_height*0.6} F600 ; Move print head further up{endif}\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors",
+          "pauseGcode": "M0",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "Elegoo-Neptune-2S",
+      "name": "Elegoo Neptune 2S",
+      "nozzleSizes": [
+        0.4
+      ],
+      "bedModel": "elegoo_neptune2s_buildplate_model.stl",
+      "bedTexture": "elegoo_neptune2s_buildplate_texture.png",
+      "defaultMaterials": [
+        "Generic ABS @Elegoo",
+        "Generic PETG @Elegoo",
+        "Generic PLA @Elegoo"
+      ],
+      "variants": [
+        {
+          "name": "Elegoo Neptune 2S 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "220x0",
+              "220x220",
+              "0x220"
+            ],
+            "printableHeight": "250",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "hardened_steel",
+            "machineMaxSpeedX": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedY": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedZ": [
+              "10",
+              "10"
+            ],
+            "machineMaxSpeedE": [
+              "60",
+              "60"
+            ],
+            "machineMaxAccelX": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelY": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelZ": [
+              "100",
+              "100"
+            ],
+            "machineMaxAccelExtruding": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelRetracting": [
+              "1000",
+              "1000"
+            ],
+            "machineMaxAccelTravel": [
+              "500",
+              "500"
+            ],
+            "machineMaxJerkX": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkY": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkZ": [
+              "0.4",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "5",
+              "5"
+            ],
+            "retractionLength": [
+              "2.5"
+            ],
+            "retractionSpeed": [
+              "60"
+            ],
+            "deretractionSpeed": [
+              "40"
+            ],
+            "retractionMinimumTravel": [
+              "2"
+            ],
+            "retractBeforeWipe": [
+              "70%"
+            ],
+            "maxLayerHeight": [
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "defaultPrintProfile": "0.20mm Standard @Elegoo Neptune2S",
+            "defaultFilamentProfile": [
+              "Generic PLA @Elegoo"
+            ]
+          },
+          "startGcode": "M413 S0 ; disable Power Loss Recovery\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\nM104 S120 ; set temporary nozzle temp to prevent oozing during homing and auto bed leveling\nM140 S[bed_temperature_initial_layer_single] ; set final bed temp\nG4 S10 ; allow partial nozzle warmup\nG28 ; home all axis\n;G29 ; run abl mesh\nM420 S1 ; load mesh\nG1 Z50 F240\nG1 X2 Y10 F3000\nM104 S[nozzle_temperature_initial_layer] ; set final nozzle temp\nM190 S[bed_temperature_initial_layer_single] ; wait for bed temp to stabilize\nM109 S[nozzle_temperature_initial_layer] ; wait for nozzle temp to stabilize\nG1 Z0.28 F240\nG92 E0\nG1 Y140 E10 F1500 ; prime the nozzle\nG1 X2.3 F5000\nG92 E0\nG1 Y10 E10 F1200 ; prime the nozzle\nG92 E0",
+          "endGcode": "{if max_layer_z < printable_height}G1 Z{z_offset+min(max_layer_z+2, printable_height)} F600 ; Move print head up{endif}\nG1 X5 Y{print_bed_max[1]*0.8} F{travel_speed*60} ; present print\n{if max_layer_z < printable_height-10}G1 Z{z_offset+min(max_layer_z+70, printable_height-10)} F600 ; Move print head further up{endif}\n{if max_layer_z < printable_height*0.6}G1 Z{printable_height*0.6} F600 ; Move print head further up{endif}\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors",
+          "pauseGcode": "M0",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "Elegoo-Neptune-3",
+      "name": "Elegoo Neptune 3",
+      "nozzleSizes": [
+        0.4
+      ],
+      "bedModel": "elegoo_neptune3_buildplate_model.stl",
+      "bedTexture": "elegoo_neptune3_buildplate_texture.png",
+      "defaultMaterials": [
+        "Generic ABS @Elegoo",
+        "Generic PETG @Elegoo",
+        "Generic PLA @Elegoo"
+      ],
+      "variants": [
+        {
+          "name": "Elegoo Neptune 3 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "220x0",
+              "220x220",
+              "0x220"
+            ],
+            "printableHeight": "280",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "hardened_steel",
+            "machineMaxSpeedX": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedY": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedZ": [
+              "10",
+              "10"
+            ],
+            "machineMaxSpeedE": [
+              "60",
+              "60"
+            ],
+            "machineMaxAccelX": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelY": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelZ": [
+              "100",
+              "100"
+            ],
+            "machineMaxAccelExtruding": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelRetracting": [
+              "1000",
+              "1000"
+            ],
+            "machineMaxAccelTravel": [
+              "500",
+              "500"
+            ],
+            "machineMaxJerkX": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkY": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkZ": [
+              "0.4",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "5",
+              "5"
+            ],
+            "retractionLength": [
+              "5"
+            ],
+            "deretractionSpeed": [
+              "0"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "85%"
+            ],
+            "maxLayerHeight": [
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "defaultPrintProfile": "0.20mm Standard @Elegoo Neptune3",
+            "defaultFilamentProfile": [
+              "Generic PLA @Elegoo"
+            ]
+          },
+          "startGcode": "M413 S0 ; disable Power Loss Recovery\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\nM104 S120 ; set temporary nozzle temp to prevent oozing during homing and auto bed leveling\nM140 S[bed_temperature_initial_layer_single] ; set final bed temp\nG4 S10 ; allow partial nozzle warmup\nG28 ; home all axis\n;G29 ; run abl mesh\nM420 S1 ; load mesh\nG1 Z50 F240\nG1 X2 Y10 F3000\nM104 S[nozzle_temperature_initial_layer] ; set final nozzle temp\nM190 S[bed_temperature_initial_layer_single] ; wait for bed temp to stabilize\nM109 S[nozzle_temperature_initial_layer] ; wait for nozzle temp to stabilize\nG1 Z0.28 F240\nG92 E0\nG1 Y140 E10 F1500 ; prime the nozzle\nG1 X2.3 F5000\nG92 E0\nG1 Y10 E10 F1200 ; prime the nozzle\nG92 E0",
+          "endGcode": "{if max_layer_z < printable_height}G1 Z{z_offset+min(max_layer_z+2, printable_height)} F600 ; Move print head up{endif}\nG1 X5 Y{print_bed_max[1]*0.8} F{travel_speed*60} ; present print\n{if max_layer_z < printable_height-10}G1 Z{z_offset+min(max_layer_z+70, printable_height-10)} F600 ; Move print head further up{endif}\n{if max_layer_z < printable_height*0.6}G1 Z{printable_height*0.6} F600 ; Move print head further up{endif}\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors",
+          "pauseGcode": "M0",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Elegoo Neptune 3 Max 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "420x0",
+              "420x420",
+              "0x420"
+            ],
+            "printableHeight": "500",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "hardened_steel",
+            "machineMaxSpeedX": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedY": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedZ": [
+              "10",
+              "10"
+            ],
+            "machineMaxSpeedE": [
+              "60",
+              "60"
+            ],
+            "machineMaxAccelX": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelY": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelZ": [
+              "100",
+              "100"
+            ],
+            "machineMaxAccelExtruding": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelRetracting": [
+              "1000",
+              "1000"
+            ],
+            "machineMaxAccelTravel": [
+              "500",
+              "500"
+            ],
+            "machineMaxJerkX": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkY": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkZ": [
+              "0.4",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "5",
+              "5"
+            ],
+            "retractionLength": [
+              "2.5"
+            ],
+            "retractionSpeed": [
+              "25"
+            ],
+            "deretractionSpeed": [
+              "0"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "85%"
+            ],
+            "maxLayerHeight": [
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "defaultPrintProfile": "0.20mm Standard @Elegoo Neptune3Max",
+            "defaultFilamentProfile": [
+              "Generic PLA @Elegoo"
+            ]
+          },
+          "startGcode": "M413 S0 ; disable Power Loss Recovery\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\nM104 S120 ; set temporary nozzle temp to prevent oozing during homing and auto bed leveling\nM140 S[bed_temperature_initial_layer_single] ; set final bed temp\nG4 S10 ; allow partial nozzle warmup\nG28 ; home all axis\n;G29 ; run abl mesh\nM420 S1 ; load mesh\nG1 Z50 F240\nG1 X2 Y10 F3000\nM104 S[nozzle_temperature_initial_layer] ; set final nozzle temp\nM190 S[bed_temperature_initial_layer_single] ; wait for bed temp to stabilize\nM109 S[nozzle_temperature_initial_layer] ; wait for nozzle temp to stabilize\nG1 Z0.28 F240\nG92 E0\nG1 Y140 E10 F1500 ; prime the nozzle\nG1 X2.3 F5000\nG92 E0\nG1 Y10 E10 F1200 ; prime the nozzle\nG92 E0",
+          "endGcode": "{if max_layer_z < printable_height}G1 Z{z_offset+min(max_layer_z+2, printable_height)} F600 ; Move print head up{endif}\nG1 X5 Y{print_bed_max[1]*0.8} F{travel_speed*60} ; present print\n{if max_layer_z < printable_height-10}G1 Z{z_offset+min(max_layer_z+70, printable_height-10)} F600 ; Move print head further up{endif}\n{if max_layer_z < printable_height*0.6}G1 Z{printable_height*0.6} F600 ; Move print head further up{endif}\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors",
+          "pauseGcode": "M0",
+          "changeFilamentGcode": "M600"
+        },
+        {
+          "name": "Elegoo Neptune 3 Max",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.4"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Elegoo Neptune 3 Plus 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "320x0",
+              "320x320",
+              "0x320"
+            ],
+            "printableHeight": "400",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "hardened_steel",
+            "machineMaxSpeedX": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedY": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedZ": [
+              "10",
+              "10"
+            ],
+            "machineMaxSpeedE": [
+              "60",
+              "60"
+            ],
+            "machineMaxAccelX": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelY": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelZ": [
+              "100",
+              "100"
+            ],
+            "machineMaxAccelExtruding": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelRetracting": [
+              "1000",
+              "1000"
+            ],
+            "machineMaxAccelTravel": [
+              "500",
+              "500"
+            ],
+            "machineMaxJerkX": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkY": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkZ": [
+              "0.4",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "5",
+              "5"
+            ],
+            "retractionLength": [
+              "2.5"
+            ],
+            "retractionSpeed": [
+              "25"
+            ],
+            "deretractionSpeed": [
+              "0"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "85%"
+            ],
+            "maxLayerHeight": [
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "defaultPrintProfile": "0.20mm Standard @Elegoo Neptune3Plus",
+            "defaultFilamentProfile": [
+              "Generic PLA @Elegoo"
+            ]
+          },
+          "startGcode": "M413 S0 ; disable Power Loss Recovery\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\nM104 S120 ; set temporary nozzle temp to prevent oozing during homing and auto bed leveling\nM140 S[bed_temperature_initial_layer_single] ; set final bed temp\nG4 S10 ; allow partial nozzle warmup\nG28 ; home all axis\n;G29 ; run abl mesh\nM420 S1 ; load mesh\nG1 Z50 F240\nG1 X2 Y10 F3000\nM104 S[nozzle_temperature_initial_layer] ; set final nozzle temp\nM190 S[bed_temperature_initial_layer_single] ; wait for bed temp to stabilize\nM109 S[nozzle_temperature_initial_layer] ; wait for nozzle temp to stabilize\nG1 Z0.28 F240\nG92 E0\nG1 Y140 E10 F1500 ; prime the nozzle\nG1 X2.3 F5000\nG92 E0\nG1 Y10 E10 F1200 ; prime the nozzle\nG92 E0",
+          "endGcode": "{if max_layer_z < printable_height}G1 Z{z_offset+min(max_layer_z+2, printable_height)} F600 ; Move print head up{endif}\nG1 X5 Y{print_bed_max[1]*0.8} F{travel_speed*60} ; present print\n{if max_layer_z < printable_height-10}G1 Z{z_offset+min(max_layer_z+70, printable_height-10)} F600 ; Move print head further up{endif}\n{if max_layer_z < printable_height*0.6}G1 Z{printable_height*0.6} F600 ; Move print head further up{endif}\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors",
+          "pauseGcode": "M0",
+          "changeFilamentGcode": "M600"
+        },
+        {
+          "name": "Elegoo Neptune 3 Plus",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.4"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Elegoo Neptune 3 Pro 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "225x0",
+              "225x225",
+              "0x225"
+            ],
+            "printableHeight": "280",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "hardened_steel",
+            "machineMaxSpeedX": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedY": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedZ": [
+              "10",
+              "10"
+            ],
+            "machineMaxSpeedE": [
+              "60",
+              "60"
+            ],
+            "machineMaxAccelX": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelY": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelZ": [
+              "100",
+              "100"
+            ],
+            "machineMaxAccelExtruding": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelRetracting": [
+              "1000",
+              "1000"
+            ],
+            "machineMaxAccelTravel": [
+              "500",
+              "500"
+            ],
+            "machineMaxJerkX": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkY": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkZ": [
+              "0.4",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "5",
+              "5"
+            ],
+            "retractionLength": [
+              "2.5"
+            ],
+            "retractionSpeed": [
+              "25"
+            ],
+            "deretractionSpeed": [
+              "0"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "85%"
+            ],
+            "maxLayerHeight": [
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "defaultPrintProfile": "0.20mm Standard @Elegoo Neptune3Pro",
+            "defaultFilamentProfile": [
+              "Generic PLA @Elegoo"
+            ]
+          },
+          "startGcode": "M413 S0 ; disable Power Loss Recovery\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\nM104 S120 ; set temporary nozzle temp to prevent oozing during homing and auto bed leveling\nM140 S[bed_temperature_initial_layer_single] ; set final bed temp\nG4 S10 ; allow partial nozzle warmup\nG28 ; home all axis\n;G29 ; run abl mesh\nM420 S1 ; load mesh\nG1 Z50 F240\nG1 X2 Y10 F3000\nM104 S[nozzle_temperature_initial_layer] ; set final nozzle temp\nM190 S[bed_temperature_initial_layer_single] ; wait for bed temp to stabilize\nM109 S[nozzle_temperature_initial_layer] ; wait for nozzle temp to stabilize\nG1 Z0.28 F240\nG92 E0\nG1 Y140 E10 F1500 ; prime the nozzle\nG1 X2.3 F5000\nG92 E0\nG1 Y10 E10 F1200 ; prime the nozzle\nG92 E0",
+          "endGcode": "{if max_layer_z < printable_height}G1 Z{z_offset+min(max_layer_z+2, printable_height)} F600 ; Move print head up{endif}\nG1 X5 Y{print_bed_max[1]*0.8} F{travel_speed*60} ; present print\n{if max_layer_z < printable_height-10}G1 Z{z_offset+min(max_layer_z+70, printable_height-10)} F600 ; Move print head further up{endif}\n{if max_layer_z < printable_height*0.6}G1 Z{printable_height*0.6} F600 ; Move print head further up{endif}\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors",
+          "pauseGcode": "M0",
+          "changeFilamentGcode": "M600"
+        },
+        {
+          "name": "Elegoo Neptune 3 Pro",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.4"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "Elegoo-Neptune-3-Max",
+      "name": "Elegoo Neptune 3 Max",
+      "nozzleSizes": [
+        0.4
+      ],
+      "bedModel": "elegoo_neptune3max_buildplate_model.stl",
+      "bedTexture": "elegoo_neptune_max_buildplate_texture.png",
+      "defaultMaterials": [
+        "Generic ABS @Elegoo",
+        "Generic PETG @Elegoo",
+        "Generic PLA @Elegoo"
+      ],
+      "variants": [
+        {
+          "name": "Elegoo Neptune 3 Max 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "420x0",
+              "420x420",
+              "0x420"
+            ],
+            "printableHeight": "500",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "hardened_steel",
+            "machineMaxSpeedX": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedY": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedZ": [
+              "10",
+              "10"
+            ],
+            "machineMaxSpeedE": [
+              "60",
+              "60"
+            ],
+            "machineMaxAccelX": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelY": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelZ": [
+              "100",
+              "100"
+            ],
+            "machineMaxAccelExtruding": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelRetracting": [
+              "1000",
+              "1000"
+            ],
+            "machineMaxAccelTravel": [
+              "500",
+              "500"
+            ],
+            "machineMaxJerkX": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkY": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkZ": [
+              "0.4",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "5",
+              "5"
+            ],
+            "retractionLength": [
+              "2.5"
+            ],
+            "retractionSpeed": [
+              "25"
+            ],
+            "deretractionSpeed": [
+              "0"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "85%"
+            ],
+            "maxLayerHeight": [
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "defaultPrintProfile": "0.20mm Standard @Elegoo Neptune3Max",
+            "defaultFilamentProfile": [
+              "Generic PLA @Elegoo"
+            ]
+          },
+          "startGcode": "M413 S0 ; disable Power Loss Recovery\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\nM104 S120 ; set temporary nozzle temp to prevent oozing during homing and auto bed leveling\nM140 S[bed_temperature_initial_layer_single] ; set final bed temp\nG4 S10 ; allow partial nozzle warmup\nG28 ; home all axis\n;G29 ; run abl mesh\nM420 S1 ; load mesh\nG1 Z50 F240\nG1 X2 Y10 F3000\nM104 S[nozzle_temperature_initial_layer] ; set final nozzle temp\nM190 S[bed_temperature_initial_layer_single] ; wait for bed temp to stabilize\nM109 S[nozzle_temperature_initial_layer] ; wait for nozzle temp to stabilize\nG1 Z0.28 F240\nG92 E0\nG1 Y140 E10 F1500 ; prime the nozzle\nG1 X2.3 F5000\nG92 E0\nG1 Y10 E10 F1200 ; prime the nozzle\nG92 E0",
+          "endGcode": "{if max_layer_z < printable_height}G1 Z{z_offset+min(max_layer_z+2, printable_height)} F600 ; Move print head up{endif}\nG1 X5 Y{print_bed_max[1]*0.8} F{travel_speed*60} ; present print\n{if max_layer_z < printable_height-10}G1 Z{z_offset+min(max_layer_z+70, printable_height-10)} F600 ; Move print head further up{endif}\n{if max_layer_z < printable_height*0.6}G1 Z{printable_height*0.6} F600 ; Move print head further up{endif}\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors",
+          "pauseGcode": "M0",
+          "changeFilamentGcode": "M600"
+        }
+      ]
+    },
+    {
+      "id": "Elegoo-Neptune-3-Plus",
+      "name": "Elegoo Neptune 3 Plus",
+      "nozzleSizes": [
+        0.4
+      ],
+      "bedModel": "elegoo_neptune3plus_buildplate_model.stl",
+      "bedTexture": "elegoo_neptune3plus_buildplate_texture.png",
+      "defaultMaterials": [
+        "Generic ABS @Elegoo",
+        "Generic PETG @Elegoo",
+        "Generic PLA @Elegoo"
+      ],
+      "variants": [
+        {
+          "name": "Elegoo Neptune 3 Plus 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "320x0",
+              "320x320",
+              "0x320"
+            ],
+            "printableHeight": "400",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "hardened_steel",
+            "machineMaxSpeedX": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedY": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedZ": [
+              "10",
+              "10"
+            ],
+            "machineMaxSpeedE": [
+              "60",
+              "60"
+            ],
+            "machineMaxAccelX": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelY": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelZ": [
+              "100",
+              "100"
+            ],
+            "machineMaxAccelExtruding": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelRetracting": [
+              "1000",
+              "1000"
+            ],
+            "machineMaxAccelTravel": [
+              "500",
+              "500"
+            ],
+            "machineMaxJerkX": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkY": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkZ": [
+              "0.4",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "5",
+              "5"
+            ],
+            "retractionLength": [
+              "2.5"
+            ],
+            "retractionSpeed": [
+              "25"
+            ],
+            "deretractionSpeed": [
+              "0"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "85%"
+            ],
+            "maxLayerHeight": [
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "defaultPrintProfile": "0.20mm Standard @Elegoo Neptune3Plus",
+            "defaultFilamentProfile": [
+              "Generic PLA @Elegoo"
+            ]
+          },
+          "startGcode": "M413 S0 ; disable Power Loss Recovery\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\nM104 S120 ; set temporary nozzle temp to prevent oozing during homing and auto bed leveling\nM140 S[bed_temperature_initial_layer_single] ; set final bed temp\nG4 S10 ; allow partial nozzle warmup\nG28 ; home all axis\n;G29 ; run abl mesh\nM420 S1 ; load mesh\nG1 Z50 F240\nG1 X2 Y10 F3000\nM104 S[nozzle_temperature_initial_layer] ; set final nozzle temp\nM190 S[bed_temperature_initial_layer_single] ; wait for bed temp to stabilize\nM109 S[nozzle_temperature_initial_layer] ; wait for nozzle temp to stabilize\nG1 Z0.28 F240\nG92 E0\nG1 Y140 E10 F1500 ; prime the nozzle\nG1 X2.3 F5000\nG92 E0\nG1 Y10 E10 F1200 ; prime the nozzle\nG92 E0",
+          "endGcode": "{if max_layer_z < printable_height}G1 Z{z_offset+min(max_layer_z+2, printable_height)} F600 ; Move print head up{endif}\nG1 X5 Y{print_bed_max[1]*0.8} F{travel_speed*60} ; present print\n{if max_layer_z < printable_height-10}G1 Z{z_offset+min(max_layer_z+70, printable_height-10)} F600 ; Move print head further up{endif}\n{if max_layer_z < printable_height*0.6}G1 Z{printable_height*0.6} F600 ; Move print head further up{endif}\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors",
+          "pauseGcode": "M0",
+          "changeFilamentGcode": "M600"
+        }
+      ]
+    },
+    {
+      "id": "Elegoo-Neptune-3-Pro",
+      "name": "Elegoo Neptune 3 Pro",
+      "nozzleSizes": [
+        0.4
+      ],
+      "bedModel": "elegoo_neptune3pro_buildplate_model.stl",
+      "bedTexture": "elegoo_neptune3pro_buildplate_texture.png",
+      "defaultMaterials": [
+        "Generic ABS @Elegoo",
+        "Generic PETG @Elegoo",
+        "Generic PLA @Elegoo"
+      ],
+      "variants": [
+        {
+          "name": "Elegoo Neptune 3 Pro 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "225x0",
+              "225x225",
+              "0x225"
+            ],
+            "printableHeight": "280",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "hardened_steel",
+            "machineMaxSpeedX": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedY": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedZ": [
+              "10",
+              "10"
+            ],
+            "machineMaxSpeedE": [
+              "60",
+              "60"
+            ],
+            "machineMaxAccelX": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelY": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelZ": [
+              "100",
+              "100"
+            ],
+            "machineMaxAccelExtruding": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelRetracting": [
+              "1000",
+              "1000"
+            ],
+            "machineMaxAccelTravel": [
+              "500",
+              "500"
+            ],
+            "machineMaxJerkX": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkY": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkZ": [
+              "0.4",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "5",
+              "5"
+            ],
+            "retractionLength": [
+              "2.5"
+            ],
+            "retractionSpeed": [
+              "25"
+            ],
+            "deretractionSpeed": [
+              "0"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "85%"
+            ],
+            "maxLayerHeight": [
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "defaultPrintProfile": "0.20mm Standard @Elegoo Neptune3Pro",
+            "defaultFilamentProfile": [
+              "Generic PLA @Elegoo"
+            ]
+          },
+          "startGcode": "M413 S0 ; disable Power Loss Recovery\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\nM104 S120 ; set temporary nozzle temp to prevent oozing during homing and auto bed leveling\nM140 S[bed_temperature_initial_layer_single] ; set final bed temp\nG4 S10 ; allow partial nozzle warmup\nG28 ; home all axis\n;G29 ; run abl mesh\nM420 S1 ; load mesh\nG1 Z50 F240\nG1 X2 Y10 F3000\nM104 S[nozzle_temperature_initial_layer] ; set final nozzle temp\nM190 S[bed_temperature_initial_layer_single] ; wait for bed temp to stabilize\nM109 S[nozzle_temperature_initial_layer] ; wait for nozzle temp to stabilize\nG1 Z0.28 F240\nG92 E0\nG1 Y140 E10 F1500 ; prime the nozzle\nG1 X2.3 F5000\nG92 E0\nG1 Y10 E10 F1200 ; prime the nozzle\nG92 E0",
+          "endGcode": "{if max_layer_z < printable_height}G1 Z{z_offset+min(max_layer_z+2, printable_height)} F600 ; Move print head up{endif}\nG1 X5 Y{print_bed_max[1]*0.8} F{travel_speed*60} ; present print\n{if max_layer_z < printable_height-10}G1 Z{z_offset+min(max_layer_z+70, printable_height-10)} F600 ; Move print head further up{endif}\n{if max_layer_z < printable_height*0.6}G1 Z{printable_height*0.6} F600 ; Move print head further up{endif}\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors",
+          "pauseGcode": "M0",
+          "changeFilamentGcode": "M600"
+        }
+      ]
+    }
+  ],
+  "filaments": [
+    {
+      "name": "fdm_elegoo_filament_common",
+      "type": [
+        "PLA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "200"
+        ],
+        "bedTemperature": [
+          "60"
+        ],
+        "bedTemperatureInitialLayer": [
+          "60"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "1"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_filament_common",
+      "type": [
+        "PLA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "200"
+        ],
+        "bedTemperature": [
+          "60"
+        ],
+        "bedTemperatureInitialLayer": [
+          "60"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "0"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_elegoo_filament_asa",
+      "type": [
+        "ASA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "90"
+        ],
+        "bedTemperatureInitialLayer": [
+          "90"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "16"
+        ],
+        "slowDownMinSpeed": [
+          "20"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_elegoo_filament_pet",
+      "type": [
+        "PET"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "250"
+        ],
+        "bedTemperature": [
+          "80"
+        ],
+        "bedTemperatureInitialLayer": [
+          "80"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "12"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_elegoo_filament_pla",
+      "type": [
+        "PLA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "220"
+        ],
+        "bedTemperature": [
+          "60"
+        ],
+        "bedTemperatureInitialLayer": [
+          "60"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "12"
+        ],
+        "slowDownMinSpeed": [
+          "20"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_elegoo_filament_tpu",
+      "type": [
+        "TPU"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "240"
+        ],
+        "bedTemperature": [
+          "35"
+        ],
+        "bedTemperatureInitialLayer": [
+          "35"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "3"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_filament_abs",
+      "type": [
+        "ABS"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "245"
+        ],
+        "bedTemperature": [
+          "100"
+        ],
+        "bedTemperatureInitialLayer": [
+          "100"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "11"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_filament_asa",
+      "type": [
+        "ASA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "90"
+        ],
+        "bedTemperatureInitialLayer": [
+          "90"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "16"
+        ],
+        "slowDownMinSpeed": [
+          "20"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_filament_pet",
+      "type": [
+        "PETG"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "250"
+        ],
+        "bedTemperature": [
+          "80"
+        ],
+        "bedTemperatureInitialLayer": [
+          "80"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "12"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_filament_pla",
+      "type": [
+        "PLA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "205"
+        ],
+        "bedTemperature": [
+          "60"
+        ],
+        "bedTemperatureInitialLayer": [
+          "60"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "15"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Elegoo ASA @base",
+      "type": "PLA",
+      "config": {
+        "filamentMaxVolumetricSpeed": [
+          "12"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Elegoo PETG PRO @base",
+      "type": [
+        "PETG"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "240"
+        ],
+        "bedTemperature": [
+          "70"
+        ],
+        "bedTemperatureInitialLayer": [
+          "70"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "8"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Elegoo RAPID PETG @base",
+      "type": [
+        "PETG"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "250"
+        ],
+        "bedTemperature": [
+          "70"
+        ],
+        "bedTemperatureInitialLayer": [
+          "70"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "18"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Elegoo PLA @base",
+      "type": "PLA",
+      "config": {
+        "filamentMaxVolumetricSpeed": [
+          "16"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Elegoo PLA Matte @base",
+      "type": "PLA",
+      "config": {
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Elegoo PLA Silk @base",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "230"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "16"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Elegoo PLA-CF @base",
+      "type": [
+        "PLA-CF"
+      ],
+      "config": {
+        "bedTemperature": [
+          "45"
+        ],
+        "bedTemperatureInitialLayer": [
+          "45"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Elegoo RAPID PLA+ @base",
+      "type": "PLA",
+      "config": {
+        "filamentMaxVolumetricSpeed": [
+          "21"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Elegoo TPU 95A @base",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "225"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "3.6"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Generic ABS @Elegoo",
+      "type": [
+        "ABS"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "245"
+        ],
+        "bedTemperature": [
+          "100"
+        ],
+        "bedTemperatureInitialLayer": [
+          "100"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "12"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Elegoo Neptune 0.4 nozzle",
+          "Elegoo Neptune X 0.4 nozzle",
+          "Elegoo Neptune 2 0.4 nozzle",
+          "Elegoo Neptune 2S 0.4 nozzle",
+          "Elegoo Neptune 2D 0.4 nozzle",
+          "Elegoo Neptune 3 0.4 nozzle",
+          "Elegoo Neptune 3 Pro 0.4 nozzle",
+          "Elegoo Neptune 3 Plus 0.4 nozzle",
+          "Elegoo Neptune 3 Max 0.4 nozzle",
+          "Elegoo Neptune 4 (0.2 nozzle)",
+          "Elegoo Neptune 4 (0.4 nozzle)",
+          "Elegoo Neptune 4 (0.6 nozzle)",
+          "Elegoo Neptune 4 (0.8 nozzle)",
+          "Elegoo Neptune 4 Max (0.2 nozzle)",
+          "Elegoo Neptune 4 Max (0.4 nozzle)",
+          "Elegoo Neptune 4 Max (0.6 nozzle)",
+          "Elegoo Neptune 4 Max (0.8 nozzle)",
+          "Elegoo Neptune 4 Plus (0.2 nozzle)",
+          "Elegoo Neptune 4 Plus (0.4 nozzle)",
+          "Elegoo Neptune 4 Plus (0.6 nozzle)",
+          "Elegoo Neptune 4 Plus (0.8 nozzle)",
+          "Elegoo Neptune 4 Pro (0.2 nozzle)",
+          "Elegoo Neptune 4 Pro (0.4 nozzle)",
+          "Elegoo Neptune 4 Pro (0.6 nozzle)",
+          "Elegoo Neptune 4 Pro (0.8 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "Generic ASA @Elegoo",
+      "type": [
+        "ASA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "90"
+        ],
+        "bedTemperatureInitialLayer": [
+          "90"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "12"
+        ],
+        "slowDownMinSpeed": [
+          "20"
+        ],
+        "compatiblePrinters": [
+          "Elegoo Neptune 0.4 nozzle",
+          "Elegoo Neptune X 0.4 nozzle",
+          "Elegoo Neptune 2 0.4 nozzle",
+          "Elegoo Neptune 2S 0.4 nozzle",
+          "Elegoo Neptune 2D 0.4 nozzle",
+          "Elegoo Neptune 3 0.4 nozzle",
+          "Elegoo Neptune 3 Pro 0.4 nozzle",
+          "Elegoo Neptune 3 Plus 0.4 nozzle",
+          "Elegoo Neptune 3 Max 0.4 nozzle",
+          "Elegoo Neptune 4 (0.2 nozzle)",
+          "Elegoo Neptune 4 (0.4 nozzle)",
+          "Elegoo Neptune 4 (0.6 nozzle)",
+          "Elegoo Neptune 4 (0.8 nozzle)",
+          "Elegoo Neptune 4 Max (0.2 nozzle)",
+          "Elegoo Neptune 4 Max (0.4 nozzle)",
+          "Elegoo Neptune 4 Max (0.6 nozzle)",
+          "Elegoo Neptune 4 Max (0.8 nozzle)",
+          "Elegoo Neptune 4 Plus (0.2 nozzle)",
+          "Elegoo Neptune 4 Plus (0.4 nozzle)",
+          "Elegoo Neptune 4 Plus (0.6 nozzle)",
+          "Elegoo Neptune 4 Plus (0.8 nozzle)",
+          "Elegoo Neptune 4 Pro (0.2 nozzle)",
+          "Elegoo Neptune 4 Pro (0.4 nozzle)",
+          "Elegoo Neptune 4 Pro (0.6 nozzle)",
+          "Elegoo Neptune 4 Pro (0.8 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "Generic PETG @Elegoo",
+      "type": "PLA",
+      "config": {
+        "filamentMaxVolumetricSpeed": [
+          "10"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Elegoo Neptune 0.4 nozzle",
+          "Elegoo Neptune X 0.4 nozzle",
+          "Elegoo Neptune 2 0.4 nozzle",
+          "Elegoo Neptune 2S 0.4 nozzle",
+          "Elegoo Neptune 2D 0.4 nozzle",
+          "Elegoo Neptune 3 0.4 nozzle",
+          "Elegoo Neptune 3 Pro 0.4 nozzle",
+          "Elegoo Neptune 3 Plus 0.4 nozzle",
+          "Elegoo Neptune 3 Max 0.4 nozzle",
+          "Elegoo Neptune 4 (0.2 nozzle)",
+          "Elegoo Neptune 4 (0.4 nozzle)",
+          "Elegoo Neptune 4 (0.6 nozzle)",
+          "Elegoo Neptune 4 (0.8 nozzle)",
+          "Elegoo Neptune 4 Max (0.2 nozzle)",
+          "Elegoo Neptune 4 Max (0.4 nozzle)",
+          "Elegoo Neptune 4 Max (0.6 nozzle)",
+          "Elegoo Neptune 4 Max (0.8 nozzle)",
+          "Elegoo Neptune 4 Plus (0.2 nozzle)",
+          "Elegoo Neptune 4 Plus (0.4 nozzle)",
+          "Elegoo Neptune 4 Plus (0.6 nozzle)",
+          "Elegoo Neptune 4 Plus (0.8 nozzle)",
+          "Elegoo Neptune 4 Pro (0.2 nozzle)",
+          "Elegoo Neptune 4 Pro (0.4 nozzle)",
+          "Elegoo Neptune 4 Pro (0.6 nozzle)",
+          "Elegoo Neptune 4 Pro (0.8 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "Generic PETG PRO @Elegoo",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "240"
+        ],
+        "bedTemperature": [
+          "70"
+        ],
+        "bedTemperatureInitialLayer": [
+          "70"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "8"
+        ],
+        "compatiblePrinters": [
+          "Elegoo Neptune 0.4 nozzle",
+          "Elegoo Neptune X 0.4 nozzle",
+          "Elegoo Neptune 2 0.4 nozzle",
+          "Elegoo Neptune 2S 0.4 nozzle",
+          "Elegoo Neptune 2D 0.4 nozzle",
+          "Elegoo Neptune 3 0.4 nozzle",
+          "Elegoo Neptune 3 Pro 0.4 nozzle",
+          "Elegoo Neptune 3 Plus 0.4 nozzle",
+          "Elegoo Neptune 3 Max 0.4 nozzle",
+          "Elegoo Neptune 4 (0.2 nozzle)",
+          "Elegoo Neptune 4 (0.4 nozzle)",
+          "Elegoo Neptune 4 (0.6 nozzle)",
+          "Elegoo Neptune 4 (0.8 nozzle)",
+          "Elegoo Neptune 4 Max (0.2 nozzle)",
+          "Elegoo Neptune 4 Max (0.4 nozzle)",
+          "Elegoo Neptune 4 Max (0.6 nozzle)",
+          "Elegoo Neptune 4 Max (0.8 nozzle)",
+          "Elegoo Neptune 4 Plus (0.2 nozzle)",
+          "Elegoo Neptune 4 Plus (0.4 nozzle)",
+          "Elegoo Neptune 4 Plus (0.6 nozzle)",
+          "Elegoo Neptune 4 Plus (0.8 nozzle)",
+          "Elegoo Neptune 4 Pro (0.2 nozzle)",
+          "Elegoo Neptune 4 Pro (0.4 nozzle)",
+          "Elegoo Neptune 4 Pro (0.6 nozzle)",
+          "Elegoo Neptune 4 Pro (0.8 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "Generic PLA @Elegoo",
+      "type": [
+        "PLA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "205"
+        ],
+        "bedTemperature": [
+          "60"
+        ],
+        "bedTemperatureInitialLayer": [
+          "60"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "15"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Elegoo Neptune 0.4 nozzle",
+          "Elegoo Neptune X 0.4 nozzle",
+          "Elegoo Neptune 2 0.4 nozzle",
+          "Elegoo Neptune 2S 0.4 nozzle",
+          "Elegoo Neptune 2D 0.4 nozzle",
+          "Elegoo Neptune 3 0.4 nozzle",
+          "Elegoo Neptune 3 Pro 0.4 nozzle",
+          "Elegoo Neptune 3 Plus 0.4 nozzle",
+          "Elegoo Neptune 3 Max 0.4 nozzle",
+          "Elegoo Neptune 4 (0.2 nozzle)",
+          "Elegoo Neptune 4 (0.4 nozzle)",
+          "Elegoo Neptune 4 (0.6 nozzle)",
+          "Elegoo Neptune 4 (0.8 nozzle)",
+          "Elegoo Neptune 4 Max (0.2 nozzle)",
+          "Elegoo Neptune 4 Max (0.4 nozzle)",
+          "Elegoo Neptune 4 Max (0.6 nozzle)",
+          "Elegoo Neptune 4 Max (0.8 nozzle)",
+          "Elegoo Neptune 4 Plus (0.2 nozzle)",
+          "Elegoo Neptune 4 Plus (0.4 nozzle)",
+          "Elegoo Neptune 4 Plus (0.6 nozzle)",
+          "Elegoo Neptune 4 Plus (0.8 nozzle)",
+          "Elegoo Neptune 4 Pro (0.2 nozzle)",
+          "Elegoo Neptune 4 Pro (0.4 nozzle)",
+          "Elegoo Neptune 4 Pro (0.6 nozzle)",
+          "Elegoo Neptune 4 Pro (0.8 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "Generic PLA Matte @Elegoo",
+      "type": [
+        "PLA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "205"
+        ],
+        "bedTemperature": [
+          "60"
+        ],
+        "bedTemperatureInitialLayer": [
+          "60"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "15"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Elegoo Neptune 0.4 nozzle",
+          "Elegoo Neptune X 0.4 nozzle",
+          "Elegoo Neptune 2 0.4 nozzle",
+          "Elegoo Neptune 2S 0.4 nozzle",
+          "Elegoo Neptune 2D 0.4 nozzle",
+          "Elegoo Neptune 3 0.4 nozzle",
+          "Elegoo Neptune 3 Pro 0.4 nozzle",
+          "Elegoo Neptune 3 Plus 0.4 nozzle",
+          "Elegoo Neptune 3 Max 0.4 nozzle",
+          "Elegoo Neptune 4 (0.2 nozzle)",
+          "Elegoo Neptune 4 (0.4 nozzle)",
+          "Elegoo Neptune 4 (0.6 nozzle)",
+          "Elegoo Neptune 4 (0.8 nozzle)",
+          "Elegoo Neptune 4 Max (0.2 nozzle)",
+          "Elegoo Neptune 4 Max (0.4 nozzle)",
+          "Elegoo Neptune 4 Max (0.6 nozzle)",
+          "Elegoo Neptune 4 Max (0.8 nozzle)",
+          "Elegoo Neptune 4 Plus (0.2 nozzle)",
+          "Elegoo Neptune 4 Plus (0.4 nozzle)",
+          "Elegoo Neptune 4 Plus (0.6 nozzle)",
+          "Elegoo Neptune 4 Plus (0.8 nozzle)",
+          "Elegoo Neptune 4 Pro (0.2 nozzle)",
+          "Elegoo Neptune 4 Pro (0.4 nozzle)",
+          "Elegoo Neptune 4 Pro (0.6 nozzle)",
+          "Elegoo Neptune 4 Pro (0.8 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "Elegoo ASA",
+      "type": "PLA",
+      "config": {
+        "compatiblePrinters": [
+          "Elegoo Neptune 0.4 nozzle",
+          "Elegoo Neptune X 0.4 nozzle",
+          "Elegoo Neptune 2 0.4 nozzle",
+          "Elegoo Neptune 2S 0.4 nozzle",
+          "Elegoo Neptune 2D 0.4 nozzle",
+          "Elegoo Neptune 3 0.4 nozzle",
+          "Elegoo Neptune 3 Pro 0.4 nozzle",
+          "Elegoo Neptune 3 Plus 0.4 nozzle",
+          "Elegoo Neptune 3 Max 0.4 nozzle",
+          "Elegoo Neptune 4 (0.2 nozzle)",
+          "Elegoo Neptune 4 (0.4 nozzle)",
+          "Elegoo Neptune 4 (0.6 nozzle)",
+          "Elegoo Neptune 4 (0.8 nozzle)",
+          "Elegoo Neptune 4 Max (0.2 nozzle)",
+          "Elegoo Neptune 4 Max (0.4 nozzle)",
+          "Elegoo Neptune 4 Max (0.6 nozzle)",
+          "Elegoo Neptune 4 Max (0.8 nozzle)",
+          "Elegoo Neptune 4 Plus (0.2 nozzle)",
+          "Elegoo Neptune 4 Plus (0.4 nozzle)",
+          "Elegoo Neptune 4 Plus (0.6 nozzle)",
+          "Elegoo Neptune 4 Plus (0.8 nozzle)",
+          "Elegoo Neptune 4 Pro (0.2 nozzle)",
+          "Elegoo Neptune 4 Pro (0.4 nozzle)",
+          "Elegoo Neptune 4 Pro (0.6 nozzle)",
+          "Elegoo Neptune 4 Pro (0.8 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "Elegoo ASA @0.2 nozzle",
+      "type": "PLA",
+      "config": {
+        "filamentMaxVolumetricSpeed": [
+          "3.2"
+        ],
+        "compatiblePrinters": [
+          "Elegoo Centauri 0.2 nozzle",
+          "Elegoo Centauri Carbon 0.2 nozzle",
+          "Elegoo Neptune 4 0.2 nozzle",
+          "Elegoo Neptune 4 Pro 0.2 nozzle",
+          "Elegoo Neptune 4 Plus 0.2 nozzle",
+          "Elegoo Neptune 4 Max 0.2 nozzle",
+          "Elegoo Neptune 3 Pro 0.2 nozzle",
+          "Elegoo Neptune 3 Plus 0.2 nozzle",
+          "Elegoo Neptune 3 Max 0.2 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Elegoo ASA @EC",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "270"
+        ],
+        "compatiblePrinters": [
+          "Elegoo Centauri 0.4 nozzle",
+          "Elegoo Centauri 0.6 nozzle",
+          "Elegoo Centauri 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Elegoo ASA @ECC",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "270"
+        ],
+        "compatiblePrinters": [
+          "Elegoo Centauri Carbon 0.4 nozzle",
+          "Elegoo Centauri Carbon 0.6 nozzle",
+          "Elegoo Centauri Carbon 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Elegoo PETG PRO",
+      "type": "PLA",
+      "config": {
+        "compatiblePrinters": [
+          "Elegoo Neptune 0.4 nozzle",
+          "Elegoo Neptune X 0.4 nozzle",
+          "Elegoo Neptune 2 0.4 nozzle",
+          "Elegoo Neptune 2S 0.4 nozzle",
+          "Elegoo Neptune 2D 0.4 nozzle",
+          "Elegoo Neptune 3 0.4 nozzle",
+          "Elegoo Neptune 3 Pro 0.4 nozzle",
+          "Elegoo Neptune 3 Plus 0.4 nozzle",
+          "Elegoo Neptune 3 Max 0.4 nozzle",
+          "Elegoo Neptune 4 (0.2 nozzle)",
+          "Elegoo Neptune 4 (0.4 nozzle)",
+          "Elegoo Neptune 4 (0.6 nozzle)",
+          "Elegoo Neptune 4 (0.8 nozzle)",
+          "Elegoo Neptune 4 Max (0.2 nozzle)",
+          "Elegoo Neptune 4 Max (0.4 nozzle)",
+          "Elegoo Neptune 4 Max (0.6 nozzle)",
+          "Elegoo Neptune 4 Max (0.8 nozzle)",
+          "Elegoo Neptune 4 Plus (0.2 nozzle)",
+          "Elegoo Neptune 4 Plus (0.4 nozzle)",
+          "Elegoo Neptune 4 Plus (0.6 nozzle)",
+          "Elegoo Neptune 4 Plus (0.8 nozzle)",
+          "Elegoo Neptune 4 Pro (0.2 nozzle)",
+          "Elegoo Neptune 4 Pro (0.4 nozzle)",
+          "Elegoo Neptune 4 Pro (0.6 nozzle)",
+          "Elegoo Neptune 4 Pro (0.8 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "Elegoo PETG PRO @0.2 nozzle",
+      "type": "PLA",
+      "config": {
+        "filamentMaxVolumetricSpeed": [
+          "1"
+        ],
+        "compatiblePrinters": [
+          "Elegoo Centauri 0.2 nozzle",
+          "Elegoo Centauri Carbon 0.2 nozzle",
+          "Elegoo Neptune 4 0.2 nozzle",
+          "Elegoo Neptune 4 Pro 0.2 nozzle",
+          "Elegoo Neptune 4 Plus 0.2 nozzle",
+          "Elegoo Neptune 4 Max 0.2 nozzle",
+          "Elegoo Neptune 3 Pro 0.2 nozzle",
+          "Elegoo Neptune 3 Plus 0.2 nozzle",
+          "Elegoo Neptune 3 Max 0.2 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Elegoo PETG PRO @EC",
+      "type": "PLA",
+      "config": {
+        "compatiblePrinters": [
+          "Elegoo Centauri 0.4 nozzle",
+          "Elegoo Centauri 0.6 nozzle",
+          "Elegoo Centauri 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Elegoo PETG PRO @ECC",
+      "type": "PLA",
+      "config": {
+        "compatiblePrinters": [
+          "Elegoo Centauri Carbon 0.4 nozzle",
+          "Elegoo Centauri Carbon 0.6 nozzle",
+          "Elegoo Centauri Carbon 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Elegoo RAPID PETG",
+      "type": "PLA",
+      "config": {
+        "compatiblePrinters": [
+          "Elegoo Neptune 0.4 nozzle",
+          "Elegoo Neptune X 0.4 nozzle",
+          "Elegoo Neptune 2 0.4 nozzle",
+          "Elegoo Neptune 2S 0.4 nozzle",
+          "Elegoo Neptune 2D 0.4 nozzle",
+          "Elegoo Neptune 3 0.4 nozzle",
+          "Elegoo Neptune 3 Pro 0.4 nozzle",
+          "Elegoo Neptune 3 Plus 0.4 nozzle",
+          "Elegoo Neptune 3 Max 0.4 nozzle",
+          "Elegoo Neptune 4 (0.2 nozzle)",
+          "Elegoo Neptune 4 (0.4 nozzle)",
+          "Elegoo Neptune 4 (0.6 nozzle)",
+          "Elegoo Neptune 4 (0.8 nozzle)",
+          "Elegoo Neptune 4 Max (0.2 nozzle)",
+          "Elegoo Neptune 4 Max (0.4 nozzle)",
+          "Elegoo Neptune 4 Max (0.6 nozzle)",
+          "Elegoo Neptune 4 Max (0.8 nozzle)",
+          "Elegoo Neptune 4 Plus (0.2 nozzle)",
+          "Elegoo Neptune 4 Plus (0.4 nozzle)",
+          "Elegoo Neptune 4 Plus (0.6 nozzle)",
+          "Elegoo Neptune 4 Plus (0.8 nozzle)",
+          "Elegoo Neptune 4 Pro (0.2 nozzle)",
+          "Elegoo Neptune 4 Pro (0.4 nozzle)",
+          "Elegoo Neptune 4 Pro (0.6 nozzle)",
+          "Elegoo Neptune 4 Pro (0.8 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "Elegoo RAPID PETG @0.2 nozzle",
+      "type": "PLA",
+      "config": {
+        "filamentMaxVolumetricSpeed": [
+          "1"
+        ],
+        "compatiblePrinters": [
+          "Elegoo Centauri 0.2 nozzle",
+          "Elegoo Centauri Carbon 0.2 nozzle",
+          "Elegoo Neptune 4 0.2 nozzle",
+          "Elegoo Neptune 4 Pro 0.2 nozzle",
+          "Elegoo Neptune 4 Plus 0.2 nozzle",
+          "Elegoo Neptune 4 Max 0.2 nozzle",
+          "Elegoo Neptune 3 Pro 0.2 nozzle",
+          "Elegoo Neptune 3 Plus 0.2 nozzle",
+          "Elegoo Neptune 3 Max 0.2 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Elegoo RAPID PETG @EC",
+      "type": "PLA",
+      "config": {
+        "compatiblePrinters": [
+          "Elegoo Centauri 0.4 nozzle",
+          "Elegoo Centauri 0.6 nozzle",
+          "Elegoo Centauri 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Elegoo RAPID PETG @ECC",
+      "type": "PLA",
+      "config": {
+        "compatiblePrinters": [
+          "Elegoo Centauri Carbon 0.4 nozzle",
+          "Elegoo Centauri Carbon 0.6 nozzle",
+          "Elegoo Centauri Carbon 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Elegoo RAPID PETG+",
+      "type": "PLA",
+      "config": {
+        "compatiblePrinters": [
+          "Elegoo Neptune 0.4 nozzle",
+          "Elegoo Neptune X 0.4 nozzle",
+          "Elegoo Neptune 2 0.4 nozzle",
+          "Elegoo Neptune 2S 0.4 nozzle",
+          "Elegoo Neptune 2D 0.4 nozzle",
+          "Elegoo Neptune 3 0.4 nozzle",
+          "Elegoo Neptune 3 Pro 0.4 nozzle",
+          "Elegoo Neptune 3 Plus 0.4 nozzle",
+          "Elegoo Neptune 3 Max 0.4 nozzle",
+          "Elegoo Neptune 4 (0.2 nozzle)",
+          "Elegoo Neptune 4 (0.4 nozzle)",
+          "Elegoo Neptune 4 (0.6 nozzle)",
+          "Elegoo Neptune 4 (0.8 nozzle)",
+          "Elegoo Neptune 4 Max (0.2 nozzle)",
+          "Elegoo Neptune 4 Max (0.4 nozzle)",
+          "Elegoo Neptune 4 Max (0.6 nozzle)",
+          "Elegoo Neptune 4 Max (0.8 nozzle)",
+          "Elegoo Neptune 4 Plus (0.2 nozzle)",
+          "Elegoo Neptune 4 Plus (0.4 nozzle)",
+          "Elegoo Neptune 4 Plus (0.6 nozzle)",
+          "Elegoo Neptune 4 Plus (0.8 nozzle)",
+          "Elegoo Neptune 4 Pro (0.2 nozzle)",
+          "Elegoo Neptune 4 Pro (0.4 nozzle)",
+          "Elegoo Neptune 4 Pro (0.6 nozzle)",
+          "Elegoo Neptune 4 Pro (0.8 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "Elegoo PLA",
+      "type": "PLA",
+      "config": {
+        "filamentMaxVolumetricSpeed": [
+          "15"
+        ],
+        "compatiblePrinters": [
+          "Elegoo Neptune 0.4 nozzle",
+          "Elegoo Neptune X 0.4 nozzle",
+          "Elegoo Neptune 2 0.4 nozzle",
+          "Elegoo Neptune 2S 0.4 nozzle",
+          "Elegoo Neptune 2D 0.4 nozzle",
+          "Elegoo Neptune 3 0.4 nozzle",
+          "Elegoo Neptune 3 Pro 0.4 nozzle",
+          "Elegoo Neptune 3 Plus 0.4 nozzle",
+          "Elegoo Neptune 3 Max 0.4 nozzle",
+          "Elegoo Neptune 4 (0.2 nozzle)",
+          "Elegoo Neptune 4 (0.4 nozzle)",
+          "Elegoo Neptune 4 (0.6 nozzle)",
+          "Elegoo Neptune 4 (0.8 nozzle)",
+          "Elegoo Neptune 4 Max (0.2 nozzle)",
+          "Elegoo Neptune 4 Max (0.4 nozzle)",
+          "Elegoo Neptune 4 Max (0.6 nozzle)",
+          "Elegoo Neptune 4 Max (0.8 nozzle)",
+          "Elegoo Neptune 4 Plus (0.2 nozzle)",
+          "Elegoo Neptune 4 Plus (0.4 nozzle)",
+          "Elegoo Neptune 4 Plus (0.6 nozzle)",
+          "Elegoo Neptune 4 Plus (0.8 nozzle)",
+          "Elegoo Neptune 4 Pro (0.2 nozzle)",
+          "Elegoo Neptune 4 Pro (0.4 nozzle)",
+          "Elegoo Neptune 4 Pro (0.6 nozzle)",
+          "Elegoo Neptune 4 Pro (0.8 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "Elegoo PLA @0.2 nozzle",
+      "type": "PLA",
+      "config": {
+        "filamentMaxVolumetricSpeed": [
+          "3.2"
+        ],
+        "compatiblePrinters": [
+          "Elegoo Centauri 0.2 nozzle",
+          "Elegoo Centauri Carbon 0.2 nozzle",
+          "Elegoo Neptune 4 0.2 nozzle",
+          "Elegoo Neptune 4 Pro 0.2 nozzle",
+          "Elegoo Neptune 4 Plus 0.2 nozzle",
+          "Elegoo Neptune 4 Max 0.2 nozzle",
+          "Elegoo Neptune 3 Pro 0.2 nozzle",
+          "Elegoo Neptune 3 Plus 0.2 nozzle",
+          "Elegoo Neptune 3 Max 0.2 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Elegoo PLA @EC",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "210"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "21"
+        ],
+        "compatiblePrinters": [
+          "Elegoo Centauri 0.4 nozzle",
+          "Elegoo Centauri 0.6 nozzle",
+          "Elegoo Centauri 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Elegoo PLA @ECC",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "210"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "21"
+        ],
+        "compatiblePrinters": [
+          "Elegoo Centauri Carbon 0.4 nozzle",
+          "Elegoo Centauri Carbon 0.6 nozzle",
+          "Elegoo Centauri Carbon 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Elegoo PLA PRO",
+      "type": "PLA",
+      "config": {
+        "filamentMaxVolumetricSpeed": [
+          "16"
+        ],
+        "compatiblePrinters": [
+          "Elegoo Neptune 0.4 nozzle",
+          "Elegoo Neptune X 0.4 nozzle",
+          "Elegoo Neptune 2 0.4 nozzle",
+          "Elegoo Neptune 2S 0.4 nozzle",
+          "Elegoo Neptune 2D 0.4 nozzle",
+          "Elegoo Neptune 3 0.4 nozzle",
+          "Elegoo Neptune 3 Pro 0.4 nozzle",
+          "Elegoo Neptune 3 Plus 0.4 nozzle",
+          "Elegoo Neptune 3 Max 0.4 nozzle",
+          "Elegoo Neptune 4 (0.2 nozzle)",
+          "Elegoo Neptune 4 (0.4 nozzle)",
+          "Elegoo Neptune 4 (0.6 nozzle)",
+          "Elegoo Neptune 4 (0.8 nozzle)",
+          "Elegoo Neptune 4 Max (0.2 nozzle)",
+          "Elegoo Neptune 4 Max (0.4 nozzle)",
+          "Elegoo Neptune 4 Max (0.6 nozzle)",
+          "Elegoo Neptune 4 Max (0.8 nozzle)",
+          "Elegoo Neptune 4 Plus (0.2 nozzle)",
+          "Elegoo Neptune 4 Plus (0.4 nozzle)",
+          "Elegoo Neptune 4 Plus (0.6 nozzle)",
+          "Elegoo Neptune 4 Plus (0.8 nozzle)",
+          "Elegoo Neptune 4 Pro (0.2 nozzle)",
+          "Elegoo Neptune 4 Pro (0.4 nozzle)",
+          "Elegoo Neptune 4 Pro (0.6 nozzle)",
+          "Elegoo Neptune 4 Pro (0.8 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "Elegoo PLA PRO @0.2 nozzle",
+      "type": "PLA",
+      "config": {
+        "filamentMaxVolumetricSpeed": [
+          "3.2"
+        ],
+        "compatiblePrinters": [
+          "Elegoo Centauri 0.2 nozzle",
+          "Elegoo Centauri Carbon 0.2 nozzle",
+          "Elegoo Neptune 4 0.2 nozzle",
+          "Elegoo Neptune 4 Pro 0.2 nozzle",
+          "Elegoo Neptune 4 Plus 0.2 nozzle",
+          "Elegoo Neptune 4 Max 0.2 nozzle",
+          "Elegoo Neptune 3 Pro 0.2 nozzle",
+          "Elegoo Neptune 3 Plus 0.2 nozzle",
+          "Elegoo Neptune 3 Max 0.2 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Elegoo PLA PRO @EC",
+      "type": "PLA",
+      "config": {
+        "filamentMaxVolumetricSpeed": [
+          "20"
+        ],
+        "compatiblePrinters": [
+          "Elegoo Centauri 0.4 nozzle",
+          "Elegoo Centauri 0.6 nozzle",
+          "Elegoo Centauri 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Elegoo PLA PRO @ECC",
+      "type": "PLA",
+      "config": {
+        "filamentMaxVolumetricSpeed": [
+          "20"
+        ],
+        "compatiblePrinters": [
+          "Elegoo Centauri Carbon 0.4 nozzle",
+          "Elegoo Centauri Carbon 0.6 nozzle",
+          "Elegoo Centauri Carbon 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Elegoo PLA+",
+      "type": "PLA",
+      "config": {
+        "filamentMaxVolumetricSpeed": [
+          "16"
+        ],
+        "compatiblePrinters": [
+          "Elegoo Neptune 0.4 nozzle",
+          "Elegoo Neptune X 0.4 nozzle",
+          "Elegoo Neptune 2 0.4 nozzle",
+          "Elegoo Neptune 2S 0.4 nozzle",
+          "Elegoo Neptune 2D 0.4 nozzle",
+          "Elegoo Neptune 3 0.4 nozzle",
+          "Elegoo Neptune 3 Pro 0.4 nozzle",
+          "Elegoo Neptune 3 Plus 0.4 nozzle",
+          "Elegoo Neptune 3 Max 0.4 nozzle",
+          "Elegoo Neptune 4 (0.2 nozzle)",
+          "Elegoo Neptune 4 (0.4 nozzle)",
+          "Elegoo Neptune 4 (0.6 nozzle)",
+          "Elegoo Neptune 4 (0.8 nozzle)",
+          "Elegoo Neptune 4 Max (0.2 nozzle)",
+          "Elegoo Neptune 4 Max (0.4 nozzle)",
+          "Elegoo Neptune 4 Max (0.6 nozzle)",
+          "Elegoo Neptune 4 Max (0.8 nozzle)",
+          "Elegoo Neptune 4 Plus (0.2 nozzle)",
+          "Elegoo Neptune 4 Plus (0.4 nozzle)",
+          "Elegoo Neptune 4 Plus (0.6 nozzle)",
+          "Elegoo Neptune 4 Plus (0.8 nozzle)",
+          "Elegoo Neptune 4 Pro (0.2 nozzle)",
+          "Elegoo Neptune 4 Pro (0.4 nozzle)",
+          "Elegoo Neptune 4 Pro (0.6 nozzle)",
+          "Elegoo Neptune 4 Pro (0.8 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "Elegoo PLA+ @0.2 nozzle",
+      "type": "PLA",
+      "config": {
+        "filamentMaxVolumetricSpeed": [
+          "3.2"
+        ],
+        "compatiblePrinters": [
+          "Elegoo Centauri 0.2 nozzle",
+          "Elegoo Centauri Carbon 0.2 nozzle",
+          "Elegoo Neptune 4 0.2 nozzle",
+          "Elegoo Neptune 4 Pro 0.2 nozzle",
+          "Elegoo Neptune 4 Plus 0.2 nozzle",
+          "Elegoo Neptune 4 Max 0.2 nozzle",
+          "Elegoo Neptune 3 Pro 0.2 nozzle",
+          "Elegoo Neptune 3 Plus 0.2 nozzle",
+          "Elegoo Neptune 3 Max 0.2 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Elegoo PLA+ @EC",
+      "type": "PLA",
+      "config": {
+        "filamentMaxVolumetricSpeed": [
+          "20"
+        ],
+        "compatiblePrinters": [
+          "Elegoo Centauri 0.4 nozzle",
+          "Elegoo Centauri 0.6 nozzle",
+          "Elegoo Centauri 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Elegoo PLA+ @ECC",
+      "type": "PLA",
+      "config": {
+        "filamentMaxVolumetricSpeed": [
+          "20"
+        ],
+        "compatiblePrinters": [
+          "Elegoo Centauri Carbon 0.4 nozzle",
+          "Elegoo Centauri Carbon 0.6 nozzle",
+          "Elegoo Centauri Carbon 0.8 nozzle"
+        ]
+      }
+    }
+  ],
+  "processes": [
+    {
+      "name": "fdm_process_common",
+      "config": {
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_ecc_common",
+      "config": {
+        "wallLoops": "2",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_elegoo_common",
+      "config": {
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "3",
+        "bottomShellLayers": "9",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_ecc",
+      "config": {
+        "layerHeight": "0.2",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "cubic",
+        "topShellLayers": "3",
+        "bottomShellLayers": "4",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.08mm Extra Fine @Elegoo Neptune",
+      "config": {
+        "layerHeight": "0.08",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "11",
+        "bottomShellLayers": "9",
+        "compatiblePrinters": [
+          "Elegoo Neptune 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.08mm Extra Fine @Elegoo Neptune2",
+      "config": {
+        "layerHeight": "0.08",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "11",
+        "bottomShellLayers": "9",
+        "compatiblePrinters": [
+          "Elegoo Neptune 2 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.08mm Extra Fine @Elegoo Neptune2D",
+      "config": {
+        "layerHeight": "0.08",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "11",
+        "bottomShellLayers": "9",
+        "compatiblePrinters": [
+          "Elegoo Neptune 2D 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.08mm Extra Fine @Elegoo Neptune2S",
+      "config": {
+        "layerHeight": "0.08",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "11",
+        "bottomShellLayers": "9",
+        "compatiblePrinters": [
+          "Elegoo Neptune 2S 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.08mm Extra Fine @Elegoo Neptune3",
+      "config": {
+        "layerHeight": "0.08",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "11",
+        "bottomShellLayers": "9",
+        "compatiblePrinters": [
+          "Elegoo Neptune 3 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.08mm Extra Fine @Elegoo Neptune3Max",
+      "config": {
+        "layerHeight": "0.08",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "11",
+        "bottomShellLayers": "9",
+        "compatiblePrinters": [
+          "Elegoo Neptune 3 Max 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.08mm Extra Fine @Elegoo Neptune3Plus",
+      "config": {
+        "layerHeight": "0.08",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "11",
+        "bottomShellLayers": "9",
+        "compatiblePrinters": [
+          "Elegoo Neptune 3 Plus 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.08mm Extra Fine @Elegoo Neptune3Pro",
+      "config": {
+        "layerHeight": "0.08",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "11",
+        "bottomShellLayers": "9",
+        "compatiblePrinters": [
+          "Elegoo Neptune 3 Pro 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.08mm Extra Fine @Elegoo NeptuneX",
+      "config": {
+        "layerHeight": "0.08",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "11",
+        "bottomShellLayers": "9",
+        "compatiblePrinters": [
+          "Elegoo Neptune X 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.12mm Fine @Elegoo Neptune",
+      "config": {
+        "layerHeight": "0.12",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "7",
+        "bottomShellLayers": "6",
+        "compatiblePrinters": [
+          "Elegoo Neptune 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.12mm Fine @Elegoo Neptune2",
+      "config": {
+        "layerHeight": "0.12",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "7",
+        "bottomShellLayers": "6",
+        "compatiblePrinters": [
+          "Elegoo Neptune 2 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.12mm Fine @Elegoo Neptune2D",
+      "config": {
+        "layerHeight": "0.12",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "7",
+        "bottomShellLayers": "6",
+        "compatiblePrinters": [
+          "Elegoo Neptune 2D 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.12mm Fine @Elegoo Neptune2S",
+      "config": {
+        "layerHeight": "0.12",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "7",
+        "bottomShellLayers": "6",
+        "compatiblePrinters": [
+          "Elegoo Neptune 2S 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.12mm Fine @Elegoo Neptune3",
+      "config": {
+        "layerHeight": "0.12",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "7",
+        "bottomShellLayers": "6",
+        "compatiblePrinters": [
+          "Elegoo Neptune 3 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.12mm Fine @Elegoo Neptune3Max",
+      "config": {
+        "layerHeight": "0.12",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "7",
+        "bottomShellLayers": "6",
+        "compatiblePrinters": [
+          "Elegoo Neptune 3 Max 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.12mm Fine @Elegoo Neptune3Plus",
+      "config": {
+        "layerHeight": "0.12",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "7",
+        "bottomShellLayers": "6",
+        "compatiblePrinters": [
+          "Elegoo Neptune 3 Plus 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.12mm Fine @Elegoo Neptune3Pro",
+      "config": {
+        "layerHeight": "0.12",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "7",
+        "bottomShellLayers": "6",
+        "compatiblePrinters": [
+          "Elegoo Neptune 3 Pro 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.12mm Fine @Elegoo NeptuneX",
+      "config": {
+        "layerHeight": "0.12",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "7",
+        "bottomShellLayers": "6",
+        "compatiblePrinters": [
+          "Elegoo Neptune X 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.16mm Optimal @Elegoo Neptune",
+      "config": {
+        "layerHeight": "0.16",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "5",
+        "bottomShellLayers": "4",
+        "compatiblePrinters": [
+          "Elegoo Neptune 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.16mm Optimal @Elegoo Neptune2",
+      "config": {
+        "layerHeight": "0.16",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "5",
+        "bottomShellLayers": "4",
+        "compatiblePrinters": [
+          "Elegoo Neptune 2 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.16mm Optimal @Elegoo Neptune2D",
+      "config": {
+        "layerHeight": "0.16",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "5",
+        "bottomShellLayers": "4",
+        "compatiblePrinters": [
+          "Elegoo Neptune 2D 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.16mm Optimal @Elegoo Neptune2S",
+      "config": {
+        "layerHeight": "0.16",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "5",
+        "bottomShellLayers": "4",
+        "compatiblePrinters": [
+          "Elegoo Neptune 2S 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.16mm Optimal @Elegoo Neptune3",
+      "config": {
+        "layerHeight": "0.16",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "5",
+        "bottomShellLayers": "4",
+        "compatiblePrinters": [
+          "Elegoo Neptune 3 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.16mm Optimal @Elegoo Neptune3Max",
+      "config": {
+        "layerHeight": "0.16",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "5",
+        "bottomShellLayers": "4",
+        "compatiblePrinters": [
+          "Elegoo Neptune 3 Max 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.16mm Optimal @Elegoo Neptune3Plus",
+      "config": {
+        "layerHeight": "0.16",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "5",
+        "bottomShellLayers": "4",
+        "compatiblePrinters": [
+          "Elegoo Neptune 3 Plus 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.16mm Optimal @Elegoo Neptune3Pro",
+      "config": {
+        "layerHeight": "0.16",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "5",
+        "bottomShellLayers": "4",
+        "compatiblePrinters": [
+          "Elegoo Neptune 3 Pro 0.4 nozzle"
+        ]
+      }
+    }
+  ]
+}

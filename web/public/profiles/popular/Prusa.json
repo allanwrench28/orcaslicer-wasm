@@ -1,0 +1,5035 @@
+{
+  "name": "Prusa",
+  "version": "02.03.01.10",
+  "printers": [
+    {
+      "id": "Prusa_CORE_One",
+      "name": "Prusa CORE One",
+      "nozzleSizes": [
+        0.25,
+        0.3,
+        0.4,
+        0.5,
+        0.6,
+        0.8
+      ],
+      "bedModel": "coreone_bed.stl",
+      "bedTexture": "coreone.svg",
+      "defaultMaterials": [
+        "Prusa Generic ABS @CORE One",
+        "Prusa Generic ASA @CORE One",
+        "Prusa Generic PETG @CORE One",
+        "Prusa Generic PLA @CORE One",
+        "Prusa Generic PLA Silk @CORE One",
+        "Prusa Generic TPU @CORE One"
+      ],
+      "variants": [
+        {
+          "name": "Prusa CORE One 0.25 nozzle",
+          "nozzle": 0.25,
+          "config": {
+            "nozzleDiameter": [
+              "0.25"
+            ],
+            "machineMaxJerkX": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkY": [
+              "8",
+              "8"
+            ],
+            "retractionLength": "0.8",
+            "zHop": "0.15",
+            "maxLayerHeight": "0.15",
+            "minLayerHeight": "0.05",
+            "defaultPrintProfile": "0.12mm STRUCTURAL @CORE One 0.25"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa CORE One 0.3 nozzle",
+          "nozzle": 0.3,
+          "config": {
+            "nozzleDiameter": [
+              "0.3"
+            ],
+            "machineMaxJerkX": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkY": [
+              "8",
+              "8"
+            ],
+            "retractionLength": "0.7",
+            "zHop": "0.15",
+            "maxLayerHeight": "0.22",
+            "minLayerHeight": "0.05",
+            "defaultPrintProfile": "0.16mm STRUCTURAL @CORE One 0.3"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa CORE One 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "defaultPrintProfile": "0.20mm SPEED @CORE One 0.4",
+            "defaultFilamentProfile": "Prusament PLA @CORE One"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa CORE One 0.5 nozzle",
+          "nozzle": 0.5,
+          "config": {
+            "nozzleDiameter": [
+              "0.5"
+            ],
+            "defaultPrintProfile": "0.20mm SPEED @CORE One 0.5",
+            "defaultFilamentProfile": "Prusament PLA @CORE One"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa CORE One 0.6 nozzle",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "defaultPrintProfile": "0.25mm SPEED @CORE One 0.6",
+            "defaultFilamentProfile": "Prusament PLA @CORE One 0.6"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa CORE One 0.8 nozzle",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "defaultPrintProfile": "0.40mm QUALITY @CORE One 0.8",
+            "defaultFilamentProfile": "Prusament PLA @CORE One 0.8"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa CORE One HF 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x220",
+              "0x220"
+            ],
+            "printableHeight": "270",
+            "printerStructure": "corexy",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "machineMaxSpeedX": [
+              "350",
+              "160"
+            ],
+            "machineMaxSpeedY": [
+              "350",
+              "160"
+            ],
+            "machineMaxSpeedZ": [
+              "12",
+              "12"
+            ],
+            "machineMaxSpeedE": [
+              "100",
+              "100"
+            ],
+            "machineMaxAccelX": [
+              "10000",
+              "2500"
+            ],
+            "machineMaxAccelY": [
+              "10000",
+              "2500"
+            ],
+            "machineMaxAccelZ": [
+              "400",
+              "200"
+            ],
+            "machineMaxAccelExtruding": [
+              "7000",
+              "2500"
+            ],
+            "machineMaxAccelRetracting": [
+              "2500",
+              "1200"
+            ],
+            "machineMaxAccelTravel": [
+              "7000",
+              "2500"
+            ],
+            "machineMaxJerkX": [
+              "10",
+              "8"
+            ],
+            "machineMaxJerkY": [
+              "10",
+              "8"
+            ],
+            "machineMaxJerkZ": [
+              "2",
+              "2"
+            ],
+            "machineMaxJerkE": [
+              "10",
+              "10"
+            ],
+            "retractionLength": "0.7",
+            "retractionSpeed": "45",
+            "deretractionSpeed": "25",
+            "retractionMinimumTravel": "1.5",
+            "retractBeforeWipe": "80",
+            "retractWhenChangingLayer": "1",
+            "zHop": "0.2",
+            "zHopTypes": "Slope Lift",
+            "wipe": "0",
+            "maxLayerHeight": "0.30",
+            "minLayerHeight": "0.07",
+            "extruderClearanceRadius": "75",
+            "extruderClearanceHeightToRod": "33",
+            "extruderClearanceHeightToLid": "50",
+            "machineMinExtrudingRate": [
+              "0",
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0",
+              "0"
+            ],
+            "singleExtruderMultiMaterial": "0",
+            "gcodeFlavor": "marlin2",
+            "defaultPrintProfile": "0.20mm SPEED @CORE One 0.4",
+            "defaultFilamentProfile": "Prusament PLA @CORE One HF 0.4"
+          },
+          "startGcode": [
+            "; --- Printer Initialization and Checks ---\n\nM17 ; enable steppers\nM862.1 P[nozzle_diameter] A{(printer_notes=~/.*ABRASIVE_NOZZLE.*/ ? 1 : 0)} F{(printer_notes=~/.*HF_NOZZLE.*/ ? 1 : 0)} ; nozzle check\nM862.3 P \"COREONE\" ; printer model check\nM862.5 P2 ; g-code level check\nM862.6 P\"Input shaper\" ; FW feature check\nM115 U6.3.0+10073\n\n; --- Print Area and Coordinate System ---\n\nM555 X{(min(print_bed_max[0], first_layer_print_min[0] + 32) - 32)} Y{(max(0, first_layer_print_min[1]) - 4)} W{((min(print_bed_max[0], max(first_layer_print_min[0] + 32, first_layer_print_max[0])))) - ((min(print_bed_max[0], first_layer_print_min[0] + 32) - 32))} H{((first_layer_print_max[1])) - ((max(0, first_layer_print_min[1]) - 4))} ; define print area\n\nG90 ; use absolute coordinates\nM83 ; extruder in relative mode\n\n; --- Preparation ---\n\n{if chamber_temperature[initial_tool] > 35} \n; we need to preheat the chamber\nM140 S115 ; set bed temp for chamber heating\n{else} \n; just set the selected bed temp otherwise\nM140 S[first_layer_bed_temperature] ; set bed temp\n{endif}\n\nM109 R{((filament_notes[0]=~/.*HT_MBL10.*/) ? (first_layer_temperature[0] - 10) : (filament_type[0] == \"PC\" or filament_type[0] == \"PA\") ? (first_layer_temperature[0] - 25) : (filament_type[0] == \"FLEX\") ? 210 : 170)} ; wait for temp\n\nM84 E ; turn off E motor\n\nG28 ; home all axes without mesh bed leveling\n\n\n; -- Chamber Temperature Control --\n{if chamber_temperature[initial_tool] > 35} ; if we need to heat the chamber\n; min chamber temp section\nM104 T{initial_tool} S{if idle_temperature[initial_tool] == 0}100{else}{idle_temperature[initial_tool]}{endif} ; set idle temp\nG1 Z10 F720 ; set bed position\nG1 X242 Y-9 F4800 ; set print head position\nM191 S{chamber_temperature[initial_tool]} ; wait for minimal chamber temp\nM141 S0 ; set nominal chamber temp\nM107\nM140 S[first_layer_bed_temperature] ; set bed temp\n\n{else}\nM141 S{if chamber_temperature[initial_tool] == 0}20{else}{chamber_temperature[initial_tool]}{endif} ; set nominal chamber temp\n{endif}\n\n{if first_layer_bed_temperature[initial_tool]<=60}M106 S70{endif}\nG0 Z40 F10000\nM104 T{initial_tool} S{if idle_temperature[initial_tool] == 0}100{else}{idle_temperature[initial_tool]}{endif}\nM190 R[first_layer_bed_temperature] ; wait for bed temp\nM107\n\nG29 G ; absorb heat\n\nM109 R{((filament_notes[0]=~/.*HT_MBL10.*/) ? (first_layer_temperature[0] - 10) : (filament_type[0] == \"PC\" or filament_type[0] == \"PA\") ? (first_layer_temperature[0] - 25) : (filament_type[0] == \"FLEX\") ? 210 : 170)} ; wait for MBL temp\n\nM302 S160 ; lower cold extrusion limit to 160C\n\n{if filament_type[initial_tool]==\"FLEX\"}\nG1 E-4 F2400 ; retraction\n{else}\nG1 E-2 F2400 ; retraction\n{endif}\n\nM84 E ; turn off E motor\n\n; --- Mesh Bed Leveling (MBL) ---\n\nG29 P9 X208 Y-2.5 W32 H4 ; limited MBL\nM84 E ; turn off E motor\n\nG29 P1 ; invalidate MBL and probe print area\nG29 P1 X150 Y0 W100 H20 C ; probe near purge area\nG29 P3.2 ; MBL interpolation\nG29 P3.13 ; MBL extrapolation outside probe area\nG29 A ; activate MBL\n\n; --- Preparation for Purge Line ---\n\nM104 S{first_layer_temperature[initial_extruder]}\nG0 X249 Y-2.5 Z15 F4800 ; move away and ready for the purge\nM109 S{first_layer_temperature[initial_extruder]}\n\nG92 E0 ; reset extruder position\nM569 S0 E ; set spreadcycle mode for extruder\n\n; --- Extrude Purge Line ---\n\nG92 E0 ; reset extruder position\nG1 E{(filament_type[0] == \"FLEX\" ? 4 : 2)} F2400 ; deretraction after the initial one\nG0 E5 X235 Z0.2 F500 ; purge\nG0 X225 E4 F500 ; purge\nG0 X215 E4 F650 ; purge\nG0 X205 E4 F800 ; purge\nG0 X202 Z0.05 F8000 ; wipe, close to bed\nG0 X199 Z0.2 F8000 ; wipe, quickly away from bed\n\nG92 E0 ; reset extruder position\nM221 S100 ; set flow to 100%"
+          ],
+          "endGcode": [
+            "{if layer_z < max_print_height}G1 Z{z_offset+min(max_layer_z+1, max_print_height)} F720 ; move print head up{endif}\nG1 E-1 F2400 ; additional retraction\nM104 S0 ; turn off temperature\nM140 S0 ; turn off heatbed\nM141 S0 ; disable chamber control\nM107 ; turn off fan\nG1 X242 Y-9 F10200 ; park\nG4 ; wait\nM572 S0 ; reset PA\nM84 X Y E ; disable motors\n; max_layer_z = [max_layer_z]"
+          ],
+          "pauseGcode": "M601",
+          "changeFilamentGcode": [
+            "M600\nG1 E0.3 F1500 ; prime after color change"
+          ]
+        },
+        {
+          "name": "Prusa CORE One HF 0.5 nozzle",
+          "nozzle": 0.5,
+          "config": {
+            "nozzleDiameter": [
+              "0.5"
+            ],
+            "retractionLength": "0.7",
+            "deretractionSpeed": "25",
+            "wipe": "1",
+            "maxLayerHeight": "0.32",
+            "minLayerHeight": "0.07",
+            "defaultPrintProfile": "0.20mm SPEED @CORE One HF 0.5",
+            "defaultFilamentProfile": "Prusament PLA @CORE One HF 0.5"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa CORE One HF 0.6 nozzle",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "retractionLength": "0.7",
+            "deretractionSpeed": "25",
+            "wipe": "1",
+            "maxLayerHeight": "0.40",
+            "minLayerHeight": "0.15",
+            "defaultPrintProfile": "0.32mm SPEED @CORE One HF 0.6",
+            "defaultFilamentProfile": "Prusament PLA @CORE One HF 0.6"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa CORE One HF 0.8 nozzle",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "retractionLength": "0.6",
+            "retractionSpeed": "15",
+            "deretractionSpeed": "15",
+            "retractBeforeWipe": "50",
+            "zHop": "0.25",
+            "wipe": "1",
+            "maxLayerHeight": "0.6",
+            "minLayerHeight": "0.2",
+            "defaultPrintProfile": "0.40mm STRUCTURAL @CORE One HF 0.8",
+            "defaultFilamentProfile": "Prusament PLA @CORE One HF 0.8"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa CORE One HF",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.4;0.5;0.6;0.8"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "Prusa_CORE_One_HF",
+      "name": "Prusa CORE One HF",
+      "nozzleSizes": [
+        0.4,
+        0.5,
+        0.6,
+        0.8
+      ],
+      "bedModel": "coreone_bed.stl",
+      "bedTexture": "coreone.svg",
+      "defaultMaterials": [
+        "Prusa Generic ABS @CORE One",
+        "Prusa Generic ASA @CORE One",
+        "Prusa Generic PETG @CORE One",
+        "Prusa Generic PLA @CORE One",
+        "Prusa Generic PLA Silk @CORE One",
+        "Prusa Generic TPU @CORE One"
+      ],
+      "variants": [
+        {
+          "name": "Prusa CORE One HF 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x220",
+              "0x220"
+            ],
+            "printableHeight": "270",
+            "printerStructure": "corexy",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "machineMaxSpeedX": [
+              "350",
+              "160"
+            ],
+            "machineMaxSpeedY": [
+              "350",
+              "160"
+            ],
+            "machineMaxSpeedZ": [
+              "12",
+              "12"
+            ],
+            "machineMaxSpeedE": [
+              "100",
+              "100"
+            ],
+            "machineMaxAccelX": [
+              "10000",
+              "2500"
+            ],
+            "machineMaxAccelY": [
+              "10000",
+              "2500"
+            ],
+            "machineMaxAccelZ": [
+              "400",
+              "200"
+            ],
+            "machineMaxAccelExtruding": [
+              "7000",
+              "2500"
+            ],
+            "machineMaxAccelRetracting": [
+              "2500",
+              "1200"
+            ],
+            "machineMaxAccelTravel": [
+              "7000",
+              "2500"
+            ],
+            "machineMaxJerkX": [
+              "10",
+              "8"
+            ],
+            "machineMaxJerkY": [
+              "10",
+              "8"
+            ],
+            "machineMaxJerkZ": [
+              "2",
+              "2"
+            ],
+            "machineMaxJerkE": [
+              "10",
+              "10"
+            ],
+            "retractionLength": "0.7",
+            "retractionSpeed": "45",
+            "deretractionSpeed": "25",
+            "retractionMinimumTravel": "1.5",
+            "retractBeforeWipe": "80",
+            "retractWhenChangingLayer": "1",
+            "zHop": "0.2",
+            "zHopTypes": "Slope Lift",
+            "wipe": "0",
+            "maxLayerHeight": "0.30",
+            "minLayerHeight": "0.07",
+            "extruderClearanceRadius": "75",
+            "extruderClearanceHeightToRod": "33",
+            "extruderClearanceHeightToLid": "50",
+            "machineMinExtrudingRate": [
+              "0",
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0",
+              "0"
+            ],
+            "singleExtruderMultiMaterial": "0",
+            "gcodeFlavor": "marlin2",
+            "defaultPrintProfile": "0.20mm SPEED @CORE One 0.4",
+            "defaultFilamentProfile": "Prusament PLA @CORE One HF 0.4"
+          },
+          "startGcode": [
+            "; --- Printer Initialization and Checks ---\n\nM17 ; enable steppers\nM862.1 P[nozzle_diameter] A{(printer_notes=~/.*ABRASIVE_NOZZLE.*/ ? 1 : 0)} F{(printer_notes=~/.*HF_NOZZLE.*/ ? 1 : 0)} ; nozzle check\nM862.3 P \"COREONE\" ; printer model check\nM862.5 P2 ; g-code level check\nM862.6 P\"Input shaper\" ; FW feature check\nM115 U6.3.0+10073\n\n; --- Print Area and Coordinate System ---\n\nM555 X{(min(print_bed_max[0], first_layer_print_min[0] + 32) - 32)} Y{(max(0, first_layer_print_min[1]) - 4)} W{((min(print_bed_max[0], max(first_layer_print_min[0] + 32, first_layer_print_max[0])))) - ((min(print_bed_max[0], first_layer_print_min[0] + 32) - 32))} H{((first_layer_print_max[1])) - ((max(0, first_layer_print_min[1]) - 4))} ; define print area\n\nG90 ; use absolute coordinates\nM83 ; extruder in relative mode\n\n; --- Preparation ---\n\n{if chamber_temperature[initial_tool] > 35} \n; we need to preheat the chamber\nM140 S115 ; set bed temp for chamber heating\n{else} \n; just set the selected bed temp otherwise\nM140 S[first_layer_bed_temperature] ; set bed temp\n{endif}\n\nM109 R{((filament_notes[0]=~/.*HT_MBL10.*/) ? (first_layer_temperature[0] - 10) : (filament_type[0] == \"PC\" or filament_type[0] == \"PA\") ? (first_layer_temperature[0] - 25) : (filament_type[0] == \"FLEX\") ? 210 : 170)} ; wait for temp\n\nM84 E ; turn off E motor\n\nG28 ; home all axes without mesh bed leveling\n\n\n; -- Chamber Temperature Control --\n{if chamber_temperature[initial_tool] > 35} ; if we need to heat the chamber\n; min chamber temp section\nM104 T{initial_tool} S{if idle_temperature[initial_tool] == 0}100{else}{idle_temperature[initial_tool]}{endif} ; set idle temp\nG1 Z10 F720 ; set bed position\nG1 X242 Y-9 F4800 ; set print head position\nM191 S{chamber_temperature[initial_tool]} ; wait for minimal chamber temp\nM141 S0 ; set nominal chamber temp\nM107\nM140 S[first_layer_bed_temperature] ; set bed temp\n\n{else}\nM141 S{if chamber_temperature[initial_tool] == 0}20{else}{chamber_temperature[initial_tool]}{endif} ; set nominal chamber temp\n{endif}\n\n{if first_layer_bed_temperature[initial_tool]<=60}M106 S70{endif}\nG0 Z40 F10000\nM104 T{initial_tool} S{if idle_temperature[initial_tool] == 0}100{else}{idle_temperature[initial_tool]}{endif}\nM190 R[first_layer_bed_temperature] ; wait for bed temp\nM107\n\nG29 G ; absorb heat\n\nM109 R{((filament_notes[0]=~/.*HT_MBL10.*/) ? (first_layer_temperature[0] - 10) : (filament_type[0] == \"PC\" or filament_type[0] == \"PA\") ? (first_layer_temperature[0] - 25) : (filament_type[0] == \"FLEX\") ? 210 : 170)} ; wait for MBL temp\n\nM302 S160 ; lower cold extrusion limit to 160C\n\n{if filament_type[initial_tool]==\"FLEX\"}\nG1 E-4 F2400 ; retraction\n{else}\nG1 E-2 F2400 ; retraction\n{endif}\n\nM84 E ; turn off E motor\n\n; --- Mesh Bed Leveling (MBL) ---\n\nG29 P9 X208 Y-2.5 W32 H4 ; limited MBL\nM84 E ; turn off E motor\n\nG29 P1 ; invalidate MBL and probe print area\nG29 P1 X150 Y0 W100 H20 C ; probe near purge area\nG29 P3.2 ; MBL interpolation\nG29 P3.13 ; MBL extrapolation outside probe area\nG29 A ; activate MBL\n\n; --- Preparation for Purge Line ---\n\nM104 S{first_layer_temperature[initial_extruder]}\nG0 X249 Y-2.5 Z15 F4800 ; move away and ready for the purge\nM109 S{first_layer_temperature[initial_extruder]}\n\nG92 E0 ; reset extruder position\nM569 S0 E ; set spreadcycle mode for extruder\n\n; --- Extrude Purge Line ---\n\nG92 E0 ; reset extruder position\nG1 E{(filament_type[0] == \"FLEX\" ? 4 : 2)} F2400 ; deretraction after the initial one\nG0 E5 X235 Z0.2 F500 ; purge\nG0 X225 E4 F500 ; purge\nG0 X215 E4 F650 ; purge\nG0 X205 E4 F800 ; purge\nG0 X202 Z0.05 F8000 ; wipe, close to bed\nG0 X199 Z0.2 F8000 ; wipe, quickly away from bed\n\nG92 E0 ; reset extruder position\nM221 S100 ; set flow to 100%"
+          ],
+          "endGcode": [
+            "{if layer_z < max_print_height}G1 Z{z_offset+min(max_layer_z+1, max_print_height)} F720 ; move print head up{endif}\nG1 E-1 F2400 ; additional retraction\nM104 S0 ; turn off temperature\nM140 S0 ; turn off heatbed\nM141 S0 ; disable chamber control\nM107 ; turn off fan\nG1 X242 Y-9 F10200 ; park\nG4 ; wait\nM572 S0 ; reset PA\nM84 X Y E ; disable motors\n; max_layer_z = [max_layer_z]"
+          ],
+          "pauseGcode": "M601",
+          "changeFilamentGcode": [
+            "M600\nG1 E0.3 F1500 ; prime after color change"
+          ]
+        },
+        {
+          "name": "Prusa CORE One HF 0.5 nozzle",
+          "nozzle": 0.5,
+          "config": {
+            "nozzleDiameter": [
+              "0.5"
+            ],
+            "retractionLength": "0.7",
+            "deretractionSpeed": "25",
+            "wipe": "1",
+            "maxLayerHeight": "0.32",
+            "minLayerHeight": "0.07",
+            "defaultPrintProfile": "0.20mm SPEED @CORE One HF 0.5",
+            "defaultFilamentProfile": "Prusament PLA @CORE One HF 0.5"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa CORE One HF 0.6 nozzle",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "retractionLength": "0.7",
+            "deretractionSpeed": "25",
+            "wipe": "1",
+            "maxLayerHeight": "0.40",
+            "minLayerHeight": "0.15",
+            "defaultPrintProfile": "0.32mm SPEED @CORE One HF 0.6",
+            "defaultFilamentProfile": "Prusament PLA @CORE One HF 0.6"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa CORE One HF 0.8 nozzle",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "retractionLength": "0.6",
+            "retractionSpeed": "15",
+            "deretractionSpeed": "15",
+            "retractBeforeWipe": "50",
+            "zHop": "0.25",
+            "wipe": "1",
+            "maxLayerHeight": "0.6",
+            "minLayerHeight": "0.2",
+            "defaultPrintProfile": "0.40mm STRUCTURAL @CORE One HF 0.8",
+            "defaultFilamentProfile": "Prusament PLA @CORE One HF 0.8"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "MINI",
+      "name": "Prusa MINI",
+      "nozzleSizes": [
+        0.25,
+        0.4,
+        0.6,
+        0.8
+      ],
+      "bedModel": "mini_bed.stl",
+      "bedTexture": "mini.svg",
+      "defaultMaterials": [
+        "Prusa Generic ABS",
+        "Prusa Generic PLA",
+        "Prusa Generic PLA-CF",
+        "Prusa Generic PETG",
+        "Prusa Generic TPU",
+        "Prusa Generic ASA",
+        "Prusa Generic PC",
+        "Prusa Generic PVA",
+        "Prusa Generic PA",
+        "Prusa Generic PA-CF"
+      ],
+      "variants": [
+        {
+          "name": "Prusa MINI 0.25 nozzle",
+          "nozzle": 0.25,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "180x0",
+              "180x180",
+              "0x180"
+            ],
+            "printableHeight": "180",
+            "bedExcludeArea": [
+              "0x0"
+            ],
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.25"
+            ],
+            "nozzleType": "hardened_steel",
+            "machineMaxSpeedX": [
+              "180",
+              "200"
+            ],
+            "machineMaxSpeedY": [
+              "180",
+              "200"
+            ],
+            "machineMaxSpeedZ": [
+              "12",
+              "12"
+            ],
+            "machineMaxSpeedE": [
+              "80",
+              "25"
+            ],
+            "machineMaxAccelX": [
+              "2500",
+              "2000"
+            ],
+            "machineMaxAccelY": [
+              "2500",
+              "2000"
+            ],
+            "machineMaxAccelZ": [
+              "400",
+              "200"
+            ],
+            "machineMaxAccelExtruding": [
+              "1250",
+              "2000"
+            ],
+            "machineMaxAccelRetracting": [
+              "5000",
+              "5000"
+            ],
+            "machineMaxAccelTravel": [
+              "3000",
+              "3000"
+            ],
+            "machineMaxJerkX": [
+              "8",
+              "9"
+            ],
+            "machineMaxJerkY": [
+              "8",
+              "9"
+            ],
+            "machineMaxJerkZ": [
+              "0.2",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "10",
+              "2.5"
+            ],
+            "retractionLength": [
+              "3.2"
+            ],
+            "retractionSpeed": [
+              "70"
+            ],
+            "deretractionSpeed": [
+              "30"
+            ],
+            "retractionMinimumTravel": [
+              "1.5"
+            ],
+            "retractBeforeWipe": [
+              "70%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0.4"
+            ],
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.15"
+            ],
+            "minLayerHeight": [
+              "0.05"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0",
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0",
+              "0"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "marlin2",
+            "defaultPrintProfile": "0.20mm Standard @MINI 0.25",
+            "defaultFilamentProfile": [
+              "Prusa Generic PLA"
+            ]
+          },
+          "startGcode": "M862.3 P \"MINI\" ; printer model check\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\nM104 S170 ; set extruder temp for bed leveling\nM140 S[first_layer_bed_temperature] ; set bed temp\nM109 R170 ; wait for bed leveling temp\nM190 S[first_layer_bed_temperature] ; wait for bed temp\nM204 T1250 ; set travel acceleration\nG28 ; home all without mesh bed level\nG29 ; mesh bed leveling \nM204 T[machine_max_acceleration_travel] ; restore travel acceleration\nM104 S[first_layer_temperature] ; set extruder temp\nG92 E0\nG1 Y-2 X179 F2400\nG1 Z3 F720\nM109 S[first_layer_temperature] ; wait for extruder temp\n\n; intro line\nG1 X170 F1000\nG1 Z0.2 F720\nG1 X110 E8 F900\nG1 X40 E10 F700\nG92 E0\n\nM221 S95 ; set flow",
+          "endGcode": "G1 E-1 F2100 ; retract\n{if max_layer_z < max_print_height}G1 Z{z_offset+min(max_layer_z+2, max_print_height)} F720 ; Move print head up{endif}\nG1 X178 Y178 F4200 ; park print head\n{if max_layer_z < max_print_height}G1 Z{z_offset+min(max_layer_z+30, max_print_height)} F720 ; Move print head further up{endif}\nG4 ; wait\nM104 S0 ; turn off temperature\nM140 S0 ; turn off heatbed\nM107 ; turn off fan\nM221 S100 ; reset flow\nM900 K0 ; reset LA\nM84 ; disable motors\n; max_layer_z = [max_layer_z]",
+          "pauseGcode": "M601",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa MINI 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "180x0",
+              "180x180",
+              "0x180"
+            ],
+            "printableHeight": "180",
+            "bedExcludeArea": [
+              "0x0"
+            ],
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "hardened_steel",
+            "machineMaxSpeedX": [
+              "180",
+              "200"
+            ],
+            "machineMaxSpeedY": [
+              "180",
+              "200"
+            ],
+            "machineMaxSpeedZ": [
+              "12",
+              "12"
+            ],
+            "machineMaxSpeedE": [
+              "80",
+              "25"
+            ],
+            "machineMaxAccelX": [
+              "2500",
+              "2000"
+            ],
+            "machineMaxAccelY": [
+              "2500",
+              "2000"
+            ],
+            "machineMaxAccelZ": [
+              "400",
+              "200"
+            ],
+            "machineMaxAccelExtruding": [
+              "1250",
+              "2000"
+            ],
+            "machineMaxAccelRetracting": [
+              "5000",
+              "5000"
+            ],
+            "machineMaxAccelTravel": [
+              "3000",
+              "3000"
+            ],
+            "machineMaxJerkX": [
+              "8",
+              "9"
+            ],
+            "machineMaxJerkY": [
+              "8",
+              "9"
+            ],
+            "machineMaxJerkZ": [
+              "0.2",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "10",
+              "2.5"
+            ],
+            "retractionLength": [
+              "3.2"
+            ],
+            "retractionSpeed": [
+              "70"
+            ],
+            "deretractionSpeed": [
+              "30"
+            ],
+            "retractionMinimumTravel": [
+              "1.5"
+            ],
+            "retractBeforeWipe": [
+              "70%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0.4"
+            ],
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.3"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0",
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0",
+              "0"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "marlin2",
+            "defaultPrintProfile": "0.20mm Standard @MINI",
+            "defaultFilamentProfile": [
+              "Prusa Generic PLA"
+            ]
+          },
+          "startGcode": "M862.3 P \"MINI\" ; printer model check\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\nM104 S170 ; set extruder temp for bed leveling\nM140 S[first_layer_bed_temperature] ; set bed temp\nM109 R170 ; wait for bed leveling temp\nM190 S[first_layer_bed_temperature] ; wait for bed temp\nM204 T1250 ; set travel acceleration\nG28 ; home all without mesh bed level\nG29 ; mesh bed leveling \nM204 T[machine_max_acceleration_travel] ; restore travel acceleration\nM104 S[first_layer_temperature] ; set extruder temp\nG92 E0\nG1 Y-2 X179 F2400\nG1 Z3 F720\nM109 S[first_layer_temperature] ; wait for extruder temp\n\n; intro line\nG1 X170 F1000\nG1 Z0.2 F720\nG1 X110 E8 F900\nG1 X40 E10 F700\nG92 E0\n\nM221 S95 ; set flow",
+          "endGcode": "G1 E-1 F2100 ; retract\n{if max_layer_z < max_print_height}G1 Z{z_offset+min(max_layer_z+2, max_print_height)} F720 ; Move print head up{endif}\nG1 X178 Y178 F4200 ; park print head\n{if max_layer_z < max_print_height}G1 Z{z_offset+min(max_layer_z+30, max_print_height)} F720 ; Move print head further up{endif}\nG4 ; wait\nM104 S0 ; turn off temperature\nM140 S0 ; turn off heatbed\nM107 ; turn off fan\nM221 S100 ; reset flow\nM900 K0 ; reset LA\nM84 ; disable motors\n; max_layer_z = [max_layer_z]",
+          "pauseGcode": "M601",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa MINI 0.6 nozzle",
+          "nozzle": 0.6,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "180x0",
+              "180x180",
+              "0x180"
+            ],
+            "printableHeight": "180",
+            "bedExcludeArea": [
+              "0x0"
+            ],
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "nozzleType": "hardened_steel",
+            "machineMaxSpeedX": [
+              "180",
+              "200"
+            ],
+            "machineMaxSpeedY": [
+              "180",
+              "200"
+            ],
+            "machineMaxSpeedZ": [
+              "12",
+              "12"
+            ],
+            "machineMaxSpeedE": [
+              "80",
+              "25"
+            ],
+            "machineMaxAccelX": [
+              "2500",
+              "2000"
+            ],
+            "machineMaxAccelY": [
+              "2500",
+              "2000"
+            ],
+            "machineMaxAccelZ": [
+              "400",
+              "200"
+            ],
+            "machineMaxAccelExtruding": [
+              "1250",
+              "2000"
+            ],
+            "machineMaxAccelRetracting": [
+              "5000",
+              "5000"
+            ],
+            "machineMaxAccelTravel": [
+              "3000",
+              "3000"
+            ],
+            "machineMaxJerkX": [
+              "8",
+              "9"
+            ],
+            "machineMaxJerkY": [
+              "8",
+              "9"
+            ],
+            "machineMaxJerkZ": [
+              "0.2",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "10",
+              "2.5"
+            ],
+            "retractionLength": [
+              "3.2"
+            ],
+            "retractionSpeed": [
+              "70"
+            ],
+            "deretractionSpeed": [
+              "30"
+            ],
+            "retractionMinimumTravel": [
+              "1.5"
+            ],
+            "retractBeforeWipe": [
+              "70%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0.4"
+            ],
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.3"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0",
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0",
+              "0"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "marlin2",
+            "defaultPrintProfile": "0.20mm Standard @MINI 0.6",
+            "defaultFilamentProfile": [
+              "Prusa Generic PLA"
+            ]
+          },
+          "startGcode": "M862.3 P \"MINI\" ; printer model check\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\nM104 S170 ; set extruder temp for bed leveling\nM140 S[first_layer_bed_temperature] ; set bed temp\nM109 R170 ; wait for bed leveling temp\nM190 S[first_layer_bed_temperature] ; wait for bed temp\nM204 T1250 ; set travel acceleration\nG28 ; home all without mesh bed level\nG29 ; mesh bed leveling \nM204 T[machine_max_acceleration_travel] ; restore travel acceleration\nM104 S[first_layer_temperature] ; set extruder temp\nG92 E0\nG1 Y-2 X179 F2400\nG1 Z3 F720\nM109 S[first_layer_temperature] ; wait for extruder temp\n\n; intro line\nG1 X170 F1000\nG1 Z0.2 F720\nG1 X110 E8 F900\nG1 X40 E10 F700\nG92 E0\n\nM221 S95 ; set flow",
+          "endGcode": "G1 E-1 F2100 ; retract\n{if max_layer_z < max_print_height}G1 Z{z_offset+min(max_layer_z+2, max_print_height)} F720 ; Move print head up{endif}\nG1 X178 Y178 F4200 ; park print head\n{if max_layer_z < max_print_height}G1 Z{z_offset+min(max_layer_z+30, max_print_height)} F720 ; Move print head further up{endif}\nG4 ; wait\nM104 S0 ; turn off temperature\nM140 S0 ; turn off heatbed\nM107 ; turn off fan\nM221 S100 ; reset flow\nM900 K0 ; reset LA\nM84 ; disable motors\n; max_layer_z = [max_layer_z]",
+          "pauseGcode": "M601",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa MINI 0.8 nozzle",
+          "nozzle": 0.8,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "180x0",
+              "180x180",
+              "0x180"
+            ],
+            "printableHeight": "180",
+            "bedExcludeArea": [
+              "0x0"
+            ],
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "nozzleType": "hardened_steel",
+            "machineMaxSpeedX": [
+              "180",
+              "200"
+            ],
+            "machineMaxSpeedY": [
+              "180",
+              "200"
+            ],
+            "machineMaxSpeedZ": [
+              "12",
+              "12"
+            ],
+            "machineMaxSpeedE": [
+              "80",
+              "25"
+            ],
+            "machineMaxAccelX": [
+              "2500",
+              "2000"
+            ],
+            "machineMaxAccelY": [
+              "2500",
+              "2000"
+            ],
+            "machineMaxAccelZ": [
+              "400",
+              "200"
+            ],
+            "machineMaxAccelExtruding": [
+              "1250",
+              "2000"
+            ],
+            "machineMaxAccelRetracting": [
+              "5000",
+              "5000"
+            ],
+            "machineMaxAccelTravel": [
+              "3000",
+              "3000"
+            ],
+            "machineMaxJerkX": [
+              "8",
+              "9"
+            ],
+            "machineMaxJerkY": [
+              "8",
+              "9"
+            ],
+            "machineMaxJerkZ": [
+              "0.2",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "10",
+              "2.5"
+            ],
+            "retractionLength": [
+              "3.2"
+            ],
+            "retractionSpeed": [
+              "70"
+            ],
+            "deretractionSpeed": [
+              "30"
+            ],
+            "retractionMinimumTravel": [
+              "1.5"
+            ],
+            "retractBeforeWipe": [
+              "70%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0.4"
+            ],
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.3"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0",
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0",
+              "0"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "marlin2",
+            "defaultPrintProfile": "0.20mm Standard @MINI 0.8",
+            "defaultFilamentProfile": [
+              "Prusa Generic PLA"
+            ]
+          },
+          "startGcode": "M862.3 P \"MINI\" ; printer model check\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\nM104 S170 ; set extruder temp for bed leveling\nM140 S[first_layer_bed_temperature] ; set bed temp\nM109 R170 ; wait for bed leveling temp\nM190 S[first_layer_bed_temperature] ; wait for bed temp\nM204 T1250 ; set travel acceleration\nG28 ; home all without mesh bed level\nG29 ; mesh bed leveling \nM204 T[machine_max_acceleration_travel] ; restore travel acceleration\nM104 S[first_layer_temperature] ; set extruder temp\nG92 E0\nG1 Y-2 X179 F2400\nG1 Z3 F720\nM109 S[first_layer_temperature] ; wait for extruder temp\n\n; intro line\nG1 X170 F1000\nG1 Z0.2 F720\nG1 X110 E8 F900\nG1 X40 E10 F700\nG92 E0\n\nM221 S95 ; set flow",
+          "endGcode": "G1 E-1 F2100 ; retract\n{if max_layer_z < max_print_height}G1 Z{z_offset+min(max_layer_z+2, max_print_height)} F720 ; Move print head up{endif}\nG1 X178 Y178 F4200 ; park print head\n{if max_layer_z < max_print_height}G1 Z{z_offset+min(max_layer_z+30, max_print_height)} F720 ; Move print head further up{endif}\nG4 ; wait\nM104 S0 ; turn off temperature\nM140 S0 ; turn off heatbed\nM107 ; turn off fan\nM221 S100 ; reset flow\nM900 K0 ; reset LA\nM84 ; disable motors\n; max_layer_z = [max_layer_z]",
+          "pauseGcode": "M601",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa MINIIS 0.25 nozzle",
+          "nozzle": 0.25,
+          "config": {
+            "nozzleDiameter": [
+              "0.25"
+            ],
+            "retractionLength": [
+              "2.5"
+            ],
+            "retractionMinimumTravel": [
+              "1.0"
+            ],
+            "maxLayerHeight": [
+              "0.15"
+            ],
+            "minLayerHeight": [
+              "0.05"
+            ],
+            "gcodeFlavor": "marlin2",
+            "defaultPrintProfile": "0.12mm Standard @MINIIS",
+            "defaultFilamentProfile": [
+              "Prusa Generic PLA @MINIIS 0.25"
+            ]
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa MINIIS 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "180x0",
+              "180x180",
+              "0x180"
+            ],
+            "printableHeight": "180",
+            "bedExcludeArea": [
+              "0x0"
+            ],
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "brass",
+            "machineMaxSpeedX": [
+              "400",
+              "400"
+            ],
+            "machineMaxSpeedY": [
+              "400",
+              "400"
+            ],
+            "machineMaxSpeedZ": [
+              "12",
+              "12"
+            ],
+            "machineMaxSpeedE": [
+              "80",
+              "25"
+            ],
+            "machineMaxAccelX": [
+              "4000",
+              "4000"
+            ],
+            "machineMaxAccelY": [
+              "4000",
+              "4000"
+            ],
+            "machineMaxAccelZ": [
+              "400",
+              "400"
+            ],
+            "machineMaxAccelExtruding": [
+              "4000",
+              "4000"
+            ],
+            "machineMaxAccelRetracting": [
+              "1250",
+              "1250"
+            ],
+            "machineMaxAccelTravel": [
+              "4000",
+              "4000"
+            ],
+            "machineMaxJerkX": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkY": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkZ": [
+              "2",
+              "2"
+            ],
+            "machineMaxJerkE": [
+              "10",
+              "2.5"
+            ],
+            "retractionLength": [
+              "2.5"
+            ],
+            "retractionSpeed": [
+              "70"
+            ],
+            "deretractionSpeed": [
+              "40"
+            ],
+            "retractionMinimumTravel": [
+              "1.5"
+            ],
+            "retractBeforeWipe": [
+              "70%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0.2"
+            ],
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.3"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0",
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0",
+              "0"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "marlin2",
+            "defaultPrintProfile": "0.20mm Standard @MINIIS",
+            "defaultFilamentProfile": [
+              "Prusa Generic PLA @MINIIS"
+            ]
+          },
+          "startGcode": "M862.3 P \"MINI\" ; printer model check\nM862.1 P[nozzle_diameter] ; nozzle diameter check\nM862.5 P2 ; g-code level check\nM862.6 P\"Input shaper\" ; FW feature check\nM115 U6.0.3+14902\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\nG28 ; home all without mesh bed level\nM104 S170 ; set extruder temp for bed leveling\nM140 S[first_layer_bed_temperature] ; set bed temp\nM109 R170 ; wait for bed leveling temp\nM190 S[first_layer_bed_temperature] ; wait for bed temp\nM569 S1 X Y ; set stealthchop for X Y\nM204 T1250 ; set travel acceleration\nG29 ; mesh bed leveling \nM104 S[first_layer_temperature] ; set extruder temp\nG92 E0\n\nG1 X0 Y-2 Z3 F2400\n\nM109 S[first_layer_temperature] ; wait for extruder temp\n\n; intro line\nG1 X10 Z0.2 F1000\nG1 X70 E8 F900\nG1 X140 E10 F700\nG92 E0\n\nM569 S0 X Y ; set spreadcycle for X Y\nM204 T[machine_max_acceleration_travel] ; restore travel acceleration\nM572 W0.06 ; set smooth time\nM221 S95 ; set flow",
+          "endGcode": "{if max_layer_z < max_print_height}G1 Z{z_offset+min(max_layer_z+2, max_print_height)} F720 ; Move print head up{endif}\nG1 X170 Y170 F4200 ; park print head\n{if max_layer_z < max_print_height}G1 Z{z_offset+min(max_layer_z+50, max_print_height)} F720 ; Move print head further up{endif}\nG4 ; wait\nM104 S0 ; turn off temperature\nM140 S0 ; turn off heatbed\nM107 ; turn off fan\nM221 S100 ; reset flow\nM572 S0 ; reset PA\nM569 S1 X Y ; reset to stealthchop for X Y\nM84 ; disable motors\n; max_layer_z = [max_layer_z]",
+          "pauseGcode": "M601",
+          "changeFilamentGcode": "M600"
+        },
+        {
+          "name": "Prusa MINIIS 0.6 nozzle",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "retractionLength": [
+              "2.8"
+            ],
+            "retractionSpeed": [
+              "70"
+            ],
+            "maxLayerHeight": [
+              "0.4"
+            ],
+            "minLayerHeight": [
+              "0.15"
+            ],
+            "gcodeFlavor": "marlin2",
+            "defaultPrintProfile": "0.25mm Standard @MINIIS",
+            "defaultFilamentProfile": [
+              "Prusa Generic PLA @MINIIS 0.6"
+            ]
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa MINIIS 0.8 nozzle",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "retractionLength": [
+              "2.8"
+            ],
+            "retractionSpeed": [
+              "45"
+            ],
+            "deretractionSpeed": [
+              "20"
+            ],
+            "maxLayerHeight": [
+              "0.55"
+            ],
+            "minLayerHeight": [
+              "0.2"
+            ],
+            "gcodeFlavor": "marlin2",
+            "defaultPrintProfile": "0.40mm Standard @MINIIS",
+            "defaultFilamentProfile": [
+              "Prusa Generic PLA @MINIIS 0.8"
+            ]
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa MINI IS",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.25;0.4;0.6;0.8"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "MK3.5",
+      "name": "Prusa MK3.5",
+      "nozzleSizes": [
+        0.25,
+        0.4,
+        0.6,
+        0.8
+      ],
+      "bedModel": "mk3.5_bed.stl",
+      "bedTexture": "mk3.5.svg",
+      "defaultMaterials": [
+        "Prusa Generic PLA-CF @MK3.5",
+        "Prusa Generic PC @MK3.5",
+        "Prusa Generic PVA @MK3.5",
+        "Prusa Generic PA @MK3.5",
+        "Prusa Generic PA-CF @MK3.5",
+        "Prusa Generic ABS @MK3.5",
+        "Prusa Generic PLA @MK3.5",
+        "Prusa Generic PLA @MK3.5 0.6",
+        "Prusa Generic PLA @MK3.5 0.8",
+        "Prusa Generic PETG @MK3.5",
+        "Prusa Generic PETG @MK3.5 0.6",
+        "Prusa Generic PETG @MK3.5 0.8",
+        "Prusa Generic TPU @MK3.5",
+        "Prusa Generic ASA @MK3.5",
+        ""
+      ],
+      "variants": [
+        {
+          "name": "Prusa MK3.5 0.25 nozzle",
+          "nozzle": 0.25,
+          "config": {
+            "nozzleDiameter": [
+              "0.25"
+            ],
+            "retractionLength": [
+              "0.8"
+            ],
+            "retractionMinimumTravel": [
+              "1.5"
+            ],
+            "maxLayerHeight": [
+              "0.15"
+            ],
+            "minLayerHeight": [
+              "0.05"
+            ],
+            "gcodeFlavor": "marlin2",
+            "defaultPrintProfile": "0.12mm Standard @MK3.5",
+            "defaultFilamentProfile": [
+              "Prusa Generic PLA @MK3.5 0.25"
+            ]
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa MK3.5 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x210",
+              "0x210"
+            ],
+            "printableHeight": "210",
+            "bedExcludeArea": [
+              "0x0"
+            ],
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "brass",
+            "machineMaxSpeedX": [
+              "300",
+              "300"
+            ],
+            "machineMaxSpeedY": [
+              "300",
+              "300"
+            ],
+            "machineMaxSpeedZ": [
+              "12",
+              "12"
+            ],
+            "machineMaxSpeedE": [
+              "80",
+              "25"
+            ],
+            "machineMaxAccelX": [
+              "4000",
+              "4000"
+            ],
+            "machineMaxAccelY": [
+              "4000",
+              "4000"
+            ],
+            "machineMaxAccelZ": [
+              "200",
+              "200"
+            ],
+            "machineMaxAccelExtruding": [
+              "4000",
+              "4000"
+            ],
+            "machineMaxAccelRetracting": [
+              "1250",
+              "1250"
+            ],
+            "machineMaxAccelTravel": [
+              "4000",
+              "4000"
+            ],
+            "machineMaxJerkX": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkY": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkZ": [
+              "2",
+              "2"
+            ],
+            "machineMaxJerkE": [
+              "5",
+              "5"
+            ],
+            "retractionLength": [
+              "0.8"
+            ],
+            "retractionSpeed": [
+              "35"
+            ],
+            "deretractionSpeed": [
+              "0"
+            ],
+            "retractionMinimumTravel": [
+              "1.5"
+            ],
+            "retractBeforeWipe": [
+              "70%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0.2"
+            ],
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.3"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0",
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0",
+              "0"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "marlin2",
+            "defaultPrintProfile": "0.20mm Standard @MK3.5",
+            "defaultFilamentProfile": [
+              "Prusa Generic PLA @MK3.5"
+            ]
+          },
+          "startGcode": "M17 ; enable steppers\nM862.1 P[nozzle_diameter] ; nozzle diameter check\nM862.3 P \"MK3.5\" ; printer model check\nM862.5 P2 ; g-code level check\nM862.6 P\"Input shaper\" ; FW feature check\nM115 U6.2.2+8853\n\nM555 X{(min(print_bed_max[0], first_layer_print_min[0] + 32) - 32)} Y{(max(0, first_layer_print_min[1]) - 4)} W{((min(print_bed_max[0], max(first_layer_print_min[0] + 32, first_layer_print_max[0])))) - ((min(print_bed_max[0], first_layer_print_min[0] + 32) - 32))} H{((first_layer_print_max[1])) - ((max(0, first_layer_print_min[1]) - 4))}\n\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\n\nG28 ; home all\n\nM140 S[first_layer_bed_temperature] ; set bed temp\nM104 T0 S170 ; set extruder temp for bed leveling\nM109 T0 R170 ; wait for temp\nM190 S[first_layer_bed_temperature] ; wait for bed temp\n\nG29 P1 ; invalidate mbl & probe print area\nG29 P1 X23 Y5 W80 H20 C ; probe near purge place\nG29 P3.2 ; interpolate mbl probes\nG29 P3.13 ; extrapolate mbl outside probe area\nG29 A ; activate mbl\n\n; prepare for purge\nM104 S{first_layer_temperature[0]}\nG0 X0 Y-4 Z15 F4800 ; move away and ready for the purge\nM109 S{first_layer_temperature[0]}\n\n; Extrude purge line\n\nG92 E0 ; reset extruder position\nG0 E7 X15 Z0.2 F500 ; purge\nG0 X25 E4 F500 ; purge\nG0 X35 E4 F650 ; purge\nG0 X45 E4 F800 ; purge\nG0 X{45 + 3} Z0.05 F8000 ; wipe, move close to the bed\nG0 X{45 + 3 * 2} Z0.2 F8000 ; wipe, move quickly away from the bed\n\nG92 E0\nM221 S100 ; reset flow to 100%\n",
+          "endGcode": "{if layer_z < max_print_height}G1 Z{z_offset+min(layer_z+1, max_print_height)} F720 ; Move print head up{endif}\nM104 S0 ; turn off temperature\nM140 S0 ; turn off heatbed\nM107 ; turn off fan\nG1 X241 Y201 F3600 ; park\n{if layer_z < max_print_height}G1 Z{z_offset+min(layer_z+23, max_print_height)} F300 ; Move print head up{endif}\nG4 ; wait\nM572 S0 ; reset PA\nM593 X T2 F0 ; disable IS\nM593 Y T2 F0 ; disable IS\nM84 X Y E ; disable motors\n; max_layer_z = [max_layer_z]",
+          "pauseGcode": "M601",
+          "changeFilamentGcode": "M600"
+        },
+        {
+          "name": "Prusa MK3.5 0.6 nozzle",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "retractionLength": [
+              "0.7"
+            ],
+            "retractionSpeed": [
+              "35"
+            ],
+            "deretractionSpeed": [
+              "25"
+            ],
+            "maxLayerHeight": [
+              "0.4"
+            ],
+            "minLayerHeight": [
+              "0.15"
+            ],
+            "gcodeFlavor": "marlin2",
+            "defaultPrintProfile": "0.25mm Standard @MK3.5",
+            "defaultFilamentProfile": [
+              "Prusa Generic PLA @MK3.5 0.6"
+            ]
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa MK3.5 0.8 nozzle",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "retractionLength": [
+              "0.7"
+            ],
+            "retractionSpeed": [
+              "35"
+            ],
+            "deretractionSpeed": [
+              "25"
+            ],
+            "maxLayerHeight": [
+              "0.55"
+            ],
+            "minLayerHeight": [
+              "0.2"
+            ],
+            "gcodeFlavor": "marlin2",
+            "defaultPrintProfile": "0.40mm Standard @MK3.5",
+            "defaultFilamentProfile": [
+              "Prusa Generic PLA @MK3.5 0.8"
+            ]
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "MK3S",
+      "name": "Prusa MK3S",
+      "nozzleSizes": [
+        0.25,
+        0.4,
+        0.6,
+        0.8
+      ],
+      "bedModel": "mk3_bed.stl",
+      "bedTexture": "mk3.svg",
+      "defaultMaterials": [
+        "Prusa Generic ABS",
+        "Prusa Generic PLA",
+        "Prusa Generic PLA-CF",
+        "Prusa Generic PETG",
+        "Prusa Generic TPU",
+        "Prusa Generic ASA",
+        "Prusa Generic PC",
+        "Prusa Generic PVA",
+        "Prusa Generic PA",
+        "Prusa Generic PA-CF"
+      ],
+      "variants": [
+        {
+          "name": "Prusa MK3S 0.25 nozzle",
+          "nozzle": 0.25,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x210",
+              "0x210"
+            ],
+            "printableHeight": "210",
+            "bedExcludeArea": [
+              "0x0"
+            ],
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.2"
+            ],
+            "nozzleType": "hardened_steel",
+            "machineMaxSpeedX": [
+              "200",
+              "200"
+            ],
+            "machineMaxSpeedY": [
+              "200",
+              "200"
+            ],
+            "machineMaxSpeedZ": [
+              "12",
+              "12"
+            ],
+            "machineMaxSpeedE": [
+              "120",
+              "120"
+            ],
+            "machineMaxAccelX": [
+              "2000",
+              "2000"
+            ],
+            "machineMaxAccelY": [
+              "2000",
+              "2000"
+            ],
+            "machineMaxAccelZ": [
+              "300",
+              "200"
+            ],
+            "machineMaxAccelExtruding": [
+              "2000",
+              "2000"
+            ],
+            "machineMaxAccelRetracting": [
+              "2500",
+              "2500"
+            ],
+            "machineMaxAccelTravel": [
+              "3000",
+              "3000"
+            ],
+            "machineMaxJerkX": [
+              "9",
+              "9"
+            ],
+            "machineMaxJerkY": [
+              "9",
+              "9"
+            ],
+            "machineMaxJerkZ": [
+              "0.2",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "2.5",
+              "2.5"
+            ],
+            "retractionLength": [
+              "0.8"
+            ],
+            "retractionSpeed": [
+              "30"
+            ],
+            "deretractionSpeed": [
+              "30"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "70%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0.4"
+            ],
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.3"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0",
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0",
+              "0"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "marlin",
+            "defaultPrintProfile": "0.20mm Speed @MK3S 0.25",
+            "defaultFilamentProfile": [
+              "Prusa Generic PLA"
+            ]
+          },
+          "startGcode": "M862.3 P \"MK3S\" ; printer model check\nM862.1 P[nozzle_diameter] ; nozzle diameter check\nM115 U3.13.0 ; tell printer latest fw version\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\nM104 S[first_layer_temperature] ; set extruder temp\nM140 S[first_layer_bed_temperature] ; set bed temp\nM190 S[first_layer_bed_temperature] ; wait for bed temp\nM109 S[first_layer_temperature] ; wait for extruder temp\nG28 W ; home all without mesh bed level\nG80 ; mesh bed leveling\n{if filament_settings_id[initial_tool]=~/.*Prusament PA11.*/}\nG1 Z0.3 F720\nG1 Y-3 F1000 ; go outside print area\nG92 E0\nG1 X60 E9 F1000 ; intro line\nG1 X100 E9 F1000 ; intro line\n{else}\nG1 Z0.2 F720\nG1 Y-3 F1000 ; go outside print area\nG92 E0\nG1 X60 E9 F1000 ; intro line\nG1 X100 E12.5 F1000 ; intro line\n{endif}\nG92 E0\nM221 S{if layer_height<0.075}100{else}95{endif}",
+          "endGcode": "{if max_layer_z < max_print_height}G1 Z{z_offset+min(max_layer_z+1, max_print_height)} F720 ; Move print head up{endif}\nG1 X0 Y200 F3600 ; park\n{if max_layer_z < max_print_height}G1 Z{z_offset+min(max_layer_z+49, max_print_height)} F720 ; Move print head further up{endif}\nG4 ; wait\nM221 S100 ; reset flow\nM900 K0 ; reset LA\n{if print_settings_id=~/.*(DETAIL @MK3S|QUALITY @MK3S|@0.25 nozzle MK3).*/}M907 E538 ; reset extruder motor current{endif}\nM104 S0 ; turn off temperature\nM140 S0 ; turn off heatbed\nM107 ; turn off fan\nM84 ; disable motors\n; max_layer_z = [max_layer_z]",
+          "pauseGcode": "M601",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa MK3S 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x210",
+              "0x210"
+            ],
+            "printableHeight": "210",
+            "bedExcludeArea": [
+              "0x0"
+            ],
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "hardened_steel",
+            "machineMaxSpeedX": [
+              "200",
+              "200"
+            ],
+            "machineMaxSpeedY": [
+              "200",
+              "200"
+            ],
+            "machineMaxSpeedZ": [
+              "12",
+              "12"
+            ],
+            "machineMaxSpeedE": [
+              "120",
+              "120"
+            ],
+            "machineMaxAccelX": [
+              "2000",
+              "2000"
+            ],
+            "machineMaxAccelY": [
+              "2000",
+              "2000"
+            ],
+            "machineMaxAccelZ": [
+              "300",
+              "200"
+            ],
+            "machineMaxAccelExtruding": [
+              "2000",
+              "2000"
+            ],
+            "machineMaxAccelRetracting": [
+              "2500",
+              "2500"
+            ],
+            "machineMaxAccelTravel": [
+              "3000",
+              "3000"
+            ],
+            "machineMaxJerkX": [
+              "9",
+              "9"
+            ],
+            "machineMaxJerkY": [
+              "9",
+              "9"
+            ],
+            "machineMaxJerkZ": [
+              "0.2",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "2.5",
+              "2.5"
+            ],
+            "retractionLength": [
+              "0.8"
+            ],
+            "retractionSpeed": [
+              "30"
+            ],
+            "deretractionSpeed": [
+              "30"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "70%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0.4"
+            ],
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.3"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0",
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0",
+              "0"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "marlin",
+            "defaultPrintProfile": "0.20mm Speed @MK3S 0.4",
+            "defaultFilamentProfile": [
+              "Prusa Generic PLA"
+            ]
+          },
+          "startGcode": "M862.3 P \"MK3S\" ; printer model check\nM862.1 P[nozzle_diameter] ; nozzle diameter check\nM115 U3.13.0 ; tell printer latest fw version\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\nM104 S[first_layer_temperature] ; set extruder temp\nM140 S[first_layer_bed_temperature] ; set bed temp\nM190 S[first_layer_bed_temperature] ; wait for bed temp\nM109 S[first_layer_temperature] ; wait for extruder temp\nG28 W ; home all without mesh bed level\nG80 ; mesh bed leveling\n{if filament_settings_id[initial_tool]=~/.*Prusament PA11.*/}\nG1 Z0.3 F720\nG1 Y-3 F1000 ; go outside print area\nG92 E0\nG1 X60 E9 F1000 ; intro line\nG1 X100 E9 F1000 ; intro line\n{else}\nG1 Z0.2 F720\nG1 Y-3 F1000 ; go outside print area\nG92 E0\nG1 X60 E9 F1000 ; intro line\nG1 X100 E12.5 F1000 ; intro line\n{endif}\nG92 E0\nM221 S{if layer_height<0.075}100{else}95{endif}",
+          "endGcode": "{if max_layer_z < max_print_height}G1 Z{z_offset+min(max_layer_z+1, max_print_height)} F720 ; Move print head up{endif}\nG1 X0 Y200 F3600 ; park\n{if max_layer_z < max_print_height}G1 Z{z_offset+min(max_layer_z+49, max_print_height)} F720 ; Move print head further up{endif}\nG4 ; wait\nM221 S100 ; reset flow\nM900 K0 ; reset LA\n{if print_settings_id=~/.*(DETAIL @MK3S|QUALITY @MK3S|@0.25 nozzle MK3).*/}M907 E538 ; reset extruder motor current{endif}\nM104 S0 ; turn off temperature\nM140 S0 ; turn off heatbed\nM107 ; turn off fan\nM84 ; disable motors\n; max_layer_z = [max_layer_z]",
+          "pauseGcode": "M601",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa MK3S 0.6 nozzle",
+          "nozzle": 0.6,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x210",
+              "0x210"
+            ],
+            "printableHeight": "210",
+            "bedExcludeArea": [
+              "0x0"
+            ],
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "nozzleType": "hardened_steel",
+            "machineMaxSpeedX": [
+              "200",
+              "200"
+            ],
+            "machineMaxSpeedY": [
+              "200",
+              "200"
+            ],
+            "machineMaxSpeedZ": [
+              "12",
+              "12"
+            ],
+            "machineMaxSpeedE": [
+              "120",
+              "120"
+            ],
+            "machineMaxAccelX": [
+              "2000",
+              "2000"
+            ],
+            "machineMaxAccelY": [
+              "2000",
+              "2000"
+            ],
+            "machineMaxAccelZ": [
+              "300",
+              "200"
+            ],
+            "machineMaxAccelExtruding": [
+              "2000",
+              "2000"
+            ],
+            "machineMaxAccelRetracting": [
+              "2500",
+              "2500"
+            ],
+            "machineMaxAccelTravel": [
+              "3000",
+              "3000"
+            ],
+            "machineMaxJerkX": [
+              "9",
+              "9"
+            ],
+            "machineMaxJerkY": [
+              "9",
+              "9"
+            ],
+            "machineMaxJerkZ": [
+              "0.2",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "2.5",
+              "2.5"
+            ],
+            "retractionLength": [
+              "0.8"
+            ],
+            "retractionSpeed": [
+              "30"
+            ],
+            "deretractionSpeed": [
+              "30"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "70%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0.4"
+            ],
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.3"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0",
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0",
+              "0"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "marlin",
+            "defaultPrintProfile": "0.30mm Quality @MK3S 0.6",
+            "defaultFilamentProfile": [
+              "Prusa Generic PLA"
+            ]
+          },
+          "startGcode": "M862.3 P \"MK3S\" ; printer model check\nM862.1 P[nozzle_diameter] ; nozzle diameter check\nM115 U3.13.0 ; tell printer latest fw version\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\nM104 S[first_layer_temperature] ; set extruder temp\nM140 S[first_layer_bed_temperature] ; set bed temp\nM190 S[first_layer_bed_temperature] ; wait for bed temp\nM109 S[first_layer_temperature] ; wait for extruder temp\nG28 W ; home all without mesh bed level\nG80 ; mesh bed leveling\n{if filament_settings_id[initial_tool]=~/.*Prusament PA11.*/}\nG1 Z0.3 F720\nG1 Y-3 F1000 ; go outside print area\nG92 E0\nG1 X60 E9 F1000 ; intro line\nG1 X100 E9 F1000 ; intro line\n{else}\nG1 Z0.2 F720\nG1 Y-3 F1000 ; go outside print area\nG92 E0\nG1 X60 E9 F1000 ; intro line\nG1 X100 E12.5 F1000 ; intro line\n{endif}\nG92 E0\nM221 S{if layer_height<0.075}100{else}95{endif}",
+          "endGcode": "{if max_layer_z < max_print_height}G1 Z{z_offset+min(max_layer_z+1, max_print_height)} F720 ; Move print head up{endif}\nG1 X0 Y200 F3600 ; park\n{if max_layer_z < max_print_height}G1 Z{z_offset+min(max_layer_z+49, max_print_height)} F720 ; Move print head further up{endif}\nG4 ; wait\nM221 S100 ; reset flow\nM900 K0 ; reset LA\n{if print_settings_id=~/.*(DETAIL @MK3S|QUALITY @MK3S|@0.25 nozzle MK3).*/}M907 E538 ; reset extruder motor current{endif}\nM104 S0 ; turn off temperature\nM140 S0 ; turn off heatbed\nM107 ; turn off fan\nM84 ; disable motors\n; max_layer_z = [max_layer_z]",
+          "pauseGcode": "M601",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa MK3S 0.8 nozzle",
+          "nozzle": 0.8,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x210",
+              "0x210"
+            ],
+            "printableHeight": "210",
+            "bedExcludeArea": [
+              "0x0"
+            ],
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "nozzleType": "hardened_steel",
+            "machineMaxSpeedX": [
+              "200",
+              "200"
+            ],
+            "machineMaxSpeedY": [
+              "200",
+              "200"
+            ],
+            "machineMaxSpeedZ": [
+              "12",
+              "12"
+            ],
+            "machineMaxSpeedE": [
+              "120",
+              "120"
+            ],
+            "machineMaxAccelX": [
+              "2000",
+              "2000"
+            ],
+            "machineMaxAccelY": [
+              "2000",
+              "2000"
+            ],
+            "machineMaxAccelZ": [
+              "300",
+              "200"
+            ],
+            "machineMaxAccelExtruding": [
+              "2000",
+              "2000"
+            ],
+            "machineMaxAccelRetracting": [
+              "2500",
+              "2500"
+            ],
+            "machineMaxAccelTravel": [
+              "3000",
+              "3000"
+            ],
+            "machineMaxJerkX": [
+              "9",
+              "9"
+            ],
+            "machineMaxJerkY": [
+              "9",
+              "9"
+            ],
+            "machineMaxJerkZ": [
+              "0.2",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "2.5",
+              "2.5"
+            ],
+            "retractionLength": [
+              "0.8"
+            ],
+            "retractionSpeed": [
+              "30"
+            ],
+            "deretractionSpeed": [
+              "30"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "70%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0.4"
+            ],
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.3"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0",
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0",
+              "0"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "marlin",
+            "defaultPrintProfile": "0.15mm Detail @MK3S 0.8",
+            "defaultFilamentProfile": [
+              "Prusa Generic PLA"
+            ]
+          },
+          "startGcode": "M862.3 P \"MK3S\" ; printer model check\nM862.1 P[nozzle_diameter] ; nozzle diameter check\nM115 U3.13.0 ; tell printer latest fw version\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\nM104 S[first_layer_temperature] ; set extruder temp\nM140 S[first_layer_bed_temperature] ; set bed temp\nM190 S[first_layer_bed_temperature] ; wait for bed temp\nM109 S[first_layer_temperature] ; wait for extruder temp\nG28 W ; home all without mesh bed level\nG80 ; mesh bed leveling\n{if filament_settings_id[initial_tool]=~/.*Prusament PA11.*/}\nG1 Z0.3 F720\nG1 Y-3 F1000 ; go outside print area\nG92 E0\nG1 X60 E9 F1000 ; intro line\nG1 X100 E9 F1000 ; intro line\n{else}\nG1 Z0.2 F720\nG1 Y-3 F1000 ; go outside print area\nG92 E0\nG1 X60 E9 F1000 ; intro line\nG1 X100 E12.5 F1000 ; intro line\n{endif}\nG92 E0\nM221 S{if layer_height<0.075}100{else}95{endif}",
+          "endGcode": "{if max_layer_z < max_print_height}G1 Z{z_offset+min(max_layer_z+1, max_print_height)} F720 ; Move print head up{endif}\nG1 X0 Y200 F3600 ; park\n{if max_layer_z < max_print_height}G1 Z{z_offset+min(max_layer_z+49, max_print_height)} F720 ; Move print head further up{endif}\nG4 ; wait\nM221 S100 ; reset flow\nM900 K0 ; reset LA\n{if print_settings_id=~/.*(DETAIL @MK3S|QUALITY @MK3S|@0.25 nozzle MK3).*/}M907 E538 ; reset extruder motor current{endif}\nM104 S0 ; turn off temperature\nM140 S0 ; turn off heatbed\nM107 ; turn off fan\nM84 ; disable motors\n; max_layer_z = [max_layer_z]",
+          "pauseGcode": "M601",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "MK4",
+      "name": "Prusa MK4",
+      "nozzleSizes": [
+        0.25,
+        0.4,
+        0.6,
+        0.8
+      ],
+      "bedModel": "mk4_bed.stl",
+      "bedTexture": "mk4is.svg",
+      "defaultMaterials": [
+        "Prusa Generic PLA-CF",
+        "Prusa Generic PC",
+        "Prusa Generic PVA",
+        "Prusa Generic PA",
+        "Prusa Generic PA-CF",
+        "Prusa Generic ABS @MK4",
+        "Prusa Generic PLA @MK4",
+        "Prusa Generic PETG @MK4",
+        "Prusa Generic TPU @MK4",
+        "Prusa Generic ASA @MK4",
+        ""
+      ],
+      "variants": [
+        {
+          "name": "Prusa MK4 0.25 nozzle",
+          "nozzle": 0.25,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x210",
+              "0x210"
+            ],
+            "printableHeight": "220",
+            "bedExcludeArea": [
+              "0x0"
+            ],
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.25"
+            ],
+            "nozzleType": "hardened_steel",
+            "machineMaxSpeedX": [
+              "300",
+              "200"
+            ],
+            "machineMaxSpeedY": [
+              "300",
+              "200"
+            ],
+            "machineMaxSpeedZ": [
+              "12",
+              "12"
+            ],
+            "machineMaxSpeedE": [
+              "25",
+              "25"
+            ],
+            "machineMaxAccelX": [
+              "4000",
+              "4000"
+            ],
+            "machineMaxAccelY": [
+              "4000",
+              "4000"
+            ],
+            "machineMaxAccelZ": [
+              "200",
+              "200"
+            ],
+            "machineMaxAccelExtruding": [
+              "4000",
+              "4000"
+            ],
+            "machineMaxAccelRetracting": [
+              "1200",
+              "1200"
+            ],
+            "machineMaxAccelTravel": [
+              "4000",
+              "4000"
+            ],
+            "machineMaxJerkX": [
+              "9",
+              "9"
+            ],
+            "machineMaxJerkY": [
+              "9",
+              "9"
+            ],
+            "machineMaxJerkZ": [
+              "0.2",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "2.5",
+              "2.5"
+            ],
+            "retractionLength": [
+              "0.8"
+            ],
+            "retractionSpeed": [
+              "30"
+            ],
+            "deretractionSpeed": [
+              "30"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "70%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0.4"
+            ],
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.16"
+            ],
+            "minLayerHeight": [
+              "0.04"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0",
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0",
+              "0"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "marlin2",
+            "defaultPrintProfile": "0.08mm Standard @MK4",
+            "defaultFilamentProfile": [
+              "Prusa Generic PLA @MK4"
+            ]
+          },
+          "startGcode": "M17 ; enable steppers\nM862.1 P[nozzle_diameter] ; nozzle diameter check\nM862.3 P \"MK4\" ; printer model check\nM862.5 P2 ; g-code level check\nM862.6 P\"Input shaper\" ; FW feature check\nM115 U5.0.0-RC+11963\n\nM555 X{(min(print_bed_max[0], first_layer_print_min[0] + 32) - 32)} Y{(max(0, first_layer_print_min[1]) - 4)} W{((min(print_bed_max[0], max(first_layer_print_min[0] + 32, first_layer_print_max[0])))) - ((min(print_bed_max[0], first_layer_print_min[0] + 32) - 32))} H{((first_layer_print_max[1])) - ((max(0, first_layer_print_min[1]) - 4))}\n\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\n\nM140 S[first_layer_bed_temperature] ; set bed temp\n{if filament_type[initial_tool]==\"PC\" or filament_type[initial_tool]==\"PA\"}\nM104 S{first_layer_temperature[initial_tool]-25} ; set extruder temp for bed leveling\nM109 R{first_layer_temperature[initial_tool]-25} ; wait for temp\n{elsif filament_type[initial_tool]==\"FLEX\"}\nM104 S210 ; set extruder temp for bed leveling\nM109 R210 ; wait for temp\n{else}\nM104 S170 ; set extruder temp for bed leveling\nM109 R170 ; wait for temp\n{endif}\n\nM84 E ; turn off E motor\n\nG28 ; home all without mesh bed level\n\nG1 X{10 + 32} Y-4 Z5 F4800\n\nM302 S160 ; lower cold extrusion limit to 160C\n\n{if filament_type[initial_tool]==\"FLEX\"}\nG1 E-4 F2400 ; retraction\n{else}\nG1 E-2 F2400 ; retraction\n{endif}\n\nM84 E ; turn off E motor\n\nG29 P9 X10 Y-4 W32 H4\n\n{if first_layer_bed_temperature[initial_tool]<=60}M106 S100{endif}\n\nG0 Z40 F10000\n\nM190 S[first_layer_bed_temperature] ; wait for bed temp\n\nM107\n\n;\n; MBL\n;\nM84 E ; turn off E motor\nG29 P1 ; invalidate mbl & probe print area\nG29 P1 X0 Y0 W50 H20 C ; probe near purge place\nG29 P3.2 ; interpolate mbl probes\nG29 P3.13 ; extrapolate mbl outside probe area\nG29 A ; activate mbl\n\n; prepare for purge\nM104 S{first_layer_temperature[0]}\nG0 X0 Y-4 Z15 F4800 ; move away and ready for the purge\nM109 S{first_layer_temperature[0]}\n\nG92 E0\nM569 S0 E ; set spreadcycle mode for extruder\n\n;\n; Extrude purge line\n;\nG92 E0 ; reset extruder position\nG1 E{(filament_type[0] == \"FLEX\" ? 4 : 2)} F2400 ; deretraction after the initial one before nozzle cleaning\nG0 E7 X15 Z0.2 F500 ; purge\nG0 X25 E4 F500 ; purge\nG0 X35 E4 F650 ; purge\nG0 X45 E4 F800 ; purge\nG0 X{45 + 3} Z{0.05} F{8000} ; wipe, move close to the bed\nG0 X{45 + 3 * 2} Z0.2 F{8000} ; wipe, move quickly away from the bed\n\nG92 E0\nM221 S100 ; set flow to 100%",
+          "endGcode": "{if layer_z < max_print_height}G1 Z{z_offset+min(layer_z+1, max_print_height)} F720 ; Move print head up{endif}\nM104 S0 ; turn off temperature\nM140 S0 ; turn off heatbed\nM107 ; turn off fan\nG1 X241 Y170 F3600 ; park\n{if layer_z < max_print_height}G1 Z{z_offset+min(layer_z+23, max_print_height)} F300 ; Move print head up{endif}\nG4 ; wait\nM572 S0 ; reset PA\nM593 X T2 F0 ; disable IS\nM593 Y T2 F0 ; disable IS\nM84 X Y E ; disable motors\n; max_layer_z = [max_layer_z]",
+          "pauseGcode": "M601",
+          "changeFilamentGcode": "M600\nG1 E0.4 F1500 ; prime after color change"
+        },
+        {
+          "name": "Prusa MK4 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x210",
+              "0x210"
+            ],
+            "printableHeight": "220",
+            "bedExcludeArea": [
+              "0x0"
+            ],
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "hardened_steel",
+            "machineMaxSpeedX": [
+              "300",
+              "200"
+            ],
+            "machineMaxSpeedY": [
+              "300",
+              "200"
+            ],
+            "machineMaxSpeedZ": [
+              "12",
+              "12"
+            ],
+            "machineMaxSpeedE": [
+              "25",
+              "25"
+            ],
+            "machineMaxAccelX": [
+              "4000",
+              "4000"
+            ],
+            "machineMaxAccelY": [
+              "4000",
+              "4000"
+            ],
+            "machineMaxAccelZ": [
+              "200",
+              "200"
+            ],
+            "machineMaxAccelExtruding": [
+              "4000",
+              "4000"
+            ],
+            "machineMaxAccelRetracting": [
+              "1200",
+              "1200"
+            ],
+            "machineMaxAccelTravel": [
+              "4000",
+              "4000"
+            ],
+            "machineMaxJerkX": [
+              "9",
+              "9"
+            ],
+            "machineMaxJerkY": [
+              "9",
+              "9"
+            ],
+            "machineMaxJerkZ": [
+              "0.2",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "2.5",
+              "2.5"
+            ],
+            "retractionLength": [
+              "0.8"
+            ],
+            "retractionSpeed": [
+              "30"
+            ],
+            "deretractionSpeed": [
+              "30"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "70%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0.4"
+            ],
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.3"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0",
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0",
+              "0"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "marlin2",
+            "defaultPrintProfile": "0.20mm Standard @MK4",
+            "defaultFilamentProfile": [
+              "Prusa Generic PLA @MK4"
+            ]
+          },
+          "startGcode": "M17 ; enable steppers\nM862.1 P[nozzle_diameter] ; nozzle diameter check\nM862.3 P \"MK4\" ; printer model check\nM862.5 P2 ; g-code level check\nM862.6 P\"Input shaper\" ; FW feature check\nM115 U5.0.0-RC+11963\n\nM555 X{(min(print_bed_max[0], first_layer_print_min[0] + 32) - 32)} Y{(max(0, first_layer_print_min[1]) - 4)} W{((min(print_bed_max[0], max(first_layer_print_min[0] + 32, first_layer_print_max[0])))) - ((min(print_bed_max[0], first_layer_print_min[0] + 32) - 32))} H{((first_layer_print_max[1])) - ((max(0, first_layer_print_min[1]) - 4))}\n\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\n\nM140 S[first_layer_bed_temperature] ; set bed temp\n{if filament_type[initial_tool]==\"PC\" or filament_type[initial_tool]==\"PA\"}\nM104 S{first_layer_temperature[initial_tool]-25} ; set extruder temp for bed leveling\nM109 R{first_layer_temperature[initial_tool]-25} ; wait for temp\n{elsif filament_type[initial_tool]==\"FLEX\"}\nM104 S210 ; set extruder temp for bed leveling\nM109 R210 ; wait for temp\n{else}\nM104 S170 ; set extruder temp for bed leveling\nM109 R170 ; wait for temp\n{endif}\n\nM84 E ; turn off E motor\n\nG28 ; home all without mesh bed level\n\nG1 X{10 + 32} Y-4 Z5 F4800\n\nM302 S160 ; lower cold extrusion limit to 160C\n\n{if filament_type[initial_tool]==\"FLEX\"}\nG1 E-4 F2400 ; retraction\n{else}\nG1 E-2 F2400 ; retraction\n{endif}\n\nM84 E ; turn off E motor\n\nG29 P9 X10 Y-4 W32 H4\n\n{if first_layer_bed_temperature[initial_tool]<=60}M106 S100{endif}\n\nG0 Z40 F10000\n\nM190 S[first_layer_bed_temperature] ; wait for bed temp\n\nM107\n\n;\n; MBL\n;\nM84 E ; turn off E motor\nG29 P1 ; invalidate mbl & probe print area\nG29 P1 X0 Y0 W50 H20 C ; probe near purge place\nG29 P3.2 ; interpolate mbl probes\nG29 P3.13 ; extrapolate mbl outside probe area\nG29 A ; activate mbl\n\n; prepare for purge\nM104 S{first_layer_temperature[0]}\nG0 X0 Y-4 Z15 F4800 ; move away and ready for the purge\nM109 S{first_layer_temperature[0]}\n\nG92 E0\nM569 S0 E ; set spreadcycle mode for extruder\n\n;\n; Extrude purge line\n;\nG92 E0 ; reset extruder position\nG1 E{(filament_type[0] == \"FLEX\" ? 4 : 2)} F2400 ; deretraction after the initial one before nozzle cleaning\nG0 E7 X15 Z0.2 F500 ; purge\nG0 X25 E4 F500 ; purge\nG0 X35 E4 F650 ; purge\nG0 X45 E4 F800 ; purge\nG0 X{45 + 3} Z{0.05} F{8000} ; wipe, move close to the bed\nG0 X{45 + 3 * 2} Z0.2 F{8000} ; wipe, move quickly away from the bed\n\nG92 E0\nM221 S100 ; set flow to 100%",
+          "endGcode": "{if layer_z < max_print_height}G1 Z{z_offset+min(layer_z+1, max_print_height)} F720 ; Move print head up{endif}\nM104 S0 ; turn off temperature\nM140 S0 ; turn off heatbed\nM107 ; turn off fan\nG1 X241 Y170 F3600 ; park\n{if layer_z < max_print_height}G1 Z{z_offset+min(layer_z+23, max_print_height)} F300 ; Move print head up{endif}\nG4 ; wait\nM572 S0 ; reset PA\nM593 X T2 F0 ; disable IS\nM593 Y T2 F0 ; disable IS\nM84 X Y E ; disable motors\n; max_layer_z = [max_layer_z]",
+          "pauseGcode": "M601",
+          "changeFilamentGcode": "M600\nG1 E0.4 F1500 ; prime after color change"
+        },
+        {
+          "name": "Prusa MK4 0.6 nozzle",
+          "nozzle": 0.6,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x210",
+              "0x210"
+            ],
+            "printableHeight": "220",
+            "bedExcludeArea": [
+              "0x0"
+            ],
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "nozzleType": "hardened_steel",
+            "machineMaxSpeedX": [
+              "300",
+              "200"
+            ],
+            "machineMaxSpeedY": [
+              "300",
+              "200"
+            ],
+            "machineMaxSpeedZ": [
+              "12",
+              "12"
+            ],
+            "machineMaxSpeedE": [
+              "25",
+              "25"
+            ],
+            "machineMaxAccelX": [
+              "4000",
+              "4000"
+            ],
+            "machineMaxAccelY": [
+              "4000",
+              "4000"
+            ],
+            "machineMaxAccelZ": [
+              "200",
+              "200"
+            ],
+            "machineMaxAccelExtruding": [
+              "4000",
+              "4000"
+            ],
+            "machineMaxAccelRetracting": [
+              "1200",
+              "1200"
+            ],
+            "machineMaxAccelTravel": [
+              "4000",
+              "4000"
+            ],
+            "machineMaxJerkX": [
+              "9",
+              "9"
+            ],
+            "machineMaxJerkY": [
+              "9",
+              "9"
+            ],
+            "machineMaxJerkZ": [
+              "0.2",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "2.5",
+              "2.5"
+            ],
+            "retractionLength": [
+              "0.8"
+            ],
+            "retractionSpeed": [
+              "30"
+            ],
+            "deretractionSpeed": [
+              "30"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "70%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0.4"
+            ],
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.4"
+            ],
+            "minLayerHeight": [
+              "0.12"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0",
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0",
+              "0"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "marlin2",
+            "defaultPrintProfile": "0.32mm Standard @MK4",
+            "defaultFilamentProfile": [
+              "Prusa Generic PLA @MK4"
+            ]
+          },
+          "startGcode": "M17 ; enable steppers\nM862.1 P[nozzle_diameter] ; nozzle diameter check\nM862.3 P \"MK4\" ; printer model check\nM862.5 P2 ; g-code level check\nM862.6 P\"Input shaper\" ; FW feature check\nM115 U5.0.0-RC+11963\n\nM555 X{(min(print_bed_max[0], first_layer_print_min[0] + 32) - 32)} Y{(max(0, first_layer_print_min[1]) - 4)} W{((min(print_bed_max[0], max(first_layer_print_min[0] + 32, first_layer_print_max[0])))) - ((min(print_bed_max[0], first_layer_print_min[0] + 32) - 32))} H{((first_layer_print_max[1])) - ((max(0, first_layer_print_min[1]) - 4))}\n\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\n\nM140 S[first_layer_bed_temperature] ; set bed temp\n{if filament_type[initial_tool]==\"PC\" or filament_type[initial_tool]==\"PA\"}\nM104 S{first_layer_temperature[initial_tool]-25} ; set extruder temp for bed leveling\nM109 R{first_layer_temperature[initial_tool]-25} ; wait for temp\n{elsif filament_type[initial_tool]==\"FLEX\"}\nM104 S210 ; set extruder temp for bed leveling\nM109 R210 ; wait for temp\n{else}\nM104 S170 ; set extruder temp for bed leveling\nM109 R170 ; wait for temp\n{endif}\n\nM84 E ; turn off E motor\n\nG28 ; home all without mesh bed level\n\nG1 X{10 + 32} Y-4 Z5 F4800\n\nM302 S160 ; lower cold extrusion limit to 160C\n\n{if filament_type[initial_tool]==\"FLEX\"}\nG1 E-4 F2400 ; retraction\n{else}\nG1 E-2 F2400 ; retraction\n{endif}\n\nM84 E ; turn off E motor\n\nG29 P9 X10 Y-4 W32 H4\n\n{if first_layer_bed_temperature[initial_tool]<=60}M106 S100{endif}\n\nG0 Z40 F10000\n\nM190 S[first_layer_bed_temperature] ; wait for bed temp\n\nM107\n\n;\n; MBL\n;\nM84 E ; turn off E motor\nG29 P1 ; invalidate mbl & probe print area\nG29 P1 X0 Y0 W50 H20 C ; probe near purge place\nG29 P3.2 ; interpolate mbl probes\nG29 P3.13 ; extrapolate mbl outside probe area\nG29 A ; activate mbl\n\n; prepare for purge\nM104 S{first_layer_temperature[0]}\nG0 X0 Y-4 Z15 F4800 ; move away and ready for the purge\nM109 S{first_layer_temperature[0]}\n\nG92 E0\nM569 S0 E ; set spreadcycle mode for extruder\n\n;\n; Extrude purge line\n;\nG92 E0 ; reset extruder position\nG1 E{(filament_type[0] == \"FLEX\" ? 4 : 2)} F2400 ; deretraction after the initial one before nozzle cleaning\nG0 E7 X15 Z0.2 F500 ; purge\nG0 X25 E4 F500 ; purge\nG0 X35 E4 F650 ; purge\nG0 X45 E4 F800 ; purge\nG0 X{45 + 3} Z{0.05} F{8000} ; wipe, move close to the bed\nG0 X{45 + 3 * 2} Z0.2 F{8000} ; wipe, move quickly away from the bed\n\nG92 E0\nM221 S100 ; set flow to 100%",
+          "endGcode": "{if layer_z < max_print_height}G1 Z{z_offset+min(layer_z+1, max_print_height)} F720 ; Move print head up{endif}\nM104 S0 ; turn off temperature\nM140 S0 ; turn off heatbed\nM107 ; turn off fan\nG1 X241 Y170 F3600 ; park\n{if layer_z < max_print_height}G1 Z{z_offset+min(layer_z+23, max_print_height)} F300 ; Move print head up{endif}\nG4 ; wait\nM572 S0 ; reset PA\nM593 X T2 F0 ; disable IS\nM593 Y T2 F0 ; disable IS\nM84 X Y E ; disable motors\n; max_layer_z = [max_layer_z]",
+          "pauseGcode": "M601",
+          "changeFilamentGcode": "M600\nG1 E0.4 F1500 ; prime after color change"
+        },
+        {
+          "name": "Prusa MK4 0.8 nozzle",
+          "nozzle": 0.8,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x210",
+              "0x210"
+            ],
+            "printableHeight": "220",
+            "bedExcludeArea": [
+              "0x0"
+            ],
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "nozzleType": "hardened_steel",
+            "machineMaxSpeedX": [
+              "300",
+              "200"
+            ],
+            "machineMaxSpeedY": [
+              "300",
+              "200"
+            ],
+            "machineMaxSpeedZ": [
+              "12",
+              "12"
+            ],
+            "machineMaxSpeedE": [
+              "25",
+              "25"
+            ],
+            "machineMaxAccelX": [
+              "4000",
+              "4000"
+            ],
+            "machineMaxAccelY": [
+              "4000",
+              "4000"
+            ],
+            "machineMaxAccelZ": [
+              "200",
+              "200"
+            ],
+            "machineMaxAccelExtruding": [
+              "4000",
+              "4000"
+            ],
+            "machineMaxAccelRetracting": [
+              "1200",
+              "1200"
+            ],
+            "machineMaxAccelTravel": [
+              "4000",
+              "4000"
+            ],
+            "machineMaxJerkX": [
+              "9",
+              "9"
+            ],
+            "machineMaxJerkY": [
+              "9",
+              "9"
+            ],
+            "machineMaxJerkZ": [
+              "0.2",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "2.5",
+              "2.5"
+            ],
+            "retractionLength": [
+              "0.8"
+            ],
+            "retractionSpeed": [
+              "30"
+            ],
+            "deretractionSpeed": [
+              "30"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "70%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0.4"
+            ],
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.6"
+            ],
+            "minLayerHeight": [
+              "0.2"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0",
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0",
+              "0"
+            ],
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "marlin2",
+            "defaultPrintProfile": "0.40mm Standard @MK4",
+            "defaultFilamentProfile": [
+              "Prusa Generic PLA @MK4"
+            ]
+          },
+          "startGcode": "M17 ; enable steppers\nM862.1 P[nozzle_diameter] ; nozzle diameter check\nM862.3 P \"MK4\" ; printer model check\nM862.5 P2 ; g-code level check\nM862.6 P\"Input shaper\" ; FW feature check\nM115 U5.0.0-RC+11963\n\nM555 X{(min(print_bed_max[0], first_layer_print_min[0] + 32) - 32)} Y{(max(0, first_layer_print_min[1]) - 4)} W{((min(print_bed_max[0], max(first_layer_print_min[0] + 32, first_layer_print_max[0])))) - ((min(print_bed_max[0], first_layer_print_min[0] + 32) - 32))} H{((first_layer_print_max[1])) - ((max(0, first_layer_print_min[1]) - 4))}\n\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\n\nM140 S[first_layer_bed_temperature] ; set bed temp\n{if filament_type[initial_tool]==\"PC\" or filament_type[initial_tool]==\"PA\"}\nM104 S{first_layer_temperature[initial_tool]-25} ; set extruder temp for bed leveling\nM109 R{first_layer_temperature[initial_tool]-25} ; wait for temp\n{elsif filament_type[initial_tool]==\"FLEX\"}\nM104 S210 ; set extruder temp for bed leveling\nM109 R210 ; wait for temp\n{else}\nM104 S170 ; set extruder temp for bed leveling\nM109 R170 ; wait for temp\n{endif}\n\nM84 E ; turn off E motor\n\nG28 ; home all without mesh bed level\n\nG1 X{10 + 32} Y-4 Z5 F4800\n\nM302 S160 ; lower cold extrusion limit to 160C\n\n{if filament_type[initial_tool]==\"FLEX\"}\nG1 E-4 F2400 ; retraction\n{else}\nG1 E-2 F2400 ; retraction\n{endif}\n\nM84 E ; turn off E motor\n\nG29 P9 X10 Y-4 W32 H4\n\n{if first_layer_bed_temperature[initial_tool]<=60}M106 S100{endif}\n\nG0 Z40 F10000\n\nM190 S[first_layer_bed_temperature] ; wait for bed temp\n\nM107\n\n;\n; MBL\n;\nM84 E ; turn off E motor\nG29 P1 ; invalidate mbl & probe print area\nG29 P1 X0 Y0 W50 H20 C ; probe near purge place\nG29 P3.2 ; interpolate mbl probes\nG29 P3.13 ; extrapolate mbl outside probe area\nG29 A ; activate mbl\n\n; prepare for purge\nM104 S{first_layer_temperature[0]}\nG0 X0 Y-4 Z15 F4800 ; move away and ready for the purge\nM109 S{first_layer_temperature[0]}\n\nG92 E0\nM569 S0 E ; set spreadcycle mode for extruder\n\n;\n; Extrude purge line\n;\nG92 E0 ; reset extruder position\nG1 E{(filament_type[0] == \"FLEX\" ? 4 : 2)} F2400 ; deretraction after the initial one before nozzle cleaning\nG0 E7 X15 Z0.2 F500 ; purge\nG0 X25 E4 F500 ; purge\nG0 X35 E4 F650 ; purge\nG0 X45 E4 F800 ; purge\nG0 X{45 + 3} Z{0.05} F{8000} ; wipe, move close to the bed\nG0 X{45 + 3 * 2} Z0.2 F{8000} ; wipe, move quickly away from the bed\n\nG92 E0\nM221 S100 ; set flow to 100%",
+          "endGcode": "{if layer_z < max_print_height}G1 Z{z_offset+min(layer_z+1, max_print_height)} F720 ; Move print head up{endif}\nM104 S0 ; turn off temperature\nM140 S0 ; turn off heatbed\nM107 ; turn off fan\nG1 X241 Y170 F3600 ; park\n{if layer_z < max_print_height}G1 Z{z_offset+min(layer_z+23, max_print_height)} F300 ; Move print head up{endif}\nG4 ; wait\nM572 S0 ; reset PA\nM593 X T2 F0 ; disable IS\nM593 Y T2 F0 ; disable IS\nM84 X Y E ; disable motors\n; max_layer_z = [max_layer_z]",
+          "pauseGcode": "M601",
+          "changeFilamentGcode": "M600\nG1 E0.4 F1500 ; prime after color change"
+        },
+        {
+          "name": "Prusa MK4S 0.25 nozzle",
+          "nozzle": 0.25,
+          "config": {
+            "nozzleDiameter": [
+              "0.25"
+            ],
+            "machineMaxAccelTravel": [
+              "2500",
+              "2500"
+            ],
+            "retractionLength": "0.8",
+            "zHop": "0.15",
+            "maxLayerHeight": "0.15",
+            "minLayerHeight": "0.05",
+            "defaultPrintProfile": "0.12mm STRUCTURAL @MK4S 0.25"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa MK4S 0.3 nozzle",
+          "nozzle": 0.3,
+          "config": {
+            "nozzleDiameter": [
+              "0.3"
+            ],
+            "maxLayerHeight": "0.22",
+            "minLayerHeight": "0.05",
+            "defaultPrintProfile": "0.16mm STRUCTURAL @MK4S 0.3"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa MK4S 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "defaultPrintProfile": "0.20mm SPEED @MK4S 0.4",
+            "defaultFilamentProfile": "Prusa Generic PLA @MK4S"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa MK4S 0.5 nozzle",
+          "nozzle": 0.5,
+          "config": {
+            "nozzleDiameter": [
+              "0.5"
+            ],
+            "wipe": "1",
+            "maxLayerHeight": "0.32",
+            "defaultPrintProfile": "0.20mm SPEED @MK4S 0.5"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa MK4S 0.6 nozzle",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "wipe": "1",
+            "maxLayerHeight": "0.40",
+            "minLayerHeight": "0.15",
+            "defaultPrintProfile": "0.25mm SPEED @MK4S 0.6",
+            "defaultFilamentProfile": "Prusa Generic PLA @MK4S 0.6"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa MK4S 0.8 nozzle",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "retractionLength": "0.6",
+            "retractionSpeed": "25",
+            "deretractionSpeed": "15",
+            "retractBeforeWipe": "50%",
+            "zHop": "0.25",
+            "wipe": "1",
+            "maxLayerHeight": "0.6",
+            "minLayerHeight": "0.2",
+            "defaultPrintProfile": "0.40mm QUALITY @MK4S 0.8",
+            "defaultFilamentProfile": "Prusa Generic PLA @MK4S 0.8"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa MK4S HF",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.4;0.5;0.6;0.8"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa MK4S HF0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "defaultPrintProfile": "0.20mm SPEED @MK4S HF0.4",
+            "defaultFilamentProfile": "Prusa Generic PLA @MK4S HF0.4"
+          },
+          "startGcode": [
+            "M17 ; enable steppers\nM862.1 P[nozzle_diameter] ; nozzle check\nM862.3 P \"MK4S\" ; printer model check\nM862.5 P2 ; g-code level check\nM862.6 P\"Input shaper\" ; FW feature check\nM115 U6.1.3+7898\n\nM555 X{(min(print_bed_max[0], first_layer_print_min[0] + 32) - 32)} Y{(max(0, first_layer_print_min[1]) - 4)} W{((min(print_bed_max[0], max(first_layer_print_min[0] + 32, first_layer_print_max[0])))) - ((min(print_bed_max[0], first_layer_print_min[0] + 32) - 32))} H{((first_layer_print_max[1])) - ((max(0, first_layer_print_min[1]) - 4))}\n\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\n\nM140 S[first_layer_bed_temperature] ; set bed temp\nM104 T0 S{((filament_notes[0]=~/.*HT_MBL10.*/) ? (first_layer_temperature[0] - 10) : (filament_type[0] == \"PC\" or filament_type[0] == \"PA\") ? (first_layer_temperature[0] - 25) : (filament_type[0] == \"FLEX\") ? 210 : (filament_type[0]=~/.*PET.*/) ? 175 : 170)} ; set extruder temp for bed leveling\nM109 T0 R{((filament_notes[0]=~/.*HT_MBL10.*/) ? (first_layer_temperature[0] - 10) : (filament_type[0] == \"PC\" or filament_type[0] == \"PA\") ? (first_layer_temperature[0] - 25) : (filament_type[0] == \"FLEX\") ? 210 : (filament_type[0]=~/.*PET.*/) ? 175 : 170)} ; wait for temp\n\nM84 E ; turn off E motor\n\nG28 ; home all without mesh bed level\n\nG1 X42 Y-4 Z5 F4800\n\nM302 S160 ; lower cold extrusion limit to 160C\n\n{if filament_type[initial_tool]==\"FLEX\"}\nG1 E-4 F2400 ; retraction\n{else}\nG1 E-2 F2400 ; retraction\n{endif}\n\nM84 E ; turn off E motor\n\nG29 P9 X10 Y-4 W32 H4\n\n{if first_layer_bed_temperature[initial_tool]<=60}M106 S100{endif}\n\nG0 Z40 F10000\n\nM190 S[first_layer_bed_temperature] ; wait for bed temp\n\nM107\n\n;\n; MBL\n;\nM84 E ; turn off E motor\nG29 P1 ; invalidate mbl & probe print area\nG29 P1 X0 Y0 W50 H20 C ; probe near purge place\nG29 P3.2 ; interpolate mbl probes\nG29 P3.13 ; extrapolate mbl outside probe area\nG29 A ; activate mbl\n\n; prepare for purge\nM104 S{first_layer_temperature[0]}\nG0 X0 Y-4 Z15 F4800 ; move away and ready for the purge\nM109 S{first_layer_temperature[0]}\n\nG92 E0\nM569 S0 E ; set spreadcycle mode for extruder\n\n;\n; Extrude purge line\n;\nG92 E0 ; reset extruder position\nG1 E{(filament_type[0] == \"FLEX\" ? 4 : 2)} F2400 ; deretraction after the initial one before nozzle cleaning\nG0 E7 X15 Z0.2 F500 ; purge\nG0 X25 E4 F500 ; purge\nG0 X35 E4 F650 ; purge\nG0 X45 E4 F800 ; purge\nG0 X48 Z0.05 F8000 ; wipe, move close to the bed\nG0 X51 Z0.2 F8000 ; wipe, move quickly away from the bed\n\nG92 E0\nM221 S100 ; set flow to 100%"
+          ],
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa MK4S HF0.5 nozzle",
+          "nozzle": 0.5,
+          "config": {
+            "nozzleDiameter": [
+              "0.5"
+            ],
+            "wipe": "1",
+            "maxLayerHeight": "0.32",
+            "defaultPrintProfile": "0.20mm SPEED @MK4S HF0.5"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa MK4S HF0.6 nozzle",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "wipe": "1",
+            "maxLayerHeight": "0.40",
+            "minLayerHeight": "0.15",
+            "defaultPrintProfile": "0.32mm SPEED @MK4S HF0.6"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa MK4S HF0.8 nozzle",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "retractionLength": "0.6",
+            "retractionSpeed": "25",
+            "deretractionSpeed": "15",
+            "retractBeforeWipe": "50%",
+            "zHop": "0.25",
+            "wipe": "1",
+            "maxLayerHeight": "0.6",
+            "minLayerHeight": "0.2",
+            "defaultPrintProfile": "0.40mm STRUCTURAL @MK4S HF0.8",
+            "defaultFilamentProfile": "Prusa Generic PLA @MK4S HF0.8"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa MK4S",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.25;0.3;0.4;0.5;0.6;0.8"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "MK4S",
+      "name": "Prusa MK4S",
+      "nozzleSizes": [
+        0.25,
+        0.3,
+        0.4,
+        0.5,
+        0.6,
+        0.8
+      ],
+      "bedModel": "mk4_bed.stl",
+      "bedTexture": "mk4s.svg",
+      "defaultMaterials": [
+        "Prusa Generic ABS @MK4S",
+        "Prusa Generic ASA @MK4S",
+        "Prusa Generic PETG @MK4S",
+        "Prusa Generic PLA @MK4S",
+        "Prusa Generic PLA Silk @MK4S",
+        "Prusa Generic TPU @MK4S"
+      ],
+      "variants": [
+        {
+          "name": "Prusa MK4S 0.25 nozzle",
+          "nozzle": 0.25,
+          "config": {
+            "nozzleDiameter": [
+              "0.25"
+            ],
+            "machineMaxAccelTravel": [
+              "2500",
+              "2500"
+            ],
+            "retractionLength": "0.8",
+            "zHop": "0.15",
+            "maxLayerHeight": "0.15",
+            "minLayerHeight": "0.05",
+            "defaultPrintProfile": "0.12mm STRUCTURAL @MK4S 0.25"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa MK4S 0.3 nozzle",
+          "nozzle": 0.3,
+          "config": {
+            "nozzleDiameter": [
+              "0.3"
+            ],
+            "maxLayerHeight": "0.22",
+            "minLayerHeight": "0.05",
+            "defaultPrintProfile": "0.16mm STRUCTURAL @MK4S 0.3"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa MK4S 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "defaultPrintProfile": "0.20mm SPEED @MK4S 0.4",
+            "defaultFilamentProfile": "Prusa Generic PLA @MK4S"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa MK4S 0.5 nozzle",
+          "nozzle": 0.5,
+          "config": {
+            "nozzleDiameter": [
+              "0.5"
+            ],
+            "wipe": "1",
+            "maxLayerHeight": "0.32",
+            "defaultPrintProfile": "0.20mm SPEED @MK4S 0.5"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa MK4S 0.6 nozzle",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "wipe": "1",
+            "maxLayerHeight": "0.40",
+            "minLayerHeight": "0.15",
+            "defaultPrintProfile": "0.25mm SPEED @MK4S 0.6",
+            "defaultFilamentProfile": "Prusa Generic PLA @MK4S 0.6"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa MK4S 0.8 nozzle",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "retractionLength": "0.6",
+            "retractionSpeed": "25",
+            "deretractionSpeed": "15",
+            "retractBeforeWipe": "50%",
+            "zHop": "0.25",
+            "wipe": "1",
+            "maxLayerHeight": "0.6",
+            "minLayerHeight": "0.2",
+            "defaultPrintProfile": "0.40mm QUALITY @MK4S 0.8",
+            "defaultFilamentProfile": "Prusa Generic PLA @MK4S 0.8"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa MK4S HF",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.4;0.5;0.6;0.8"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa MK4S HF0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "defaultPrintProfile": "0.20mm SPEED @MK4S HF0.4",
+            "defaultFilamentProfile": "Prusa Generic PLA @MK4S HF0.4"
+          },
+          "startGcode": [
+            "M17 ; enable steppers\nM862.1 P[nozzle_diameter] ; nozzle check\nM862.3 P \"MK4S\" ; printer model check\nM862.5 P2 ; g-code level check\nM862.6 P\"Input shaper\" ; FW feature check\nM115 U6.1.3+7898\n\nM555 X{(min(print_bed_max[0], first_layer_print_min[0] + 32) - 32)} Y{(max(0, first_layer_print_min[1]) - 4)} W{((min(print_bed_max[0], max(first_layer_print_min[0] + 32, first_layer_print_max[0])))) - ((min(print_bed_max[0], first_layer_print_min[0] + 32) - 32))} H{((first_layer_print_max[1])) - ((max(0, first_layer_print_min[1]) - 4))}\n\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\n\nM140 S[first_layer_bed_temperature] ; set bed temp\nM104 T0 S{((filament_notes[0]=~/.*HT_MBL10.*/) ? (first_layer_temperature[0] - 10) : (filament_type[0] == \"PC\" or filament_type[0] == \"PA\") ? (first_layer_temperature[0] - 25) : (filament_type[0] == \"FLEX\") ? 210 : (filament_type[0]=~/.*PET.*/) ? 175 : 170)} ; set extruder temp for bed leveling\nM109 T0 R{((filament_notes[0]=~/.*HT_MBL10.*/) ? (first_layer_temperature[0] - 10) : (filament_type[0] == \"PC\" or filament_type[0] == \"PA\") ? (first_layer_temperature[0] - 25) : (filament_type[0] == \"FLEX\") ? 210 : (filament_type[0]=~/.*PET.*/) ? 175 : 170)} ; wait for temp\n\nM84 E ; turn off E motor\n\nG28 ; home all without mesh bed level\n\nG1 X42 Y-4 Z5 F4800\n\nM302 S160 ; lower cold extrusion limit to 160C\n\n{if filament_type[initial_tool]==\"FLEX\"}\nG1 E-4 F2400 ; retraction\n{else}\nG1 E-2 F2400 ; retraction\n{endif}\n\nM84 E ; turn off E motor\n\nG29 P9 X10 Y-4 W32 H4\n\n{if first_layer_bed_temperature[initial_tool]<=60}M106 S100{endif}\n\nG0 Z40 F10000\n\nM190 S[first_layer_bed_temperature] ; wait for bed temp\n\nM107\n\n;\n; MBL\n;\nM84 E ; turn off E motor\nG29 P1 ; invalidate mbl & probe print area\nG29 P1 X0 Y0 W50 H20 C ; probe near purge place\nG29 P3.2 ; interpolate mbl probes\nG29 P3.13 ; extrapolate mbl outside probe area\nG29 A ; activate mbl\n\n; prepare for purge\nM104 S{first_layer_temperature[0]}\nG0 X0 Y-4 Z15 F4800 ; move away and ready for the purge\nM109 S{first_layer_temperature[0]}\n\nG92 E0\nM569 S0 E ; set spreadcycle mode for extruder\n\n;\n; Extrude purge line\n;\nG92 E0 ; reset extruder position\nG1 E{(filament_type[0] == \"FLEX\" ? 4 : 2)} F2400 ; deretraction after the initial one before nozzle cleaning\nG0 E7 X15 Z0.2 F500 ; purge\nG0 X25 E4 F500 ; purge\nG0 X35 E4 F650 ; purge\nG0 X45 E4 F800 ; purge\nG0 X48 Z0.05 F8000 ; wipe, move close to the bed\nG0 X51 Z0.2 F8000 ; wipe, move quickly away from the bed\n\nG92 E0\nM221 S100 ; set flow to 100%"
+          ],
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa MK4S HF0.5 nozzle",
+          "nozzle": 0.5,
+          "config": {
+            "nozzleDiameter": [
+              "0.5"
+            ],
+            "wipe": "1",
+            "maxLayerHeight": "0.32",
+            "defaultPrintProfile": "0.20mm SPEED @MK4S HF0.5"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa MK4S HF0.6 nozzle",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "wipe": "1",
+            "maxLayerHeight": "0.40",
+            "minLayerHeight": "0.15",
+            "defaultPrintProfile": "0.32mm SPEED @MK4S HF0.6"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa MK4S HF0.8 nozzle",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "retractionLength": "0.6",
+            "retractionSpeed": "25",
+            "deretractionSpeed": "15",
+            "retractBeforeWipe": "50%",
+            "zHop": "0.25",
+            "wipe": "1",
+            "maxLayerHeight": "0.6",
+            "minLayerHeight": "0.2",
+            "defaultPrintProfile": "0.40mm STRUCTURAL @MK4S HF0.8",
+            "defaultFilamentProfile": "Prusa Generic PLA @MK4S HF0.8"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "MK4S HF",
+      "name": "Prusa MK4S HF",
+      "nozzleSizes": [
+        0.4,
+        0.5,
+        0.6,
+        0.8
+      ],
+      "bedModel": "mk4_bed.stl",
+      "bedTexture": "mk4s.svg",
+      "defaultMaterials": [
+        "Prusa Generic ABS @MK4S",
+        "Prusa Generic ASA @MK4S",
+        "Prusa Generic PETG @MK4S",
+        "Prusa Generic PLA @MK4S",
+        "Prusa Generic PLA Silk @MK4S",
+        "Prusa Generic TPU @MK4S"
+      ],
+      "variants": [
+        {
+          "name": "Prusa MK4S HF0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "defaultPrintProfile": "0.20mm SPEED @MK4S HF0.4",
+            "defaultFilamentProfile": "Prusa Generic PLA @MK4S HF0.4"
+          },
+          "startGcode": [
+            "M17 ; enable steppers\nM862.1 P[nozzle_diameter] ; nozzle check\nM862.3 P \"MK4S\" ; printer model check\nM862.5 P2 ; g-code level check\nM862.6 P\"Input shaper\" ; FW feature check\nM115 U6.1.3+7898\n\nM555 X{(min(print_bed_max[0], first_layer_print_min[0] + 32) - 32)} Y{(max(0, first_layer_print_min[1]) - 4)} W{((min(print_bed_max[0], max(first_layer_print_min[0] + 32, first_layer_print_max[0])))) - ((min(print_bed_max[0], first_layer_print_min[0] + 32) - 32))} H{((first_layer_print_max[1])) - ((max(0, first_layer_print_min[1]) - 4))}\n\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\n\nM140 S[first_layer_bed_temperature] ; set bed temp\nM104 T0 S{((filament_notes[0]=~/.*HT_MBL10.*/) ? (first_layer_temperature[0] - 10) : (filament_type[0] == \"PC\" or filament_type[0] == \"PA\") ? (first_layer_temperature[0] - 25) : (filament_type[0] == \"FLEX\") ? 210 : (filament_type[0]=~/.*PET.*/) ? 175 : 170)} ; set extruder temp for bed leveling\nM109 T0 R{((filament_notes[0]=~/.*HT_MBL10.*/) ? (first_layer_temperature[0] - 10) : (filament_type[0] == \"PC\" or filament_type[0] == \"PA\") ? (first_layer_temperature[0] - 25) : (filament_type[0] == \"FLEX\") ? 210 : (filament_type[0]=~/.*PET.*/) ? 175 : 170)} ; wait for temp\n\nM84 E ; turn off E motor\n\nG28 ; home all without mesh bed level\n\nG1 X42 Y-4 Z5 F4800\n\nM302 S160 ; lower cold extrusion limit to 160C\n\n{if filament_type[initial_tool]==\"FLEX\"}\nG1 E-4 F2400 ; retraction\n{else}\nG1 E-2 F2400 ; retraction\n{endif}\n\nM84 E ; turn off E motor\n\nG29 P9 X10 Y-4 W32 H4\n\n{if first_layer_bed_temperature[initial_tool]<=60}M106 S100{endif}\n\nG0 Z40 F10000\n\nM190 S[first_layer_bed_temperature] ; wait for bed temp\n\nM107\n\n;\n; MBL\n;\nM84 E ; turn off E motor\nG29 P1 ; invalidate mbl & probe print area\nG29 P1 X0 Y0 W50 H20 C ; probe near purge place\nG29 P3.2 ; interpolate mbl probes\nG29 P3.13 ; extrapolate mbl outside probe area\nG29 A ; activate mbl\n\n; prepare for purge\nM104 S{first_layer_temperature[0]}\nG0 X0 Y-4 Z15 F4800 ; move away and ready for the purge\nM109 S{first_layer_temperature[0]}\n\nG92 E0\nM569 S0 E ; set spreadcycle mode for extruder\n\n;\n; Extrude purge line\n;\nG92 E0 ; reset extruder position\nG1 E{(filament_type[0] == \"FLEX\" ? 4 : 2)} F2400 ; deretraction after the initial one before nozzle cleaning\nG0 E7 X15 Z0.2 F500 ; purge\nG0 X25 E4 F500 ; purge\nG0 X35 E4 F650 ; purge\nG0 X45 E4 F800 ; purge\nG0 X48 Z0.05 F8000 ; wipe, move close to the bed\nG0 X51 Z0.2 F8000 ; wipe, move quickly away from the bed\n\nG92 E0\nM221 S100 ; set flow to 100%"
+          ],
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa MK4S HF0.5 nozzle",
+          "nozzle": 0.5,
+          "config": {
+            "nozzleDiameter": [
+              "0.5"
+            ],
+            "wipe": "1",
+            "maxLayerHeight": "0.32",
+            "defaultPrintProfile": "0.20mm SPEED @MK4S HF0.5"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa MK4S HF0.6 nozzle",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "wipe": "1",
+            "maxLayerHeight": "0.40",
+            "minLayerHeight": "0.15",
+            "defaultPrintProfile": "0.32mm SPEED @MK4S HF0.6"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa MK4S HF0.8 nozzle",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "retractionLength": "0.6",
+            "retractionSpeed": "25",
+            "deretractionSpeed": "15",
+            "retractBeforeWipe": "50%",
+            "zHop": "0.25",
+            "wipe": "1",
+            "maxLayerHeight": "0.6",
+            "minLayerHeight": "0.2",
+            "defaultPrintProfile": "0.40mm STRUCTURAL @MK4S HF0.8",
+            "defaultFilamentProfile": "Prusa Generic PLA @MK4S HF0.8"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "Prusa XL",
+      "name": "Prusa XL",
+      "nozzleSizes": [
+        0.25,
+        0.3,
+        0.4,
+        0.5,
+        0.6,
+        0.8
+      ],
+      "bedModel": "Prusa XL_bed.stl",
+      "bedTexture": "Prusa XL.svg",
+      "defaultMaterials": [
+        "Prusa Generic PLA @XL",
+        "Prusament PLA @XL",
+        "Prusament rPLA @XL",
+        "Prusa Generic PETG @XL",
+        "Prusament PETG @XL",
+        "Prusa Generic ABS @XL",
+        "Prusament ASA @XL",
+        "Prusament PC Blend @XL",
+        "Prusament PC-CF @XL",
+        "Prusament PVB @XL",
+        "Prusament PA-CF @XL",
+        "Prusa Generic FLEX @XL"
+      ],
+      "variants": [
+        {
+          "name": "Prusa XL 0.25 nozzle",
+          "nozzle": 0.25,
+          "config": {
+            "nozzleDiameter": [
+              "0.25"
+            ],
+            "retractionLength": "0.8",
+            "retractionSpeed": "35",
+            "maxLayerHeight": "0.15",
+            "minLayerHeight": "0.05",
+            "gcodeFlavor": "marlin2",
+            "defaultPrintProfile": "0.15mm Speed @Prusa XL 0.25",
+            "defaultFilamentProfile": "Prusa Generic PLA @XL"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa XL 0.3 nozzle",
+          "nozzle": 0.3,
+          "config": {
+            "nozzleDiameter": [
+              "0.3"
+            ],
+            "retractionLength": "0.7",
+            "retractionSpeed": "35",
+            "maxLayerHeight": "0.22",
+            "minLayerHeight": "0.05",
+            "gcodeFlavor": "marlin2",
+            "defaultPrintProfile": "0.20mm Speed @Prusa XL 0.3",
+            "defaultFilamentProfile": "Prusa Generic PLA @XL"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa XL 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "retractionLength": "0.8",
+            "maxLayerHeight": "0.3",
+            "minLayerHeight": "0.07",
+            "gcodeFlavor": "marlin2",
+            "defaultPrintProfile": "0.20mm Speed @Prusa XL 0.4",
+            "defaultFilamentProfile": "Prusa Generic PLA @XL"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa XL 0.5 nozzle",
+          "nozzle": 0.5,
+          "config": {
+            "nozzleDiameter": [
+              "0.5"
+            ],
+            "retractionLength": "0.7",
+            "maxLayerHeight": "0.32",
+            "minLayerHeight": "0.07",
+            "gcodeFlavor": "marlin2",
+            "defaultPrintProfile": "0.25mm Speed @Prusa XL 0.5",
+            "defaultFilamentProfile": "Prusa Generic PLA @XL"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa XL 0.6 nozzle",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "retractionLength": "0.7",
+            "maxLayerHeight": "0.4",
+            "minLayerHeight": "0.15",
+            "gcodeFlavor": "marlin2",
+            "defaultPrintProfile": "0.32mm Speed @Prusa XL 0.6",
+            "defaultFilamentProfile": "Prusa Generic PLA @XL"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa XL 0.8 nozzle",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "retractionLength": "0.6",
+            "retractionSpeed": "25",
+            "maxLayerHeight": "0.6",
+            "minLayerHeight": "0.2",
+            "gcodeFlavor": "marlin2",
+            "defaultPrintProfile": "0.40mm Quality @Prusa XL 0.8",
+            "defaultFilamentProfile": "Prusa Generic PLA @XL"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa XL 5T 0.25 nozzle",
+          "nozzle": 0.25,
+          "config": {
+            "nozzleDiameter": [
+              "0.25",
+              "0.25",
+              "0.25",
+              "0.25",
+              "0.25"
+            ],
+            "maxLayerHeight": "0.15",
+            "minLayerHeight": "0.05",
+            "gcodeFlavor": "marlin2",
+            "defaultPrintProfile": "0.15mm Speed @Prusa XL 5T 0.25",
+            "defaultFilamentProfile": "Prusa Generic PLA @XL 5T"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa XL 5T 0.3 nozzle",
+          "nozzle": 0.3,
+          "config": {
+            "nozzleDiameter": [
+              "0.3",
+              "0.3",
+              "0.3",
+              "0.3",
+              "0.3"
+            ],
+            "maxLayerHeight": "0.22",
+            "minLayerHeight": "0.05",
+            "gcodeFlavor": "marlin2",
+            "defaultPrintProfile": "0.20mm Speed @Prusa XL 5T 0.3",
+            "defaultFilamentProfile": "Prusa Generic PLA @XL 5T"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa XL 5T 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "nozzleDiameter": [
+              "0.4",
+              "0.4",
+              "0.4",
+              "0.4",
+              "0.4"
+            ],
+            "gcodeFlavor": "marlin2",
+            "defaultPrintProfile": "0.20mm Speed @Prusa XL 5T 0.4",
+            "defaultFilamentProfile": "Prusa Generic PLA @XL 5T"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa XL 5T 0.5 nozzle",
+          "nozzle": 0.5,
+          "config": {
+            "nozzleDiameter": [
+              "0.5",
+              "0.5",
+              "0.5",
+              "0.5",
+              "0.5"
+            ],
+            "maxLayerHeight": "0.32",
+            "gcodeFlavor": "marlin2",
+            "defaultPrintProfile": "0.25mm Speed @Prusa XL 5T 0.5",
+            "defaultFilamentProfile": "Prusa Generic PLA @XL 5T"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa XL 5T 0.6 nozzle",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6",
+              "0.6",
+              "0.6",
+              "0.6",
+              "0.6"
+            ],
+            "maxLayerHeight": "0.4",
+            "minLayerHeight": "0.15",
+            "gcodeFlavor": "marlin2",
+            "defaultPrintProfile": "0.32mm Speed @Prusa XL 5T 0.6",
+            "defaultFilamentProfile": "Prusa Generic PLA @XL 5T"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa XL 5T 0.8 nozzle",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8",
+              "0.8",
+              "0.8",
+              "0.8",
+              "0.8"
+            ],
+            "maxLayerHeight": "0.6",
+            "minLayerHeight": "0.2",
+            "gcodeFlavor": "marlin2",
+            "defaultPrintProfile": "0.40mm Quality @Prusa XL 5T 0.8",
+            "defaultFilamentProfile": "Prusa Generic PLA @XL 5T"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Prusa XL 5T",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.25;0.3;0.4;0.5;0.6;0.8"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    }
+  ],
+  "filaments": [
+    {
+      "name": "fdm_filament_common",
+      "type": [
+        "PLA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "200"
+        ],
+        "bedTemperature": [
+          "60"
+        ],
+        "bedTemperatureInitialLayer": [
+          "60"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "0"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_filament_abs",
+      "type": [
+        "ABS"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "105"
+        ],
+        "bedTemperatureInitialLayer": [
+          "105"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "28.6"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_filament_asa",
+      "type": [
+        "ASA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "105"
+        ],
+        "bedTemperatureInitialLayer": [
+          "105"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "28.6"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_filament_flex",
+      "type": [
+        "FLEX"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "230"
+        ],
+        "bedTemperature": [
+          "50"
+        ],
+        "bedTemperatureInitialLayer": [
+          "50"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "2.5"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_filament_pa",
+      "type": [
+        "PA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "290"
+        ],
+        "bedTemperature": [
+          "100"
+        ],
+        "bedTemperatureInitialLayer": [
+          "100"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "8"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_filament_pa11cf",
+      "type": [
+        "PA11-CF"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "290"
+        ],
+        "bedTemperature": [
+          "100"
+        ],
+        "bedTemperatureInitialLayer": [
+          "100"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "8"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_filament_pc",
+      "type": [
+        "PC"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "280"
+        ],
+        "bedTemperature": [
+          "110"
+        ],
+        "bedTemperatureInitialLayer": [
+          "110"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "23.2"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_filament_pccf",
+      "type": [
+        "PC-CF"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "280"
+        ],
+        "bedTemperature": [
+          "110"
+        ],
+        "bedTemperatureInitialLayer": [
+          "110"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "23.2"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_filament_pet",
+      "type": [
+        "PETG"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "255"
+        ],
+        "bedTemperature": [
+          "80"
+        ],
+        "bedTemperatureInitialLayer": [
+          "80"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "25"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_filament_pla",
+      "type": [
+        "PLA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "220"
+        ],
+        "bedTemperature": [
+          "60"
+        ],
+        "bedTemperatureInitialLayer": [
+          "60"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "12"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_filament_pva",
+      "type": [
+        "PVA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "220"
+        ],
+        "bedTemperature": [
+          "45"
+        ],
+        "bedTemperatureInitialLayer": [
+          "45"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "15"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_filament_pvb",
+      "type": [
+        "PVB"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "220"
+        ],
+        "bedTemperature": [
+          "45"
+        ],
+        "bedTemperatureInitialLayer": [
+          "45"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "15"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_filament_tpu",
+      "type": [
+        "TPU"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "240"
+        ],
+        "bedTemperature": [
+          "35"
+        ],
+        "bedTemperatureInitialLayer": [
+          "35"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "15"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Prusa Generic ABS",
+      "type": [
+        "ABS"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "105"
+        ],
+        "bedTemperatureInitialLayer": [
+          "105"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "11"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Prusa MK3S 0.25 nozzle",
+          "Prusa MK3S 0.4 nozzle",
+          "Prusa MK3S 0.6 nozzle",
+          "Prusa MK3S 0.8 nozzle",
+          "Prusa MINI 0.25 nozzle",
+          "Prusa MINI 0.4 nozzle",
+          "Prusa MINI 0.6 nozzle",
+          "Prusa MINI 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Prusa Generic ABS @CORE One",
+      "type": [
+        "ABS"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "110"
+        ],
+        "bedTemperatureInitialLayer": [
+          "110"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "15"
+        ],
+        "slowDownMinSpeed": [
+          "15"
+        ],
+        "compatiblePrinters": [
+          "Prusa CORE One 0.25 nozzle",
+          "Prusa CORE One 0.3 nozzle",
+          "Prusa CORE One 0.4 nozzle",
+          "Prusa CORE One 0.5 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Prusa Generic ABS @MINIIS",
+      "type": [
+        "ABS"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "100"
+        ],
+        "bedTemperatureInitialLayer": [
+          "100"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "10"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Prusa MINIIS 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Prusa Generic ABS @MINIIS 0.25",
+      "type": [
+        "ABS"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "100"
+        ],
+        "bedTemperatureInitialLayer": [
+          "100"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "10"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Prusa MINIIS 0.25 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Prusa Generic ABS @MINIIS 0.6",
+      "type": [
+        "ABS"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "100"
+        ],
+        "bedTemperatureInitialLayer": [
+          "100"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "10"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Prusa MINIIS 0.6 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Prusa Generic ABS @MINIIS 0.8",
+      "type": [
+        "ABS"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "100"
+        ],
+        "bedTemperatureInitialLayer": [
+          "100"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "10"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Prusa MINIIS 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Prusa Generic ABS @MK3.5",
+      "type": [
+        "ABS"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "100"
+        ],
+        "bedTemperatureInitialLayer": [
+          "100"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "10"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Prusa MK3.5 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Prusa Generic ABS @MK3.5 0.25",
+      "type": [
+        "ABS"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "100"
+        ],
+        "bedTemperatureInitialLayer": [
+          "100"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "10"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Prusa MK3.5 0.25 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Prusa Generic ABS @MK3.5 0.6",
+      "type": [
+        "ABS"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "100"
+        ],
+        "bedTemperatureInitialLayer": [
+          "100"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "10"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Prusa MK3.5 0.6 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Prusa Generic ABS @MK3.5 0.8",
+      "type": [
+        "ABS"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "100"
+        ],
+        "bedTemperatureInitialLayer": [
+          "100"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "10"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Prusa MK3.5 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Prusa Generic ABS @MK4",
+      "type": [
+        "ABS"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "105"
+        ],
+        "bedTemperatureInitialLayer": [
+          "105"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "12"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Prusa MK4 0.25 nozzle",
+          "Prusa MK4 0.4 nozzle",
+          "Prusa MK4 0.6 nozzle",
+          "Prusa MK4 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Prusa Generic ABS @MK4S",
+      "type": [
+        "ABS"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": "110",
+        "bedTemperatureInitialLayer": "100",
+        "filamentMaxVolumetricSpeed": "15",
+        "slowDownMinSpeed": "15",
+        "compatiblePrinters": [
+          "Prusa MK4S 0.25 nozzle",
+          "Prusa MK4S 0.3 nozzle",
+          "Prusa MK4S 0.4 nozzle",
+          "Prusa MK4S 0.5 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Prusa Generic ABS @XL",
+      "type": [
+        "ABS"
+      ],
+      "config": {
+        "nozzleTemperature": "255",
+        "bedTemperature": "105",
+        "bedTemperatureInitialLayer": "100",
+        "filamentMaxVolumetricSpeed": [
+          "12"
+        ],
+        "slowDownMinSpeed": "15",
+        "compatiblePrinters": [
+          "Prusa XL 0.25 nozzle",
+          "Prusa XL 0.3 nozzle",
+          "Prusa XL 0.4 nozzle",
+          "Prusa XL 0.5 nozzle",
+          "Prusa XL 0.6 nozzle",
+          "Prusa XL 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Prusa Generic ABS @XL 5T",
+      "type": [
+        "ABS"
+      ],
+      "config": {
+        "nozzleTemperature": "255",
+        "bedTemperature": "105",
+        "bedTemperatureInitialLayer": "100",
+        "filamentMaxVolumetricSpeed": [
+          "12"
+        ],
+        "slowDownMinSpeed": "15",
+        "compatiblePrinters": [
+          "Prusa XL 5T 0.25 nozzle",
+          "Prusa XL 5T 0.3 nozzle",
+          "Prusa XL 5T 0.4 nozzle",
+          "Prusa XL 5T 0.5 nozzle",
+          "Prusa XL 5T 0.6 nozzle",
+          "Prusa XL 5T 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Prusa Generic ABS HF @MINIIS",
+      "type": [
+        "ABS"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "100"
+        ],
+        "bedTemperatureInitialLayer": [
+          "100"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "25"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Prusa MINIIS 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Prusa Generic ABS HF @MINIIS 0.6",
+      "type": [
+        "ABS"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "100"
+        ],
+        "bedTemperatureInitialLayer": [
+          "100"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "30"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Prusa MINIIS 0.6 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Prusa Generic ABS HF @MINIIS 0.8",
+      "type": [
+        "ABS"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "100"
+        ],
+        "bedTemperatureInitialLayer": [
+          "100"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "36"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Prusa MINIIS 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Prusa Generic ABS HF @MK3.5",
+      "type": [
+        "ABS"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "100"
+        ],
+        "bedTemperatureInitialLayer": [
+          "100"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "25"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Prusa MK3.5 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Prusa Generic ABS HF @MK3.5 0.6",
+      "type": [
+        "ABS"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "100"
+        ],
+        "bedTemperatureInitialLayer": [
+          "100"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "34"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Prusa MK3.5 0.6 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Prusa Generic ABS HF @MK3.5 0.8",
+      "type": [
+        "ABS"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "100"
+        ],
+        "bedTemperatureInitialLayer": [
+          "100"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "36"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Prusa MK3.5 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Prusa Generic ASA",
+      "type": [
+        "ASA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "105"
+        ],
+        "bedTemperatureInitialLayer": [
+          "105"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "11"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Prusa MK3S 0.25 nozzle",
+          "Prusa MK3S 0.4 nozzle",
+          "Prusa MK3S 0.6 nozzle",
+          "Prusa MK3S 0.8 nozzle",
+          "Prusa MINI 0.25 nozzle",
+          "Prusa MINI 0.4 nozzle",
+          "Prusa MINI 0.6 nozzle",
+          "Prusa MINI 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Prusa Generic ASA @CORE One",
+      "type": [
+        "ASA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "110"
+        ],
+        "bedTemperatureInitialLayer": [
+          "110"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "15"
+        ],
+        "slowDownMinSpeed": [
+          "15"
+        ],
+        "compatiblePrinters": [
+          "Prusa CORE One 0.25 nozzle",
+          "Prusa CORE One 0.3 nozzle",
+          "Prusa CORE One 0.4 nozzle",
+          "Prusa CORE One 0.5 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Prusa Generic ASA @MINIIS",
+      "type": [
+        "ASA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "100"
+        ],
+        "bedTemperatureInitialLayer": [
+          "100"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "10"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Prusa MINIIS 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Prusa Generic ASA @MINIIS 0.25",
+      "type": [
+        "ASA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "100"
+        ],
+        "bedTemperatureInitialLayer": [
+          "100"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "10"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Prusa MINIIS 0.25 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Prusa Generic ASA @MINIIS 0.6",
+      "type": [
+        "ASA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "100"
+        ],
+        "bedTemperatureInitialLayer": [
+          "100"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "10"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Prusa MINIIS 0.6 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Prusa Generic ASA @MINIIS 0.8",
+      "type": [
+        "ASA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "100"
+        ],
+        "bedTemperatureInitialLayer": [
+          "100"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "10"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Prusa MINIIS 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Prusa Generic ASA @MK3.5",
+      "type": [
+        "ASA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "100"
+        ],
+        "bedTemperatureInitialLayer": [
+          "100"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "11"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Prusa MK3.5 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Prusa Generic ASA @MK3.5 0.25",
+      "type": [
+        "ASA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "100"
+        ],
+        "bedTemperatureInitialLayer": [
+          "100"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "11"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Prusa MK3.5 0.25 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Prusa Generic ASA @MK3.5 0.6",
+      "type": [
+        "ASA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "100"
+        ],
+        "bedTemperatureInitialLayer": [
+          "100"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "11"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Prusa MK3.5 0.6 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Prusa Generic ASA @MK3.5 0.8",
+      "type": [
+        "ASA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "100"
+        ],
+        "bedTemperatureInitialLayer": [
+          "100"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "11"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Prusa MK3.5 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Prusa Generic ASA @MK4",
+      "type": [
+        "ASA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "105"
+        ],
+        "bedTemperatureInitialLayer": [
+          "105"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "12"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Prusa MK4 0.25 nozzle",
+          "Prusa MK4 0.4 nozzle",
+          "Prusa MK4 0.6 nozzle",
+          "Prusa MK4 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Prusa Generic ASA @MK4S",
+      "type": [
+        "ASA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": "110",
+        "bedTemperatureInitialLayer": [
+          "105"
+        ],
+        "filamentMaxVolumetricSpeed": "15",
+        "slowDownMinSpeed": "15",
+        "compatiblePrinters": [
+          "Prusa MK4S 0.25 nozzle",
+          "Prusa MK4S 0.3 nozzle",
+          "Prusa MK4S 0.4 nozzle",
+          "Prusa MK4S 0.5 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Prusa Generic ASA HF @MINIIS",
+      "type": [
+        "ASA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "100"
+        ],
+        "bedTemperatureInitialLayer": [
+          "100"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "25"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Prusa MINIIS 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Prusa Generic ASA HF @MINIIS 0.6",
+      "type": [
+        "ASA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "100"
+        ],
+        "bedTemperatureInitialLayer": [
+          "100"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "30"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Prusa MINIIS 0.6 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Prusa Generic ASA HF @MINIIS 0.8",
+      "type": [
+        "ASA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "100"
+        ],
+        "bedTemperatureInitialLayer": [
+          "100"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "35"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Prusa MINIIS 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Prusa Generic ASA HF @MK3.5",
+      "type": [
+        "ASA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "100"
+        ],
+        "bedTemperatureInitialLayer": [
+          "100"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "26"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Prusa MK3.5 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Prusa Generic ASA HF @MK3.5 0.6",
+      "type": [
+        "ASA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "100"
+        ],
+        "bedTemperatureInitialLayer": [
+          "100"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "34"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Prusa MK3.5 0.6 nozzle"
+        ]
+      }
+    }
+  ],
+  "processes": [
+    {
+      "name": "fdm_process_common",
+      "config": {
+        "layerHeight": "0.2",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "4",
+        "bottomShellLayers": "3",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "process_common_mk3",
+      "config": {
+        "sparseInfillDensity": "15%",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.20mm Standard @MINI",
+      "config": {
+        "compatiblePrinters": [
+          "Prusa MINI 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.20mm Standard @MINI 0.25",
+      "config": {
+        "compatiblePrinters": [
+          "Prusa MINI 0.25 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.20mm Standard @MINI 0.6",
+      "config": {
+        "compatiblePrinters": [
+          "Prusa MINI 0.6 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.20mm Standard @MINI 0.8",
+      "config": {
+        "compatiblePrinters": [
+          "Prusa MINI 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.20mm Standard @MK3S",
+      "config": {
+        "compatiblePrinters": [
+          "Prusa MK3S 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.20mm Standard @MK3S 0.4",
+      "config": {
+        "compatiblePrinters": [
+          "Prusa MK3S 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "process_common_MK3.5",
+      "config": {
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "5",
+        "bottomShellLayers": "4",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "process_common_miniis",
+      "config": {
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "5",
+        "bottomShellLayers": "4",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "process_common_mk4",
+      "config": {
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "process_common_mk4s",
+      "config": {
+        "wallLoops": "2",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "5",
+        "bottomShellLayers": "4",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "process_common_xl",
+      "config": {
+        "wallLoops": "2",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "5",
+        "bottomShellLayers": "4",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.05mm UltraDetail @MK3S",
+      "config": {
+        "layerHeight": "0.05",
+        "wallLoops": "3",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "14",
+        "bottomShellLayers": "10",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.05mm UltraDetail @MK3S 0.25",
+      "config": {
+        "layerHeight": "0.05",
+        "wallLoops": "3",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "14",
+        "bottomShellLayers": "10",
+        "compatiblePrinters": [
+          "Prusa MK3S 0.25 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.05mm UltraDetail @MK3S 0.4",
+      "config": {
+        "layerHeight": "0.05",
+        "wallLoops": "3",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "14",
+        "bottomShellLayers": "10",
+        "compatiblePrinters": [
+          "Prusa MK3S 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.07mm UltraDetail @MK3S",
+      "config": {
+        "layerHeight": "0.07",
+        "wallLoops": "3",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "10",
+        "bottomShellLayers": "8",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.07mm UltraDetail @MK3S 0.25",
+      "config": {
+        "layerHeight": "0.07",
+        "wallLoops": "3",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "10",
+        "bottomShellLayers": "8",
+        "compatiblePrinters": [
+          "Prusa MK3S 0.25 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.07mm UltraDetail @MK3S 0.4",
+      "config": {
+        "layerHeight": "0.07",
+        "wallLoops": "3",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "10",
+        "bottomShellLayers": "8",
+        "compatiblePrinters": [
+          "Prusa MK3S 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.10mm Detail @MK3S",
+      "config": {
+        "layerHeight": "0.1",
+        "wallLoops": "3",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "8",
+        "bottomShellLayers": "7",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.10mm Detail @MK3S 0.25",
+      "config": {
+        "layerHeight": "0.1",
+        "wallLoops": "3",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "8",
+        "bottomShellLayers": "7",
+        "compatiblePrinters": [
+          "Prusa MK3S 0.25 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.10mm Detail @MK3S 0.4",
+      "config": {
+        "layerHeight": "0.1",
+        "wallLoops": "3",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "8",
+        "bottomShellLayers": "7",
+        "compatiblePrinters": [
+          "Prusa MK3S 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.15mm Detail @MK3S 0.6",
+      "config": {
+        "layerHeight": "0.15",
+        "wallLoops": "2",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "6",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": [
+          "Prusa MK3S 0.6 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.15mm Quality @MK3S",
+      "config": {
+        "layerHeight": "0.15",
+        "wallLoops": "2",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "6",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.15mm Quality @MK3S 0.25",
+      "config": {
+        "layerHeight": "0.15",
+        "wallLoops": "3",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "6",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": [
+          "Prusa MK3S 0.25 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.15mm Quality @MK3S 0.4",
+      "config": {
+        "layerHeight": "0.15",
+        "wallLoops": "2",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "6",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": [
+          "Prusa MK3S 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.15mm Speed @MK3S",
+      "config": {
+        "layerHeight": "0.15",
+        "wallLoops": "2",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "6",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.20mm Detail @MK3S 0.6",
+      "config": {
+        "layerHeight": "0.2",
+        "wallLoops": "2",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "5",
+        "bottomShellLayers": "4",
+        "compatiblePrinters": [
+          "Prusa MK3S 0.6 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.20mm Quality @MK3S",
+      "config": {
+        "layerHeight": "0.2",
+        "wallLoops": "2",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "5",
+        "bottomShellLayers": "4",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.20mm Speed @MK3S",
+      "config": {
+        "layerHeight": "0.2",
+        "wallLoops": "2",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "5",
+        "bottomShellLayers": "4",
+        "compatiblePrinters": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,4304 @@
+{
+  "name": "Snapmaker",
+  "version": "02.03.01.10",
+  "printers": [
+    {
+      "id": "261851393",
+      "name": "Snapmaker A250",
+      "nozzleSizes": [
+        0.2,
+        0.4,
+        0.6,
+        0.8
+      ],
+      "bedModel": "Snapmaker A250_bed.stl",
+      "bedTexture": "Snapmaker A250_texture.svg",
+      "defaultMaterials": [],
+      "variants": [
+        {
+          "name": "Snapmaker A250 (0.2 nozzle)",
+          "nozzle": 0.2,
+          "config": {
+            "nozzleDiameter": [
+              "0.2"
+            ],
+            "maxLayerHeight": [
+              "0.14"
+            ],
+            "minLayerHeight": [
+              "0.06"
+            ],
+            "defaultPrintProfile": "0.14 Standard @Snapmaker (0.2 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 (0.4 nozzle)",
+          "nozzle": 0.4,
+          "config": {
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "maxLayerHeight": [
+              "0.28"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "defaultPrintProfile": "0.16 Optimal @Snapmaker (0.4 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 (0.6 nozzle)",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "maxLayerHeight": [
+              "0.42"
+            ],
+            "minLayerHeight": [
+              "0.18"
+            ],
+            "defaultPrintProfile": "0.18 Standard @Snapmaker (0.6 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 (0.8 nozzle)",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "maxLayerHeight": [
+              "0.48"
+            ],
+            "minLayerHeight": [
+              "0.24"
+            ],
+            "defaultPrintProfile": "0.24 Standard @Snapmaker (0.8 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 BKit (0.2 nozzle)",
+          "nozzle": 0.2,
+          "config": {
+            "nozzleDiameter": [
+              "0.2"
+            ],
+            "maxLayerHeight": [
+              "0.14"
+            ],
+            "minLayerHeight": [
+              "0.06"
+            ],
+            "defaultPrintProfile": "0.14 Standard @Snapmaker (0.2 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 BKit (0.4 nozzle)",
+          "nozzle": 0.4,
+          "config": {
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "maxLayerHeight": [
+              "0.28"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "defaultPrintProfile": "0.16 Optimal @Snapmaker (0.4 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 BKit (0.6 nozzle)",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "maxLayerHeight": [
+              "0.42"
+            ],
+            "minLayerHeight": [
+              "0.18"
+            ],
+            "defaultPrintProfile": "0.18 Standard @Snapmaker (0.6 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 BKit (0.8 nozzle)",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "maxLayerHeight": [
+              "0.48"
+            ],
+            "minLayerHeight": [
+              "0.24"
+            ],
+            "defaultPrintProfile": "0.24 Standard @Snapmaker (0.8 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 BKit",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.2;0.4;0.6;0.8"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual (0.2 nozzle)",
+          "nozzle": 0.2,
+          "config": {
+            "nozzleDiameter": [
+              "0.2",
+              "0.2"
+            ],
+            "maxLayerHeight": [
+              "0.14"
+            ],
+            "minLayerHeight": [
+              "0.06"
+            ],
+            "defaultPrintProfile": "0.14 Standard @Snapmaker (0.2 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual (0.4 nozzle)",
+          "nozzle": 0.4,
+          "config": {
+            "nozzleDiameter": [
+              "0.4",
+              "0.4"
+            ],
+            "maxLayerHeight": [
+              "0.28"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "defaultPrintProfile": "0.16 Optimal @Snapmaker (0.4 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual (0.6 nozzle)",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6",
+              "0.6"
+            ],
+            "maxLayerHeight": [
+              "0.42"
+            ],
+            "minLayerHeight": [
+              "0.18"
+            ],
+            "defaultPrintProfile": "0.18 Standard @Snapmaker (0.6 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual (0.8 nozzle)",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8",
+              "0.8"
+            ],
+            "maxLayerHeight": [
+              "0.48"
+            ],
+            "minLayerHeight": [
+              "0.24"
+            ],
+            "defaultPrintProfile": "0.24 Standard @Snapmaker (0.8 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual BKit (0.2 nozzle)",
+          "nozzle": 0.2,
+          "config": {
+            "nozzleDiameter": [
+              "0.2",
+              "0.2"
+            ],
+            "maxLayerHeight": [
+              "0.14"
+            ],
+            "minLayerHeight": [
+              "0.06"
+            ],
+            "defaultPrintProfile": "0.14 Standard @Snapmaker (0.2 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual BKit (0.4 nozzle)",
+          "nozzle": 0.4,
+          "config": {
+            "nozzleDiameter": [
+              "0.4",
+              "0.4"
+            ],
+            "maxLayerHeight": [
+              "0.28"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "defaultPrintProfile": "0.16 Optimal @Snapmaker (0.4 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual BKit (0.6 nozzle)",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6",
+              "0.6"
+            ],
+            "maxLayerHeight": [
+              "0.42"
+            ],
+            "minLayerHeight": [
+              "0.18"
+            ],
+            "defaultPrintProfile": "0.18 Standard @Snapmaker (0.6 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual BKit (0.8 nozzle)",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8",
+              "0.8"
+            ],
+            "maxLayerHeight": [
+              "0.48"
+            ],
+            "minLayerHeight": [
+              "0.24"
+            ],
+            "defaultPrintProfile": "0.24 Standard @Snapmaker (0.8 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual BKit",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.2;0.4;0.6;0.8"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual QS+B Kit (0.2 nozzle)",
+          "nozzle": 0.2,
+          "config": {
+            "nozzleDiameter": [
+              "0.2",
+              "0.2"
+            ],
+            "maxLayerHeight": [
+              "0.14"
+            ],
+            "minLayerHeight": [
+              "0.06"
+            ],
+            "defaultPrintProfile": "0.14 Standard @Snapmaker (0.2 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual QS+B Kit (0.4 nozzle)",
+          "nozzle": 0.4,
+          "config": {
+            "nozzleDiameter": [
+              "0.4",
+              "0.4"
+            ],
+            "maxLayerHeight": [
+              "0.28"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "defaultPrintProfile": "0.16 Optimal @Snapmaker (0.4 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual QS+B Kit (0.6 nozzle)",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6",
+              "0.6"
+            ],
+            "maxLayerHeight": [
+              "0.42"
+            ],
+            "minLayerHeight": [
+              "0.18"
+            ],
+            "defaultPrintProfile": "0.18 Standard @Snapmaker (0.6 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual QS+B Kit (0.8 nozzle)",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8",
+              "0.8"
+            ],
+            "maxLayerHeight": [
+              "0.48"
+            ],
+            "minLayerHeight": [
+              "0.24"
+            ],
+            "defaultPrintProfile": "0.24 Standard @Snapmaker (0.8 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual QS+B Kit",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.2;0.4;0.6;0.8"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual QSKit (0.2 nozzle)",
+          "nozzle": 0.2,
+          "config": {
+            "nozzleDiameter": [
+              "0.2",
+              "0.2"
+            ],
+            "maxLayerHeight": [
+              "0.14"
+            ],
+            "minLayerHeight": [
+              "0.06"
+            ],
+            "defaultPrintProfile": "0.14 Standard @Snapmaker (0.2 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual QSKit (0.4 nozzle)",
+          "nozzle": 0.4,
+          "config": {
+            "nozzleDiameter": [
+              "0.4",
+              "0.4"
+            ],
+            "maxLayerHeight": [
+              "0.28"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "defaultPrintProfile": "0.16 Optimal @Snapmaker (0.4 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual QSKit (0.6 nozzle)",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6",
+              "0.6"
+            ],
+            "maxLayerHeight": [
+              "0.42"
+            ],
+            "minLayerHeight": [
+              "0.18"
+            ],
+            "defaultPrintProfile": "0.18 Standard @Snapmaker (0.6 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual QSKit (0.8 nozzle)",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8",
+              "0.8"
+            ],
+            "maxLayerHeight": [
+              "0.48"
+            ],
+            "minLayerHeight": [
+              "0.24"
+            ],
+            "defaultPrintProfile": "0.24 Standard @Snapmaker (0.8 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual QSKit",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.2;0.4;0.6;0.8"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.2;0.4;0.6;0.8"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 QS+B Kit (0.2 nozzle)",
+          "nozzle": 0.2,
+          "config": {
+            "nozzleDiameter": [
+              "0.2"
+            ],
+            "maxLayerHeight": [
+              "0.14"
+            ],
+            "minLayerHeight": [
+              "0.06"
+            ],
+            "defaultPrintProfile": "0.14 Standard @Snapmaker (0.2 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 QS+B Kit (0.4 nozzle)",
+          "nozzle": 0.4,
+          "config": {
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "maxLayerHeight": [
+              "0.28"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "defaultPrintProfile": "0.16 Optimal @Snapmaker (0.4 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 QS+B Kit (0.6 nozzle)",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "maxLayerHeight": [
+              "0.42"
+            ],
+            "minLayerHeight": [
+              "0.18"
+            ],
+            "defaultPrintProfile": "0.18 Standard @Snapmaker (0.6 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 QS+B Kit (0.8 nozzle)",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "maxLayerHeight": [
+              "0.48"
+            ],
+            "minLayerHeight": [
+              "0.24"
+            ],
+            "defaultPrintProfile": "0.24 Standard @Snapmaker (0.8 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 QS+B Kit",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.2;0.4;0.6;0.8"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 QSKit (0.2 nozzle)",
+          "nozzle": 0.2,
+          "config": {
+            "nozzleDiameter": [
+              "0.2"
+            ],
+            "maxLayerHeight": [
+              "0.14"
+            ],
+            "minLayerHeight": [
+              "0.06"
+            ],
+            "defaultPrintProfile": "0.14 Standard @Snapmaker (0.2 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 QSKit (0.4 nozzle)",
+          "nozzle": 0.4,
+          "config": {
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "maxLayerHeight": [
+              "0.28"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "defaultPrintProfile": "0.16 Optimal @Snapmaker (0.4 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 QSKit (0.6 nozzle)",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "maxLayerHeight": [
+              "0.42"
+            ],
+            "minLayerHeight": [
+              "0.18"
+            ],
+            "defaultPrintProfile": "0.18 Standard @Snapmaker (0.6 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 QSKit (0.8 nozzle)",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "maxLayerHeight": [
+              "0.48"
+            ],
+            "minLayerHeight": [
+              "0.24"
+            ],
+            "defaultPrintProfile": "0.24 Standard @Snapmaker (0.8 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 QSKit",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.2;0.4;0.6;0.8"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "1921635482",
+      "name": "Snapmaker A250 BKit",
+      "nozzleSizes": [
+        0.2,
+        0.4,
+        0.6,
+        0.8
+      ],
+      "bedModel": "Snapmaker A250_bed.stl",
+      "bedTexture": "Snapmaker A250_texture.svg",
+      "defaultMaterials": [],
+      "variants": [
+        {
+          "name": "Snapmaker A250 BKit (0.2 nozzle)",
+          "nozzle": 0.2,
+          "config": {
+            "nozzleDiameter": [
+              "0.2"
+            ],
+            "maxLayerHeight": [
+              "0.14"
+            ],
+            "minLayerHeight": [
+              "0.06"
+            ],
+            "defaultPrintProfile": "0.14 Standard @Snapmaker (0.2 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 BKit (0.4 nozzle)",
+          "nozzle": 0.4,
+          "config": {
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "maxLayerHeight": [
+              "0.28"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "defaultPrintProfile": "0.16 Optimal @Snapmaker (0.4 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 BKit (0.6 nozzle)",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "maxLayerHeight": [
+              "0.42"
+            ],
+            "minLayerHeight": [
+              "0.18"
+            ],
+            "defaultPrintProfile": "0.18 Standard @Snapmaker (0.6 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 BKit (0.8 nozzle)",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "maxLayerHeight": [
+              "0.48"
+            ],
+            "minLayerHeight": [
+              "0.24"
+            ],
+            "defaultPrintProfile": "0.24 Standard @Snapmaker (0.8 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "2728546690",
+      "name": "Snapmaker A250 Dual",
+      "nozzleSizes": [
+        0.2,
+        0.4,
+        0.6,
+        0.8
+      ],
+      "bedModel": "Snapmaker A250_bed.stl",
+      "bedTexture": "Snapmaker A250 Dual_texture.svg",
+      "defaultMaterials": [],
+      "variants": [
+        {
+          "name": "Snapmaker A250 Dual (0.2 nozzle)",
+          "nozzle": 0.2,
+          "config": {
+            "nozzleDiameter": [
+              "0.2",
+              "0.2"
+            ],
+            "maxLayerHeight": [
+              "0.14"
+            ],
+            "minLayerHeight": [
+              "0.06"
+            ],
+            "defaultPrintProfile": "0.14 Standard @Snapmaker (0.2 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual (0.4 nozzle)",
+          "nozzle": 0.4,
+          "config": {
+            "nozzleDiameter": [
+              "0.4",
+              "0.4"
+            ],
+            "maxLayerHeight": [
+              "0.28"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "defaultPrintProfile": "0.16 Optimal @Snapmaker (0.4 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual (0.6 nozzle)",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6",
+              "0.6"
+            ],
+            "maxLayerHeight": [
+              "0.42"
+            ],
+            "minLayerHeight": [
+              "0.18"
+            ],
+            "defaultPrintProfile": "0.18 Standard @Snapmaker (0.6 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual (0.8 nozzle)",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8",
+              "0.8"
+            ],
+            "maxLayerHeight": [
+              "0.48"
+            ],
+            "minLayerHeight": [
+              "0.24"
+            ],
+            "defaultPrintProfile": "0.24 Standard @Snapmaker (0.8 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual BKit (0.2 nozzle)",
+          "nozzle": 0.2,
+          "config": {
+            "nozzleDiameter": [
+              "0.2",
+              "0.2"
+            ],
+            "maxLayerHeight": [
+              "0.14"
+            ],
+            "minLayerHeight": [
+              "0.06"
+            ],
+            "defaultPrintProfile": "0.14 Standard @Snapmaker (0.2 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual BKit (0.4 nozzle)",
+          "nozzle": 0.4,
+          "config": {
+            "nozzleDiameter": [
+              "0.4",
+              "0.4"
+            ],
+            "maxLayerHeight": [
+              "0.28"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "defaultPrintProfile": "0.16 Optimal @Snapmaker (0.4 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual BKit (0.6 nozzle)",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6",
+              "0.6"
+            ],
+            "maxLayerHeight": [
+              "0.42"
+            ],
+            "minLayerHeight": [
+              "0.18"
+            ],
+            "defaultPrintProfile": "0.18 Standard @Snapmaker (0.6 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual BKit (0.8 nozzle)",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8",
+              "0.8"
+            ],
+            "maxLayerHeight": [
+              "0.48"
+            ],
+            "minLayerHeight": [
+              "0.24"
+            ],
+            "defaultPrintProfile": "0.24 Standard @Snapmaker (0.8 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual BKit",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.2;0.4;0.6;0.8"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual QS+B Kit (0.2 nozzle)",
+          "nozzle": 0.2,
+          "config": {
+            "nozzleDiameter": [
+              "0.2",
+              "0.2"
+            ],
+            "maxLayerHeight": [
+              "0.14"
+            ],
+            "minLayerHeight": [
+              "0.06"
+            ],
+            "defaultPrintProfile": "0.14 Standard @Snapmaker (0.2 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual QS+B Kit (0.4 nozzle)",
+          "nozzle": 0.4,
+          "config": {
+            "nozzleDiameter": [
+              "0.4",
+              "0.4"
+            ],
+            "maxLayerHeight": [
+              "0.28"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "defaultPrintProfile": "0.16 Optimal @Snapmaker (0.4 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual QS+B Kit (0.6 nozzle)",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6",
+              "0.6"
+            ],
+            "maxLayerHeight": [
+              "0.42"
+            ],
+            "minLayerHeight": [
+              "0.18"
+            ],
+            "defaultPrintProfile": "0.18 Standard @Snapmaker (0.6 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual QS+B Kit (0.8 nozzle)",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8",
+              "0.8"
+            ],
+            "maxLayerHeight": [
+              "0.48"
+            ],
+            "minLayerHeight": [
+              "0.24"
+            ],
+            "defaultPrintProfile": "0.24 Standard @Snapmaker (0.8 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual QS+B Kit",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.2;0.4;0.6;0.8"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual QSKit (0.2 nozzle)",
+          "nozzle": 0.2,
+          "config": {
+            "nozzleDiameter": [
+              "0.2",
+              "0.2"
+            ],
+            "maxLayerHeight": [
+              "0.14"
+            ],
+            "minLayerHeight": [
+              "0.06"
+            ],
+            "defaultPrintProfile": "0.14 Standard @Snapmaker (0.2 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual QSKit (0.4 nozzle)",
+          "nozzle": 0.4,
+          "config": {
+            "nozzleDiameter": [
+              "0.4",
+              "0.4"
+            ],
+            "maxLayerHeight": [
+              "0.28"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "defaultPrintProfile": "0.16 Optimal @Snapmaker (0.4 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual QSKit (0.6 nozzle)",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6",
+              "0.6"
+            ],
+            "maxLayerHeight": [
+              "0.42"
+            ],
+            "minLayerHeight": [
+              "0.18"
+            ],
+            "defaultPrintProfile": "0.18 Standard @Snapmaker (0.6 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual QSKit (0.8 nozzle)",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8",
+              "0.8"
+            ],
+            "maxLayerHeight": [
+              "0.48"
+            ],
+            "minLayerHeight": [
+              "0.24"
+            ],
+            "defaultPrintProfile": "0.24 Standard @Snapmaker (0.8 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual QSKit",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.2;0.4;0.6;0.8"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "1463587605",
+      "name": "Snapmaker A250 Dual BKit",
+      "nozzleSizes": [
+        0.2,
+        0.4,
+        0.6,
+        0.8
+      ],
+      "bedModel": "Snapmaker A250_bed.stl",
+      "bedTexture": "Snapmaker A250 Dual_texture.svg",
+      "defaultMaterials": [],
+      "variants": [
+        {
+          "name": "Snapmaker A250 Dual BKit (0.2 nozzle)",
+          "nozzle": 0.2,
+          "config": {
+            "nozzleDiameter": [
+              "0.2",
+              "0.2"
+            ],
+            "maxLayerHeight": [
+              "0.14"
+            ],
+            "minLayerHeight": [
+              "0.06"
+            ],
+            "defaultPrintProfile": "0.14 Standard @Snapmaker (0.2 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual BKit (0.4 nozzle)",
+          "nozzle": 0.4,
+          "config": {
+            "nozzleDiameter": [
+              "0.4",
+              "0.4"
+            ],
+            "maxLayerHeight": [
+              "0.28"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "defaultPrintProfile": "0.16 Optimal @Snapmaker (0.4 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual BKit (0.6 nozzle)",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6",
+              "0.6"
+            ],
+            "maxLayerHeight": [
+              "0.42"
+            ],
+            "minLayerHeight": [
+              "0.18"
+            ],
+            "defaultPrintProfile": "0.18 Standard @Snapmaker (0.6 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual BKit (0.8 nozzle)",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8",
+              "0.8"
+            ],
+            "maxLayerHeight": [
+              "0.48"
+            ],
+            "minLayerHeight": [
+              "0.24"
+            ],
+            "defaultPrintProfile": "0.24 Standard @Snapmaker (0.8 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "3396626756",
+      "name": "Snapmaker A250 Dual QS+B Kit",
+      "nozzleSizes": [
+        0.2,
+        0.4,
+        0.6,
+        0.8
+      ],
+      "bedModel": "Snapmaker A250_bed.stl",
+      "bedTexture": "Snapmaker A250 Dual_texture.svg",
+      "defaultMaterials": [],
+      "variants": [
+        {
+          "name": "Snapmaker A250 Dual QS+B Kit (0.2 nozzle)",
+          "nozzle": 0.2,
+          "config": {
+            "nozzleDiameter": [
+              "0.2",
+              "0.2"
+            ],
+            "maxLayerHeight": [
+              "0.14"
+            ],
+            "minLayerHeight": [
+              "0.06"
+            ],
+            "defaultPrintProfile": "0.14 Standard @Snapmaker (0.2 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual QS+B Kit (0.4 nozzle)",
+          "nozzle": 0.4,
+          "config": {
+            "nozzleDiameter": [
+              "0.4",
+              "0.4"
+            ],
+            "maxLayerHeight": [
+              "0.28"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "defaultPrintProfile": "0.16 Optimal @Snapmaker (0.4 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual QS+B Kit (0.6 nozzle)",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6",
+              "0.6"
+            ],
+            "maxLayerHeight": [
+              "0.42"
+            ],
+            "minLayerHeight": [
+              "0.18"
+            ],
+            "defaultPrintProfile": "0.18 Standard @Snapmaker (0.6 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual QS+B Kit (0.8 nozzle)",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8",
+              "0.8"
+            ],
+            "maxLayerHeight": [
+              "0.48"
+            ],
+            "minLayerHeight": [
+              "0.24"
+            ],
+            "defaultPrintProfile": "0.24 Standard @Snapmaker (0.8 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "2661871200",
+      "name": "Snapmaker A250 Dual QSKit",
+      "nozzleSizes": [
+        0.2,
+        0.4,
+        0.6,
+        0.8
+      ],
+      "bedModel": "Snapmaker A250_bed.stl",
+      "bedTexture": "Snapmaker A250 Dual_texture.svg",
+      "defaultMaterials": [],
+      "variants": [
+        {
+          "name": "Snapmaker A250 Dual QSKit (0.2 nozzle)",
+          "nozzle": 0.2,
+          "config": {
+            "nozzleDiameter": [
+              "0.2",
+              "0.2"
+            ],
+            "maxLayerHeight": [
+              "0.14"
+            ],
+            "minLayerHeight": [
+              "0.06"
+            ],
+            "defaultPrintProfile": "0.14 Standard @Snapmaker (0.2 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual QSKit (0.4 nozzle)",
+          "nozzle": 0.4,
+          "config": {
+            "nozzleDiameter": [
+              "0.4",
+              "0.4"
+            ],
+            "maxLayerHeight": [
+              "0.28"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "defaultPrintProfile": "0.16 Optimal @Snapmaker (0.4 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual QSKit (0.6 nozzle)",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6",
+              "0.6"
+            ],
+            "maxLayerHeight": [
+              "0.42"
+            ],
+            "minLayerHeight": [
+              "0.18"
+            ],
+            "defaultPrintProfile": "0.18 Standard @Snapmaker (0.6 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 Dual QSKit (0.8 nozzle)",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8",
+              "0.8"
+            ],
+            "maxLayerHeight": [
+              "0.48"
+            ],
+            "minLayerHeight": [
+              "0.24"
+            ],
+            "defaultPrintProfile": "0.24 Standard @Snapmaker (0.8 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "3626883798",
+      "name": "Snapmaker A250 QS+B Kit",
+      "nozzleSizes": [
+        0.2,
+        0.4,
+        0.6,
+        0.8
+      ],
+      "bedModel": "Snapmaker A250_bed.stl",
+      "bedTexture": "Snapmaker A250_texture.svg",
+      "defaultMaterials": [],
+      "variants": [
+        {
+          "name": "Snapmaker A250 QS+B Kit (0.2 nozzle)",
+          "nozzle": 0.2,
+          "config": {
+            "nozzleDiameter": [
+              "0.2"
+            ],
+            "maxLayerHeight": [
+              "0.14"
+            ],
+            "minLayerHeight": [
+              "0.06"
+            ],
+            "defaultPrintProfile": "0.14 Standard @Snapmaker (0.2 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 QS+B Kit (0.4 nozzle)",
+          "nozzle": 0.4,
+          "config": {
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "maxLayerHeight": [
+              "0.28"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "defaultPrintProfile": "0.16 Optimal @Snapmaker (0.4 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 QS+B Kit (0.6 nozzle)",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "maxLayerHeight": [
+              "0.42"
+            ],
+            "minLayerHeight": [
+              "0.18"
+            ],
+            "defaultPrintProfile": "0.18 Standard @Snapmaker (0.6 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 QS+B Kit (0.8 nozzle)",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "maxLayerHeight": [
+              "0.48"
+            ],
+            "minLayerHeight": [
+              "0.24"
+            ],
+            "defaultPrintProfile": "0.24 Standard @Snapmaker (0.8 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "3817522582",
+      "name": "Snapmaker A250 QSKit",
+      "nozzleSizes": [
+        0.2,
+        0.4,
+        0.6,
+        0.8
+      ],
+      "bedModel": "Snapmaker A250_bed.stl",
+      "bedTexture": "Snapmaker A250_texture.svg",
+      "defaultMaterials": [],
+      "variants": [
+        {
+          "name": "Snapmaker A250 QSKit (0.2 nozzle)",
+          "nozzle": 0.2,
+          "config": {
+            "nozzleDiameter": [
+              "0.2"
+            ],
+            "maxLayerHeight": [
+              "0.14"
+            ],
+            "minLayerHeight": [
+              "0.06"
+            ],
+            "defaultPrintProfile": "0.14 Standard @Snapmaker (0.2 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 QSKit (0.4 nozzle)",
+          "nozzle": 0.4,
+          "config": {
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "maxLayerHeight": [
+              "0.28"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "defaultPrintProfile": "0.16 Optimal @Snapmaker (0.4 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 QSKit (0.6 nozzle)",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "maxLayerHeight": [
+              "0.42"
+            ],
+            "minLayerHeight": [
+              "0.18"
+            ],
+            "defaultPrintProfile": "0.18 Standard @Snapmaker (0.6 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A250 QSKit (0.8 nozzle)",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "maxLayerHeight": [
+              "0.48"
+            ],
+            "minLayerHeight": [
+              "0.24"
+            ],
+            "defaultPrintProfile": "0.24 Standard @Snapmaker (0.8 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "240771894",
+      "name": "Snapmaker A350",
+      "nozzleSizes": [
+        0.2,
+        0.4,
+        0.6,
+        0.8
+      ],
+      "bedModel": "Snapmaker A350_bed.stl",
+      "bedTexture": "Snapmaker A350_texture.svg",
+      "defaultMaterials": [],
+      "variants": [
+        {
+          "name": "Snapmaker A350 (0.2 nozzle)",
+          "nozzle": 0.2,
+          "config": {
+            "nozzleDiameter": [
+              "0.2"
+            ],
+            "maxLayerHeight": [
+              "0.14"
+            ],
+            "minLayerHeight": [
+              "0.06"
+            ],
+            "defaultPrintProfile": "0.14 Standard @Snapmaker (0.2 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 (0.4 nozzle)",
+          "nozzle": 0.4,
+          "config": {
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "maxLayerHeight": [
+              "0.28"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "defaultPrintProfile": "0.16 Optimal @Snapmaker (0.4 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 (0.6 nozzle)",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "maxLayerHeight": [
+              "0.42"
+            ],
+            "minLayerHeight": [
+              "0.18"
+            ],
+            "defaultPrintProfile": "0.18 Standard @Snapmaker (0.6 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 (0.8 nozzle)",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "maxLayerHeight": [
+              "0.48"
+            ],
+            "minLayerHeight": [
+              "0.24"
+            ],
+            "defaultPrintProfile": "0.24 Standard @Snapmaker (0.8 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 BKit (0.2 nozzle)",
+          "nozzle": 0.2,
+          "config": {
+            "nozzleDiameter": [
+              "0.2"
+            ],
+            "maxLayerHeight": [
+              "0.14"
+            ],
+            "minLayerHeight": [
+              "0.06"
+            ],
+            "defaultPrintProfile": "0.14 Standard @Snapmaker (0.2 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 BKit (0.4 nozzle)",
+          "nozzle": 0.4,
+          "config": {
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "maxLayerHeight": [
+              "0.28"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "defaultPrintProfile": "0.16 Optimal @Snapmaker (0.4 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 BKit (0.6 nozzle)",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "maxLayerHeight": [
+              "0.42"
+            ],
+            "minLayerHeight": [
+              "0.18"
+            ],
+            "defaultPrintProfile": "0.18 Standard @Snapmaker (0.6 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 BKit (0.8 nozzle)",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "maxLayerHeight": [
+              "0.48"
+            ],
+            "minLayerHeight": [
+              "0.24"
+            ],
+            "defaultPrintProfile": "0.24 Standard @Snapmaker (0.8 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 BKit",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.2;0.4;0.6;0.8"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 Dual (0.2 nozzle)",
+          "nozzle": 0.2,
+          "config": {
+            "nozzleDiameter": [
+              "0.2",
+              "0.2"
+            ],
+            "maxLayerHeight": [
+              "0.14"
+            ],
+            "minLayerHeight": [
+              "0.06"
+            ],
+            "defaultPrintProfile": "0.14 Standard @Snapmaker (0.2 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 Dual (0.4 nozzle)",
+          "nozzle": 0.4,
+          "config": {
+            "nozzleDiameter": [
+              "0.4",
+              "0.4"
+            ],
+            "maxLayerHeight": [
+              "0.28"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "defaultPrintProfile": "0.16 Optimal @Snapmaker (0.4 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 Dual (0.6 nozzle)",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6",
+              "0.6"
+            ],
+            "maxLayerHeight": [
+              "0.42"
+            ],
+            "minLayerHeight": [
+              "0.18"
+            ],
+            "defaultPrintProfile": "0.18 Standard @Snapmaker (0.6 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 Dual (0.8 nozzle)",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8",
+              "0.8"
+            ],
+            "maxLayerHeight": [
+              "0.48"
+            ],
+            "minLayerHeight": [
+              "0.24"
+            ],
+            "defaultPrintProfile": "0.24 Standard @Snapmaker (0.8 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 Dual BKit (0.2 nozzle)",
+          "nozzle": 0.2,
+          "config": {
+            "nozzleDiameter": [
+              "0.2",
+              "0.2"
+            ],
+            "maxLayerHeight": [
+              "0.14"
+            ],
+            "minLayerHeight": [
+              "0.06"
+            ],
+            "defaultPrintProfile": "0.14 Standard @Snapmaker (0.2 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 Dual BKit (0.4 nozzle)",
+          "nozzle": 0.4,
+          "config": {
+            "nozzleDiameter": [
+              "0.4",
+              "0.4"
+            ],
+            "maxLayerHeight": [
+              "0.28"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "defaultPrintProfile": "0.16 Optimal @Snapmaker (0.4 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 Dual BKit (0.6 nozzle)",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6",
+              "0.6"
+            ],
+            "maxLayerHeight": [
+              "0.42"
+            ],
+            "minLayerHeight": [
+              "0.18"
+            ],
+            "defaultPrintProfile": "0.18 Standard @Snapmaker (0.6 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 Dual BKit (0.8 nozzle)",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8",
+              "0.8"
+            ],
+            "maxLayerHeight": [
+              "0.48"
+            ],
+            "minLayerHeight": [
+              "0.24"
+            ],
+            "defaultPrintProfile": "0.24 Standard @Snapmaker (0.8 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 Dual BKit",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.2;0.4;0.6;0.8"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 Dual QS+B Kit (0.2 nozzle)",
+          "nozzle": 0.2,
+          "config": {
+            "nozzleDiameter": [
+              "0.2",
+              "0.2"
+            ],
+            "maxLayerHeight": [
+              "0.14"
+            ],
+            "minLayerHeight": [
+              "0.06"
+            ],
+            "defaultPrintProfile": "0.14 Standard @Snapmaker (0.2 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 Dual QS+B Kit (0.4 nozzle)",
+          "nozzle": 0.4,
+          "config": {
+            "nozzleDiameter": [
+              "0.4",
+              "0.4"
+            ],
+            "maxLayerHeight": [
+              "0.28"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "defaultPrintProfile": "0.16 Optimal @Snapmaker (0.4 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 Dual QS+B Kit (0.6 nozzle)",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6",
+              "0.6"
+            ],
+            "maxLayerHeight": [
+              "0.42"
+            ],
+            "minLayerHeight": [
+              "0.18"
+            ],
+            "defaultPrintProfile": "0.18 Standard @Snapmaker (0.6 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 Dual QS+B Kit (0.8 nozzle)",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8",
+              "0.8"
+            ],
+            "maxLayerHeight": [
+              "0.48"
+            ],
+            "minLayerHeight": [
+              "0.24"
+            ],
+            "defaultPrintProfile": "0.24 Standard @Snapmaker (0.8 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 Dual QS+B Kit",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.2;0.4;0.6;0.8"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 Dual QSKit (0.2 nozzle)",
+          "nozzle": 0.2,
+          "config": {
+            "nozzleDiameter": [
+              "0.2",
+              "0.2"
+            ],
+            "maxLayerHeight": [
+              "0.14"
+            ],
+            "minLayerHeight": [
+              "0.06"
+            ],
+            "defaultPrintProfile": "0.14 Standard @Snapmaker (0.2 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 Dual QSKit (0.4 nozzle)",
+          "nozzle": 0.4,
+          "config": {
+            "nozzleDiameter": [
+              "0.4",
+              "0.4"
+            ],
+            "maxLayerHeight": [
+              "0.28"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "defaultPrintProfile": "0.16 Optimal @Snapmaker (0.4 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 Dual QSKit (0.6 nozzle)",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6",
+              "0.6"
+            ],
+            "maxLayerHeight": [
+              "0.42"
+            ],
+            "minLayerHeight": [
+              "0.18"
+            ],
+            "defaultPrintProfile": "0.18 Standard @Snapmaker (0.6 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 Dual QSKit (0.8 nozzle)",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8",
+              "0.8"
+            ],
+            "maxLayerHeight": [
+              "0.48"
+            ],
+            "minLayerHeight": [
+              "0.24"
+            ],
+            "defaultPrintProfile": "0.24 Standard @Snapmaker (0.8 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 Dual QSKit",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.2;0.4;0.6;0.8"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 Dual",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.2;0.4;0.6;0.8"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 QS+B Kit (0.2 nozzle)",
+          "nozzle": 0.2,
+          "config": {
+            "nozzleDiameter": [
+              "0.2"
+            ],
+            "maxLayerHeight": [
+              "0.14"
+            ],
+            "minLayerHeight": [
+              "0.06"
+            ],
+            "defaultPrintProfile": "0.14 Standard @Snapmaker (0.2 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 QS+B Kit (0.4 nozzle)",
+          "nozzle": 0.4,
+          "config": {
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "maxLayerHeight": [
+              "0.28"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "defaultPrintProfile": "0.16 Optimal @Snapmaker (0.4 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 QS+B Kit (0.6 nozzle)",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "maxLayerHeight": [
+              "0.42"
+            ],
+            "minLayerHeight": [
+              "0.18"
+            ],
+            "defaultPrintProfile": "0.18 Standard @Snapmaker (0.6 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 QS+B Kit (0.8 nozzle)",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "maxLayerHeight": [
+              "0.48"
+            ],
+            "minLayerHeight": [
+              "0.24"
+            ],
+            "defaultPrintProfile": "0.24 Standard @Snapmaker (0.8 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 QS+B Kit",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.2;0.4;0.6;0.8"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 QSKit (0.2 nozzle)",
+          "nozzle": 0.2,
+          "config": {
+            "nozzleDiameter": [
+              "0.2"
+            ],
+            "maxLayerHeight": [
+              "0.14"
+            ],
+            "minLayerHeight": [
+              "0.06"
+            ],
+            "defaultPrintProfile": "0.14 Standard @Snapmaker (0.2 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 QSKit (0.4 nozzle)",
+          "nozzle": 0.4,
+          "config": {
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "maxLayerHeight": [
+              "0.28"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "defaultPrintProfile": "0.16 Optimal @Snapmaker (0.4 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 QSKit (0.6 nozzle)",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "maxLayerHeight": [
+              "0.42"
+            ],
+            "minLayerHeight": [
+              "0.18"
+            ],
+            "defaultPrintProfile": "0.18 Standard @Snapmaker (0.6 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 QSKit (0.8 nozzle)",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "maxLayerHeight": [
+              "0.48"
+            ],
+            "minLayerHeight": [
+              "0.24"
+            ],
+            "defaultPrintProfile": "0.24 Standard @Snapmaker (0.8 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 QSKit",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.2;0.4;0.6;0.8"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "3190019076",
+      "name": "Snapmaker A350 BKit",
+      "nozzleSizes": [
+        0.2,
+        0.4,
+        0.6,
+        0.8
+      ],
+      "bedModel": "Snapmaker A350_bed.stl",
+      "bedTexture": "Snapmaker A350_texture.svg",
+      "defaultMaterials": [],
+      "variants": [
+        {
+          "name": "Snapmaker A350 BKit (0.2 nozzle)",
+          "nozzle": 0.2,
+          "config": {
+            "nozzleDiameter": [
+              "0.2"
+            ],
+            "maxLayerHeight": [
+              "0.14"
+            ],
+            "minLayerHeight": [
+              "0.06"
+            ],
+            "defaultPrintProfile": "0.14 Standard @Snapmaker (0.2 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 BKit (0.4 nozzle)",
+          "nozzle": 0.4,
+          "config": {
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "maxLayerHeight": [
+              "0.28"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "defaultPrintProfile": "0.16 Optimal @Snapmaker (0.4 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 BKit (0.6 nozzle)",
+          "nozzle": 0.6,
+          "config": {
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "maxLayerHeight": [
+              "0.42"
+            ],
+            "minLayerHeight": [
+              "0.18"
+            ],
+            "defaultPrintProfile": "0.18 Standard @Snapmaker (0.6 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Snapmaker A350 BKit (0.8 nozzle)",
+          "nozzle": 0.8,
+          "config": {
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "maxLayerHeight": [
+              "0.48"
+            ],
+            "minLayerHeight": [
+              "0.24"
+            ],
+            "defaultPrintProfile": "0.24 Standard @Snapmaker (0.8 nozzle)"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    }
+  ],
+  "filaments": [
+    {
+      "name": "PolyTerra PLA @0.2 nozzle",
+      "type": "PLA",
+      "config": {
+        "filamentMaxVolumetricSpeed": [
+          "1.4"
+        ],
+        "compatiblePrinters": [
+          "Snapmaker A250 (0.2 nozzle)",
+          "Snapmaker A250 BKit (0.2 nozzle)",
+          "Snapmaker A250 QS+B Kit (0.2 nozzle)",
+          "Snapmaker A250 QSKit (0.2 nozzle)",
+          "Snapmaker A350 (0.2 nozzle)",
+          "Snapmaker A350 BKit (0.2 nozzle)",
+          "Snapmaker A350 QS+B Kit (0.2 nozzle)",
+          "Snapmaker A350 QSKit (0.2 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "Snapmaker PLA Lite @U1 base",
+      "type": [
+        "PLA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "220"
+        ],
+        "bedTemperature": [
+          "60"
+        ],
+        "bedTemperatureInitialLayer": [
+          "60"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "12"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Snapmaker PLA SnapSpeed @U1 base",
+      "type": [
+        "PLA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "220"
+        ],
+        "bedTemperature": [
+          "60"
+        ],
+        "bedTemperatureInitialLayer": [
+          "60"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "12"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Snapmaker TPU 95A @U1 base",
+      "type": [
+        "TPU"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "240"
+        ],
+        "bedTemperature": [
+          "35"
+        ],
+        "bedTemperatureInitialLayer": [
+          "35"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "15"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_filament_common",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "200"
+        ],
+        "bedTemperature": [
+          "60"
+        ],
+        "bedTemperatureInitialLayer": [
+          "60"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "0"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "PolyTerra Dual PLA @0.2 nozzle",
+      "type": "PLA",
+      "config": {
+        "compatiblePrinters": [
+          "Snapmaker A250 Dual (0.2 nozzle)",
+          "Snapmaker A250 Dual BKit (0.2 nozzle)",
+          "Snapmaker A250 Dual QS+B Kit (0.2 nozzle)",
+          "Snapmaker A250 Dual QSKit (0.2 nozzle)",
+          "Snapmaker A350 Dual (0.2 nozzle)",
+          "Snapmaker A350 Dual BKit (0.2 nozzle)",
+          "Snapmaker A350 Dual QS+B Kit (0.2 nozzle)",
+          "Snapmaker A350 Dual QSKit (0.2 nozzle)",
+          "Snapmaker Artisan (0.2 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "PolyTerra J1 PLA @0.2 nozzle",
+      "type": "PLA",
+      "config": {
+        "compatiblePrinters": [
+          "Snapmaker J1 (0.2 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "Snapmaker PLA Lite @U1",
+      "type": [
+        "PLA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "220"
+        ],
+        "bedTemperature": [
+          "55"
+        ],
+        "bedTemperatureInitialLayer": [
+          "55"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "15"
+        ],
+        "slowDownMinSpeed": [
+          "20"
+        ],
+        "compatiblePrinters": [
+          "Snapmaker U1 (0.4 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "Snapmaker PLA SnapSpeed @U1",
+      "type": [
+        "PLA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "220"
+        ],
+        "bedTemperature": [
+          "55"
+        ],
+        "bedTemperatureInitialLayer": [
+          "55"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "18"
+        ],
+        "slowDownMinSpeed": [
+          "20"
+        ],
+        "compatiblePrinters": [
+          "Snapmaker U1 (0.4 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "Snapmaker TPU 95A @U1",
+      "type": [
+        "TPU"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "225"
+        ],
+        "bedTemperature": [
+          "55"
+        ],
+        "bedTemperatureInitialLayer": [
+          "55"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "3.2"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Snapmaker U1 (0.4 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "fdm_filament_abs",
+      "type": [
+        "ABS"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "90"
+        ],
+        "bedTemperatureInitialLayer": [
+          "90"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "16"
+        ],
+        "slowDownMinSpeed": [
+          "20"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_filament_asa",
+      "type": [
+        "ASA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "255"
+        ],
+        "bedTemperature": [
+          "90"
+        ],
+        "bedTemperatureInitialLayer": [
+          "90"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "7.6"
+        ],
+        "slowDownMinSpeed": [
+          "20"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_filament_breakaway",
+      "type": [
+        "Breakaway Support"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "220"
+        ],
+        "bedTemperature": [
+          "65"
+        ],
+        "bedTemperatureInitialLayer": [
+          "70"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "12"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_filament_pa",
+      "type": [
+        "PA-CF"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "250"
+        ],
+        "bedTemperature": [
+          "95"
+        ],
+        "bedTemperatureInitialLayer": [
+          "90"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "8"
+        ],
+        "slowDownMinSpeed": [
+          "15"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_filament_pet",
+      "type": [
+        "PET"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "278"
+        ],
+        "bedTemperature": [
+          "65"
+        ],
+        "bedTemperatureInitialLayer": [
+          "60"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "6"
+        ],
+        "slowDownMinSpeed": [
+          "50"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_filament_petg",
+      "type": [
+        "PETG"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "245"
+        ],
+        "bedTemperature": [
+          "70"
+        ],
+        "bedTemperatureInitialLayer": [
+          "70"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "10"
+        ],
+        "slowDownMinSpeed": [
+          "20"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_filament_pla",
+      "type": [
+        "PLA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "210"
+        ],
+        "bedTemperature": [
+          "60"
+        ],
+        "bedTemperatureInitialLayer": [
+          "60"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "14"
+        ],
+        "slowDownMinSpeed": [
+          "15"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_filament_pva",
+      "type": [
+        "PVA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "215"
+        ],
+        "bedTemperature": [
+          "60"
+        ],
+        "bedTemperatureInitialLayer": [
+          "60"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "6"
+        ],
+        "slowDownMinSpeed": [
+          "20"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_filament_tpu",
+      "type": [
+        "TPU"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "225"
+        ],
+        "bedTemperature": [
+          "40"
+        ],
+        "bedTemperatureInitialLayer": [
+          "45"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "2.8"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Snapmaker ABS @U1 base",
+      "type": [
+        "ABS"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "110"
+        ],
+        "bedTemperatureInitialLayer": [
+          "105"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "8"
+        ],
+        "slowDownMinSpeed": [
+          "20"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Snapmaker ABS @base",
+      "type": [
+        "ABS"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "90"
+        ],
+        "bedTemperatureInitialLayer": [
+          "90"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "16"
+        ],
+        "slowDownMinSpeed": [
+          "20"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Snapmaker Dual ABS @base",
+      "type": [
+        "ABS"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "110"
+        ],
+        "bedTemperatureInitialLayer": [
+          "105"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "8"
+        ],
+        "slowDownMinSpeed": [
+          "20"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Snapmaker J1 ABS @base",
+      "type": [
+        "ABS"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "110"
+        ],
+        "bedTemperatureInitialLayer": [
+          "105"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "9.6"
+        ],
+        "slowDownMinSpeed": [
+          "20"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Snapmaker ASA @U1 base",
+      "type": [
+        "ASA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "255"
+        ],
+        "bedTemperature": [
+          "110"
+        ],
+        "bedTemperatureInitialLayer": [
+          "100"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "8"
+        ],
+        "slowDownMinSpeed": [
+          "20"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Snapmaker ASA @base",
+      "type": [
+        "ASA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "255"
+        ],
+        "bedTemperature": [
+          "90"
+        ],
+        "bedTemperatureInitialLayer": [
+          "90"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "7.6"
+        ],
+        "slowDownMinSpeed": [
+          "20"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Snapmaker Dual ASA @base",
+      "type": [
+        "ASA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "255"
+        ],
+        "bedTemperature": [
+          "110"
+        ],
+        "bedTemperatureInitialLayer": [
+          "100"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "8"
+        ],
+        "slowDownMinSpeed": [
+          "20"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Snapmaker J1 ASA @base",
+      "type": [
+        "ASA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "255"
+        ],
+        "bedTemperature": [
+          "110"
+        ],
+        "bedTemperatureInitialLayer": [
+          "100"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "9.6"
+        ],
+        "slowDownMinSpeed": [
+          "20"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Snapmaker Dual Breakaway @base",
+      "type": "PLA",
+      "config": {
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Snapmaker J1 Breakaway @base",
+      "type": "PLA",
+      "config": {
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Snapmaker Dual PA-CF @base",
+      "type": [
+        "PA-CF"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "250"
+        ],
+        "bedTemperature": [
+          "100"
+        ],
+        "bedTemperatureInitialLayer": [
+          "95"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "8"
+        ],
+        "slowDownMinSpeed": [
+          "15"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Snapmaker J1 PA-CF @base",
+      "type": [
+        "PA-CF"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "250"
+        ],
+        "bedTemperature": [
+          "95"
+        ],
+        "bedTemperatureInitialLayer": [
+          "90"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "8"
+        ],
+        "slowDownMinSpeed": [
+          "15"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Snapmaker PA-CF @U1 base",
+      "type": [
+        "PA-CF"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "250"
+        ],
+        "bedTemperature": [
+          "100"
+        ],
+        "bedTemperatureInitialLayer": [
+          "95"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "8"
+        ],
+        "slowDownMinSpeed": [
+          "15"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Snapmaker PA-CF @base",
+      "type": [
+        "PA-CF"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "250"
+        ],
+        "bedTemperature": [
+          "95"
+        ],
+        "bedTemperatureInitialLayer": [
+          "90"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "8"
+        ],
+        "slowDownMinSpeed": [
+          "15"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Snapmaker Dual PET @base",
+      "type": "PLA",
+      "config": {
+        "filamentMaxVolumetricSpeed": [
+          "6.8"
+        ],
+        "slowDownMinSpeed": [
+          "35"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Snapmaker J1 PET @base",
+      "type": "PLA",
+      "config": {
+        "filamentMaxVolumetricSpeed": [
+          "6.8"
+        ],
+        "slowDownMinSpeed": [
+          "35"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Snapmaker PET @U1 base",
+      "type": "PLA",
+      "config": {
+        "filamentMaxVolumetricSpeed": [
+          "6.8"
+        ],
+        "slowDownMinSpeed": [
+          "35"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Snapmaker PET @base",
+      "type": "PLA",
+      "config": {
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Snapmaker Dual PETG @base",
+      "type": [
+        "PETG"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "245"
+        ],
+        "bedTemperature": [
+          "70"
+        ],
+        "bedTemperatureInitialLayer": [
+          "70"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "10"
+        ],
+        "slowDownMinSpeed": [
+          "20"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Snapmaker Dual PETG-CF @base",
+      "type": [
+        "PETG-CF"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "245"
+        ],
+        "bedTemperature": [
+          "70"
+        ],
+        "bedTemperatureInitialLayer": [
+          "70"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "6.4"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Snapmaker J1 PETG @base",
+      "type": [
+        "PETG"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "255"
+        ],
+        "bedTemperature": [
+          "70"
+        ],
+        "bedTemperatureInitialLayer": [
+          "70"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "10"
+        ],
+        "slowDownMinSpeed": [
+          "20"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Snapmaker J1 PETG-CF @base",
+      "type": [
+        "PETG-CF"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "245"
+        ],
+        "bedTemperature": [
+          "70"
+        ],
+        "bedTemperatureInitialLayer": [
+          "70"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "6.4"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Snapmaker PETG @U1 base",
+      "type": [
+        "PETG"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "245"
+        ],
+        "bedTemperature": [
+          "70"
+        ],
+        "bedTemperatureInitialLayer": [
+          "70"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "10"
+        ],
+        "slowDownMinSpeed": [
+          "20"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Snapmaker PETG @base",
+      "type": [
+        "PETG"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "245"
+        ],
+        "bedTemperature": [
+          "70"
+        ],
+        "bedTemperatureInitialLayer": [
+          "70"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "10"
+        ],
+        "slowDownMinSpeed": [
+          "20"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Snapmaker PETG-CF @U1 base",
+      "type": [
+        "PETG-CF"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "245"
+        ],
+        "bedTemperature": [
+          "70"
+        ],
+        "bedTemperatureInitialLayer": [
+          "70"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "6.4"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Snapmaker PETG-CF @base",
+      "type": [
+        "PETG-CF"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "245"
+        ],
+        "bedTemperature": [
+          "70"
+        ],
+        "bedTemperatureInitialLayer": [
+          "70"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "6.4"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "PolyLite PLA @U1 base",
+      "type": [
+        "PLA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "210"
+        ],
+        "bedTemperature": [
+          "60"
+        ],
+        "bedTemperatureInitialLayer": [
+          "60"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "15"
+        ],
+        "slowDownMinSpeed": [
+          "15"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "PolyLite PLA @base",
+      "type": [
+        "PLA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "210"
+        ],
+        "bedTemperature": [
+          "60"
+        ],
+        "bedTemperatureInitialLayer": [
+          "60"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "15"
+        ],
+        "slowDownMinSpeed": [
+          "15"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "PolyTerra PLA @U1 base",
+      "type": [
+        "PLA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "210"
+        ],
+        "bedTemperature": [
+          "60"
+        ],
+        "bedTemperatureInitialLayer": [
+          "60"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "14.4"
+        ],
+        "slowDownMinSpeed": [
+          "15"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Snapmaker Dual PLA @base",
+      "type": [
+        "PLA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "220"
+        ],
+        "bedTemperature": [
+          "60"
+        ],
+        "bedTemperatureInitialLayer": [
+          "60"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "14"
+        ],
+        "slowDownMinSpeed": [
+          "15"
+        ],
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "Snapmaker Dual PLA Matte @base",
+      "type": [
+        "PLA"
+      ],
+      "config": {
+        "nozzleTemperature": [
+          "210"
+        ],
+        "bedTemperature": [
+          "60"
+        ],
+        "bedTemperatureInitialLayer": [
+          "60"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "9.6"
+        ],
+        "slowDownMinSpeed": [
+          "15"
+        ],
+        "compatiblePrinters": []
+      }
+    }
+  ],
+  "processes": [
+    {
+      "name": "fdm_process_U1",
+      "config": {
+        "wallLoops": "2",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_common",
+      "config": {
+        "layerHeight": "0.2",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "cubic",
+        "topShellLayers": "4",
+        "bottomShellLayers": "3",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.25 Benchy @Snapmaker U1 (0.4 nozzle)",
+      "config": {
+        "layerHeight": "0.25",
+        "wallLoops": "2",
+        "sparseInfillDensity": "10%",
+        "sparseInfillPattern": "alignedrectilinear",
+        "topShellLayers": "3",
+        "bottomShellLayers": "2",
+        "compatiblePrinters": [
+          "Snapmaker U1 (0.4 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "fdm_process_U1_common",
+      "config": {
+        "layerHeight": "0.2",
+        "topShellLayers": "3",
+        "bottomShellLayers": "3",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.06 Standard @Snapmaker (0.2 nozzle)",
+      "config": {
+        "layerHeight": "0.06",
+        "wallLoops": "4",
+        "topShellLayers": "7",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": [
+          "Snapmaker A250 (0.2 nozzle)",
+          "Snapmaker A350 (0.2 nozzle)",
+          "Snapmaker A250 Dual (0.2 nozzle)",
+          "Snapmaker A350 Dual (0.2 nozzle)",
+          "Snapmaker A250 QSKit (0.2 nozzle)",
+          "Snapmaker A350 QSKit (0.2 nozzle)",
+          "Snapmaker A250 BKit (0.2 nozzle)",
+          "Snapmaker A350 BKit (0.2 nozzle)",
+          "Snapmaker A250 QS+B Kit (0.2 nozzle)",
+          "Snapmaker A350 QS+B Kit (0.2 nozzle)",
+          "Snapmaker A250 Dual QSKit (0.2 nozzle)",
+          "Snapmaker A350 Dual QSKit (0.2 nozzle)",
+          "Snapmaker A250 Dual BKit (0.2 nozzle)",
+          "Snapmaker A350 Dual BKit (0.2 nozzle)",
+          "Snapmaker A250 Dual QS+B Kit (0.2 nozzle)",
+          "Snapmaker A350 Dual QS+B Kit (0.2 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "0.08 Extra Fine @Snapmaker (0.4 nozzle)",
+      "config": {
+        "layerHeight": "0.08",
+        "topShellLayers": "9",
+        "bottomShellLayers": "7",
+        "compatiblePrinters": [
+          "Snapmaker A250 (0.4 nozzle)",
+          "Snapmaker A350 (0.4 nozzle)",
+          "Snapmaker A250 Dual (0.4 nozzle)",
+          "Snapmaker A350 Dual (0.4 nozzle)",
+          "Snapmaker A250 QSKit (0.4 nozzle)",
+          "Snapmaker A350 QSKit (0.4 nozzle)",
+          "Snapmaker A250 BKit (0.4 nozzle)",
+          "Snapmaker A350 BKit (0.4 nozzle)",
+          "Snapmaker A250 QS+B Kit (0.4 nozzle)",
+          "Snapmaker A350 QS+B Kit (0.4 nozzle)",
+          "Snapmaker A250 Dual QSKit (0.4 nozzle)",
+          "Snapmaker A350 Dual QSKit (0.4 nozzle)",
+          "Snapmaker A250 Dual BKit (0.4 nozzle)",
+          "Snapmaker A350 Dual BKit (0.4 nozzle)",
+          "Snapmaker A250 Dual QS+B Kit (0.4 nozzle)",
+          "Snapmaker A350 Dual QS+B Kit (0.4 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "0.10 Standard @Snapmaker (0.2 nozzle)",
+      "config": {
+        "layerHeight": "0.1",
+        "wallLoops": "4",
+        "topShellLayers": "7",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": [
+          "Snapmaker A250 (0.2 nozzle)",
+          "Snapmaker A350 (0.2 nozzle)",
+          "Snapmaker A250 Dual (0.2 nozzle)",
+          "Snapmaker A350 Dual (0.2 nozzle)",
+          "Snapmaker A250 QSKit (0.2 nozzle)",
+          "Snapmaker A350 QSKit (0.2 nozzle)",
+          "Snapmaker A250 BKit (0.2 nozzle)",
+          "Snapmaker A350 BKit (0.2 nozzle)",
+          "Snapmaker A250 QS+B Kit (0.2 nozzle)",
+          "Snapmaker A350 QS+B Kit (0.2 nozzle)",
+          "Snapmaker A250 Dual QSKit (0.2 nozzle)",
+          "Snapmaker A350 Dual QSKit (0.2 nozzle)",
+          "Snapmaker A250 Dual BKit (0.2 nozzle)",
+          "Snapmaker A350 Dual BKit (0.2 nozzle)",
+          "Snapmaker A250 Dual QS+B Kit (0.2 nozzle)",
+          "Snapmaker A350 Dual QS+B Kit (0.2 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "0.12 Fine @Snapmaker (0.4 nozzle)",
+      "config": {
+        "layerHeight": "0.12",
+        "topShellLayers": "5",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": [
+          "Snapmaker A250 (0.4 nozzle)",
+          "Snapmaker A350 (0.4 nozzle)",
+          "Snapmaker A250 Dual (0.4 nozzle)",
+          "Snapmaker A350 Dual (0.4 nozzle)",
+          "Snapmaker A250 QSKit (0.4 nozzle)",
+          "Snapmaker A350 QSKit (0.4 nozzle)",
+          "Snapmaker A250 BKit (0.4 nozzle)",
+          "Snapmaker A350 BKit (0.4 nozzle)",
+          "Snapmaker A250 QS+B Kit (0.4 nozzle)",
+          "Snapmaker A350 QS+B Kit (0.4 nozzle)",
+          "Snapmaker A250 Dual QSKit (0.4 nozzle)",
+          "Snapmaker A350 Dual QSKit (0.4 nozzle)",
+          "Snapmaker A250 Dual BKit (0.4 nozzle)",
+          "Snapmaker A350 Dual BKit (0.4 nozzle)",
+          "Snapmaker A250 Dual QS+B Kit (0.4 nozzle)",
+          "Snapmaker A350 Dual QS+B Kit (0.4 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "0.14 Standard @Snapmaker (0.2 nozzle)",
+      "config": {
+        "layerHeight": "0.14",
+        "wallLoops": "4",
+        "topShellLayers": "7",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": [
+          "Snapmaker A250 (0.2 nozzle)",
+          "Snapmaker A350 (0.2 nozzle)",
+          "Snapmaker A250 Dual (0.2 nozzle)",
+          "Snapmaker A350 Dual (0.2 nozzle)",
+          "Snapmaker A250 QSKit (0.2 nozzle)",
+          "Snapmaker A350 QSKit (0.2 nozzle)",
+          "Snapmaker A250 BKit (0.2 nozzle)",
+          "Snapmaker A350 BKit (0.2 nozzle)",
+          "Snapmaker A250 QS+B Kit (0.2 nozzle)",
+          "Snapmaker A350 QS+B Kit (0.2 nozzle)",
+          "Snapmaker A250 Dual QSKit (0.2 nozzle)",
+          "Snapmaker A350 Dual QSKit (0.2 nozzle)",
+          "Snapmaker A250 Dual BKit (0.2 nozzle)",
+          "Snapmaker A350 Dual BKit (0.2 nozzle)",
+          "Snapmaker A250 Dual QS+B Kit (0.2 nozzle)",
+          "Snapmaker A350 Dual QS+B Kit (0.2 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "0.16 Optimal @Snapmaker (0.4 nozzle)",
+      "config": {
+        "layerHeight": "0.16",
+        "bottomShellLayers": "4",
+        "compatiblePrinters": [
+          "Snapmaker A250 (0.4 nozzle)",
+          "Snapmaker A350 (0.4 nozzle)",
+          "Snapmaker A250 Dual (0.4 nozzle)",
+          "Snapmaker A350 Dual (0.4 nozzle)",
+          "Snapmaker A250 QSKit (0.4 nozzle)",
+          "Snapmaker A350 QSKit (0.4 nozzle)",
+          "Snapmaker A250 BKit (0.4 nozzle)",
+          "Snapmaker A350 BKit (0.4 nozzle)",
+          "Snapmaker A250 QS+B Kit (0.4 nozzle)",
+          "Snapmaker A350 QS+B Kit (0.4 nozzle)",
+          "Snapmaker A250 Dual QSKit (0.4 nozzle)",
+          "Snapmaker A350 Dual QSKit (0.4 nozzle)",
+          "Snapmaker A250 Dual BKit (0.4 nozzle)",
+          "Snapmaker A350 Dual BKit (0.4 nozzle)",
+          "Snapmaker A250 Dual QS+B Kit (0.4 nozzle)",
+          "Snapmaker A350 Dual QS+B Kit (0.4 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "0.18 Standard @Snapmaker (0.6 nozzle)",
+      "config": {
+        "layerHeight": "0.18",
+        "wallLoops": "2",
+        "topShellLayers": "3",
+        "compatiblePrinters": [
+          "Snapmaker A250 (0.6 nozzle)",
+          "Snapmaker A350 (0.6 nozzle)",
+          "Snapmaker A250 Dual (0.6 nozzle)",
+          "Snapmaker A350 Dual (0.6 nozzle)",
+          "Snapmaker A250 QSKit (0.6 nozzle)",
+          "Snapmaker A350 QSKit (0.6 nozzle)",
+          "Snapmaker A250 BKit (0.6 nozzle)",
+          "Snapmaker A350 BKit (0.6 nozzle)",
+          "Snapmaker A250 QS+B Kit (0.6 nozzle)",
+          "Snapmaker A350 QS+B Kit (0.6 nozzle)",
+          "Snapmaker A250 Dual QSKit (0.6 nozzle)",
+          "Snapmaker A350 Dual QSKit (0.6 nozzle)",
+          "Snapmaker A250 Dual BKit (0.6 nozzle)",
+          "Snapmaker A350 Dual BKit (0.6 nozzle)",
+          "Snapmaker A250 Dual QS+B Kit (0.6 nozzle)",
+          "Snapmaker A350 Dual QS+B Kit (0.6 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "0.20 Standard @Snapmaker (0.4 nozzle)",
+      "config": {
+        "compatiblePrinters": [
+          "Snapmaker A250 (0.4 nozzle)",
+          "Snapmaker A350 (0.4 nozzle)",
+          "Snapmaker A250 Dual (0.4 nozzle)",
+          "Snapmaker A350 Dual (0.4 nozzle)",
+          "Snapmaker A250 QSKit (0.4 nozzle)",
+          "Snapmaker A350 QSKit (0.4 nozzle)",
+          "Snapmaker A250 BKit (0.4 nozzle)",
+          "Snapmaker A350 BKit (0.4 nozzle)",
+          "Snapmaker A250 QS+B Kit (0.4 nozzle)",
+          "Snapmaker A350 QS+B Kit (0.4 nozzle)",
+          "Snapmaker A250 Dual QSKit (0.4 nozzle)",
+          "Snapmaker A350 Dual QSKit (0.4 nozzle)",
+          "Snapmaker A250 Dual BKit (0.4 nozzle)",
+          "Snapmaker A350 Dual BKit (0.4 nozzle)",
+          "Snapmaker A250 Dual QS+B Kit (0.4 nozzle)",
+          "Snapmaker A350 Dual QS+B Kit (0.4 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "0.20 Strength @Snapmaker (0.4 nozzle)",
+      "config": {
+        "wallLoops": "6",
+        "sparseInfillDensity": "25%",
+        "compatiblePrinters": [
+          "Snapmaker A250 (0.4 nozzle)",
+          "Snapmaker A350 (0.4 nozzle)",
+          "Snapmaker A250 Dual (0.4 nozzle)",
+          "Snapmaker A350 Dual (0.4 nozzle)",
+          "Snapmaker A250 QSKit (0.4 nozzle)",
+          "Snapmaker A350 QSKit (0.4 nozzle)",
+          "Snapmaker A250 BKit (0.4 nozzle)",
+          "Snapmaker A350 BKit (0.4 nozzle)",
+          "Snapmaker A250 QS+B Kit (0.4 nozzle)",
+          "Snapmaker A350 QS+B Kit (0.4 nozzle)",
+          "Snapmaker A250 Dual QSKit (0.4 nozzle)",
+          "Snapmaker A350 Dual QSKit (0.4 nozzle)",
+          "Snapmaker A250 Dual BKit (0.4 nozzle)",
+          "Snapmaker A350 Dual BKit (0.4 nozzle)",
+          "Snapmaker A250 Dual QS+B Kit (0.4 nozzle)",
+          "Snapmaker A350 Dual QS+B Kit (0.4 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "0.24 Draft @Snapmaker (0.4 nozzle)",
+      "config": {
+        "layerHeight": "0.24",
+        "topShellLayers": "3",
+        "compatiblePrinters": [
+          "Snapmaker A250 (0.4 nozzle)",
+          "Snapmaker A350 (0.4 nozzle)",
+          "Snapmaker A250 Dual (0.4 nozzle)",
+          "Snapmaker A350 Dual (0.4 nozzle)",
+          "Snapmaker A250 QSKit (0.4 nozzle)",
+          "Snapmaker A350 QSKit (0.4 nozzle)",
+          "Snapmaker A250 BKit (0.4 nozzle)",
+          "Snapmaker A350 BKit (0.4 nozzle)",
+          "Snapmaker A250 QS+B Kit (0.4 nozzle)",
+          "Snapmaker A350 QS+B Kit (0.4 nozzle)",
+          "Snapmaker A250 Dual QSKit (0.4 nozzle)",
+          "Snapmaker A350 Dual QSKit (0.4 nozzle)",
+          "Snapmaker A250 Dual BKit (0.4 nozzle)",
+          "Snapmaker A350 Dual BKit (0.4 nozzle)",
+          "Snapmaker A250 Dual QS+B Kit (0.4 nozzle)",
+          "Snapmaker A350 Dual QS+B Kit (0.4 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "0.24 Standard @Snapmaker (0.6 nozzle)",
+      "config": {
+        "layerHeight": "0.24",
+        "wallLoops": "2",
+        "topShellLayers": "3",
+        "compatiblePrinters": [
+          "Snapmaker A250 (0.6 nozzle)",
+          "Snapmaker A350 (0.6 nozzle)",
+          "Snapmaker A250 Dual (0.6 nozzle)",
+          "Snapmaker A350 Dual (0.6 nozzle)",
+          "Snapmaker A250 QSKit (0.6 nozzle)",
+          "Snapmaker A350 QSKit (0.6 nozzle)",
+          "Snapmaker A250 BKit (0.6 nozzle)",
+          "Snapmaker A350 BKit (0.6 nozzle)",
+          "Snapmaker A250 QS+B Kit (0.6 nozzle)",
+          "Snapmaker A350 QS+B Kit (0.6 nozzle)",
+          "Snapmaker A250 Dual QSKit (0.6 nozzle)",
+          "Snapmaker A350 Dual QSKit (0.6 nozzle)",
+          "Snapmaker A250 Dual BKit (0.6 nozzle)",
+          "Snapmaker A350 Dual BKit (0.6 nozzle)",
+          "Snapmaker A250 Dual QS+B Kit (0.6 nozzle)",
+          "Snapmaker A350 Dual QS+B Kit (0.6 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "0.24 Standard @Snapmaker (0.8 nozzle)",
+      "config": {
+        "layerHeight": "0.24",
+        "wallLoops": "2",
+        "topShellLayers": "3",
+        "compatiblePrinters": [
+          "Snapmaker A250 (0.8 nozzle)",
+          "Snapmaker A350 (0.8 nozzle)",
+          "Snapmaker A250 Dual (0.8 nozzle)",
+          "Snapmaker A350 Dual (0.8 nozzle)",
+          "Snapmaker A250 QSKit (0.8 nozzle)",
+          "Snapmaker A350 QSKit (0.8 nozzle)",
+          "Snapmaker A250 BKit (0.8 nozzle)",
+          "Snapmaker A350 BKit (0.8 nozzle)",
+          "Snapmaker A250 QS+B Kit (0.8 nozzle)",
+          "Snapmaker A350 QS+B Kit (0.8 nozzle)",
+          "Snapmaker A250 Dual QSKit (0.8 nozzle)",
+          "Snapmaker A350 Dual QSKit (0.8 nozzle)",
+          "Snapmaker A250 Dual BKit (0.8 nozzle)",
+          "Snapmaker A350 Dual BKit (0.8 nozzle)",
+          "Snapmaker A250 Dual QS+B Kit (0.8 nozzle)",
+          "Snapmaker A350 Dual QS+B Kit (0.8 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "0.28 Extra Draft @Snapmaker (0.4 nozzle)",
+      "config": {
+        "layerHeight": "0.28",
+        "wallLoops": "2",
+        "topShellLayers": "3",
+        "compatiblePrinters": [
+          "Snapmaker A250 (0.4 nozzle)",
+          "Snapmaker A350 (0.4 nozzle)",
+          "Snapmaker A250 Dual (0.4 nozzle)",
+          "Snapmaker A350 Dual (0.4 nozzle)",
+          "Snapmaker A250 QSKit (0.4 nozzle)",
+          "Snapmaker A350 QSKit (0.4 nozzle)",
+          "Snapmaker A250 BKit (0.4 nozzle)",
+          "Snapmaker A350 BKit (0.4 nozzle)",
+          "Snapmaker A250 QS+B Kit (0.4 nozzle)",
+          "Snapmaker A350 QS+B Kit (0.4 nozzle)",
+          "Snapmaker A250 Dual QSKit (0.4 nozzle)",
+          "Snapmaker A350 Dual QSKit (0.4 nozzle)",
+          "Snapmaker A250 Dual BKit (0.4 nozzle)",
+          "Snapmaker A350 Dual BKit (0.4 nozzle)",
+          "Snapmaker A250 Dual QS+B Kit (0.4 nozzle)",
+          "Snapmaker A350 Dual QS+B Kit (0.4 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "0.30 Standard @Snapmaker (0.6 nozzle)",
+      "config": {
+        "layerHeight": "0.3",
+        "wallLoops": "2",
+        "topShellLayers": "3",
+        "compatiblePrinters": [
+          "Snapmaker A250 (0.6 nozzle)",
+          "Snapmaker A350 (0.6 nozzle)",
+          "Snapmaker A250 Dual (0.6 nozzle)",
+          "Snapmaker A350 Dual (0.6 nozzle)",
+          "Snapmaker A250 QSKit (0.6 nozzle)",
+          "Snapmaker A350 QSKit (0.6 nozzle)",
+          "Snapmaker A250 BKit (0.6 nozzle)",
+          "Snapmaker A350 BKit (0.6 nozzle)",
+          "Snapmaker A250 QS+B Kit (0.6 nozzle)",
+          "Snapmaker A350 QS+B Kit (0.6 nozzle)",
+          "Snapmaker A250 Dual QSKit (0.6 nozzle)",
+          "Snapmaker A350 Dual QSKit (0.6 nozzle)",
+          "Snapmaker A250 Dual BKit (0.6 nozzle)",
+          "Snapmaker A350 Dual BKit (0.6 nozzle)",
+          "Snapmaker A250 Dual QS+B Kit (0.6 nozzle)",
+          "Snapmaker A350 Dual QS+B Kit (0.6 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "0.30 Strength @Snapmaker (0.6 nozzle)",
+      "config": {
+        "layerHeight": "0.3",
+        "wallLoops": "6",
+        "sparseInfillDensity": "25%",
+        "topShellLayers": "3",
+        "compatiblePrinters": [
+          "Snapmaker A250 (0.6 nozzle)",
+          "Snapmaker A350 (0.6 nozzle)",
+          "Snapmaker A250 Dual (0.6 nozzle)",
+          "Snapmaker A350 Dual (0.6 nozzle)",
+          "Snapmaker A250 QSKit (0.6 nozzle)",
+          "Snapmaker A350 QSKit (0.6 nozzle)",
+          "Snapmaker A250 BKit (0.6 nozzle)",
+          "Snapmaker A350 BKit (0.6 nozzle)",
+          "Snapmaker A250 QS+B Kit (0.6 nozzle)",
+          "Snapmaker A350 QS+B Kit (0.6 nozzle)",
+          "Snapmaker A250 Dual QSKit (0.6 nozzle)",
+          "Snapmaker A350 Dual QSKit (0.6 nozzle)",
+          "Snapmaker A250 Dual BKit (0.6 nozzle)",
+          "Snapmaker A350 Dual BKit (0.6 nozzle)",
+          "Snapmaker A250 Dual QS+B Kit (0.6 nozzle)",
+          "Snapmaker A350 Dual QS+B Kit (0.6 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "0.32 Standard @Snapmaker (0.8 nozzle)",
+      "config": {
+        "layerHeight": "0.32",
+        "wallLoops": "2",
+        "topShellLayers": "3",
+        "compatiblePrinters": [
+          "Snapmaker A250 (0.8 nozzle)",
+          "Snapmaker A350 (0.8 nozzle)",
+          "Snapmaker A250 Dual (0.8 nozzle)",
+          "Snapmaker A350 Dual (0.8 nozzle)",
+          "Snapmaker A250 QSKit (0.8 nozzle)",
+          "Snapmaker A350 QSKit (0.8 nozzle)",
+          "Snapmaker A250 BKit (0.8 nozzle)",
+          "Snapmaker A350 BKit (0.8 nozzle)",
+          "Snapmaker A250 QS+B Kit (0.8 nozzle)",
+          "Snapmaker A350 QS+B Kit (0.8 nozzle)",
+          "Snapmaker A250 Dual QSKit (0.8 nozzle)",
+          "Snapmaker A350 Dual QSKit (0.8 nozzle)",
+          "Snapmaker A250 Dual BKit (0.8 nozzle)",
+          "Snapmaker A350 Dual BKit (0.8 nozzle)",
+          "Snapmaker A250 Dual QS+B Kit (0.8 nozzle)",
+          "Snapmaker A350 Dual QS+B Kit (0.8 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "0.34 Standard @Snapmaker (0.6 nozzle)",
+      "config": {
+        "layerHeight": "0.34",
+        "wallLoops": "2",
+        "topShellLayers": "3",
+        "compatiblePrinters": [
+          "Snapmaker A250 (0.6 nozzle)",
+          "Snapmaker A350 (0.6 nozzle)",
+          "Snapmaker A250 Dual (0.6 nozzle)",
+          "Snapmaker A350 Dual (0.6 nozzle)",
+          "Snapmaker A250 QSKit (0.6 nozzle)",
+          "Snapmaker A350 QSKit (0.6 nozzle)",
+          "Snapmaker A250 BKit (0.6 nozzle)",
+          "Snapmaker A350 BKit (0.6 nozzle)",
+          "Snapmaker A250 QS+B Kit (0.6 nozzle)",
+          "Snapmaker A350 QS+B Kit (0.6 nozzle)",
+          "Snapmaker A250 Dual QSKit (0.6 nozzle)",
+          "Snapmaker A350 Dual QSKit (0.6 nozzle)",
+          "Snapmaker A250 Dual BKit (0.6 nozzle)",
+          "Snapmaker A350 Dual BKit (0.6 nozzle)",
+          "Snapmaker A250 Dual QS+B Kit (0.6 nozzle)",
+          "Snapmaker A350 Dual QS+B Kit (0.6 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "0.36 Standard @Snapmaker (0.8 nozzle)",
+      "config": {
+        "layerHeight": "0.36",
+        "wallLoops": "2",
+        "topShellLayers": "3",
+        "compatiblePrinters": [
+          "Snapmaker A250 (0.8 nozzle)",
+          "Snapmaker A350 (0.8 nozzle)",
+          "Snapmaker A250 Dual (0.8 nozzle)",
+          "Snapmaker A350 Dual (0.8 nozzle)",
+          "Snapmaker A250 QSKit (0.8 nozzle)",
+          "Snapmaker A350 QSKit (0.8 nozzle)",
+          "Snapmaker A250 BKit (0.8 nozzle)",
+          "Snapmaker A350 BKit (0.8 nozzle)",
+          "Snapmaker A250 QS+B Kit (0.8 nozzle)",
+          "Snapmaker A350 QS+B Kit (0.8 nozzle)",
+          "Snapmaker A250 Dual QSKit (0.8 nozzle)",
+          "Snapmaker A350 Dual QSKit (0.8 nozzle)",
+          "Snapmaker A250 Dual BKit (0.8 nozzle)",
+          "Snapmaker A350 Dual BKit (0.8 nozzle)",
+          "Snapmaker A250 Dual QS+B Kit (0.8 nozzle)",
+          "Snapmaker A350 Dual QS+B Kit (0.8 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "0.38 Standard @Snapmaker (0.6 nozzle)",
+      "config": {
+        "layerHeight": "0.38",
+        "wallLoops": "2",
+        "topShellLayers": "3",
+        "compatiblePrinters": [
+          "Snapmaker A250 (0.6 nozzle)",
+          "Snapmaker A350 (0.6 nozzle)",
+          "Snapmaker A250 Dual (0.6 nozzle)",
+          "Snapmaker A350 Dual (0.6 nozzle)",
+          "Snapmaker A250 QSKit (0.6 nozzle)",
+          "Snapmaker A350 QSKit (0.6 nozzle)",
+          "Snapmaker A250 BKit (0.6 nozzle)",
+          "Snapmaker A350 BKit (0.6 nozzle)",
+          "Snapmaker A250 QS+B Kit (0.6 nozzle)",
+          "Snapmaker A350 QS+B Kit (0.6 nozzle)",
+          "Snapmaker A250 Dual QSKit (0.6 nozzle)",
+          "Snapmaker A350 Dual QSKit (0.6 nozzle)",
+          "Snapmaker A250 Dual BKit (0.6 nozzle)",
+          "Snapmaker A350 Dual BKit (0.6 nozzle)",
+          "Snapmaker A250 Dual QS+B Kit (0.6 nozzle)",
+          "Snapmaker A350 Dual QS+B Kit (0.6 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "0.40 Standard @Snapmaker (0.8 nozzle)",
+      "config": {
+        "layerHeight": "0.4",
+        "wallLoops": "2",
+        "topShellLayers": "3",
+        "compatiblePrinters": [
+          "Snapmaker A250 (0.8 nozzle)",
+          "Snapmaker A350 (0.8 nozzle)",
+          "Snapmaker A250 Dual (0.8 nozzle)",
+          "Snapmaker A350 Dual (0.8 nozzle)",
+          "Snapmaker A250 QSKit (0.8 nozzle)",
+          "Snapmaker A350 QSKit (0.8 nozzle)",
+          "Snapmaker A250 BKit (0.8 nozzle)",
+          "Snapmaker A350 BKit (0.8 nozzle)",
+          "Snapmaker A250 QS+B Kit (0.8 nozzle)",
+          "Snapmaker A350 QS+B Kit (0.8 nozzle)",
+          "Snapmaker A250 Dual QSKit (0.8 nozzle)",
+          "Snapmaker A350 Dual QSKit (0.8 nozzle)",
+          "Snapmaker A250 Dual BKit (0.8 nozzle)",
+          "Snapmaker A350 Dual BKit (0.8 nozzle)",
+          "Snapmaker A250 Dual QS+B Kit (0.8 nozzle)",
+          "Snapmaker A350 Dual QS+B Kit (0.8 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "0.42 Draft @Snapmaker (0.6 nozzle)",
+      "config": {
+        "layerHeight": "0.42",
+        "wallLoops": "2",
+        "topShellLayers": "3",
+        "compatiblePrinters": [
+          "Snapmaker A250 (0.6 nozzle)",
+          "Snapmaker A350 (0.6 nozzle)",
+          "Snapmaker A250 Dual (0.6 nozzle)",
+          "Snapmaker A350 Dual (0.6 nozzle)",
+          "Snapmaker A250 QSKit (0.6 nozzle)",
+          "Snapmaker A350 QSKit (0.6 nozzle)",
+          "Snapmaker A250 BKit (0.6 nozzle)",
+          "Snapmaker A350 BKit (0.6 nozzle)",
+          "Snapmaker A250 QS+B Kit (0.6 nozzle)",
+          "Snapmaker A350 QS+B Kit (0.6 nozzle)",
+          "Snapmaker A250 Dual QSKit (0.6 nozzle)",
+          "Snapmaker A350 Dual QSKit (0.6 nozzle)",
+          "Snapmaker A250 Dual BKit (0.6 nozzle)",
+          "Snapmaker A350 Dual BKit (0.6 nozzle)",
+          "Snapmaker A250 Dual QS+B Kit (0.6 nozzle)",
+          "Snapmaker A350 Dual QS+B Kit (0.6 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "0.48 Draft @Snapmaker (0.8 nozzle)",
+      "config": {
+        "layerHeight": "0.48",
+        "wallLoops": "2",
+        "topShellLayers": "3",
+        "compatiblePrinters": [
+          "Snapmaker A250 (0.8 nozzle)",
+          "Snapmaker A350 (0.8 nozzle)",
+          "Snapmaker A250 Dual (0.8 nozzle)",
+          "Snapmaker A350 Dual (0.8 nozzle)",
+          "Snapmaker A250 QSKit (0.8 nozzle)",
+          "Snapmaker A350 QSKit (0.8 nozzle)",
+          "Snapmaker A250 BKit (0.8 nozzle)",
+          "Snapmaker A350 BKit (0.8 nozzle)",
+          "Snapmaker A250 QS+B Kit (0.8 nozzle)",
+          "Snapmaker A350 QS+B Kit (0.8 nozzle)",
+          "Snapmaker A250 Dual QSKit (0.8 nozzle)",
+          "Snapmaker A350 Dual QSKit (0.8 nozzle)",
+          "Snapmaker A250 Dual BKit (0.8 nozzle)",
+          "Snapmaker A350 Dual BKit (0.8 nozzle)",
+          "Snapmaker A250 Dual QS+B Kit (0.8 nozzle)",
+          "Snapmaker A350 Dual QS+B Kit (0.8 nozzle)"
+        ]
+      }
+    },
+    {
+      "name": "fdm_process_a400",
+      "config": {
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_idex",
+      "config": {
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_U1_0.08",
+      "config": {
+        "layerHeight": "0.08",
+        "topShellLayers": "9",
+        "bottomShellLayers": "7",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_U1_0.12",
+      "config": {
+        "layerHeight": "0.12",
+        "topShellLayers": "5",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": []
+      }
+    }
+  ]
+}

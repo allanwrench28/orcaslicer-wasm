@@ -1,0 +1,90 @@
+{
+  "name": "Tronxy",
+  "version": "02.03.01.10",
+  "printers": [],
+  "filaments": [],
+  "processes": [
+    {
+      "name": "fdm_process_common",
+      "config": {
+        "layerHeight": "0.2",
+        "wallLoops": "2",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "3",
+        "bottomShellLayers": "3",
+        "compatiblePrinters": [
+          "Tronxy X5SA 400 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.08mm Extra Fine @Tronxy",
+      "config": {
+        "layerHeight": "0.08",
+        "topShellLayers": "9",
+        "bottomShellLayers": "7",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.12mm Fine @Tronxy",
+      "config": {
+        "layerHeight": "0.12",
+        "topShellLayers": "6",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.15mm Optimal @Tronxy",
+      "config": {
+        "layerHeight": "0.15",
+        "topShellLayers": "5",
+        "bottomShellLayers": "4",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.20mm Standard @Tronxy",
+      "config": {
+        "layerHeight": "0.2",
+        "topShellLayers": "4",
+        "bottomShellLayers": "3",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.24mm Draft @Tronxy",
+      "config": {
+        "layerHeight": "0.24",
+        "topShellLayers": "4",
+        "bottomShellLayers": "3",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.28mm Extra Draft @Tronxy",
+      "config": {
+        "layerHeight": "0.28",
+        "topShellLayers": "4",
+        "bottomShellLayers": "3",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_tronxy_common",
+      "config": {
+        "layerHeight": "0.2",
+        "wallLoops": "2",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "3",
+        "bottomShellLayers": "3",
+        "compatiblePrinters": [
+          "Tronxy X5SA 400 0.4 nozzle"
+        ]
+      }
+    }
+  ]
+}

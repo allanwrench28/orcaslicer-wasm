@@ -3,15 +3,19 @@
  * extract-profiles.js
  * 
  * Extracts OrcaSlicer printer/filament/process profiles from orca/resources/profiles/
- * and generates a web-optimized profiles.json for the web UI.
+ * and generates a tiered web-optimized structure for the web UI.
  * 
  * Features:
  * - Resolves inheritance chains (inherits field)
  * - Flattens nested settings
- * - Copies essential images
- * - Generates compact JSON for web delivery
+ * - Generates tiered structure (popular/extended/complete)
+ * - Creates searchable index.json
+ * - Progressive loading optimization
  * 
- * Usage: node scripts/extract-profiles.js [--vendors=Creality,Prusa] [--output=web/public]
+ * Usage: 
+ *   node scripts/extract-profiles.js --tier=popular
+ *   node scripts/extract-profiles.js --tier=all
+ *   node scripts/extract-profiles.js --vendors=Creality,Prusa
  */
 
 const fs = require('fs');
@@ -19,9 +23,24 @@ const path = require('path');
 
 // Configuration
 const PROFILES_DIR = path.join(__dirname, '../orca/resources/profiles');
-const OUTPUT_DIR = path.join(__dirname, '../web/public');
-const OUTPUT_FILE = path.join(OUTPUT_DIR, 'profiles.json');
-const IMAGES_DIR = path.join(OUTPUT_DIR, 'profiles');
+const OUTPUT_DIR = path.join(__dirname, '../web/public/profiles');
+
+// Tier definitions (by popularity/market share)
+const TIER_DEFINITIONS = {
+  popular: [
+    'Creality', 'Prusa', 'BBL', 'Anycubic', 'Elegoo', 
+    'Voron', 'Artillery', 'FlashForge', 'Snapmaker', 'QIDI',
+    'Kingroon', 'TwoTrees', 'Sovol', 'Geeetech', 'JGAurora',
+    'Longer', 'Monoprice', 'Tronxy', 'Ultimaker', 'Wanhao'
+  ],
+  extended: [
+    'Anet', 'BambuLab', 'Builder', 'CraftBot', 'Dagoma',
+    'Delta', 'Easythreed', 'Felix', 'Flying_Bear', 'FolgerTech',
+    'Hephestos', 'iFactory3D', 'JGMaker', 'Kywoo', 'Leapfrog',
+    'Lulzbot', 'MakerBot', 'Malyan', 'Micromake', 'Newmatter'
+  ]
+  // All others automatically go to 'complete' tier
+};
 
 // Parse command line args
 const args = process.argv.slice(2).reduce((acc, arg) => {
@@ -30,19 +49,29 @@ const args = process.argv.slice(2).reduce((acc, arg) => {
   return acc;
 }, {});
 
-// Vendors to include (default: all)
-const INCLUDE_VENDORS = args.vendors 
-  ? args.vendors.split(',')
-  : null; // null = all vendors
+// Determine which vendors to extract
+let INCLUDE_VENDORS = null;
+if (args.vendors) {
+  INCLUDE_VENDORS = args.vendors.split(',');
+} else if (args.tier) {
+  if (args.tier === 'popular') {
+    INCLUDE_VENDORS = TIER_DEFINITIONS.popular;
+  } else if (args.tier === 'extended') {
+    INCLUDE_VENDORS = TIER_DEFINITIONS.extended;
+  } else if (args.tier === 'all') {
+    INCLUDE_VENDORS = null; // All vendors
+  }
+}
 
-console.log('🔧 OrcaSlicer Profile Extractor');
-console.log('================================');
+console.log('🔧 OrcaSlicer Profile Extractor (Tiered)');
+console.log('=========================================');
 console.log(`📂 Source: ${PROFILES_DIR}`);
 console.log(`📂 Output: ${OUTPUT_DIR}`);
 if (INCLUDE_VENDORS) {
   console.log(`🏷️  Vendors: ${INCLUDE_VENDORS.join(', ')}`);
+  console.log(`📊 Tier: ${args.tier || 'custom'}`);
 } else {
-  console.log(`🏷️  Vendors: All`);
+  console.log(`🏷️  Vendors: All (${args.tier || 'all'} tier)`);
 }
 console.log('');
 
@@ -327,18 +356,18 @@ function extractVendorProfiles(vendorName, vendorDir) {
 
 // Main execution
 function main() {
-  console.log('🚀 Starting profile extraction...\n');
+  console.log('🚀 Starting tiered profile extraction...\n');
   
   // Create output directories
-  if (!fs.existsSync(OUTPUT_DIR)) {
-    fs.mkdirSync(OUTPUT_DIR, { recursive: true });
-  }
-  if (!fs.existsSync(IMAGES_DIR)) {
-    fs.mkdirSync(IMAGES_DIR, { recursive: true });
-  }
+  const dirs = [OUTPUT_DIR, path.join(OUTPUT_DIR, 'popular'), path.join(OUTPUT_DIR, 'extended'), path.join(OUTPUT_DIR, 'complete')];
+  dirs.forEach(dir => {
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+  });
   
   // Read all vendor directories
-  const vendors = fs.readdirSync(PROFILES_DIR)
+  const allVendors = fs.readdirSync(PROFILES_DIR)
     .filter(name => {
       const vendorDir = path.join(PROFILES_DIR, name);
       return fs.statSync(vendorDir).isDirectory() && 
@@ -346,46 +375,105 @@ function main() {
     })
     .filter(name => !INCLUDE_VENDORS || INCLUDE_VENDORS.includes(name));
   
-  console.log(`📋 Found ${vendors.length} vendors to process`);
+  console.log(`📋 Found ${allVendors.length} vendors to process`);
   
-  const profileLibrary = {
-    generatedAt: new Date().toISOString(),
+  // Initialize index structure
+  const index = {
     version: '1.0.0',
-    vendors: []
+    generatedAt: new Date().toISOString(),
+    tiers: {
+      popular: { vendors: [] },
+      extended: { vendors: [] },
+      complete: { vendors: [] }
+    },
+    search: {} // printer name -> vendor mapping
   };
   
+  // Helper: Determine tier for vendor
+  function getTier(vendorName) {
+    if (TIER_DEFINITIONS.popular.includes(vendorName)) return 'popular';
+    if (TIER_DEFINITIONS.extended.includes(vendorName)) return 'extended';
+    return 'complete';
+  }
+  
   // Process each vendor
-  vendors.forEach(vendorName => {
+  let totalPrinters = 0, totalFilaments = 0, totalProcesses = 0;
+  
+  allVendors.forEach(vendorName => {
     const vendorDir = path.join(PROFILES_DIR, vendorName);
     const vendorData = extractVendorProfiles(vendorName, vendorDir);
     
-    if (vendorData) {
-      profileLibrary.vendors.push(vendorData);
+    if (!vendorData) return;
+    
+    const tier = getTier(vendorName);
+    const outputPath = path.join(OUTPUT_DIR, tier, `${vendorName}.json`);
+    
+    // Write vendor file
+    fs.writeFileSync(outputPath, JSON.stringify(vendorData, null, 2));
+    
+    const fileSize = fs.statSync(outputPath).size;
+    
+    // Add to index
+    const vendorMeta = {
+      id: vendorName,
+      name: vendorData.name,
+      version: vendorData.version,
+      printerCount: vendorData.printers.length,
+      filamentCount: vendorData.filaments.length,
+      processCount: vendorData.processes.length,
+      fileSize: fileSize,
+      url: `/profiles/${tier}/${vendorName}.json`
+    };
+    
+    index.tiers[tier].vendors.push(vendorMeta);
+    
+    // Add printers to search index
+    vendorData.printers.forEach(printer => {
+      index.search[printer.name] = vendorName;
+      printer.variants?.forEach(variant => {
+        index.search[`${printer.name} ${variant.name}`] = vendorName;
+      });
+    });
+    
+    totalPrinters += vendorData.printers.length;
+    totalFilaments += vendorData.filaments.length;
+    totalProcesses += vendorData.processes.length;
+    
+    console.log(`  � ${vendorName} -> ${tier}/ (${(fileSize / 1024).toFixed(0)}KB)`);
+  });
+  
+  // Write index file
+  const indexPath = path.join(OUTPUT_DIR, 'index.json');
+  fs.writeFileSync(indexPath, JSON.stringify(index, null, 2));
+  
+  // Calculate tier sizes
+  const tierSizes = {};
+  ['popular', 'extended', 'complete'].forEach(tier => {
+    const tierDir = path.join(OUTPUT_DIR, tier);
+    if (fs.existsSync(tierDir)) {
+      const files = fs.readdirSync(tierDir).filter(f => f.endsWith('.json'));
+      const totalSize = files.reduce((sum, file) => {
+        return sum + fs.statSync(path.join(tierDir, file)).size;
+      }, 0);
+      tierSizes[tier] = totalSize;
     }
   });
   
-  // Write output file
-  console.log(`\n💾 Writing profiles to ${OUTPUT_FILE}...`);
-  fs.writeFileSync(OUTPUT_FILE, JSON.stringify(profileLibrary, null, 2));
-  
-  // Stats
-  const stats = {
-    vendors: profileLibrary.vendors.length,
-    printers: profileLibrary.vendors.reduce((sum, v) => sum + v.printers.length, 0),
-    filaments: profileLibrary.vendors.reduce((sum, v) => sum + v.filaments.length, 0),
-    processes: profileLibrary.vendors.reduce((sum, v) => sum + v.processes.length, 0),
-    fileSize: fs.statSync(OUTPUT_FILE).size
-  };
+  // Summary
+  const indexSize = fs.statSync(indexPath).size;
   
   console.log('\n✅ Extraction complete!');
-  console.log('======================');
-  console.log(`📊 Statistics:`);
-  console.log(`  Vendors:   ${stats.vendors}`);
-  console.log(`  Printers:  ${stats.printers}`);
-  console.log(`  Filaments: ${stats.filaments}`);
-  console.log(`  Processes: ${stats.processes}`);
-  console.log(`  File size: ${(stats.fileSize / 1024 / 1024).toFixed(2)} MB`);
-  console.log(`\n📁 Output: ${OUTPUT_FILE}`);
+  console.log('========================');
+  console.log(`📊 Total: ${allVendors.length} vendors, ${totalPrinters} printers, ${totalFilaments} filaments, ${totalProcesses} processes`);
+  console.log(`\n📦 Index: ${(indexSize / 1024).toFixed(1)}KB`);
+  console.log(`📦 Popular tier: ${index.tiers.popular.vendors.length} vendors, ${(tierSizes.popular / 1024 / 1024).toFixed(2)}MB`);
+  console.log(`📦 Extended tier: ${index.tiers.extended.vendors.length} vendors, ${(tierSizes.extended / 1024 / 1024).toFixed(2)}MB`);
+  console.log(`📦 Complete tier: ${index.tiers.complete.vendors.length} vendors, ${(tierSizes.complete / 1024 / 1024).toFixed(2)}MB`);
+  console.log(`\n📂 Output: ${OUTPUT_DIR}/`);
+  console.log(`   ├── index.json (${(indexSize / 1024).toFixed(1)}KB)`);
+  console.log(`   ├── popular/ (${index.tiers.popular.vendors.length} vendors)`);
+  console.log(`   ├── extended/ (${index.tiers.extended.vendors.length} vendors)`);
+  console.log(`   └── complete/ (${index.tiers.complete.vendors.length} vendors)`);
 }
 
 // Run

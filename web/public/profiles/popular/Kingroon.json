@@ -1,0 +1,725 @@
+{
+  "name": "Kingroon",
+  "version": "02.03.01.10",
+  "printers": [
+    {
+      "id": "Kingroon KLP1",
+      "name": "Kingroon KLP1",
+      "nozzleSizes": [
+        0.4
+      ],
+      "defaultMaterials": [
+        "Generic ABS @System",
+        "Generic PLA @System",
+        "Generic PLA-CF @System",
+        "Generic PETG @System",
+        "Generic TPU @System",
+        "Generic ASA @System",
+        "Generic PC @System",
+        "Generic PVA @System",
+        "Generic PA @System",
+        "Generic PA-CF @System"
+      ],
+      "variants": [
+        {
+          "name": "Kingroon KLP1 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "230x0",
+              "230x230",
+              "0x230"
+            ],
+            "printableHeight": "210",
+            "bedExcludeArea": [
+              "0x0"
+            ],
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "machineMaxSpeedZ": [
+              "50",
+              "12"
+            ],
+            "machineMaxSpeedE": [
+              "100",
+              "25"
+            ],
+            "machineMaxAccelX": [
+              "10000",
+              "20000"
+            ],
+            "machineMaxAccelY": [
+              "10000",
+              "20000"
+            ],
+            "machineMaxAccelZ": [
+              "500",
+              "200"
+            ],
+            "machineMaxAccelExtruding": [
+              "5000",
+              "20000"
+            ],
+            "machineMaxAccelRetracting": [
+              "5000",
+              "5000"
+            ],
+            "machineMaxAccelTravel": [
+              "9000",
+              "9000"
+            ],
+            "machineMaxJerkX": [
+              "20",
+              "9"
+            ],
+            "machineMaxJerkY": [
+              "20",
+              "9"
+            ],
+            "machineMaxJerkZ": [
+              "0.2",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "2.5",
+              "2.5"
+            ],
+            "retractionLength": [
+              "1"
+            ],
+            "retractionSpeed": [
+              "90"
+            ],
+            "deretractionSpeed": [
+              "90"
+            ],
+            "zHop": [
+              "0"
+            ],
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.32"
+            ],
+            "minLayerHeight": "0.08",
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "defaultPrintProfile": "0.20mm Standard @Kingroon KLP1",
+            "defaultFilamentProfile": "Generic PLA @System"
+          },
+          "startGcode": "M190 S[bed_temperature_initial_layer_single]\nM109 S[nozzle_temperature_initial_layer]\nG28 ; h1ome all axes\n M117 ;Purge extruder\n G92 E0 ; reset extruder\n G1 Z1.0 F3000 ; move z up little to prevent scratching of surface\n G1 X2 Y20 Z0.3 F5000.0 ; move to start-line position\n G1 X2 Y175.0 Z0.3 F1500.0 E15 ; draw 1st line\n G1 X2 Y175.0 Z0.4 F5000.0 ; move to side a little\n G1 X2 Y20 Z0.4 F1500.0 E30 ; draw 2nd line\n G92 E0 ; reset extruder\n G1 Z1.0 F3000 ; move z up little to prevent scratching of surface",
+          "endGcode": "G91; relative positioning\n G1 Z1.0 F3000 ; move z up little to prevent scratching of print\n G90; absolute positioning\n G1 X0 Y200 F1000 ; prepare for part removal\n M104 S0; turn off extruder\n M140 S0 ; turn off bed\n G1 X0 Y200 F1000 ; prepare for part removal\n M84 ; disable motors\n M106 S0 ; turn off fan",
+          "pauseGcode": "PAUSE",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "Kingroon KP3S 3.0",
+      "name": "Kingroon KP3S 3.0",
+      "nozzleSizes": [
+        0.4
+      ],
+      "bedModel": "kp3s_bed.stl",
+      "bedTexture": "Kingroon_buildplate.png",
+      "defaultMaterials": [
+        "Generic ABS @System",
+        "Generic PLA @System",
+        "Generic PLA-CF @System",
+        "Generic PETG @System",
+        "Generic TPU @System",
+        "Generic ASA @System",
+        "Generic PC @System",
+        "Generic PVA @System",
+        "Generic PA @System",
+        "Generic PA-CF @System"
+      ],
+      "variants": [
+        {
+          "name": "Kingroon KP3S 3.0 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "180x0",
+              "180x180",
+              "0x180"
+            ],
+            "printableHeight": "180",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "brass",
+            "machineMaxSpeedX": [
+              "300",
+              "200"
+            ],
+            "machineMaxSpeedY": [
+              "300",
+              "200"
+            ],
+            "machineMaxSpeedZ": [
+              "30",
+              "12"
+            ],
+            "machineMaxSpeedE": [
+              "50",
+              "60"
+            ],
+            "machineMaxAccelX": [
+              "4000",
+              "9000"
+            ],
+            "machineMaxAccelY": [
+              "4000",
+              "9000"
+            ],
+            "machineMaxAccelZ": [
+              "1100",
+              "100"
+            ],
+            "machineMaxAccelExtruding": [
+              "10000",
+              "9000"
+            ],
+            "machineMaxAccelRetracting": [
+              "10000",
+              "9000"
+            ],
+            "machineMaxAccelTravel": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxJerkX": [
+              "12",
+              "9"
+            ],
+            "machineMaxJerkY": [
+              "12",
+              "9"
+            ],
+            "machineMaxJerkZ": [
+              "0.4",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "4.5",
+              "2.5"
+            ],
+            "retractionLength": [
+              "0.3"
+            ],
+            "retractionSpeed": [
+              "30"
+            ],
+            "deretractionSpeed": [
+              "30"
+            ],
+            "retractionMinimumTravel": [
+              "3"
+            ],
+            "retractBeforeWipe": [
+              "70%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0.2"
+            ],
+            "zHopTypes": [
+              "Auto Lift"
+            ],
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.3"
+            ],
+            "minLayerHeight": [
+              "0.1"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0",
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0",
+              "0"
+            ],
+            "silentMode": "0",
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "marlin",
+            "defaultPrintProfile": "0.30mm Standard @Kingroon KP3S 3.0"
+          },
+          "startGcode": "G90 ; use absolute coordinates\nM83 ; extruder relative mode\nM204 S[machine_max_acceleration_extruding] T[machine_max_acceleration_retracting]\nM104 S[first_layer_temperature] ; set extruder temp\nM140 S[first_layer_bed_temperature] ; set bed temp\nG28 ; home all\nG1 Y1.0 Z0.3 F1000 ; move print head up\nM190 S[first_layer_bed_temperature] ; wait for bed temp\nM109 S[first_layer_temperature] ; wait for extruder temp\nG92 E0.0\n; initial load\n M117 Purge extruder\n G1 X2 Y20 Z0.3 F5000.0 ; move to start-line position\n G1 X2 Y175.0 Z0.3 F1500.0 E15 ; draw 1st line\n G1 X2 Y175.0 Z0.4 F5000.0 ; move to side a little\n G1 X2 Y20 Z0.4 F1500.0 E30 ; draw 2nd line\n G92 E0 ; reset extruder\n G1 Z1.0 F3000 ; move z up little to prevent scratching of surface",
+          "endGcode": "G1 E-1.0 F2100 ; retract\nG92 E0.0\nG1{if max_layer_z < max_print_height} Z{z_offset+min(max_layer_z+30, max_print_height)}{endif} E-34.0 F720 ; move print head up & retract filament\nG4 ; wait\nM104 S0 ; turn off temperature\nM140 S0 ; turn off heatbed\nM107 ; turn off fan\nG1 X0 Y105 F3000 ; park print head\nM84 ; disable motors",
+          "pauseGcode": "M601",
+          "changeFilamentGcode": "M600"
+        }
+      ]
+    },
+    {
+      "id": "Kingroon-KP3S-PRO-S1",
+      "name": "Kingroon KP3S PRO S1",
+      "nozzleSizes": [
+        0.4
+      ],
+      "bedModel": "kp3s_bed.stl",
+      "bedTexture": "Kingroon_buildplate.png",
+      "defaultMaterials": [
+        "Generic ABS @System",
+        "Generic PLA @System",
+        "Generic PLA-CF @System",
+        "Generic PETG @System",
+        "Generic TPU @System",
+        "Generic ASA @System",
+        "Generic PC @System",
+        "Generic PVA @System",
+        "Generic PA @System",
+        "Generic PA-CF @System"
+      ],
+      "variants": [
+        {
+          "name": "Kingroon KP3S PRO S1 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "200x0",
+              "200x200",
+              "0x200"
+            ],
+            "printableHeight": "200",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "undefine",
+            "machineMaxSpeedX": [
+              "200",
+              "200"
+            ],
+            "machineMaxSpeedY": [
+              "200",
+              "200"
+            ],
+            "machineMaxSpeedZ": [
+              "12",
+              "12"
+            ],
+            "machineMaxSpeedE": [
+              "120",
+              "25"
+            ],
+            "machineMaxAccelX": [
+              "3000",
+              "20000"
+            ],
+            "machineMaxAccelY": [
+              "3000",
+              "20000"
+            ],
+            "machineMaxAccelZ": [
+              "200",
+              "200"
+            ],
+            "machineMaxAccelExtruding": [
+              "1250",
+              "20000"
+            ],
+            "machineMaxAccelRetracting": [
+              "1250",
+              "5000"
+            ],
+            "machineMaxAccelTravel": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxJerkX": [
+              "12",
+              "9"
+            ],
+            "machineMaxJerkY": [
+              "12",
+              "9"
+            ],
+            "machineMaxJerkZ": [
+              "0.4",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "4.5",
+              "2.5"
+            ],
+            "retractionLength": [
+              "1.4"
+            ],
+            "retractionSpeed": [
+              "35"
+            ],
+            "deretractionSpeed": [
+              "30"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "70%"
+            ],
+            "retractWhenChangingLayer": [
+              "0"
+            ],
+            "zHop": [
+              "0.3"
+            ],
+            "zHopTypes": [
+              "Auto Lift"
+            ],
+            "wipe": [
+              "0"
+            ],
+            "maxLayerHeight": [
+              "0.3"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0",
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0",
+              "0"
+            ],
+            "silentMode": "0",
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "marlin",
+            "defaultPrintProfile": "0.20mm Standard @Kingroon KP3S PRO S1"
+          },
+          "startGcode": "G90 ; use absolute coordinates\nM83 ; extruder relative mode\nM204 S[machine_max_acceleration_extruding] T[machine_max_acceleration_retracting]\nM104 S[first_layer_temperature] ; set extruder temp\nM140 S[first_layer_bed_temperature] ; set bed temp\nG28 ; home all\nG1 Y1.0 Z0.3 F1000 ; move print head up\nM190 S[first_layer_bed_temperature] ; wait for bed temp\nM109 S[first_layer_temperature] ; wait for extruder temp\nG92 E0.0\n; initial load\n M117 Purge extruder\n G1 X2 Y20 Z0.3 F5000.0 ; move to start-line position\n G1 X2 Y175.0 Z0.3 F1500.0 E15 ; draw 1st line\n G1 X2 Y175.0 Z0.4 F5000.0 ; move to side a little\n G1 X2 Y20 Z0.4 F1500.0 E30 ; draw 2nd line\n G92 E0 ; reset extruder\n G1 Z1.0 F3000 ; move z up little to prevent scratching of surface",
+          "endGcode": "G1 E-1.0 F2100 ; retract\nG92 E0.0\nG1{if max_layer_z < max_print_height} Z{z_offset+min(max_layer_z+30, max_print_height)}{endif} E-34.0 F720 ; move print head up & retract filament\nG4 ; wait\nM104 S0 ; turn off temperature\nM140 S0 ; turn off heatbed\nM107 ; turn off fan\nG1 X0 Y105 F3000 ; park print head\nM84 ; disable motors",
+          "pauseGcode": "M601",
+          "changeFilamentGcode": "M600"
+        }
+      ]
+    },
+    {
+      "id": "Kingroon-KP3S-PRO-V2",
+      "name": "Kingroon KP3S PRO V2",
+      "nozzleSizes": [
+        0.4
+      ],
+      "bedModel": "kp3s_bed.stl",
+      "bedTexture": "Kingroon_buildplate.png",
+      "defaultMaterials": [
+        "Generic ABS @System",
+        "Generic PLA @System",
+        "Generic PLA-CF @System",
+        "Generic PETG @System",
+        "Generic TPU @System",
+        "Generic ASA @System",
+        "Generic PC @System",
+        "Generic PVA @System",
+        "Generic PA @System",
+        "Generic PA-CF @System"
+      ],
+      "variants": [
+        {
+          "name": "Kingroon KP3S PRO V2 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "205x0",
+              "205x205",
+              "0x205"
+            ],
+            "printableHeight": "200",
+            "bedExcludeArea": [
+              "0x0"
+            ],
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "machineMaxAccelX": [
+              "10000",
+              "9000"
+            ],
+            "machineMaxAccelY": [
+              "10000",
+              "9000"
+            ],
+            "machineMaxAccelZ": [
+              "10000",
+              "100"
+            ],
+            "machineMaxAccelExtruding": [
+              "10000",
+              "9000"
+            ],
+            "machineMaxAccelRetracting": [
+              "10000",
+              "9000"
+            ],
+            "machineMaxJerkX": [
+              "20",
+              "7"
+            ],
+            "machineMaxJerkY": [
+              "20",
+              "7"
+            ],
+            "machineMaxJerkE": [
+              "20",
+              "5"
+            ],
+            "retractionLength": [
+              "0.8"
+            ],
+            "retractionSpeed": [
+              "45"
+            ],
+            "deretractionSpeed": [
+              "45"
+            ],
+            "zHop": [
+              "0"
+            ],
+            "wipe": [
+              "0"
+            ],
+            "maxLayerHeight": [
+              "0.32"
+            ],
+            "defaultPrintProfile": "0.20mm Standard @Kingroon KP3S PRO V2",
+            "defaultFilamentProfile": "Generic PLA @System"
+          },
+          "startGcode": "START_PRINT EXTRUDER_TEMP=[first_layer_temperature] BED_TEMP=[first_layer_bed_temperature]\nCANCEL_POWEROFF\nG90 ; use absolute coordinates\nM83 ; extruder relative mode\nG92 E0",
+          "endGcode": "{if max_layer_z < max_print_height}G1 Z{z_offset+min(max_layer_z+2, max_print_height)} F600 ; Move print head up{endif}\nG1 X5 Y200 F6000 ; present print\n{if max_layer_z < max_print_height-10}G1 Z{z_offset+min(max_layer_z+20, max_print_height-10)} F600 ; Move print head further up{endif}\n{if max_layer_z < max_print_height*0.6}G1 Z{max_print_height*0.6} F600 ; Move print head further up{endif}\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors\nEND_PRINT",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "Kingroon KP3S V1",
+      "name": "Kingroon KP3S V1",
+      "nozzleSizes": [
+        0.4
+      ],
+      "defaultMaterials": [
+        "Generic ABS @System",
+        "Generic PLA @System",
+        "Generic PLA-CF @System",
+        "Generic PETG @System",
+        "Generic TPU @System",
+        "Generic ASA @System",
+        "Generic PC @System",
+        "Generic PVA @System",
+        "Generic PA @System",
+        "Generic PA-CF @System"
+      ],
+      "variants": [
+        {
+          "name": "Kingroon KP3S V1 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "180x0",
+              "180x180",
+              "0x180"
+            ],
+            "printableHeight": "180",
+            "bedExcludeArea": [
+              "0x0"
+            ],
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "brass",
+            "machineMaxSpeedZ": [
+              "12",
+              "12"
+            ],
+            "machineMaxSpeedE": [
+              "100",
+              "25"
+            ],
+            "machineMaxAccelX": [
+              "10000",
+              "20000"
+            ],
+            "machineMaxAccelY": [
+              "10000",
+              "20000"
+            ],
+            "machineMaxAccelZ": [
+              "500",
+              "200"
+            ],
+            "machineMaxAccelExtruding": [
+              "10000",
+              "20000"
+            ],
+            "machineMaxAccelRetracting": [
+              "5000",
+              "5000"
+            ],
+            "machineMaxAccelTravel": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxJerkX": [
+              "9",
+              "9"
+            ],
+            "machineMaxJerkY": [
+              "9",
+              "9"
+            ],
+            "machineMaxJerkZ": [
+              "0.2",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "2.5",
+              "2.5"
+            ],
+            "retractionLength": [
+              "0.8"
+            ],
+            "retractionSpeed": [
+              "30"
+            ],
+            "deretractionSpeed": [
+              "30"
+            ],
+            "retractBeforeWipe": [
+              "0%"
+            ],
+            "zHop": [
+              "0"
+            ],
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.32"
+            ],
+            "minLayerHeight": "0.08",
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "defaultPrintProfile": "0.20mm Standard @Kingroon KP3S V1",
+            "defaultFilamentProfile": "Generic PLA @System"
+          },
+          "startGcode": "M104 S{first_layer_temperature[0]} ; set final nozzle temp\nM190 S[bed_temperature_initial_layer_single]\nM109 S[nozzle_temperature_initial_layer]\nM83\nG28 ; h1ome all axes\nG1 Z0.2                                   ; lift nozzle a bit \nG92 E0 \nG1 Y-3 F2400   \nG1 X50 F2400                                  ; zero the extruded length \nG1 X115  E40 F500                       ; Extrude 25mm of filament in a 5cm line. \nG92 E0                                     ; zero the extruded length again \nG1 E-0.2 F3000                                ; Retract a little \nG1 X180 F4000                              ; Quickly wipe away from the filament line\nM117",
+          "endGcode": "G91; relative positioning\n G1 Z1.0 F3000 ; move z up little to prevent scratching of print\n G90; absolute positioning\n G1 X0 Y180 F1000 ; prepare for part removal\n M104 S0; turn off extruder\n M140 S0 ; turn off bed\n G1 X0 Y180 F1000 ; prepare for part removal\n M84 ; disable motors\n M106 S0 ; turn off fan",
+          "pauseGcode": "PAUSE",
+          "changeFilamentGcode": ""
+        }
+      ]
+    }
+  ],
+  "filaments": [],
+  "processes": [
+    {
+      "name": "fdm_process_common",
+      "config": {
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "4",
+        "bottomShellLayers": "3",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.08mm Standard @Kingroon KP3S PRO S1",
+      "config": {
+        "layerHeight": "0.08",
+        "compatiblePrinters": [
+          "Kingroon KP3S PRO S1 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.12mm Standard @Kingroon KLP1",
+      "config": {
+        "layerHeight": "0.12",
+        "compatiblePrinters": [
+          "Kingroon KLP1 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.12mm Standard @Kingroon KP3S PRO S1",
+      "config": {
+        "layerHeight": "0.12",
+        "compatiblePrinters": [
+          "Kingroon KP3S PRO S1 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.20mm Standard @Kingroon KLP1",
+      "config": {
+        "layerHeight": "0.2",
+        "compatiblePrinters": [
+          "Kingroon KLP1 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.20mm Standard @Kingroon KP3S PRO S1",
+      "config": {
+        "layerHeight": "0.2",
+        "compatiblePrinters": [
+          "Kingroon KP3S PRO S1 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.20mm Standard @Kingroon KP3S PRO V2",
+      "config": {
+        "layerHeight": "0.2",
+        "compatiblePrinters": [
+          "Kingroon KP3S PRO V2 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.20mm Standard @Kingroon KP3S V1",
+      "config": {
+        "wallLoops": "2",
+        "sparseInfillPattern": "crosshatch",
+        "bottomShellLayers": "2",
+        "compatiblePrinters": [
+          "Kingroon KP3S V1 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.30mm Standard @Kingroon KP3S 3.0",
+      "config": {
+        "layerHeight": "0.3",
+        "sparseInfillPattern": "crosshatch",
+        "compatiblePrinters": [
+          "Kingroon KP3S 3.0 0.4 nozzle"
+        ]
+      }
+    }
+  ]
+}

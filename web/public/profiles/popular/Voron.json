@@ -1,0 +1,2317 @@
+{
+  "name": "Voron",
+  "version": "02.03.01.10",
+  "printers": [
+    {
+      "id": "Voron0",
+      "name": "Voron 0.1",
+      "nozzleSizes": [
+        0.4,
+        0.15,
+        0.2,
+        0.25,
+        0.5,
+        0.6,
+        0.8,
+        1
+      ],
+      "bedModel": "Voron_120_build_plate.stl",
+      "bedTexture": "voron_logo.png",
+      "defaultMaterials": [
+        "Generic ABS @System",
+        "Generic PLA @System",
+        "Generic PLA-CF @System",
+        "Generic PETG @System",
+        "Generic TPU @System",
+        "Generic ASA @System",
+        "Generic PC @System",
+        "Generic PVA @System",
+        "Generic PA @System",
+        "Generic PA-CF @System"
+      ],
+      "variants": [
+        {
+          "name": "Voron 0.1 0.15 nozzle",
+          "nozzle": 0.15,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "120x0",
+              "120x120",
+              "0x120"
+            ],
+            "printableHeight": "120",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.15"
+            ],
+            "nozzleType": "undefine",
+            "maxLayerHeight": [
+              "0.12"
+            ],
+            "minLayerHeight": [
+              "0.04"
+            ],
+            "defaultPrintProfile": "0.09mm Standard 0.15 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron 0.1 0.2 nozzle",
+          "nozzle": 0.2,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "120x0",
+              "120x120",
+              "0x120"
+            ],
+            "printableHeight": "120",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.2"
+            ],
+            "nozzleType": "undefine",
+            "maxLayerHeight": [
+              "0.16"
+            ],
+            "minLayerHeight": [
+              "0.05"
+            ],
+            "defaultPrintProfile": "0.10mm Standard 0.2 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron 0.1 0.25 nozzle",
+          "nozzle": 0.25,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "120x0",
+              "120x120",
+              "0x120"
+            ],
+            "printableHeight": "120",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.25"
+            ],
+            "nozzleType": "undefine",
+            "maxLayerHeight": [
+              "0.20"
+            ],
+            "minLayerHeight": [
+              "0.06"
+            ],
+            "defaultPrintProfile": "0.10mm Standard 0.25 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron 0.1 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "120x0",
+              "120x120",
+              "0x120"
+            ],
+            "printableHeight": "120",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "undefine",
+            "maxLayerHeight": [
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.10"
+            ],
+            "defaultPrintProfile": "0.20mm Standard @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron 0.1 0.5 nozzle",
+          "nozzle": 0.5,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "120x0",
+              "120x120",
+              "0x120"
+            ],
+            "printableHeight": "120",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.5"
+            ],
+            "nozzleType": "undefine",
+            "maxLayerHeight": [
+              "0.4"
+            ],
+            "minLayerHeight": [
+              "0.1"
+            ],
+            "defaultPrintProfile": "0.25mm Standard 0.5 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron 0.1 0.6 nozzle",
+          "nozzle": 0.6,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "120x0",
+              "120x120",
+              "0x120"
+            ],
+            "printableHeight": "120",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "nozzleType": "undefine",
+            "maxLayerHeight": [
+              "0.48"
+            ],
+            "minLayerHeight": [
+              "0.15"
+            ],
+            "defaultPrintProfile": "0.30mm Standard 0.6 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron 0.1 0.8 nozzle",
+          "nozzle": 0.8,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "120x0",
+              "120x120",
+              "0x120"
+            ],
+            "printableHeight": "120",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "nozzleType": "undefine",
+            "maxLayerHeight": [
+              "0.64"
+            ],
+            "minLayerHeight": [
+              "0.2"
+            ],
+            "defaultPrintProfile": "0.40mm Standard 0.8 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron 0.1 1.0 nozzle",
+          "nozzle": 1,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "120x0",
+              "120x120",
+              "0x120"
+            ],
+            "printableHeight": "120",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "1.0"
+            ],
+            "nozzleType": "undefine",
+            "maxLayerHeight": [
+              "0.80"
+            ],
+            "minLayerHeight": [
+              "0.25"
+            ],
+            "defaultPrintProfile": "0.50mm Standard 1.0 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "Voron2_250",
+      "name": "Voron 2.4 250",
+      "nozzleSizes": [
+        0.4,
+        0.15,
+        0.2,
+        0.25,
+        0.5,
+        0.6,
+        0.8,
+        1
+      ],
+      "bedModel": "Voron_250_build_plate.stl",
+      "bedTexture": "voron_logo.png",
+      "defaultMaterials": [
+        "Generic ABS @System",
+        "Generic PLA @System",
+        "Generic PLA-CF @System",
+        "Generic PETG @System",
+        "Generic TPU @System",
+        "Generic ASA @System",
+        "Generic PC @System",
+        "Generic PVA @System",
+        "Generic PA @System",
+        "Generic PA-CF @System"
+      ],
+      "variants": [
+        {
+          "name": "Voron 2.4 250 0.15 nozzle",
+          "nozzle": 0.15,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x250",
+              "0x250"
+            ],
+            "printableHeight": "225",
+            "nozzleDiameter": [
+              "0.15"
+            ],
+            "maxLayerHeight": [
+              "0.2"
+            ],
+            "minLayerHeight": [
+              "0.04"
+            ],
+            "defaultPrintProfile": "0.09mm Standard 0.15 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron 2.4 250 0.2 nozzle",
+          "nozzle": 0.2,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x250",
+              "0x250"
+            ],
+            "printableHeight": "225",
+            "nozzleDiameter": [
+              "0.2"
+            ],
+            "maxLayerHeight": [
+              "0.20"
+            ],
+            "minLayerHeight": [
+              "0.06"
+            ],
+            "defaultPrintProfile": "0.10mm Standard 0.2 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron 2.4 250 0.25 nozzle",
+          "nozzle": 0.25,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x250",
+              "0x250"
+            ],
+            "printableHeight": "225",
+            "nozzleDiameter": [
+              "0.25"
+            ],
+            "maxLayerHeight": [
+              "0.25"
+            ],
+            "minLayerHeight": [
+              "0.06"
+            ],
+            "defaultPrintProfile": "0.10mm Standard 0.25 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron 2.4 250 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x250",
+              "0x250"
+            ],
+            "printableHeight": "225",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "maxLayerHeight": [
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.10"
+            ],
+            "defaultPrintProfile": "0.20mm Standard @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron 2.4 250 0.5 nozzle",
+          "nozzle": 0.5,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x250",
+              "0x250"
+            ],
+            "printableHeight": "225",
+            "nozzleDiameter": [
+              "0.5"
+            ],
+            "maxLayerHeight": [
+              "0.4"
+            ],
+            "minLayerHeight": [
+              "0.1"
+            ],
+            "defaultPrintProfile": "0.25mm Standard 0.5 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron 2.4 250 0.6 nozzle",
+          "nozzle": 0.6,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x250",
+              "0x250"
+            ],
+            "printableHeight": "225",
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "maxLayerHeight": [
+              "0.45"
+            ],
+            "minLayerHeight": [
+              "0.15"
+            ],
+            "defaultPrintProfile": "0.30mm Standard 0.6 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron 2.4 250 0.8 nozzle",
+          "nozzle": 0.8,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x250",
+              "0x250"
+            ],
+            "printableHeight": "225",
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "maxLayerHeight": [
+              "0.6"
+            ],
+            "minLayerHeight": [
+              "0.20"
+            ],
+            "defaultPrintProfile": "0.40mm Standard 0.8 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron 2.4 250 1.0 nozzle",
+          "nozzle": 1,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x250",
+              "0x250"
+            ],
+            "printableHeight": "225",
+            "nozzleDiameter": [
+              "1.0"
+            ],
+            "maxLayerHeight": [
+              "0.9"
+            ],
+            "minLayerHeight": [
+              "0.25"
+            ],
+            "defaultPrintProfile": "0.50mm Standard 1.0 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "Voron2_300",
+      "name": "Voron 2.4 300",
+      "nozzleSizes": [
+        0.4,
+        0.15,
+        0.2,
+        0.25,
+        0.5,
+        0.6,
+        0.8,
+        1
+      ],
+      "bedModel": "Voron_300_build_plate.stl",
+      "bedTexture": "voron_logo.png",
+      "defaultMaterials": [
+        "Generic ABS @System",
+        "Generic PLA @System",
+        "Generic PLA-CF @System",
+        "Generic PETG @System",
+        "Generic TPU @System",
+        "Generic ASA @System",
+        "Generic PC @System",
+        "Generic PVA @System",
+        "Generic PA @System",
+        "Generic PA-CF @System"
+      ],
+      "variants": [
+        {
+          "name": "Voron 2.4 300 0.15 nozzle",
+          "nozzle": 0.15,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "300x0",
+              "300x300",
+              "0x300"
+            ],
+            "printableHeight": "275",
+            "nozzleDiameter": [
+              "0.15"
+            ],
+            "maxLayerHeight": [
+              "0.2"
+            ],
+            "minLayerHeight": [
+              "0.04"
+            ],
+            "defaultPrintProfile": "0.09mm Standard 0.15 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron 2.4 300 0.2 nozzle",
+          "nozzle": 0.2,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "300x0",
+              "300x300",
+              "0x300"
+            ],
+            "printableHeight": "275",
+            "nozzleDiameter": [
+              "0.2"
+            ],
+            "maxLayerHeight": [
+              "0.2"
+            ],
+            "minLayerHeight": [
+              "0.06"
+            ],
+            "defaultPrintProfile": "0.10mm Standard 0.2 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron 2.4 300 0.25 nozzle",
+          "nozzle": 0.25,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "300x0",
+              "300x300",
+              "0x300"
+            ],
+            "printableHeight": "275",
+            "nozzleDiameter": [
+              "0.25"
+            ],
+            "maxLayerHeight": [
+              "0.25"
+            ],
+            "minLayerHeight": [
+              "0.06"
+            ],
+            "defaultPrintProfile": "0.10mm Standard 0.25 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron 2.4 300 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "300x0",
+              "300x300",
+              "0x300"
+            ],
+            "printableHeight": "275",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "maxLayerHeight": [
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.10"
+            ],
+            "defaultPrintProfile": "0.20mm Standard @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron 2.4 300 0.5 nozzle",
+          "nozzle": 0.5,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "300x0",
+              "300x300",
+              "0x300"
+            ],
+            "printableHeight": "275",
+            "nozzleDiameter": [
+              "0.5"
+            ],
+            "maxLayerHeight": [
+              "0.4"
+            ],
+            "minLayerHeight": [
+              "0.1"
+            ],
+            "defaultPrintProfile": "0.25mm Standard 0.5 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron 2.4 300 0.6 nozzle",
+          "nozzle": 0.6,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "300x0",
+              "300x300",
+              "0x300"
+            ],
+            "printableHeight": "275",
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "maxLayerHeight": [
+              "0.45"
+            ],
+            "minLayerHeight": [
+              "0.15"
+            ],
+            "defaultPrintProfile": "0.30mm Standard 0.6 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron 2.4 300 0.8 nozzle",
+          "nozzle": 0.8,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "300x0",
+              "300x300",
+              "0x300"
+            ],
+            "printableHeight": "275",
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "maxLayerHeight": [
+              "0.6"
+            ],
+            "minLayerHeight": [
+              "0.20"
+            ],
+            "defaultPrintProfile": "0.40mm Standard 0.8 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron 2.4 300 1.0 nozzle",
+          "nozzle": 1,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "300x0",
+              "300x300",
+              "0x300"
+            ],
+            "printableHeight": "275",
+            "nozzleDiameter": [
+              "1.0"
+            ],
+            "maxLayerHeight": [
+              "0.9"
+            ],
+            "minLayerHeight": [
+              "0.25"
+            ],
+            "defaultPrintProfile": "0.50mm Standard 1.0 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "Voron2_350",
+      "name": "Voron 2.4 350",
+      "nozzleSizes": [
+        0.4,
+        0.15,
+        0.2,
+        0.25,
+        0.5,
+        0.6,
+        0.8,
+        1
+      ],
+      "bedModel": "Voron_350_build_plate.stl",
+      "bedTexture": "voron_logo.png",
+      "defaultMaterials": [
+        "Generic ABS @System",
+        "Generic PLA @System",
+        "Generic PLA-CF @System",
+        "Generic PETG @System",
+        "Generic TPU @System",
+        "Generic ASA @System",
+        "Generic PC @System",
+        "Generic PVA @System",
+        "Generic PA @System",
+        "Generic PA-CF @System"
+      ],
+      "variants": [
+        {
+          "name": "Voron 2.4 350 0.15 nozzle",
+          "nozzle": 0.15,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "350x0",
+              "350x350",
+              "0x350"
+            ],
+            "printableHeight": "325",
+            "nozzleDiameter": [
+              "0.15"
+            ],
+            "maxLayerHeight": [
+              "0.2"
+            ],
+            "minLayerHeight": [
+              "0.04"
+            ],
+            "defaultPrintProfile": "0.09mm Standard 0.15 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron 2.4 350 0.2 nozzle",
+          "nozzle": 0.2,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "350x0",
+              "350x350",
+              "0x350"
+            ],
+            "printableHeight": "325",
+            "nozzleDiameter": [
+              "0.2"
+            ],
+            "maxLayerHeight": [
+              "0.2"
+            ],
+            "minLayerHeight": [
+              "0.06"
+            ],
+            "defaultPrintProfile": "0.10mm Standard 0.2 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron 2.4 350 0.25 nozzle",
+          "nozzle": 0.25,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "350x0",
+              "350x350",
+              "0x350"
+            ],
+            "printableHeight": "325",
+            "nozzleDiameter": [
+              "0.25"
+            ],
+            "maxLayerHeight": [
+              "0.25"
+            ],
+            "minLayerHeight": [
+              "0.06"
+            ],
+            "defaultPrintProfile": "0.10mm Standard 0.25 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron 2.4 350 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "350x0",
+              "350x350",
+              "0x350"
+            ],
+            "printableHeight": "325",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "maxLayerHeight": [
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.10"
+            ],
+            "defaultPrintProfile": "0.20mm Standard @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron 2.4 350 0.5 nozzle",
+          "nozzle": 0.5,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "350x0",
+              "350x350",
+              "0x350"
+            ],
+            "printableHeight": "325",
+            "nozzleDiameter": [
+              "0.5"
+            ],
+            "maxLayerHeight": [
+              "0.4"
+            ],
+            "minLayerHeight": [
+              "0.1"
+            ],
+            "defaultPrintProfile": "0.25mm Standard 0.5 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron 2.4 350 0.6 nozzle",
+          "nozzle": 0.6,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "350x0",
+              "350x350",
+              "0x350"
+            ],
+            "printableHeight": "325",
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "maxLayerHeight": [
+              "0.45"
+            ],
+            "minLayerHeight": [
+              "0.15"
+            ],
+            "defaultPrintProfile": "0.30mm Standard 0.6 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron 2.4 350 0.8 nozzle",
+          "nozzle": 0.8,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "350x0",
+              "350x350",
+              "0x350"
+            ],
+            "printableHeight": "325",
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "maxLayerHeight": [
+              "0.6"
+            ],
+            "minLayerHeight": [
+              "0.20"
+            ],
+            "defaultPrintProfile": "0.40mm Standard 0.8 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron 2.4 350 1.0 nozzle",
+          "nozzle": 1,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "350x0",
+              "350x350",
+              "0x350"
+            ],
+            "printableHeight": "325",
+            "nozzleDiameter": [
+              "1.0"
+            ],
+            "maxLayerHeight": [
+              "0.9"
+            ],
+            "minLayerHeight": [
+              "0.25"
+            ],
+            "defaultPrintProfile": "0.50mm Standard 1.0 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "Voron_Switchwire_250",
+      "name": "Voron Switchwire 250",
+      "nozzleSizes": [
+        0.4,
+        0.15,
+        0.2,
+        0.25,
+        0.5,
+        0.6,
+        0.8,
+        1
+      ],
+      "bedModel": "",
+      "bedTexture": "voron_switchwire_logo.png",
+      "defaultMaterials": [
+        "Generic ABS @System",
+        "Generic PLA @System",
+        "Generic PLA-CF @System",
+        "Generic PETG @System",
+        "Generic TPU @System",
+        "Generic ASA @System",
+        "Generic PC @System",
+        "Generic PVA @System",
+        "Generic PA @System",
+        "Generic PA-CF @System"
+      ],
+      "variants": [
+        {
+          "name": "Voron Switchwire 250 0.15 nozzle",
+          "nozzle": 0.15,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x210",
+              "0x210"
+            ],
+            "printableHeight": "240",
+            "nozzleDiameter": [
+              "0.15"
+            ],
+            "maxLayerHeight": [
+              "0.12"
+            ],
+            "minLayerHeight": [
+              "0.04"
+            ],
+            "defaultPrintProfile": "0.09mm Standard 0.15 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron Switchwire 250 0.2 nozzle",
+          "nozzle": 0.2,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x210",
+              "0x210"
+            ],
+            "printableHeight": "240",
+            "nozzleDiameter": [
+              "0.2"
+            ],
+            "maxLayerHeight": [
+              "0.16"
+            ],
+            "minLayerHeight": [
+              "0.05"
+            ],
+            "defaultPrintProfile": "0.10mm Standard 0.2 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron Switchwire 250 0.25 nozzle",
+          "nozzle": 0.25,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x210",
+              "0x210"
+            ],
+            "printableHeight": "240",
+            "nozzleDiameter": [
+              "0.25"
+            ],
+            "maxLayerHeight": [
+              "0.20"
+            ],
+            "minLayerHeight": [
+              "0.06"
+            ],
+            "defaultPrintProfile": "0.10mm Standard 0.25 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron Switchwire 250 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x210",
+              "0x210"
+            ],
+            "printableHeight": "240",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "maxLayerHeight": [
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.10"
+            ],
+            "defaultPrintProfile": "0.20mm Standard @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron Switchwire 250 0.5 nozzle",
+          "nozzle": 0.5,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x210",
+              "0x210"
+            ],
+            "printableHeight": "240",
+            "nozzleDiameter": [
+              "0.5"
+            ],
+            "maxLayerHeight": [
+              "0.4"
+            ],
+            "minLayerHeight": [
+              "0.1"
+            ],
+            "defaultPrintProfile": "0.25mm Standard 0.5 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron Switchwire 250 0.6 nozzle",
+          "nozzle": 0.6,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x210",
+              "0x210"
+            ],
+            "printableHeight": "240",
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "maxLayerHeight": [
+              "0.48"
+            ],
+            "minLayerHeight": [
+              "0.15"
+            ],
+            "defaultPrintProfile": "0.30mm Standard 0.6 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron Switchwire 250 0.8 nozzle",
+          "nozzle": 0.8,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x210",
+              "0x210"
+            ],
+            "printableHeight": "240",
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "maxLayerHeight": [
+              "0.64"
+            ],
+            "minLayerHeight": [
+              "0.2"
+            ],
+            "defaultPrintProfile": "0.40mm Standard 0.8 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron Switchwire 250 1.0 nozzle",
+          "nozzle": 1,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x210",
+              "0x210"
+            ],
+            "printableHeight": "240",
+            "nozzleDiameter": [
+              "1.0"
+            ],
+            "maxLayerHeight": [
+              "0.80"
+            ],
+            "minLayerHeight": [
+              "0.25"
+            ],
+            "defaultPrintProfile": "0.50mm Standard 1.0 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "Voron2_Trident_250",
+      "name": "Voron Trident 250",
+      "nozzleSizes": [
+        0.4,
+        0.15,
+        0.2,
+        0.25,
+        0.5,
+        0.6,
+        0.8,
+        1
+      ],
+      "bedModel": "Voron_250_build_plate.stl",
+      "bedTexture": "voron_logo.png",
+      "defaultMaterials": [
+        "Generic ABS @System",
+        "Generic PLA @System",
+        "Generic PLA-CF @System",
+        "Generic PETG @System",
+        "Generic TPU @System",
+        "Generic ASA @System",
+        "Generic PC @System",
+        "Generic PVA @System",
+        "Generic PA @System",
+        "Generic PA-CF @System"
+      ],
+      "variants": [
+        {
+          "name": "Voron Trident 250 0.15 nozzle",
+          "nozzle": 0.15,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x250",
+              "0x250"
+            ],
+            "printableHeight": "250",
+            "nozzleDiameter": [
+              "0.15"
+            ],
+            "maxLayerHeight": [
+              "0.12"
+            ],
+            "minLayerHeight": [
+              "0.04"
+            ],
+            "defaultPrintProfile": "0.09mm Standard 0.15 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron Trident 250 0.2 nozzle",
+          "nozzle": 0.2,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x250",
+              "0x250"
+            ],
+            "printableHeight": "250",
+            "nozzleDiameter": [
+              "0.2"
+            ],
+            "maxLayerHeight": [
+              "0.16"
+            ],
+            "minLayerHeight": [
+              "0.05"
+            ],
+            "defaultPrintProfile": "0.10mm Standard 0.2 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron Trident 250 0.25 nozzle",
+          "nozzle": 0.25,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x250",
+              "0x250"
+            ],
+            "printableHeight": "250",
+            "nozzleDiameter": [
+              "0.25"
+            ],
+            "maxLayerHeight": [
+              "0.20"
+            ],
+            "minLayerHeight": [
+              "0.06"
+            ],
+            "defaultPrintProfile": "0.10mm Standard 0.25 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron Trident 250 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x250",
+              "0x250"
+            ],
+            "printableHeight": "250",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "maxLayerHeight": [
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.10"
+            ],
+            "defaultPrintProfile": "0.20mm Standard @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron Trident 250 0.5 nozzle",
+          "nozzle": 0.5,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x250",
+              "0x250"
+            ],
+            "printableHeight": "250",
+            "nozzleDiameter": [
+              "0.5"
+            ],
+            "maxLayerHeight": [
+              "0.4"
+            ],
+            "minLayerHeight": [
+              "0.1"
+            ],
+            "defaultPrintProfile": "0.25mm Standard 0.5 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron Trident 250 0.6 nozzle",
+          "nozzle": 0.6,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x250",
+              "0x250"
+            ],
+            "printableHeight": "250",
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "maxLayerHeight": [
+              "0.48"
+            ],
+            "minLayerHeight": [
+              "0.15"
+            ],
+            "defaultPrintProfile": "0.30mm Standard 0.6 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron Trident 250 0.8 nozzle",
+          "nozzle": 0.8,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x250",
+              "0x250"
+            ],
+            "printableHeight": "250",
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "maxLayerHeight": [
+              "0.64"
+            ],
+            "minLayerHeight": [
+              "0.2"
+            ],
+            "defaultPrintProfile": "0.40mm Standard 0.8 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron Trident 250 1.0 nozzle",
+          "nozzle": 1,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x250",
+              "0x250"
+            ],
+            "printableHeight": "250",
+            "nozzleDiameter": [
+              "1.0"
+            ],
+            "maxLayerHeight": [
+              "0.80"
+            ],
+            "minLayerHeight": [
+              "0.25"
+            ],
+            "defaultPrintProfile": "0.50mm Standard 1.0 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "Voron2_Trident_300",
+      "name": "Voron Trident 300",
+      "nozzleSizes": [
+        0.4,
+        0.15,
+        0.2,
+        0.25,
+        0.5,
+        0.6,
+        0.8,
+        1
+      ],
+      "bedModel": "Voron_300_build_plate.stl",
+      "bedTexture": "voron_logo.png",
+      "defaultMaterials": [
+        "Generic ABS @System",
+        "Generic PLA @System",
+        "Generic PLA-CF @System",
+        "Generic PETG @System",
+        "Generic TPU @System",
+        "Generic ASA @System",
+        "Generic PC @System",
+        "Generic PVA @System",
+        "Generic PA @System",
+        "Generic PA-CF @System"
+      ],
+      "variants": [
+        {
+          "name": "Voron Trident 300 0.15 nozzle",
+          "nozzle": 0.15,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "300x0",
+              "300x300",
+              "0x300"
+            ],
+            "printableHeight": "250",
+            "nozzleDiameter": [
+              "0.15"
+            ],
+            "maxLayerHeight": [
+              "0.12"
+            ],
+            "minLayerHeight": [
+              "0.04"
+            ],
+            "defaultPrintProfile": "0.09mm Standard 0.15 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron Trident 300 0.2 nozzle",
+          "nozzle": 0.2,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "300x0",
+              "300x300",
+              "0x300"
+            ],
+            "printableHeight": "250",
+            "nozzleDiameter": [
+              "0.2"
+            ],
+            "maxLayerHeight": [
+              "0.16"
+            ],
+            "minLayerHeight": [
+              "0.05"
+            ],
+            "defaultPrintProfile": "0.10mm Standard 0.2 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron Trident 300 0.25 nozzle",
+          "nozzle": 0.25,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "300x0",
+              "300x300",
+              "0x300"
+            ],
+            "printableHeight": "250",
+            "nozzleDiameter": [
+              "0.25"
+            ],
+            "maxLayerHeight": [
+              "0.20"
+            ],
+            "minLayerHeight": [
+              "0.06"
+            ],
+            "defaultPrintProfile": "0.10mm Standard 0.25 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron Trident 300 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "300x0",
+              "300x300",
+              "0x300"
+            ],
+            "printableHeight": "250",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "maxLayerHeight": [
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.10"
+            ],
+            "defaultPrintProfile": "0.20mm Standard @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron Trident 300 0.5 nozzle",
+          "nozzle": 0.5,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "300x0",
+              "300x300",
+              "0x300"
+            ],
+            "printableHeight": "250",
+            "nozzleDiameter": [
+              "0.5"
+            ],
+            "maxLayerHeight": [
+              "0.4"
+            ],
+            "minLayerHeight": [
+              "0.1"
+            ],
+            "defaultPrintProfile": "0.25mm Standard 0.5 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron Trident 300 0.6 nozzle",
+          "nozzle": 0.6,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "300x0",
+              "300x300",
+              "0x300"
+            ],
+            "printableHeight": "250",
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "maxLayerHeight": [
+              "0.48"
+            ],
+            "minLayerHeight": [
+              "0.15"
+            ],
+            "defaultPrintProfile": "0.30mm Standard 0.6 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron Trident 300 0.8 nozzle",
+          "nozzle": 0.8,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "300x0",
+              "300x300",
+              "0x300"
+            ],
+            "printableHeight": "250",
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "maxLayerHeight": [
+              "0.64"
+            ],
+            "minLayerHeight": [
+              "0.2"
+            ],
+            "defaultPrintProfile": "0.40mm Standard 0.8 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron Trident 300 1.0 nozzle",
+          "nozzle": 1,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "300x0",
+              "300x300",
+              "0x300"
+            ],
+            "printableHeight": "250",
+            "nozzleDiameter": [
+              "1.0"
+            ],
+            "maxLayerHeight": [
+              "0.80"
+            ],
+            "minLayerHeight": [
+              "0.25"
+            ],
+            "defaultPrintProfile": "0.50mm Standard 1.0 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "Voron2_Trident_350",
+      "name": "Voron Trident 350",
+      "nozzleSizes": [
+        0.4,
+        0.15,
+        0.2,
+        0.25,
+        0.5,
+        0.6,
+        0.8,
+        1
+      ],
+      "bedModel": "Voron_350_build_plate.stl",
+      "bedTexture": "voron_logo.png",
+      "defaultMaterials": [
+        "Generic ABS @System",
+        "Generic PLA @System",
+        "Generic PLA-CF @System",
+        "Generic PETG @System",
+        "Generic TPU @System",
+        "Generic ASA @System",
+        "Generic PC @System",
+        "Generic PVA @System",
+        "Generic PA @System",
+        "Generic PA-CF @System"
+      ],
+      "variants": [
+        {
+          "name": "Voron Trident 350 0.15 nozzle",
+          "nozzle": 0.15,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "350x0",
+              "350x350",
+              "0x350"
+            ],
+            "printableHeight": "250",
+            "nozzleDiameter": [
+              "0.15"
+            ],
+            "maxLayerHeight": [
+              "0.12"
+            ],
+            "minLayerHeight": [
+              "0.04"
+            ],
+            "defaultPrintProfile": "0.09mm Standard 0.15 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron Trident 350 0.2 nozzle",
+          "nozzle": 0.2,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "350x0",
+              "350x350",
+              "0x350"
+            ],
+            "printableHeight": "250",
+            "nozzleDiameter": [
+              "0.2"
+            ],
+            "maxLayerHeight": [
+              "0.16"
+            ],
+            "minLayerHeight": [
+              "0.05"
+            ],
+            "defaultPrintProfile": "0.10mm Standard 0.2 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron Trident 350 0.25 nozzle",
+          "nozzle": 0.25,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "350x0",
+              "350x350",
+              "0x350"
+            ],
+            "printableHeight": "250",
+            "nozzleDiameter": [
+              "0.25"
+            ],
+            "maxLayerHeight": [
+              "0.20"
+            ],
+            "minLayerHeight": [
+              "0.06"
+            ],
+            "defaultPrintProfile": "0.10mm Standard 0.25 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron Trident 350 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "350x0",
+              "350x350",
+              "0x350"
+            ],
+            "printableHeight": "250",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "maxLayerHeight": [
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.10"
+            ],
+            "defaultPrintProfile": "0.20mm Standard @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron Trident 350 0.5 nozzle",
+          "nozzle": 0.5,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "350x0",
+              "350x350",
+              "0x350"
+            ],
+            "printableHeight": "250",
+            "nozzleDiameter": [
+              "0.5"
+            ],
+            "maxLayerHeight": [
+              "0.4"
+            ],
+            "minLayerHeight": [
+              "0.1"
+            ],
+            "defaultPrintProfile": "0.30mm Standard 0.5 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron Trident 350 0.6 nozzle",
+          "nozzle": 0.6,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "350x0",
+              "350x350",
+              "0x350"
+            ],
+            "printableHeight": "250",
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "maxLayerHeight": [
+              "0.48"
+            ],
+            "minLayerHeight": [
+              "0.15"
+            ],
+            "defaultPrintProfile": "0.30mm Standard 0.6 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron Trident 350 0.8 nozzle",
+          "nozzle": 0.8,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "350x0",
+              "350x350",
+              "0x350"
+            ],
+            "printableHeight": "250",
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "maxLayerHeight": [
+              "0.64"
+            ],
+            "minLayerHeight": [
+              "0.2"
+            ],
+            "defaultPrintProfile": "0.40mm Standard 0.8 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Voron Trident 350 1.0 nozzle",
+          "nozzle": 1,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "350x0",
+              "350x350",
+              "0x350"
+            ],
+            "printableHeight": "250",
+            "nozzleDiameter": [
+              "1.0"
+            ],
+            "maxLayerHeight": [
+              "0.80"
+            ],
+            "minLayerHeight": [
+              "0.25"
+            ],
+            "defaultPrintProfile": "0.50mm Standard 1.0 nozzle @Voron"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    }
+  ],
+  "filaments": [],
+  "processes": [
+    {
+      "name": "fdm_process_common",
+      "config": {
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_voron_common",
+      "config": {
+        "layerHeight": "0.2",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "3",
+        "bottomShellLayers": "3",
+        "compatiblePrinters": [
+          "Voron 2.4 250 0.4 nozzle",
+          "Voron 2.4 300 0.4 nozzle",
+          "Voron 2.4 350 0.4 nozzle",
+          "Voron Trident 250 0.4 nozzle",
+          "Voron Trident 300 0.4 nozzle",
+          "Voron Trident 350 0.4 nozzle",
+          "Voron 0.1 0.4 nozzle",
+          "Voron Switchwire 250 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.08mm Extra Fine @Voron",
+      "config": {
+        "layerHeight": "0.08",
+        "topShellLayers": "9",
+        "bottomShellLayers": "7",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.12mm Fine @Voron",
+      "config": {
+        "layerHeight": "0.12",
+        "topShellLayers": "6",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.15mm Optimal @Voron",
+      "config": {
+        "layerHeight": "0.15",
+        "topShellLayers": "5",
+        "bottomShellLayers": "4",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.20mm Standard @Voron",
+      "config": {
+        "layerHeight": "0.2",
+        "topShellLayers": "4",
+        "bottomShellLayers": "3",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.24mm Draft @Voron",
+      "config": {
+        "layerHeight": "0.24",
+        "topShellLayers": "4",
+        "bottomShellLayers": "3",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.28mm Extra Draft @Voron",
+      "config": {
+        "layerHeight": "0.28",
+        "topShellLayers": "4",
+        "bottomShellLayers": "3",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_voron_common_0_1_5",
+      "config": {
+        "compatiblePrinters": [
+          "Voron 0.1 0.15 nozzle",
+          "Voron 2.4 250 0.15 nozzle",
+          "Voron 2.4 300 0.15 nozzle",
+          "Voron 2.4 350 0.15 nozzle",
+          "Voron Trident 250 0.15 nozzle",
+          "Voron Trident 300 0.15 nozzle",
+          "Voron Trident 350 0.15 nozzle",
+          "Voron Switchwire 250 0.15 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "fdm_process_voron_common_0_2",
+      "config": {
+        "compatiblePrinters": [
+          "Voron 0.1 0.2 nozzle",
+          "Voron 2.4 250 0.2 nozzle",
+          "Voron 2.4 300 0.2 nozzle",
+          "Voron 2.4 350 0.2 nozzle",
+          "Voron Trident 250 0.2 nozzle",
+          "Voron Trident 300 0.2 nozzle",
+          "Voron Trident 350 0.2 nozzle",
+          "Voron Switchwire 250 0.2 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "fdm_process_voron_common_0_2_5",
+      "config": {
+        "compatiblePrinters": [
+          "Voron 0.1 0.25 nozzle",
+          "Voron 2.4 250 0.25 nozzle",
+          "Voron 2.4 300 0.25 nozzle",
+          "Voron 2.4 350 0.25 nozzle",
+          "Voron Trident 250 0.25 nozzle",
+          "Voron Trident 300 0.25 nozzle",
+          "Voron Trident 350 0.25 nozzle",
+          "Voron Switchwire 250 0.25 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "fdm_process_voron_common_0_5",
+      "config": {
+        "compatiblePrinters": [
+          "Voron 0.1 0.5 nozzle",
+          "Voron 2.4 250 0.5 nozzle",
+          "Voron 2.4 300 0.5 nozzle",
+          "Voron 2.4 350 0.5 nozzle",
+          "Voron Trident 250 0.5 nozzle",
+          "Voron Trident 300 0.5 nozzle",
+          "Voron Trident 350 0.5 nozzle",
+          "Voron Switchwire 250 0.5 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "fdm_process_voron_common_0_6",
+      "config": {
+        "compatiblePrinters": [
+          "Voron 0.1 0.6 nozzle",
+          "Voron 2.4 250 0.6 nozzle",
+          "Voron 2.4 300 0.6 nozzle",
+          "Voron 2.4 350 0.6 nozzle",
+          "Voron Trident 250 0.6 nozzle",
+          "Voron Trident 300 0.6 nozzle",
+          "Voron Trident 350 0.6 nozzle",
+          "Voron Switchwire 250 0.6 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "fdm_process_voron_common_0_8",
+      "config": {
+        "compatiblePrinters": [
+          "Voron 0.1 0.8 nozzle",
+          "Voron 2.4 250 0.8 nozzle",
+          "Voron 2.4 300 0.8 nozzle",
+          "Voron 2.4 350 0.8 nozzle",
+          "Voron Trident 250 0.8 nozzle",
+          "Voron Trident 300 0.8 nozzle",
+          "Voron Trident 350 0.8 nozzle",
+          "Voron Switchwire 250 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "fdm_process_voron_common_1_0",
+      "config": {
+        "compatiblePrinters": [
+          "Voron 0.1 1.0 nozzle",
+          "Voron 2.4 250 1.0 nozzle",
+          "Voron 2.4 300 1.0 nozzle",
+          "Voron 2.4 350 1.0 nozzle",
+          "Voron Trident 250 1.0 nozzle",
+          "Voron Trident 300 1.0 nozzle",
+          "Voron Trident 350 1.0 nozzle",
+          "Voron Switchwire 250 1.0 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.05mm Fine 0.15 nozzle @Voron",
+      "config": {
+        "layerHeight": "0.05",
+        "topShellLayers": "9",
+        "bottomShellLayers": "7",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.07mm Optimal 0.15 nozzle @Voron",
+      "config": {
+        "layerHeight": "0.07",
+        "topShellLayers": "9",
+        "bottomShellLayers": "7",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.09mm Standard 0.15 nozzle @Voron",
+      "config": {
+        "layerHeight": "0.09",
+        "topShellLayers": "6",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.12mm Draft 0.15 nozzle @Voron",
+      "config": {
+        "layerHeight": "0.12",
+        "topShellLayers": "6",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.06mm Fine 0.2 nozzle @Voron",
+      "config": {
+        "layerHeight": "0.06",
+        "topShellLayers": "9",
+        "bottomShellLayers": "7",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.08mm Optimal 0.2 nozzle @Voron",
+      "config": {
+        "layerHeight": "0.08",
+        "topShellLayers": "9",
+        "bottomShellLayers": "7",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.10mm Standard 0.2 nozzle @Voron",
+      "config": {
+        "layerHeight": "0.10",
+        "topShellLayers": "6",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.12mm Draft 0.2 nozzle @Voron",
+      "config": {
+        "layerHeight": "0.12",
+        "topShellLayers": "6",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.14mm Extra Draft 0.2 nozzle @Voron",
+      "config": {
+        "layerHeight": "0.14",
+        "topShellLayers": "5",
+        "bottomShellLayers": "4",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.06mm Fine 0.25 nozzle @Voron",
+      "config": {
+        "layerHeight": "0.06",
+        "topShellLayers": "9",
+        "bottomShellLayers": "7",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.08mm Optimal 0.25 nozzle @Voron",
+      "config": {
+        "layerHeight": "0.08",
+        "topShellLayers": "9",
+        "bottomShellLayers": "7",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.10mm Standard 0.25 nozzle @Voron",
+      "config": {
+        "layerHeight": "0.10",
+        "topShellLayers": "6",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.12mm Draft 0.25 nozzle @Voron",
+      "config": {
+        "layerHeight": "0.12",
+        "topShellLayers": "6",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.14mm Extra Draft 0.25 nozzle @Voron",
+      "config": {
+        "layerHeight": "0.14",
+        "topShellLayers": "5",
+        "bottomShellLayers": "4",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.10mm Extra Fine 0.5 nozzle @Voron",
+      "config": {
+        "layerHeight": "0.10",
+        "topShellLayers": "8",
+        "bottomShellLayers": "6",
+        "compatiblePrinters": []
+      }
+    }
+  ]
+}

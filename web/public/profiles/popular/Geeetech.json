@@ -1,0 +1,1579 @@
+{
+  "name": "Geeetech",
+  "version": "02.03.01.10",
+  "printers": [
+    {
+      "id": "Geeetech_A10 M",
+      "name": "Geeetech A10 M",
+      "nozzleSizes": [
+        0.4
+      ],
+      "bedModel": "220x220.stl",
+      "bedTexture": "Geeetech_buildplate_texture.png",
+      "defaultMaterials": [
+        "Generic PLA @System",
+        "Generic PLA @System",
+        "Generic PETG @System",
+        "Generic ABS @System",
+        "Generic TPU @System"
+      ],
+      "variants": [
+        {
+          "name": "Geeetech A10 M 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "220x0",
+              "220x220",
+              "0x220"
+            ],
+            "printableHeight": "260",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "brass",
+            "retractionLength": [
+              "6.5"
+            ],
+            "retractionSpeed": [
+              "25"
+            ],
+            "deretractionSpeed": [
+              "25"
+            ],
+            "maxLayerHeight": [
+              "0.3"
+            ],
+            "minLayerHeight": [
+              "0.07"
+            ],
+            "defaultPrintProfile": "0.20mm Standard @Geeetech common",
+            "defaultFilamentProfile": [
+              "Generic PLA @System"
+            ]
+          },
+          "startGcode": ";Geeetech official wiki homepage for A10M：https://www.geeetech.com/wiki/index.php/Geeetech_A10M_3D_printer \nM104 S[first_layer_temperature] ; set extruder temp\nM140 S[first_layer_bed_temperature] ; set bed temp\nM190 S[first_layer_bed_temperature] ; wait for bed temp\nM109 S[first_layer_temperature] ; wait for extruder temp\nM220 S100 ;Reset Feedrate\nM221 S100 ;Reset Flowrate\nG92 E0 ; Reset Extruder\nG28 ; Home all axes\nM107 ;Off Fan\nG1 Z5.0 F3000 ;Move Z Axis up little to prevent scratching of Heat Bed\nG1 X0.1 Y20 Z1.4 F6000 ; Move to start position\nG1 X0.1 Y80.0 Z1.4 F1000 E25 ; Draw the first line\nG92 E0 ; Reset Extruder\nG1 X0.4 Y80.0 Z1.4 F6000 ; Move to side a little\nG1 X1.4 Y20 Z1.4 F1000 E20 ; Draw the second line\nG92 E0 ; Reset Extruder\nG1 Z2.0 F3000 ; Move Z Axis up little to prevent scratching of Heat Bed\nG1 X5 Y20 Z0.28 F3000.0 ; Move over to prevent blob squish\nG92 E0",
+          "endGcode": "{if max_layer_z < printable_height}G1 Z{z_offset+min(max_layer_z+2, printable_height)} F600 ; Move print head up{endif}\nG1 X5 Y{print_bed_max[1]*0.8} F{travel_speed*60} ; present print\n{if max_layer_z < printable_height-10}G1 Z{z_offset+min(max_layer_z+70, printable_height-10)} F600 ; Move print head further up{endif}\n{if max_layer_z < max_print_height*0.6}G1 Z{printable_height*0.6} F600 ; Move print head further up{endif}\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "Geeetech_A10 Pro",
+      "name": "Geeetech A10 Pro",
+      "nozzleSizes": [
+        0.4,
+        0.2,
+        0.6,
+        0.8
+      ],
+      "bedModel": "220x220.stl",
+      "bedTexture": "Geeetech_buildplate_texture.png",
+      "defaultMaterials": [
+        "Generic PLA @System",
+        "Generic PLA @System",
+        "Generic PETG @System",
+        "Generic ABS @System",
+        "Generic TPU @System"
+      ],
+      "variants": [
+        {
+          "name": "Geeetech A10 Pro 0.2 nozzle",
+          "nozzle": 0.2,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "220x0",
+              "220x220",
+              "0x220"
+            ],
+            "printableHeight": "260",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.2"
+            ],
+            "nozzleType": "brass",
+            "maxLayerHeight": [
+              "0.14"
+            ],
+            "minLayerHeight": [
+              "0.04"
+            ],
+            "defaultPrintProfile": "0.10mm Standard @Geeetech common 0.2 nozzle",
+            "defaultFilamentProfile": [
+              "Generic PLA @System"
+            ]
+          },
+          "startGcode": ";Geeetech official wiki homepage for A10：https://www.geeetech.com/wiki/index.php/Geeetech_A10_3D_Printer \nM104 S[first_layer_temperature] ; set extruder temp\nM140 S[first_layer_bed_temperature] ; set bed temp\nM190 S[first_layer_bed_temperature] ; wait for bed temp\nM109 S[first_layer_temperature] ; wait for extruder temp\nM220 S100 ;Reset Feedrate\nM221 S100 ;Reset Flowrate\nG92 E0 ; Reset Extruder\nG28 ; Home all axes\nM107 ;Off Fan\nG1 Z5.0 F3000 ;Move Z Axis up little to prevent scratching of Heat Bed\nG1 X0.1 Y20 Z1.4 F6000 ; Move to start position\nG1 X0.1 Y80.0 Z1.4 F1000 E25 ; Draw the first line\nG92 E0 ; Reset Extruder\nG1 X0.4 Y80.0 Z1.4 F6000 ; Move to side a little\nG1 X1.4 Y20 Z1.4 F1000 E20 ; Draw the second line\nG92 E0 ; Reset Extruder\nG1 Z2.0 F3000 ; Move Z Axis up little to prevent scratching of Heat Bed\nG1 X5 Y20 Z0.28 F3000.0 ; Move over to prevent blob squish\nG92 E0",
+          "endGcode": "G1 E-2.5 F2100 ; Retract filament\nG92 E0.0\nG1{if max_layer_z < printable_height} Z{z_offset+min(max_layer_z+30, printable_height+0.2)}{endif} E-1.5 F720 ; Retract and raise Z\nG4 ; wait\nM104 S0 ; Cooldown hotend\nM140 S0 ; Cooldown bed\nM107 ; off fan\nG1 X0 Y100 F3000 ; park print head\nM84 ; disable motors",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Geeetech A10 Pro 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "220x0",
+              "220x220",
+              "0x220"
+            ],
+            "printableHeight": "260",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "brass",
+            "maxLayerHeight": [
+              "0.3"
+            ],
+            "minLayerHeight": [
+              "0.07"
+            ],
+            "defaultPrintProfile": "0.20mm Standard @Geeetech common",
+            "defaultFilamentProfile": [
+              "Generic PLA @System"
+            ]
+          },
+          "startGcode": ";Geeetech official wiki homepage for A10：https://www.geeetech.com/wiki/index.php/Geeetech_A10_3D_Printer \nM104 S[first_layer_temperature] ; set extruder temp\nM140 S[first_layer_bed_temperature] ; set bed temp\nM190 S[first_layer_bed_temperature] ; wait for bed temp\nM109 S[first_layer_temperature] ; wait for extruder temp\nM220 S100 ;Reset Feedrate\nM221 S100 ;Reset Flowrate\nG92 E0 ; Reset Extruder\nG28 ; Home all axes\nM107 ;Off Fan\nG1 Z5.0 F3000 ;Move Z Axis up little to prevent scratching of Heat Bed\nG1 X0.1 Y20 Z1.4 F6000 ; Move to start position\nG1 X0.1 Y80.0 Z1.4 F1000 E25 ; Draw the first line\nG92 E0 ; Reset Extruder\nG1 X0.4 Y80.0 Z1.4 F6000 ; Move to side a little\nG1 X1.4 Y20 Z1.4 F1000 E20 ; Draw the second line\nG92 E0 ; Reset Extruder\nG1 Z2.0 F3000 ; Move Z Axis up little to prevent scratching of Heat Bed\nG1 X5 Y20 Z0.28 F3000.0 ; Move over to prevent blob squish\nG92 E0",
+          "endGcode": "G1 E-2.5 F2100 ; Retract filament\nG92 E0.0\nG1{if max_layer_z < printable_height} Z{z_offset+min(max_layer_z+30, printable_height+0.2)}{endif} E-1.5 F720 ; Retract and raise Z\nG4 ; wait\nM104 S0 ; Cooldown hotend\nM140 S0 ; Cooldown bed\nM107 ; off fan\nG1 X0 Y100 F3000 ; park print head\nM84 ; disable motors",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Geeetech A10 Pro 0.6 nozzle",
+          "nozzle": 0.6,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "220x0",
+              "220x220",
+              "0x220"
+            ],
+            "printableHeight": "260",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "nozzleType": "brass",
+            "maxLayerHeight": [
+              "0.42"
+            ],
+            "minLayerHeight": [
+              "0.12"
+            ],
+            "defaultPrintProfile": "0.30mm Standard @Geeetech common 0.6 nozzle",
+            "defaultFilamentProfile": [
+              "Generic PLA @System"
+            ]
+          },
+          "startGcode": ";Geeetech official wiki homepage for A10：https://www.geeetech.com/wiki/index.php/Geeetech_A10_3D_Printer \nM104 S[first_layer_temperature] ; set extruder temp\nM140 S[first_layer_bed_temperature] ; set bed temp\nM190 S[first_layer_bed_temperature] ; wait for bed temp\nM109 S[first_layer_temperature] ; wait for extruder temp\nM220 S100 ;Reset Feedrate\nM221 S100 ;Reset Flowrate\nG92 E0 ; Reset Extruder\nG28 ; Home all axes\nM107 ;Off Fan\nG1 Z5.0 F3000 ;Move Z Axis up little to prevent scratching of Heat Bed\nG1 X0.1 Y20 Z1.4 F6000 ; Move to start position\nG1 X0.1 Y80.0 Z1.4 F1000 E25 ; Draw the first line\nG92 E0 ; Reset Extruder\nG1 X0.4 Y80.0 Z1.4 F6000 ; Move to side a little\nG1 X1.4 Y20 Z1.4 F1000 E20 ; Draw the second line\nG92 E0 ; Reset Extruder\nG1 Z2.0 F3000 ; Move Z Axis up little to prevent scratching of Heat Bed\nG1 X5 Y20 Z0.28 F3000.0 ; Move over to prevent blob squish\nG92 E0",
+          "endGcode": "G1 E-2.5 F2100 ; Retract filament\nG92 E0.0\nG1{if max_layer_z < printable_height} Z{z_offset+min(max_layer_z+30, printable_height+0.2)}{endif} E-1.5 F720 ; Retract and raise Z\nG4 ; wait\nM104 S0 ; Cooldown hotend\nM140 S0 ; Cooldown bed\nM107 ; off fan\nG1 X0 Y100 F3000 ; park print head\nM84 ; disable motors",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Geeetech A10 Pro 0.8 nozzle",
+          "nozzle": 0.8,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "220x0",
+              "220x220",
+              "0x220"
+            ],
+            "printableHeight": "260",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "nozzleType": "brass",
+            "maxLayerHeight": [
+              "0.56"
+            ],
+            "minLayerHeight": [
+              "0.16"
+            ],
+            "defaultPrintProfile": "0.40mm Standard @Geeetech common 0.8 nozzle",
+            "defaultFilamentProfile": [
+              "Generic PLA @System"
+            ]
+          },
+          "startGcode": ";Geeetech official wiki homepage for A10：https://www.geeetech.com/wiki/index.php/Geeetech_A10_3D_Printer \nM104 S[first_layer_temperature] ; set extruder temp\nM140 S[first_layer_bed_temperature] ; set bed temp\nM190 S[first_layer_bed_temperature] ; wait for bed temp\nM109 S[first_layer_temperature] ; wait for extruder temp\nM220 S100 ;Reset Feedrate\nM221 S100 ;Reset Flowrate\nG92 E0 ; Reset Extruder\nG28 ; Home all axes\nM107 ;Off Fan\nG1 Z5.0 F3000 ;Move Z Axis up little to prevent scratching of Heat Bed\nG1 X0.1 Y20 Z1.4 F6000 ; Move to start position\nG1 X0.1 Y80.0 Z1.4 F1000 E25 ; Draw the first line\nG92 E0 ; Reset Extruder\nG1 X0.4 Y80.0 Z1.4 F6000 ; Move to side a little\nG1 X1.4 Y20 Z1.4 F1000 E20 ; Draw the second line\nG92 E0 ; Reset Extruder\nG1 Z2.0 F3000 ; Move Z Axis up little to prevent scratching of Heat Bed\nG1 X5 Y20 Z0.28 F3000.0 ; Move over to prevent blob squish\nG92 E0",
+          "endGcode": "G1 E-2.5 F2100 ; Retract filament\nG92 E0.0\nG1{if max_layer_z < printable_height} Z{z_offset+min(max_layer_z+30, printable_height+0.2)}{endif} E-1.5 F720 ; Retract and raise Z\nG4 ; wait\nM104 S0 ; Cooldown hotend\nM140 S0 ; Cooldown bed\nM107 ; off fan\nG1 X0 Y100 F3000 ; park print head\nM84 ; disable motors",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "Geeetech_A10 T",
+      "name": "Geeetech A10 T",
+      "nozzleSizes": [
+        0.4
+      ],
+      "bedModel": "220x220.stl",
+      "bedTexture": "Geeetech_buildplate_texture.png",
+      "defaultMaterials": [
+        "Generic PLA @System",
+        "Generic PLA @System",
+        "Generic PETG @System",
+        "Generic ABS @System",
+        "Generic TPU @System"
+      ],
+      "variants": [
+        {
+          "name": "Geeetech A10 T 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "220x0",
+              "220x220",
+              "0x220"
+            ],
+            "printableHeight": "260",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "brass",
+            "retractionLength": [
+              "6.5"
+            ],
+            "retractionSpeed": [
+              "25"
+            ],
+            "deretractionSpeed": [
+              "25"
+            ],
+            "maxLayerHeight": [
+              "0.3"
+            ],
+            "minLayerHeight": [
+              "0.07"
+            ],
+            "defaultPrintProfile": "0.20mm Standard @Geeetech common",
+            "defaultFilamentProfile": [
+              "Generic PLA @System"
+            ]
+          },
+          "startGcode": ";Custom Start G-code\nM104 S[first_layer_temperature] ; set extruder temp\nM140 S[first_layer_bed_temperature] ; set bed temp\nM190 S[first_layer_bed_temperature] ; wait for bed temp\nM109 S[first_layer_temperature] ; wait for extruder temp\nM220 S100 ;Reset Feedrate\nM221 S100 ;Reset Flowrate\nG92 E0 ; Reset Extruder\nG28 ; Home all axes\nM107 ;Off Fan\nG1 Z5.0 F3000 ;Move Z Axis up little to prevent scratching of Heat Bed\nG1 X0.1 Y20 Z1.4 F6000 ; Move to start position\nG1 X0.1 Y80.0 Z1.4 F1000 E25 ; Draw the first line\nG92 E0 ; Reset Extruder\nG1 X0.4 Y80.0 Z1.4 F6000 ; Move to side a little\nG1 X1.4 Y20 Z1.4 F1000 E20 ; Draw the second line\nG92 E0 ; Reset Extruder\nG1 Z2.0 F3000 ; Move Z Axis up little to prevent scratching of Heat Bed\nG1 X5 Y20 Z0.28 F3000.0 ; Move over to prevent blob squish\nG92 E0",
+          "endGcode": "{if max_layer_z < printable_height}G1 Z{z_offset+min(max_layer_z+2, printable_height)} F600 ; Move print head up{endif}\nG1 X5 Y{print_bed_max[1]*0.8} F{travel_speed*60} ; present print\n{if max_layer_z < printable_height-10}G1 Z{z_offset+min(max_layer_z+70, printable_height-10)} F600 ; Move print head further up{endif}\n{if max_layer_z < max_print_height*0.6}G1 Z{printable_height*0.6} F600 ; Move print head further up{endif}\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "Geeetech_A20",
+      "name": "Geeetech A20",
+      "nozzleSizes": [
+        0.4,
+        0.2,
+        0.6,
+        0.8
+      ],
+      "bedModel": "250x250.stl",
+      "bedTexture": "Geeetech_buildplate_texture.png",
+      "defaultMaterials": [
+        "Generic PLA @System",
+        "Generic PLA @System",
+        "Generic PETG @System",
+        "Generic ABS @System",
+        "Generic TPU @System"
+      ],
+      "variants": [
+        {
+          "name": "Geeetech A20 0.2 nozzle",
+          "nozzle": 0.2,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x250",
+              "0x250"
+            ],
+            "printableHeight": "260",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.2"
+            ],
+            "nozzleType": "brass",
+            "maxLayerHeight": [
+              "0.14"
+            ],
+            "minLayerHeight": [
+              "0.04"
+            ],
+            "defaultPrintProfile": "0.10mm Standard @Geeetech common 0.2 nozzle",
+            "defaultFilamentProfile": [
+              "Generic PLA @System"
+            ]
+          },
+          "startGcode": ";Geeetech official wiki homepage for A20：https://www.geeetech.com/wiki/index.php/Geeetech_A20_3D_printer \nM104 S[first_layer_temperature] ; set extruder temp\nM140 S[first_layer_bed_temperature] ; set bed temp\nM190 S[first_layer_bed_temperature] ; wait for bed temp\nM109 S[first_layer_temperature] ; wait for extruder temp\nM220 S100 ;Reset Feedrate\nM221 S100 ;Reset Flowrate\nG92 E0 ; Reset Extruder\nG28 ; Home all axes\nM107 ;Off Fan\nG1 Z5.0 F3000 ;Move Z Axis up little to prevent scratching of Heat Bed\nG1 X0.1 Y20 Z1.4 F6000 ; Move to start position\nG1 X0.1 Y80.0 Z1.4 F1000 E25 ; Draw the first line\nG92 E0 ; Reset Extruder\nG1 X0.4 Y80.0 Z1.4 F6000 ; Move to side a little\nG1 X1.4 Y20 Z1.4 F1000 E20 ; Draw the second line\nG92 E0 ; Reset Extruder\nG1 Z2.0 F3000 ; Move Z Axis up little to prevent scratching of Heat Bed\nG1 X5 Y20 Z0.28 F3000.0 ; Move over to prevent blob squish\nG92 E0",
+          "endGcode": "G1 E-2.5 F2100 ; Retract filament\nG92 E0.0\nG1{if max_layer_z < printable_height} Z{z_offset+min(max_layer_z+30, printable_height+0.2)}{endif} E-1.5 F720 ; Retract and raise Z\nG4 ; wait\nM104 S0 ; Cooldown hotend\nM140 S0 ; Cooldown bed\nM107 ; off fan\nG1 X0 Y100 F3000 ; park print head\nM84 ; disable motors",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Geeetech A20 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x250",
+              "0x250"
+            ],
+            "printableHeight": "260",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "brass",
+            "maxLayerHeight": [
+              "0.3"
+            ],
+            "minLayerHeight": [
+              "0.07"
+            ],
+            "defaultPrintProfile": "0.20mm Standard @Geeetech common",
+            "defaultFilamentProfile": [
+              "Generic PLA @System"
+            ]
+          },
+          "startGcode": ";Geeetech official wiki homepage for A20：https://www.geeetech.com/wiki/index.php/Geeetech_A20_3D_printer \nM104 S[first_layer_temperature] ; set extruder temp\nM140 S[first_layer_bed_temperature] ; set bed temp\nM190 S[first_layer_bed_temperature] ; wait for bed temp\nM109 S[first_layer_temperature] ; wait for extruder temp\nM220 S100 ;Reset Feedrate\nM221 S100 ;Reset Flowrate\nG92 E0 ; Reset Extruder\nG28 ; Home all axes\nM107 ;Off Fan\nG1 Z5.0 F3000 ;Move Z Axis up little to prevent scratching of Heat Bed\nG1 X0.1 Y20 Z1.4 F6000 ; Move to start position\nG1 X0.1 Y80.0 Z1.4 F1000 E25 ; Draw the first line\nG92 E0 ; Reset Extruder\nG1 X0.4 Y80.0 Z1.4 F6000 ; Move to side a little\nG1 X1.4 Y20 Z1.4 F1000 E20 ; Draw the second line\nG92 E0 ; Reset Extruder\nG1 Z2.0 F3000 ; Move Z Axis up little to prevent scratching of Heat Bed\nG1 X5 Y20 Z0.28 F3000.0 ; Move over to prevent blob squish\nG92 E0",
+          "endGcode": "G1 E-2.5 F2100 ; Retract filament\nG92 E0.0\nG1{if max_layer_z < printable_height} Z{z_offset+min(max_layer_z+30, printable_height+0.2)}{endif} E-1.5 F720 ; Retract and raise Z\nG4 ; wait\nM104 S0 ; Cooldown hotend\nM140 S0 ; Cooldown bed\nM107 ; off fan\nG1 X0 Y100 F3000 ; park print head\nM84 ; disable motors",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Geeetech A20 0.6 nozzle",
+          "nozzle": 0.6,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x250",
+              "0x250"
+            ],
+            "printableHeight": "260",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "nozzleType": "brass",
+            "maxLayerHeight": [
+              "0.42"
+            ],
+            "minLayerHeight": [
+              "0.12"
+            ],
+            "defaultPrintProfile": "0.30mm Standard @Geeetech common 0.6 nozzle",
+            "defaultFilamentProfile": [
+              "Generic PLA @System"
+            ]
+          },
+          "startGcode": ";Geeetech official wiki homepage for A20：https://www.geeetech.com/wiki/index.php/Geeetech_A20_3D_printer \nM104 S[first_layer_temperature] ; set extruder temp\nM140 S[first_layer_bed_temperature] ; set bed temp\nM190 S[first_layer_bed_temperature] ; wait for bed temp\nM109 S[first_layer_temperature] ; wait for extruder temp\nM220 S100 ;Reset Feedrate\nM221 S100 ;Reset Flowrate\nG92 E0 ; Reset Extruder\nG28 ; Home all axes\nM107 ;Off Fan\nG1 Z5.0 F3000 ;Move Z Axis up little to prevent scratching of Heat Bed\nG1 X0.1 Y20 Z1.4 F6000 ; Move to start position\nG1 X0.1 Y80.0 Z1.4 F1000 E25 ; Draw the first line\nG92 E0 ; Reset Extruder\nG1 X0.4 Y80.0 Z1.4 F6000 ; Move to side a little\nG1 X1.4 Y20 Z1.4 F1000 E20 ; Draw the second line\nG92 E0 ; Reset Extruder\nG1 Z2.0 F3000 ; Move Z Axis up little to prevent scratching of Heat Bed\nG1 X5 Y20 Z0.28 F3000.0 ; Move over to prevent blob squish\nG92 E0",
+          "endGcode": "G1 E-2.5 F2100 ; Retract filament\nG92 E0.0\nG1{if max_layer_z < printable_height} Z{z_offset+min(max_layer_z+30, printable_height+0.2)}{endif} E-1.5 F720 ; Retract and raise Z\nG4 ; wait\nM104 S0 ; Cooldown hotend\nM140 S0 ; Cooldown bed\nM107 ; off fan\nG1 X0 Y100 F3000 ; park print head\nM84 ; disable motors",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Geeetech A20 0.8 nozzle",
+          "nozzle": 0.8,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x250",
+              "0x250"
+            ],
+            "printableHeight": "260",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "nozzleType": "brass",
+            "maxLayerHeight": [
+              "0.56"
+            ],
+            "minLayerHeight": [
+              "0.16"
+            ],
+            "defaultPrintProfile": "0.40mm Standard @Geeetech common 0.8 nozzle",
+            "defaultFilamentProfile": [
+              "Generic PLA @System"
+            ]
+          },
+          "startGcode": ";Geeetech official wiki homepage for A20：https://www.geeetech.com/wiki/index.php/Geeetech_A20_3D_printer \nM104 S[first_layer_temperature] ; set extruder temp\nM140 S[first_layer_bed_temperature] ; set bed temp\nM190 S[first_layer_bed_temperature] ; wait for bed temp\nM109 S[first_layer_temperature] ; wait for extruder temp\nM220 S100 ;Reset Feedrate\nM221 S100 ;Reset Flowrate\nG92 E0 ; Reset Extruder\nG28 ; Home all axes\nM107 ;Off Fan\nG1 Z5.0 F3000 ;Move Z Axis up little to prevent scratching of Heat Bed\nG1 X0.1 Y20 Z1.4 F6000 ; Move to start position\nG1 X0.1 Y80.0 Z1.4 F1000 E25 ; Draw the first line\nG92 E0 ; Reset Extruder\nG1 X0.4 Y80.0 Z1.4 F6000 ; Move to side a little\nG1 X1.4 Y20 Z1.4 F1000 E20 ; Draw the second line\nG92 E0 ; Reset Extruder\nG1 Z2.0 F3000 ; Move Z Axis up little to prevent scratching of Heat Bed\nG1 X5 Y20 Z0.28 F3000.0 ; Move over to prevent blob squish\nG92 E0",
+          "endGcode": "G1 E-2.5 F2100 ; Retract filament\nG92 E0.0\nG1{if max_layer_z < printable_height} Z{z_offset+min(max_layer_z+30, printable_height+0.2)}{endif} E-1.5 F720 ; Retract and raise Z\nG4 ; wait\nM104 S0 ; Cooldown hotend\nM140 S0 ; Cooldown bed\nM107 ; off fan\nG1 X0 Y100 F3000 ; park print head\nM84 ; disable motors",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Geeetech A20 M 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x250",
+              "0x250"
+            ],
+            "printableHeight": "260",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "brass",
+            "retractionLength": [
+              "6.5"
+            ],
+            "retractionSpeed": [
+              "25"
+            ],
+            "deretractionSpeed": [
+              "25"
+            ],
+            "maxLayerHeight": [
+              "0.3"
+            ],
+            "minLayerHeight": [
+              "0.07"
+            ],
+            "defaultPrintProfile": "0.20mm Standard @Geeetech common",
+            "defaultFilamentProfile": [
+              "Generic PLA @System"
+            ]
+          },
+          "startGcode": ";Geeetech official wiki homepage for A20M：https://www.geeetech.com/wiki/index.php/Geeetech_A20M_3D_printer \nM104 S[first_layer_temperature] ; set extruder temp\nM140 S[first_layer_bed_temperature] ; set bed temp\nM190 S[first_layer_bed_temperature] ; wait for bed temp\nM109 S[first_layer_temperature] ; wait for extruder temp\nM220 S100 ;Reset Feedrate\nM221 S100 ;Reset Flowrate\nG92 E0 ; Reset Extruder\nG28 ; Home all axes\nM107 ;Off Fan\nG1 Z5.0 F3000 ;Move Z Axis up little to prevent scratching of Heat Bed\nG1 X0.1 Y20 Z1.4 F6000 ; Move to start position\nG1 X0.1 Y80.0 Z1.4 F1000 E25 ; Draw the first line\nG92 E0 ; Reset Extruder\nG1 X0.4 Y80.0 Z1.4 F6000 ; Move to side a little\nG1 X1.4 Y20 Z1.4 F1000 E20 ; Draw the second line\nG92 E0 ; Reset Extruder\nG1 Z2.0 F3000 ; Move Z Axis up little to prevent scratching of Heat Bed\nG1 X5 Y20 Z0.28 F3000.0 ; Move over to prevent blob squish\nG92 E0",
+          "endGcode": "{if max_layer_z < printable_height}G1 Z{z_offset+min(max_layer_z+2, printable_height)} F600 ; Move print head up{endif}\nG1 X5 Y{print_bed_max[1]*0.8} F{travel_speed*60} ; present print\n{if max_layer_z < printable_height-10}G1 Z{z_offset+min(max_layer_z+70, printable_height-10)} F600 ; Move print head further up{endif}\n{if max_layer_z < max_print_height*0.6}G1 Z{printable_height*0.6} F600 ; Move print head further up{endif}\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Geeetech A20 M",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.4"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Geeetech A20 T 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x250",
+              "0x250"
+            ],
+            "printableHeight": "260",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "brass",
+            "retractionLength": [
+              "6.5"
+            ],
+            "retractionSpeed": [
+              "25"
+            ],
+            "deretractionSpeed": [
+              "25"
+            ],
+            "maxLayerHeight": [
+              "0.3"
+            ],
+            "minLayerHeight": [
+              "0.07"
+            ],
+            "defaultPrintProfile": "0.20mm Standard @Geeetech common",
+            "defaultFilamentProfile": [
+              "Generic PLA @System"
+            ]
+          },
+          "startGcode": ";Custom Start G-code\nM104 S[first_layer_temperature] ; set extruder temp\nM140 S[first_layer_bed_temperature] ; set bed temp\nM190 S[first_layer_bed_temperature] ; wait for bed temp\nM109 S[first_layer_temperature] ; wait for extruder temp\nM220 S100 ;Reset Feedrate\nM221 S100 ;Reset Flowrate\nG92 E0 ; Reset Extruder\nG28 ; Home all axes\nM107 ;Off Fan\nG1 Z5.0 F3000 ;Move Z Axis up little to prevent scratching of Heat Bed\nG1 X0.1 Y20 Z1.4 F6000 ; Move to start position\nG1 X0.1 Y80.0 Z1.4 F1000 E25 ; Draw the first line\nG92 E0 ; Reset Extruder\nG1 X0.4 Y80.0 Z1.4 F6000 ; Move to side a little\nG1 X1.4 Y20 Z1.4 F1000 E20 ; Draw the second line\nG92 E0 ; Reset Extruder\nG1 Z2.0 F3000 ; Move Z Axis up little to prevent scratching of Heat Bed\nG1 X5 Y20 Z0.28 F3000.0 ; Move over to prevent blob squish\nG92 E0",
+          "endGcode": "{if max_layer_z < printable_height}G1 Z{z_offset+min(max_layer_z+2, printable_height)} F600 ; Move print head up{endif}\nG1 X5 Y{print_bed_max[1]*0.8} F{travel_speed*60} ; present print\n{if max_layer_z < printable_height-10}G1 Z{z_offset+min(max_layer_z+70, printable_height-10)} F600 ; Move print head further up{endif}\n{if max_layer_z < max_print_height*0.6}G1 Z{printable_height*0.6} F600 ; Move print head further up{endif}\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Geeetech A20 T",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.4"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "Geeetech_A20 M",
+      "name": "Geeetech A20 M",
+      "nozzleSizes": [
+        0.4
+      ],
+      "bedModel": "250x250.stl",
+      "bedTexture": "Geeetech_buildplate_texture.png",
+      "defaultMaterials": [
+        "Generic PLA @System",
+        "Generic PLA @System",
+        "Generic PETG @System",
+        "Generic ABS @System",
+        "Generic TPU @System"
+      ],
+      "variants": [
+        {
+          "name": "Geeetech A20 M 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x250",
+              "0x250"
+            ],
+            "printableHeight": "260",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "brass",
+            "retractionLength": [
+              "6.5"
+            ],
+            "retractionSpeed": [
+              "25"
+            ],
+            "deretractionSpeed": [
+              "25"
+            ],
+            "maxLayerHeight": [
+              "0.3"
+            ],
+            "minLayerHeight": [
+              "0.07"
+            ],
+            "defaultPrintProfile": "0.20mm Standard @Geeetech common",
+            "defaultFilamentProfile": [
+              "Generic PLA @System"
+            ]
+          },
+          "startGcode": ";Geeetech official wiki homepage for A20M：https://www.geeetech.com/wiki/index.php/Geeetech_A20M_3D_printer \nM104 S[first_layer_temperature] ; set extruder temp\nM140 S[first_layer_bed_temperature] ; set bed temp\nM190 S[first_layer_bed_temperature] ; wait for bed temp\nM109 S[first_layer_temperature] ; wait for extruder temp\nM220 S100 ;Reset Feedrate\nM221 S100 ;Reset Flowrate\nG92 E0 ; Reset Extruder\nG28 ; Home all axes\nM107 ;Off Fan\nG1 Z5.0 F3000 ;Move Z Axis up little to prevent scratching of Heat Bed\nG1 X0.1 Y20 Z1.4 F6000 ; Move to start position\nG1 X0.1 Y80.0 Z1.4 F1000 E25 ; Draw the first line\nG92 E0 ; Reset Extruder\nG1 X0.4 Y80.0 Z1.4 F6000 ; Move to side a little\nG1 X1.4 Y20 Z1.4 F1000 E20 ; Draw the second line\nG92 E0 ; Reset Extruder\nG1 Z2.0 F3000 ; Move Z Axis up little to prevent scratching of Heat Bed\nG1 X5 Y20 Z0.28 F3000.0 ; Move over to prevent blob squish\nG92 E0",
+          "endGcode": "{if max_layer_z < printable_height}G1 Z{z_offset+min(max_layer_z+2, printable_height)} F600 ; Move print head up{endif}\nG1 X5 Y{print_bed_max[1]*0.8} F{travel_speed*60} ; present print\n{if max_layer_z < printable_height-10}G1 Z{z_offset+min(max_layer_z+70, printable_height-10)} F600 ; Move print head further up{endif}\n{if max_layer_z < max_print_height*0.6}G1 Z{printable_height*0.6} F600 ; Move print head further up{endif}\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "Geeetech_A20 T",
+      "name": "Geeetech A20 T",
+      "nozzleSizes": [
+        0.4
+      ],
+      "bedModel": "250x250.stl",
+      "bedTexture": "Geeetech_buildplate_texture.png",
+      "defaultMaterials": [
+        "Generic PLA @System",
+        "Generic PLA @System",
+        "Generic PETG @System",
+        "Generic ABS @System",
+        "Generic TPU @System"
+      ],
+      "variants": [
+        {
+          "name": "Geeetech A20 T 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "250x0",
+              "250x250",
+              "0x250"
+            ],
+            "printableHeight": "260",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "brass",
+            "retractionLength": [
+              "6.5"
+            ],
+            "retractionSpeed": [
+              "25"
+            ],
+            "deretractionSpeed": [
+              "25"
+            ],
+            "maxLayerHeight": [
+              "0.3"
+            ],
+            "minLayerHeight": [
+              "0.07"
+            ],
+            "defaultPrintProfile": "0.20mm Standard @Geeetech common",
+            "defaultFilamentProfile": [
+              "Generic PLA @System"
+            ]
+          },
+          "startGcode": ";Custom Start G-code\nM104 S[first_layer_temperature] ; set extruder temp\nM140 S[first_layer_bed_temperature] ; set bed temp\nM190 S[first_layer_bed_temperature] ; wait for bed temp\nM109 S[first_layer_temperature] ; wait for extruder temp\nM220 S100 ;Reset Feedrate\nM221 S100 ;Reset Flowrate\nG92 E0 ; Reset Extruder\nG28 ; Home all axes\nM107 ;Off Fan\nG1 Z5.0 F3000 ;Move Z Axis up little to prevent scratching of Heat Bed\nG1 X0.1 Y20 Z1.4 F6000 ; Move to start position\nG1 X0.1 Y80.0 Z1.4 F1000 E25 ; Draw the first line\nG92 E0 ; Reset Extruder\nG1 X0.4 Y80.0 Z1.4 F6000 ; Move to side a little\nG1 X1.4 Y20 Z1.4 F1000 E20 ; Draw the second line\nG92 E0 ; Reset Extruder\nG1 Z2.0 F3000 ; Move Z Axis up little to prevent scratching of Heat Bed\nG1 X5 Y20 Z0.28 F3000.0 ; Move over to prevent blob squish\nG92 E0",
+          "endGcode": "{if max_layer_z < printable_height}G1 Z{z_offset+min(max_layer_z+2, printable_height)} F600 ; Move print head up{endif}\nG1 X5 Y{print_bed_max[1]*0.8} F{travel_speed*60} ; present print\n{if max_layer_z < printable_height-10}G1 Z{z_offset+min(max_layer_z+70, printable_height-10)} F600 ; Move print head further up{endif}\n{if max_layer_z < max_print_height*0.6}G1 Z{printable_height*0.6} F600 ; Move print head further up{endif}\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "Geeetech_A30 M",
+      "name": "Geeetech A30 M",
+      "nozzleSizes": [
+        0.4
+      ],
+      "bedModel": "320x320.stl",
+      "bedTexture": "Geeetech_buildplate_texture.png",
+      "defaultMaterials": [
+        "Generic PLA @System",
+        "Generic PLA @System",
+        "Generic PETG @System",
+        "Generic ABS @System",
+        "Generic TPU @System"
+      ],
+      "variants": [
+        {
+          "name": "Geeetech A30 M 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "320x0",
+              "320x320",
+              "0x320"
+            ],
+            "printableHeight": "420",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "brass",
+            "retractionLength": [
+              "6.5"
+            ],
+            "retractionSpeed": [
+              "25"
+            ],
+            "deretractionSpeed": [
+              "25"
+            ],
+            "maxLayerHeight": [
+              "0.3"
+            ],
+            "minLayerHeight": [
+              "0.07"
+            ],
+            "defaultPrintProfile": "0.20mm Standard @Geeetech common",
+            "defaultFilamentProfile": [
+              "Generic PLA @System"
+            ]
+          },
+          "startGcode": ";Custom Start G-code\nM104 S[first_layer_temperature] ; set extruder temp\nM140 S[first_layer_bed_temperature] ; set bed temp\nM190 S[first_layer_bed_temperature] ; wait for bed temp\nM109 S[first_layer_temperature] ; wait for extruder temp\nM220 S100 ;Reset Feedrate\nM221 S100 ;Reset Flowrate\nG92 E0 ; Reset Extruder\nG28 ; Home all axes\nM107 ;Off Fan\nG1 Z5.0 F3000 ;Move Z Axis up little to prevent scratching of Heat Bed\nG1 X0.1 Y20 Z1.4 F6000 ; Move to start position\nG1 X0.1 Y80.0 Z1.4 F1000 E25 ; Draw the first line\nG92 E0 ; Reset Extruder\nG1 X0.4 Y80.0 Z1.4 F6000 ; Move to side a little\nG1 X1.4 Y20 Z1.4 F1000 E20 ; Draw the second line\nG92 E0 ; Reset Extruder\nG1 Z2.0 F3000 ; Move Z Axis up little to prevent scratching of Heat Bed\nG1 X5 Y20 Z0.28 F3000.0 ; Move over to prevent blob squish\nG92 E0",
+          "endGcode": "G1 E-2.5 F2100 ; Retract filament\nG92 E0.0\nG1{if max_layer_z < printable_height} Z{z_offset+min(max_layer_z+30, printable_height+0.2)}{endif} E-1.5 F720 ; Retract and raise Z\nG4 ; wait\nM104 S0 ; Cooldown hotend\nM140 S0 ; Cooldown bed\nM107 ; off fan\nG1 X0 Y100 F3000 ; park print head\nM84 ; disable motors",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "Geeetech_A30 Pro",
+      "name": "Geeetech A30 Pro",
+      "nozzleSizes": [
+        0.4,
+        0.2,
+        0.6,
+        0.8
+      ],
+      "bedModel": "320x320.stl",
+      "bedTexture": "Geeetech_buildplate_texture.png",
+      "defaultMaterials": [
+        "Generic PLA @System",
+        "Generic PLA @System",
+        "Generic PETG @System",
+        "Generic ABS @System",
+        "Generic TPU @System"
+      ],
+      "variants": [
+        {
+          "name": "Geeetech A30 Pro 0.2 nozzle",
+          "nozzle": 0.2,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "320x0",
+              "320x320",
+              "0x320"
+            ],
+            "printableHeight": "420",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.2"
+            ],
+            "nozzleType": "brass",
+            "maxLayerHeight": [
+              "0.14"
+            ],
+            "minLayerHeight": [
+              "0.04"
+            ],
+            "defaultPrintProfile": "0.10mm Standard @Geeetech common 0.2 nozzle",
+            "defaultFilamentProfile": [
+              "Generic PLA @System"
+            ]
+          },
+          "startGcode": ";Geeetech official wiki homepage for A30：https://www.geeetech.com/wiki/index.php/Geeetech_A30_3D_Printer \nM104 S[first_layer_temperature] ; set extruder temp\nM140 S[first_layer_bed_temperature] ; set bed temp\nM190 S[first_layer_bed_temperature] ; wait for bed temp\nM109 S[first_layer_temperature] ; wait for extruder temp\nM220 S100 ;Reset Feedrate\nM221 S100 ;Reset Flowrate\nG92 E0 ; Reset Extruder\nG28 ; Home all axes\nM107 ;Off Fan\nG1 Z5.0 F3000 ;Move Z Axis up little to prevent scratching of Heat Bed\nG1 X0.1 Y20 Z1.4 F6000 ; Move to start position\nG1 X0.1 Y80.0 Z1.4 F1000 E25 ; Draw the first line\nG92 E0 ; Reset Extruder\nG1 X0.4 Y80.0 Z1.4 F6000 ; Move to side a little\nG1 X1.4 Y20 Z1.4 F1000 E20 ; Draw the second line\nG92 E0 ; Reset Extruder\nG1 Z2.0 F3000 ; Move Z Axis up little to prevent scratching of Heat Bed\nG1 X5 Y20 Z0.28 F3000.0 ; Move over to prevent blob squish\nG92 E0",
+          "endGcode": "G1 E-2.5 F2100 ; Retract filament\nG92 E0.0\nG1{if max_layer_z < printable_height} Z{z_offset+min(max_layer_z+30, printable_height+0.2)}{endif} E-1.5 F720 ; Retract and raise Z\nG4 ; wait\nM104 S0 ; Cooldown hotend\nM140 S0 ; Cooldown bed\nM107 ; off fan\nG1 X0 Y100 F3000 ; park print head\nM84 ; disable motors",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Geeetech A30 Pro 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "320x0",
+              "320x320",
+              "0x320"
+            ],
+            "printableHeight": "420",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "brass",
+            "maxLayerHeight": [
+              "0.3"
+            ],
+            "minLayerHeight": [
+              "0.07"
+            ],
+            "defaultPrintProfile": "0.20mm Standard @Geeetech common",
+            "defaultFilamentProfile": [
+              "Generic PLA @System"
+            ]
+          },
+          "startGcode": ";Geeetech official wiki homepage for A30：https://www.geeetech.com/wiki/index.php/Geeetech_A30_3D_Printer \nM104 S[first_layer_temperature] ; set extruder temp\nM140 S[first_layer_bed_temperature] ; set bed temp\nM190 S[first_layer_bed_temperature] ; wait for bed temp\nM109 S[first_layer_temperature] ; wait for extruder temp\nM220 S100 ;Reset Feedrate\nM221 S100 ;Reset Flowrate\nG92 E0 ; Reset Extruder\nG28 ; Home all axes\nM107 ;Off Fan\nG1 Z5.0 F3000 ;Move Z Axis up little to prevent scratching of Heat Bed\nG1 X0.1 Y20 Z1.4 F6000 ; Move to start position\nG1 X0.1 Y80.0 Z1.4 F1000 E25 ; Draw the first line\nG92 E0 ; Reset Extruder\nG1 X0.4 Y80.0 Z1.4 F6000 ; Move to side a little\nG1 X1.4 Y20 Z1.4 F1000 E20 ; Draw the second line\nG92 E0 ; Reset Extruder\nG1 Z2.0 F3000 ; Move Z Axis up little to prevent scratching of Heat Bed\nG1 X5 Y20 Z0.28 F3000.0 ; Move over to prevent blob squish\nG92 E0",
+          "endGcode": "G1 E-2.5 F2100 ; Retract filament\nG92 E0.0\nG1{if max_layer_z < printable_height} Z{z_offset+min(max_layer_z+30, printable_height+0.2)}{endif} E-1.5 F720 ; Retract and raise Z\nG4 ; wait\nM104 S0 ; Cooldown hotend\nM140 S0 ; Cooldown bed\nM107 ; off fan\nG1 X0 Y100 F3000 ; park print head\nM84 ; disable motors",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Geeetech A30 Pro 0.6 nozzle",
+          "nozzle": 0.6,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "320x0",
+              "320x320",
+              "0x320"
+            ],
+            "printableHeight": "420",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "nozzleType": "brass",
+            "maxLayerHeight": [
+              "0.42"
+            ],
+            "minLayerHeight": [
+              "0.12"
+            ],
+            "defaultPrintProfile": "0.30mm Standard @Geeetech common 0.6 nozzle",
+            "defaultFilamentProfile": [
+              "Generic PLA @System"
+            ]
+          },
+          "startGcode": ";Geeetech official wiki homepage for A30：https://www.geeetech.com/wiki/index.php/Geeetech_A30_3D_Printer \nM104 S[first_layer_temperature] ; set extruder temp\nM140 S[first_layer_bed_temperature] ; set bed temp\nM190 S[first_layer_bed_temperature] ; wait for bed temp\nM109 S[first_layer_temperature] ; wait for extruder temp\nM220 S100 ;Reset Feedrate\nM221 S100 ;Reset Flowrate\nG92 E0 ; Reset Extruder\nG28 ; Home all axes\nM107 ;Off Fan\nG1 Z5.0 F3000 ;Move Z Axis up little to prevent scratching of Heat Bed\nG1 X0.1 Y20 Z1.4 F6000 ; Move to start position\nG1 X0.1 Y80.0 Z1.4 F1000 E25 ; Draw the first line\nG92 E0 ; Reset Extruder\nG1 X0.4 Y80.0 Z1.4 F6000 ; Move to side a little\nG1 X1.4 Y20 Z1.4 F1000 E20 ; Draw the second line\nG92 E0 ; Reset Extruder\nG1 Z2.0 F3000 ; Move Z Axis up little to prevent scratching of Heat Bed\nG1 X5 Y20 Z0.28 F3000.0 ; Move over to prevent blob squish\nG92 E0",
+          "endGcode": "G1 E-2.5 F2100 ; Retract filament\nG92 E0.0\nG1{if max_layer_z < printable_height} Z{z_offset+min(max_layer_z+30, printable_height+0.2)}{endif} E-1.5 F720 ; Retract and raise Z\nG4 ; wait\nM104 S0 ; Cooldown hotend\nM140 S0 ; Cooldown bed\nM107 ; off fan\nG1 X0 Y100 F3000 ; park print head\nM84 ; disable motors",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Geeetech A30 Pro 0.8 nozzle",
+          "nozzle": 0.8,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "320x0",
+              "320x320",
+              "0x320"
+            ],
+            "printableHeight": "420",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "nozzleType": "brass",
+            "maxLayerHeight": [
+              "0.56"
+            ],
+            "minLayerHeight": [
+              "0.16"
+            ],
+            "defaultPrintProfile": "0.40mm Standard @Geeetech common 0.8 nozzle",
+            "defaultFilamentProfile": [
+              "Generic PLA @System"
+            ]
+          },
+          "startGcode": ";Geeetech official wiki homepage for A30：https://www.geeetech.com/wiki/index.php/Geeetech_A30_3D_Printer \nM104 S[first_layer_temperature] ; set extruder temp\nM140 S[first_layer_bed_temperature] ; set bed temp\nM190 S[first_layer_bed_temperature] ; wait for bed temp\nM109 S[first_layer_temperature] ; wait for extruder temp\nM220 S100 ;Reset Feedrate\nM221 S100 ;Reset Flowrate\nG92 E0 ; Reset Extruder\nG28 ; Home all axes\nM107 ;Off Fan\nG1 Z5.0 F3000 ;Move Z Axis up little to prevent scratching of Heat Bed\nG1 X0.1 Y20 Z1.4 F6000 ; Move to start position\nG1 X0.1 Y80.0 Z1.4 F1000 E25 ; Draw the first line\nG92 E0 ; Reset Extruder\nG1 X0.4 Y80.0 Z1.4 F6000 ; Move to side a little\nG1 X1.4 Y20 Z1.4 F1000 E20 ; Draw the second line\nG92 E0 ; Reset Extruder\nG1 Z2.0 F3000 ; Move Z Axis up little to prevent scratching of Heat Bed\nG1 X5 Y20 Z0.28 F3000.0 ; Move over to prevent blob squish\nG92 E0",
+          "endGcode": "G1 E-2.5 F2100 ; Retract filament\nG92 E0.0\nG1{if max_layer_z < printable_height} Z{z_offset+min(max_layer_z+30, printable_height+0.2)}{endif} E-1.5 F720 ; Retract and raise Z\nG4 ; wait\nM104 S0 ; Cooldown hotend\nM140 S0 ; Cooldown bed\nM107 ; off fan\nG1 X0 Y100 F3000 ; park print head\nM84 ; disable motors",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "Geeetech_A30 T",
+      "name": "Geeetech A30 T",
+      "nozzleSizes": [
+        0.4
+      ],
+      "bedModel": "320x320.stl",
+      "bedTexture": "Geeetech_buildplate_texture.png",
+      "defaultMaterials": [
+        "Generic PLA @System",
+        "Generic PLA @System",
+        "Generic PETG @System",
+        "Generic ABS @System",
+        "Generic TPU @System"
+      ],
+      "variants": [
+        {
+          "name": "Geeetech A30 T 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "320x0",
+              "320x320",
+              "0x320"
+            ],
+            "printableHeight": "420",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "brass",
+            "retractionLength": [
+              "6.5"
+            ],
+            "retractionSpeed": [
+              "25"
+            ],
+            "deretractionSpeed": [
+              "25"
+            ],
+            "maxLayerHeight": [
+              "0.3"
+            ],
+            "minLayerHeight": [
+              "0.07"
+            ],
+            "defaultPrintProfile": "0.20mm Standard @Geeetech common",
+            "defaultFilamentProfile": [
+              "Generic PLA @System"
+            ]
+          },
+          "startGcode": ";Custom Start G-code\nM104 S[first_layer_temperature] ; set extruder temp\nM140 S[first_layer_bed_temperature] ; set bed temp\nM190 S[first_layer_bed_temperature] ; wait for bed temp\nM109 S[first_layer_temperature] ; wait for extruder temp\nM220 S100 ;Reset Feedrate\nM221 S100 ;Reset Flowrate\nG92 E0 ; Reset Extruder\nG28 ; Home all axes\nM107 ;Off Fan\nG1 Z5.0 F3000 ;Move Z Axis up little to prevent scratching of Heat Bed\nG1 X0.1 Y20 Z1.4 F6000 ; Move to start position\nG1 X0.1 Y80.0 Z1.4 F1000 E25 ; Draw the first line\nG92 E0 ; Reset Extruder\nG1 X0.4 Y80.0 Z1.4 F6000 ; Move to side a little\nG1 X1.4 Y20 Z1.4 F1000 E20 ; Draw the second line\nG92 E0 ; Reset Extruder\nG1 Z2.0 F3000 ; Move Z Axis up little to prevent scratching of Heat Bed\nG1 X5 Y20 Z0.28 F3000.0 ; Move over to prevent blob squish\nG92 E0",
+          "endGcode": "G1 E-2.5 F2100 ; Retract filament\nG92 E0.0\nG1{if max_layer_z < printable_height} Z{z_offset+min(max_layer_z+30, printable_height+0.2)}{endif} E-1.5 F720 ; Retract and raise Z\nG4 ; wait\nM104 S0 ; Cooldown hotend\nM140 S0 ; Cooldown bed\nM107 ; off fan\nG1 X0 Y100 F3000 ; park print head\nM84 ; disable motors",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "Geeetech_M1",
+      "name": "Geeetech M1",
+      "nozzleSizes": [
+        0.4,
+        0.2,
+        0.6,
+        0.8
+      ],
+      "bedModel": "105x105.stl",
+      "bedTexture": "Geeetech_buildplate_texture.png",
+      "defaultMaterials": [
+        "Generic PLA @System",
+        "Generic PLA @System",
+        "Generic PETG @System",
+        "Generic TPU @System"
+      ],
+      "variants": [
+        {
+          "name": "Geeetech M1 0.2 nozzle",
+          "nozzle": 0.2,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "105x0",
+              "105x105",
+              "0x105"
+            ],
+            "printableHeight": "95",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.2"
+            ],
+            "nozzleType": "brass",
+            "machineMaxSpeedX": [
+              "300",
+              "300"
+            ],
+            "machineMaxSpeedY": [
+              "300",
+              "300"
+            ],
+            "machineMaxSpeedZ": [
+              "25",
+              "25"
+            ],
+            "machineMaxSpeedE": [
+              "60",
+              "60"
+            ],
+            "machineMaxAccelX": [
+              "3000",
+              "3000"
+            ],
+            "machineMaxAccelY": [
+              "3000",
+              "3000"
+            ],
+            "machineMaxAccelZ": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelExtruding": [
+              "3000",
+              "3000"
+            ],
+            "machineMaxAccelRetracting": [
+              "3000",
+              "3000"
+            ],
+            "machineMaxAccelTravel": [
+              "3000",
+              "3000"
+            ],
+            "machineMaxJerkX": [
+              "10",
+              "10"
+            ],
+            "machineMaxJerkY": [
+              "10",
+              "10"
+            ],
+            "machineMaxJerkZ": [
+              "3",
+              "3"
+            ],
+            "machineMaxJerkE": [
+              "10",
+              "10"
+            ],
+            "retractionLength": [
+              "1"
+            ],
+            "retractionSpeed": [
+              "40"
+            ],
+            "deretractionSpeed": [
+              "40"
+            ],
+            "maxLayerHeight": [
+              "0.14"
+            ],
+            "minLayerHeight": [
+              "0.04"
+            ],
+            "defaultPrintProfile": "0.10mm Standard @Geeetech M1 0.2 nozzle",
+            "defaultFilamentProfile": [
+              "Generic PLA @System"
+            ]
+          },
+          "startGcode": ";Geeetech M1 official wiki URL：https://www.geeetech.com/wiki/index.php/Geeetech_M1_3D_printer \nM104 S[first_layer_temperature] ; Set Hotend Temperature\nM140 S[first_layer_bed_temperature] ; set Bed Temperature\nM190 S[first_layer_bed_temperature] ; Wait for Bed Temperature\nM109 S[first_layer_temperature] ; wait for Hotend Temperature\nM220 S100 ;Reset Feedrate\nM221 S100 ;Reset Flowrate\nG92 E0 ; Reset Extruder\nG28 ; Home all axes\nM107 ;Off Main Fan\nM300 S2500 P1000 ;Play a short tune\nG1 Z0.28 ;Move Z Axis up little to prevent scratching of Heat Bed\nG92 E0 ;Reset Extruder\nG1 Y3 F2400 ;Move to start position\nG1 X75 E40 F500 ;Draw a filament line\nG92 E0 ;Reset Extruder\n;G1 E-0.2 F3000 ;Retract a little\nG1 Z2.0 F3000 ;Move Z Axis up little to prevent scratching of Heat Bed\nG1 X70 Y3 Z0.27 F3000 ;Quickly wipe away from the filament line\nG92 E0 ;Reset Extruder",
+          "endGcode": "{if max_layer_z < printable_height}G1 Z{z_offset+min(max_layer_z+2, printable_height)} F600 ; Move print head up{endif}\nG1 X5 Y{print_bed_max[1]*0.8} F{travel_speed*60} ; present print\n{if max_layer_z < printable_height-10}G1 Z{z_offset+min(max_layer_z+70, printable_height-10)} F600 ; Move print head further up{endif}\n{if max_layer_z < max_print_height*0.6}G1 Z{printable_height*0.6} F600 ; Move print head further up{endif}\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors\nM221 S100;Slicer Flow recovery 100%\nM220 S100 ;Set Feedrate recovery 100%\nM204 P3000.00 R3000.00 T3000.00",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Geeetech M1 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "105x0",
+              "105x105",
+              "0x105"
+            ],
+            "printableHeight": "95",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "brass",
+            "machineMaxSpeedX": [
+              "300",
+              "300"
+            ],
+            "machineMaxSpeedY": [
+              "300",
+              "300"
+            ],
+            "machineMaxSpeedZ": [
+              "25",
+              "25"
+            ],
+            "machineMaxSpeedE": [
+              "60",
+              "60"
+            ],
+            "machineMaxAccelX": [
+              "3000",
+              "3000"
+            ],
+            "machineMaxAccelY": [
+              "3000",
+              "3000"
+            ],
+            "machineMaxAccelZ": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelExtruding": [
+              "3000",
+              "3000"
+            ],
+            "machineMaxAccelRetracting": [
+              "3000",
+              "3000"
+            ],
+            "machineMaxAccelTravel": [
+              "3000",
+              "3000"
+            ],
+            "machineMaxJerkX": [
+              "10",
+              "10"
+            ],
+            "machineMaxJerkY": [
+              "10",
+              "10"
+            ],
+            "machineMaxJerkZ": [
+              "3",
+              "3"
+            ],
+            "machineMaxJerkE": [
+              "10",
+              "10"
+            ],
+            "retractionLength": [
+              "1"
+            ],
+            "retractionSpeed": [
+              "40"
+            ],
+            "deretractionSpeed": [
+              "40"
+            ],
+            "maxLayerHeight": [
+              "0.3"
+            ],
+            "minLayerHeight": [
+              "0.07"
+            ],
+            "defaultPrintProfile": "0.20mm Standard @Geeetech M1",
+            "defaultFilamentProfile": [
+              "Generic PLA @System"
+            ]
+          },
+          "startGcode": ";Geeetech M1 official wiki URL：https://www.geeetech.com/wiki/index.php/Geeetech_M1_3D_printer \nM104 S[first_layer_temperature] ; Set Hotend Temperature\nM140 S[first_layer_bed_temperature] ; set Bed Temperature\nM190 S[first_layer_bed_temperature] ; Wait for Bed Temperature\nM109 S[first_layer_temperature] ; wait for Hotend Temperature\nM220 S100 ;Reset Feedrate\nM221 S100 ;Reset Flowrate\nG92 E0 ; Reset Extruder\nG28 ; Home all axes\nM107 ;Off Main Fan\nM300 S2500 P1000 ;Play a short tune\nG1 Z0.28 ;Move Z Axis up little to prevent scratching of Heat Bed\nG92 E0 ;Reset Extruder\nG1 Y3 F2400 ;Move to start position\nG1 X75 E40 F500 ;Draw a filament line\nG92 E0 ;Reset Extruder\n;G1 E-0.2 F3000 ;Retract a little\nG1 Z2.0 F3000 ;Move Z Axis up little to prevent scratching of Heat Bed\nG1 X70 Y3 Z0.27 F3000 ;Quickly wipe away from the filament line\nG92 E0 ;Reset Extruder",
+          "endGcode": "{if max_layer_z < printable_height}G1 Z{z_offset+min(max_layer_z+2, printable_height)} F600 ; Move print head up{endif}\nG1 X5 Y{print_bed_max[1]*0.8} F{travel_speed*60} ; present print\n{if max_layer_z < printable_height-10}G1 Z{z_offset+min(max_layer_z+70, printable_height-10)} F600 ; Move print head further up{endif}\n{if max_layer_z < max_print_height*0.6}G1 Z{printable_height*0.6} F600 ; Move print head further up{endif}\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors\nM221 S100;Slicer Flow recovery 100%\nM220 S100 ;Set Feedrate recovery 100%\nM204 P3000.00 R3000.00 T3000.00",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Geeetech M1 0.6 nozzle",
+          "nozzle": 0.6,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "105x0",
+              "105x105",
+              "0x105"
+            ],
+            "printableHeight": "95",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "nozzleType": "brass",
+            "machineMaxSpeedX": [
+              "300",
+              "300"
+            ],
+            "machineMaxSpeedY": [
+              "300",
+              "300"
+            ],
+            "machineMaxSpeedZ": [
+              "25",
+              "25"
+            ],
+            "machineMaxSpeedE": [
+              "60",
+              "60"
+            ],
+            "machineMaxAccelX": [
+              "3000",
+              "3000"
+            ],
+            "machineMaxAccelY": [
+              "3000",
+              "3000"
+            ],
+            "machineMaxAccelZ": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelExtruding": [
+              "3000",
+              "3000"
+            ],
+            "machineMaxAccelRetracting": [
+              "3000",
+              "3000"
+            ],
+            "machineMaxAccelTravel": [
+              "3000",
+              "3000"
+            ],
+            "machineMaxJerkX": [
+              "10",
+              "10"
+            ],
+            "machineMaxJerkY": [
+              "10",
+              "10"
+            ],
+            "machineMaxJerkZ": [
+              "3",
+              "3"
+            ],
+            "machineMaxJerkE": [
+              "10",
+              "10"
+            ],
+            "retractionLength": [
+              "1"
+            ],
+            "retractionSpeed": [
+              "40"
+            ],
+            "deretractionSpeed": [
+              "40"
+            ],
+            "maxLayerHeight": [
+              "0.42"
+            ],
+            "minLayerHeight": [
+              "0.12"
+            ],
+            "defaultPrintProfile": "0.30mm Standard @Geeetech M1 0.6 nozzle",
+            "defaultFilamentProfile": [
+              "Generic PLA @System"
+            ]
+          },
+          "startGcode": ";Geeetech M1 official wiki URL：https://www.geeetech.com/wiki/index.php/Geeetech_M1_3D_printer \nM104 S[first_layer_temperature] ; Set Hotend Temperature\nM140 S[first_layer_bed_temperature] ; set Bed Temperature\nM190 S[first_layer_bed_temperature] ; Wait for Bed Temperature\nM109 S[first_layer_temperature] ; wait for Hotend Temperature\nM220 S100 ;Reset Feedrate\nM221 S100 ;Reset Flowrate\nG92 E0 ; Reset Extruder\nG28 ; Home all axes\nM107 ;Off Main Fan\nM300 S2500 P1000 ;Play a short tune\nG1 Z0.28 ;Move Z Axis up little to prevent scratching of Heat Bed\nG92 E0 ;Reset Extruder\nG1 Y3 F2400 ;Move to start position\nG1 X75 E40 F500 ;Draw a filament line\nG92 E0 ;Reset Extruder\n;G1 E-0.2 F3000 ;Retract a little\nG1 Z2.0 F3000 ;Move Z Axis up little to prevent scratching of Heat Bed\nG1 X70 Y3 Z0.27 F3000 ;Quickly wipe away from the filament line\nG92 E0 ;Reset Extruder",
+          "endGcode": "{if max_layer_z < printable_height}G1 Z{z_offset+min(max_layer_z+2, printable_height)} F600 ; Move print head up{endif}\nG1 X5 Y{print_bed_max[1]*0.8} F{travel_speed*60} ; present print\n{if max_layer_z < printable_height-10}G1 Z{z_offset+min(max_layer_z+70, printable_height-10)} F600 ; Move print head further up{endif}\n{if max_layer_z < max_print_height*0.6}G1 Z{printable_height*0.6} F600 ; Move print head further up{endif}\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors\nM221 S100;Slicer Flow recovery 100%\nM220 S100 ;Set Feedrate recovery 100%\nM204 P3000.00 R3000.00 T3000.00",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Geeetech M1 0.8 nozzle",
+          "nozzle": 0.8,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "105x0",
+              "105x105",
+              "0x105"
+            ],
+            "printableHeight": "95",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "nozzleType": "brass",
+            "machineMaxSpeedX": [
+              "300",
+              "300"
+            ],
+            "machineMaxSpeedY": [
+              "300",
+              "300"
+            ],
+            "machineMaxSpeedZ": [
+              "25",
+              "25"
+            ],
+            "machineMaxSpeedE": [
+              "60",
+              "60"
+            ],
+            "machineMaxAccelX": [
+              "3000",
+              "3000"
+            ],
+            "machineMaxAccelY": [
+              "3000",
+              "3000"
+            ],
+            "machineMaxAccelZ": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelExtruding": [
+              "3000",
+              "3000"
+            ],
+            "machineMaxAccelRetracting": [
+              "3000",
+              "3000"
+            ],
+            "machineMaxAccelTravel": [
+              "3000",
+              "3000"
+            ],
+            "machineMaxJerkX": [
+              "10",
+              "10"
+            ],
+            "machineMaxJerkY": [
+              "10",
+              "10"
+            ],
+            "machineMaxJerkZ": [
+              "3",
+              "3"
+            ],
+            "machineMaxJerkE": [
+              "10",
+              "10"
+            ],
+            "retractionLength": [
+              "1"
+            ],
+            "retractionSpeed": [
+              "40"
+            ],
+            "deretractionSpeed": [
+              "40"
+            ],
+            "maxLayerHeight": [
+              "0.56"
+            ],
+            "minLayerHeight": [
+              "0.16"
+            ],
+            "defaultPrintProfile": "0.44mm Draft @Geeetech M1 0.8 nozzle",
+            "defaultFilamentProfile": [
+              "Generic PLA @System"
+            ]
+          },
+          "startGcode": ";Geeetech M1 official wiki URL：https://www.geeetech.com/wiki/index.php/Geeetech_M1_3D_printer \nM104 S[first_layer_temperature] ; Set Hotend Temperature\nM140 S[first_layer_bed_temperature] ; set Bed Temperature\nM190 S[first_layer_bed_temperature] ; Wait for Bed Temperature\nM109 S[first_layer_temperature] ; wait for Hotend Temperature\nM220 S100 ;Reset Feedrate\nM221 S100 ;Reset Flowrate\nG92 E0 ; Reset Extruder\nG28 ; Home all axes\nM107 ;Off Main Fan\nM300 S2500 P1000 ;Play a short tune\nG1 Z0.28 ;Move Z Axis up little to prevent scratching of Heat Bed\nG92 E0 ;Reset Extruder\nG1 Y3 F2400 ;Move to start position\nG1 X75 E40 F500 ;Draw a filament line\nG92 E0 ;Reset Extruder\n;G1 E-0.2 F3000 ;Retract a little\nG1 Z2.0 F3000 ;Move Z Axis up little to prevent scratching of Heat Bed\nG1 X70 Y3 Z0.27 F3000 ;Quickly wipe away from the filament line\nG92 E0 ;Reset Extruder",
+          "endGcode": "{if max_layer_z < printable_height}G1 Z{z_offset+min(max_layer_z+2, printable_height)} F600 ; Move print head up{endif}\nG1 X5 Y{print_bed_max[1]*0.8} F{travel_speed*60} ; present print\n{if max_layer_z < printable_height-10}G1 Z{z_offset+min(max_layer_z+70, printable_height-10)} F600 ; Move print head further up{endif}\n{if max_layer_z < max_print_height*0.6}G1 Z{printable_height*0.6} F600 ; Move print head further up{endif}\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors\nM221 S100;Slicer Flow recovery 100%\nM220 S100 ;Set Feedrate recovery 100%\nM204 P3000.00 R3000.00 T3000.00",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    }
+  ],
+  "filaments": [],
+  "processes": [
+    {
+      "name": "fdm_process_common",
+      "config": {
+        "wallLoops": "2",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_geeetech_common",
+      "config": {
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "3",
+        "bottomShellLayers": "3",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_Geeetech_HS",
+      "config": {
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_geeetech_0.06_nozzle_0.2",
+      "config": {
+        "layerHeight": "0.06",
+        "wallLoops": "4",
+        "topShellLayers": "7",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_geeetech_0.08",
+      "config": {
+        "layerHeight": "0.08",
+        "topShellLayers": "9",
+        "bottomShellLayers": "7",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_geeetech_0.08_nozzle_0.2",
+      "config": {
+        "layerHeight": "0.08",
+        "wallLoops": "4",
+        "topShellLayers": "7",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_geeetech_0.10_nozzle_0.2",
+      "config": {
+        "layerHeight": "0.1",
+        "wallLoops": "4",
+        "topShellLayers": "7",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_geeetech_0.12",
+      "config": {
+        "layerHeight": "0.12",
+        "topShellLayers": "5",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_geeetech_0.12_nozzle_0.2",
+      "config": {
+        "layerHeight": "0.12",
+        "wallLoops": "4",
+        "topShellLayers": "7",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_geeetech_0.14_nozzle_0.2",
+      "config": {
+        "layerHeight": "0.14",
+        "wallLoops": "4",
+        "topShellLayers": "7",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_geeetech_0.16",
+      "config": {
+        "layerHeight": "0.16",
+        "topShellLayers": "6",
+        "bottomShellLayers": "4",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_geeetech_0.18_nozzle_0.6",
+      "config": {
+        "layerHeight": "0.18",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_geeetech_0.20",
+      "config": {
+        "layerHeight": "0.20",
+        "topShellLayers": "5",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_geeetech_0.24",
+      "config": {
+        "layerHeight": "0.24",
+        "topShellLayers": "4",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_geeetech_0.24_nozzle_0.6",
+      "config": {
+        "layerHeight": "0.24",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_geeetech_0.24_nozzle_0.8",
+      "config": {
+        "layerHeight": "0.24",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_geeetech_0.28",
+      "config": {
+        "layerHeight": "0.28",
+        "topShellLayers": "4",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_geeetech_0.30_nozzle_0.6",
+      "config": {
+        "layerHeight": "0.3",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_geeetech_0.32_nozzle_0.8",
+      "config": {
+        "layerHeight": "0.32",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_geeetech_0.36_nozzle_0.6",
+      "config": {
+        "layerHeight": "0.36",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_geeetech_0.40_nozzle_0.8",
+      "config": {
+        "layerHeight": "0.4",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_geeetech_0.42_nozzle_0.6",
+      "config": {
+        "layerHeight": "0.42",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_geeetech_0.48_nozzle_0.8",
+      "config": {
+        "layerHeight": "0.48",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_geeetech_0.56_nozzle_0.8",
+      "config": {
+        "layerHeight": "0.56",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_Geeetech_HS_0.08",
+      "config": {
+        "layerHeight": "0.08",
+        "topShellLayers": "9",
+        "bottomShellLayers": "7",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_Geeetech_HS_0.08_nozzle_0.2",
+      "config": {
+        "layerHeight": "0.08",
+        "wallLoops": "4",
+        "topShellLayers": "7",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_Geeetech_HS_0.10",
+      "config": {
+        "layerHeight": "0.1",
+        "wallLoops": "4",
+        "topShellLayers": "7",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_Geeetech_HS_0.10_nozzle_0.2",
+      "config": {
+        "layerHeight": "0.1",
+        "wallLoops": "4",
+        "topShellLayers": "7",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_Geeetech_HS_0.12_nozzle_0.2",
+      "config": {
+        "layerHeight": "0.12",
+        "wallLoops": "4",
+        "topShellLayers": "7",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_Geeetech_HS_0.14_nozzle_0.2",
+      "config": {
+        "layerHeight": "0.14",
+        "wallLoops": "4",
+        "topShellLayers": "7",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": []
+      }
+    }
+  ]
+}

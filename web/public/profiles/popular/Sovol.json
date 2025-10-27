@@ -1,0 +1,4269 @@
+{
+  "name": "Sovol",
+  "version": "02.03.01.10",
+  "printers": [
+    {
+      "id": "Sovol-SV01",
+      "name": "Sovol SV01",
+      "nozzleSizes": [
+        0.4
+      ],
+      "bedModel": "sovol_sv01pro_buildplate_model.stl",
+      "bedTexture": "sovol_sv01pro_buildplate_texture.png",
+      "defaultMaterials": [
+        "Generic ABS @System",
+        "Generic PETG @System",
+        "Generic PLA @System"
+      ],
+      "variants": [
+        {
+          "name": "Sovol SV01 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "280x0",
+              "280x240",
+              "0x240"
+            ],
+            "printableHeight": "300",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "undefine",
+            "machineMaxSpeedX": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedY": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedZ": [
+              "10",
+              "10"
+            ],
+            "machineMaxSpeedE": [
+              "60",
+              "60"
+            ],
+            "machineMaxAccelX": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelY": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelZ": [
+              "100",
+              "100"
+            ],
+            "machineMaxAccelExtruding": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelRetracting": [
+              "1000",
+              "1000"
+            ],
+            "machineMaxAccelTravel": [
+              "1500",
+              "1250"
+            ],
+            "machineMaxJerkX": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkY": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkZ": [
+              "0.4",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "5",
+              "5"
+            ],
+            "retractionLength": [
+              "1"
+            ],
+            "retractionSpeed": [
+              "60"
+            ],
+            "deretractionSpeed": [
+              "40"
+            ],
+            "retractionMinimumTravel": [
+              "2"
+            ],
+            "retractBeforeWipe": [
+              "70%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0"
+            ],
+            "zHopTypes": "Normal Lift",
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0"
+            ],
+            "silentMode": "0",
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "marlin",
+            "defaultPrintProfile": "0.20mm Standard @Sovol SV01",
+            "defaultFilamentProfile": [
+              "Generic PLA @System"
+            ]
+          },
+          "startGcode": "G90 ; use absolute coordinates\nM83 ; extruder relative mode\nM140 S[bed_temperature_initial_layer_single] ; set final bed temp\nM104 S150 ; set temporary nozzle temp to prevent oozing during homing\nG4 S10 ; allow partial nozzle warmup\nG28 ; home all axis\nG1 Z50 F240\nG1 X2 Y10 F3000\nM104 S[nozzle_temperature_initial_layer] ; set final nozzle temp\nM190 S[bed_temperature_initial_layer_single] ; wait for bed temp to stabilize\nM109 S[nozzle_temperature_initial_layer] ; wait for nozzle temp to stabilize\nG1 Z0.28 F240\nG92 E0\nG1 Y140 E10 F1500 ; prime the nozzle\nG1 X2.3 F5000\nG92 E0\nG1 Y10 E10 F1200 ; prime the nozzle\nG92 E0",
+          "endGcode": "{if max_layer_z < printable_height}G1 Z{z_offset+min(max_layer_z+2, printable_height)} F600 ; Move print head up{endif}\nG1 X5 Y{print_bed_max[1]*0.8} F{travel_speed*60} ; present print\n{if max_layer_z < printable_height-10}G1 Z{z_offset+min(max_layer_z+70, printable_height-10)} F600 ; Move print head further up{endif}\n{if max_layer_z < max_print_height*0.6}G1 Z{printable_height*0.6} F600 ; Move print head further up{endif}\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors",
+          "pauseGcode": "M0",
+          "changeFilamentGcode": "M600"
+        },
+        {
+          "name": "Sovol SV01 Pro 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "280x0",
+              "280x240",
+              "0x240"
+            ],
+            "printableHeight": "300",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "undefine",
+            "machineMaxSpeedX": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedY": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedZ": [
+              "10",
+              "10"
+            ],
+            "machineMaxSpeedE": [
+              "60",
+              "60"
+            ],
+            "machineMaxAccelX": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelY": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelZ": [
+              "100",
+              "100"
+            ],
+            "machineMaxAccelExtruding": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelRetracting": [
+              "1000",
+              "1000"
+            ],
+            "machineMaxAccelTravel": [
+              "1500",
+              "1250"
+            ],
+            "machineMaxJerkX": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkY": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkZ": [
+              "0.4",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "5",
+              "5"
+            ],
+            "retractionLength": [
+              "1"
+            ],
+            "retractionSpeed": [
+              "60"
+            ],
+            "deretractionSpeed": [
+              "40"
+            ],
+            "retractionMinimumTravel": [
+              "2"
+            ],
+            "retractBeforeWipe": [
+              "70%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0"
+            ],
+            "zHopTypes": "Normal Lift",
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0"
+            ],
+            "silentMode": "0",
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "marlin",
+            "defaultPrintProfile": "0.20mm Standard @Sovol SV01Pro",
+            "defaultFilamentProfile": [
+              "Generic PLA @System"
+            ]
+          },
+          "startGcode": "G90 ; use absolute coordinates\nM83 ; extruder relative mode\nM140 S[bed_temperature_initial_layer_single] ; set final bed temp\nM104 S150 ; set temporary nozzle temp to prevent oozing during homing\nG4 S10 ; allow partial nozzle warmup\nG28 ; home all axis\nG1 Z50 F240\nG1 X2 Y10 F3000\nM104 S[nozzle_temperature_initial_layer] ; set final nozzle temp\nM190 S[bed_temperature_initial_layer_single] ; wait for bed temp to stabilize\nM109 S[nozzle_temperature_initial_layer] ; wait for nozzle temp to stabilize\nG1 Z0.28 F240\nG92 E0\nG1 Y140 E10 F1500 ; prime the nozzle\nG1 X2.3 F5000\nG92 E0\nG1 Y10 E10 F1200 ; prime the nozzle\nG92 E0",
+          "endGcode": "{if max_layer_z < printable_height}G1 Z{z_offset+min(max_layer_z+2, printable_height)} F600 ; Move print head up{endif}\nG1 X5 Y{print_bed_max[1]*0.8} F{travel_speed*60} ; present print\n{if max_layer_z < printable_height-10}G1 Z{z_offset+min(max_layer_z+70, printable_height-10)} F600 ; Move print head further up{endif}\n{if max_layer_z < max_print_height*0.6}G1 Z{printable_height*0.6} F600 ; Move print head further up{endif}\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors",
+          "pauseGcode": "M0",
+          "changeFilamentGcode": "M600"
+        },
+        {
+          "name": "Sovol SV01 Pro",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.4"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "Sovol-SV01-Pro",
+      "name": "Sovol SV01 Pro",
+      "nozzleSizes": [
+        0.4
+      ],
+      "bedModel": "sovol_sv01pro_buildplate_model.stl",
+      "bedTexture": "sovol_sv01pro_buildplate_texture.png",
+      "defaultMaterials": [
+        "Generic ABS @System",
+        "Generic PETG @System",
+        "Generic PLA @System"
+      ],
+      "variants": [
+        {
+          "name": "Sovol SV01 Pro 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "280x0",
+              "280x240",
+              "0x240"
+            ],
+            "printableHeight": "300",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "undefine",
+            "machineMaxSpeedX": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedY": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedZ": [
+              "10",
+              "10"
+            ],
+            "machineMaxSpeedE": [
+              "60",
+              "60"
+            ],
+            "machineMaxAccelX": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelY": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelZ": [
+              "100",
+              "100"
+            ],
+            "machineMaxAccelExtruding": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelRetracting": [
+              "1000",
+              "1000"
+            ],
+            "machineMaxAccelTravel": [
+              "1500",
+              "1250"
+            ],
+            "machineMaxJerkX": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkY": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkZ": [
+              "0.4",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "5",
+              "5"
+            ],
+            "retractionLength": [
+              "1"
+            ],
+            "retractionSpeed": [
+              "60"
+            ],
+            "deretractionSpeed": [
+              "40"
+            ],
+            "retractionMinimumTravel": [
+              "2"
+            ],
+            "retractBeforeWipe": [
+              "70%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0"
+            ],
+            "zHopTypes": "Normal Lift",
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0"
+            ],
+            "silentMode": "0",
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "marlin",
+            "defaultPrintProfile": "0.20mm Standard @Sovol SV01Pro",
+            "defaultFilamentProfile": [
+              "Generic PLA @System"
+            ]
+          },
+          "startGcode": "G90 ; use absolute coordinates\nM83 ; extruder relative mode\nM140 S[bed_temperature_initial_layer_single] ; set final bed temp\nM104 S150 ; set temporary nozzle temp to prevent oozing during homing\nG4 S10 ; allow partial nozzle warmup\nG28 ; home all axis\nG1 Z50 F240\nG1 X2 Y10 F3000\nM104 S[nozzle_temperature_initial_layer] ; set final nozzle temp\nM190 S[bed_temperature_initial_layer_single] ; wait for bed temp to stabilize\nM109 S[nozzle_temperature_initial_layer] ; wait for nozzle temp to stabilize\nG1 Z0.28 F240\nG92 E0\nG1 Y140 E10 F1500 ; prime the nozzle\nG1 X2.3 F5000\nG92 E0\nG1 Y10 E10 F1200 ; prime the nozzle\nG92 E0",
+          "endGcode": "{if max_layer_z < printable_height}G1 Z{z_offset+min(max_layer_z+2, printable_height)} F600 ; Move print head up{endif}\nG1 X5 Y{print_bed_max[1]*0.8} F{travel_speed*60} ; present print\n{if max_layer_z < printable_height-10}G1 Z{z_offset+min(max_layer_z+70, printable_height-10)} F600 ; Move print head further up{endif}\n{if max_layer_z < max_print_height*0.6}G1 Z{printable_height*0.6} F600 ; Move print head further up{endif}\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors",
+          "pauseGcode": "M0",
+          "changeFilamentGcode": "M600"
+        }
+      ]
+    },
+    {
+      "id": "Sovol-SV02",
+      "name": "Sovol SV02",
+      "nozzleSizes": [
+        0.4
+      ],
+      "bedModel": "sovol_sv02_buildplate_model.stl",
+      "bedTexture": "sovol_sv02_buildplate_texture.png",
+      "defaultMaterials": [
+        "Generic ABS @System",
+        "Generic PETG @System",
+        "Generic PLA @System"
+      ],
+      "variants": [
+        {
+          "name": "Sovol SV02 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "280x0",
+              "280x240",
+              "0x240"
+            ],
+            "printableHeight": "300",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4",
+              "0.4"
+            ],
+            "nozzleType": "undefine",
+            "machineMaxSpeedX": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedY": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedZ": [
+              "10",
+              "10"
+            ],
+            "machineMaxSpeedE": [
+              "60",
+              "60"
+            ],
+            "machineMaxAccelX": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelY": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelZ": [
+              "100",
+              "100"
+            ],
+            "machineMaxAccelExtruding": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelRetracting": [
+              "1000",
+              "1000"
+            ],
+            "machineMaxAccelTravel": [
+              "1500",
+              "1250"
+            ],
+            "machineMaxJerkX": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkY": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkZ": [
+              "0.4",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "5",
+              "5"
+            ],
+            "retractionLength": [
+              "6",
+              "6"
+            ],
+            "retractionSpeed": [
+              "60"
+            ],
+            "deretractionSpeed": [
+              "60",
+              "60"
+            ],
+            "retractionMinimumTravel": [
+              "2",
+              "2"
+            ],
+            "retractBeforeWipe": [
+              "70%",
+              "70%"
+            ],
+            "retractWhenChangingLayer": [
+              "1",
+              "1"
+            ],
+            "zHop": [
+              "0"
+            ],
+            "zHopTypes": "Normal Lift",
+            "wipe": [
+              "1",
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.32",
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.08",
+              "0.08"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0"
+            ],
+            "silentMode": "0",
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "marlin",
+            "defaultPrintProfile": "0.20mm Standard @Sovol SV02",
+            "defaultFilamentProfile": [
+              "Generic PLA @System"
+            ]
+          },
+          "startGcode": "G90 ; use absolute coordinates\nM83 ; extruder relative mode\nM104 S[nozzle_temperature_initial_layer] ; set extruder temp\nM140 S[bed_temperature_initial_layer_single] ; set bed temp\nM190 S[bed_temperature_initial_layer_single] ; wait for bed temp\nM109 S[nozzle_temperature_initial_layer] ; wait for extruder temp\nG28 ; home all\nG1 Z2 F240\nG1 X2 Y10 F3000\nG1 Z0.28 F240\nG92 E0\nG1 Y190 E15 F1500 ; intro line\nG1 X2.3 F5000\nG92 E0\nG1 Y10 E15 F1200 ; intro line\nG92 E0",
+          "endGcode": "{if max_layer_z < printable_height}G1 Z{z_offset+min(max_layer_z+2, printable_height)} F600 ; Move print head up{endif}\nG1 X5 Y{print_bed_max[1]*0.8} F{travel_speed*60} ; present print\n{if max_layer_z < printable_height-10}G1 Z{z_offset+min(max_layer_z+70, printable_height-10)} F600 ; Move print head further up{endif}\n{if max_layer_z < max_print_height*0.6}G1 Z{printable_height*0.6} F600 ; Move print head further up{endif}\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors",
+          "pauseGcode": "M0",
+          "changeFilamentGcode": "M600"
+        }
+      ]
+    },
+    {
+      "id": "Sovol-SV05",
+      "name": "Sovol SV05",
+      "nozzleSizes": [
+        0.4
+      ],
+      "bedModel": "sovol_sv05_buildplate_model.stl",
+      "bedTexture": "sovol_sv05_buildplate_texture.png",
+      "defaultMaterials": [
+        "Generic ABS @System",
+        "Generic PETG @System",
+        "Generic PLA @System"
+      ],
+      "variants": [
+        {
+          "name": "Sovol SV05 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "220x0",
+              "220x220",
+              "0x220"
+            ],
+            "printableHeight": "300",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "undefine",
+            "machineMaxSpeedX": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedY": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedZ": [
+              "5",
+              "5"
+            ],
+            "machineMaxSpeedE": [
+              "60",
+              "60"
+            ],
+            "machineMaxAccelX": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelY": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelZ": [
+              "100",
+              "100"
+            ],
+            "machineMaxAccelExtruding": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelRetracting": [
+              "1000",
+              "1000"
+            ],
+            "machineMaxAccelTravel": [
+              "1500",
+              "1250"
+            ],
+            "machineMaxJerkX": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkY": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkZ": [
+              "0.4",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "5",
+              "5"
+            ],
+            "retractionLength": [
+              "2"
+            ],
+            "retractionSpeed": [
+              "60"
+            ],
+            "deretractionSpeed": [
+              "40"
+            ],
+            "retractionMinimumTravel": [
+              "2"
+            ],
+            "retractBeforeWipe": [
+              "70%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0"
+            ],
+            "zHopTypes": "Normal Lift",
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0"
+            ],
+            "silentMode": "0",
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "marlin",
+            "defaultPrintProfile": "0.20mm Standard @Sovol SV05",
+            "defaultFilamentProfile": [
+              "Generic PLA @System"
+            ]
+          },
+          "startGcode": "G90 ; use absolute coordinates\nM83 ; extruder relative mode\nM140 S[bed_temperature_initial_layer_single] ; set final bed temp\nM104 S150 ; set temporary nozzle temp to prevent oozing during homing\nG4 S10 ; allow partial nozzle warmup\nG28 ; home all axis\nG1 Z50 F240\nG1 X2 Y10 F3000\nM104 S[nozzle_temperature_initial_layer] ; set final nozzle temp\nM190 S[bed_temperature_initial_layer_single] ; wait for bed temp to stabilize\nM109 S[nozzle_temperature_initial_layer] ; wait for nozzle temp to stabilize\nG1 Z0.28 F240\nG92 E0\nG1 Y140 E10 F1500 ; prime the nozzle\nG1 X2.3 F5000\nG92 E0\nG1 Y10 E10 F1200 ; prime the nozzle\nG92 E0",
+          "endGcode": "{if max_layer_z < printable_height}G1 Z{z_offset+min(max_layer_z+2, printable_height)} F600 ; Move print head up{endif}\nG1 X5 Y{print_bed_max[1]*0.8} F{travel_speed*60} ; present print\n{if max_layer_z < printable_height-10}G1 Z{z_offset+min(max_layer_z+70, printable_height-10)} F600 ; Move print head further up{endif}\n{if max_layer_z < max_print_height*0.6}G1 Z{printable_height*0.6} F600 ; Move print head further up{endif}\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors",
+          "pauseGcode": "M0",
+          "changeFilamentGcode": "M600"
+        }
+      ]
+    },
+    {
+      "id": "Sovol-SV06",
+      "name": "Sovol SV06",
+      "nozzleSizes": [
+        0.4
+      ],
+      "bedModel": "sovol_sv06_buildplate_model.stl",
+      "bedTexture": "sovol_sv06_buildplate_texture.png",
+      "defaultMaterials": [
+        "Generic ABS @System",
+        "Generic PETG @System",
+        "Generic PLA @System",
+        "Generic PLA @System",
+        "Generic PETG @System",
+        "Generic ABS @System",
+        "Generic ASA @System",
+        "Generic TPU @System",
+        ""
+      ],
+      "variants": [
+        {
+          "name": "Sovol SV06 0.4 High-Speed nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "220x0",
+              "220x220",
+              "0x220"
+            ],
+            "printableHeight": "250",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "machineMaxSpeedX": [
+              "300",
+              "300"
+            ],
+            "machineMaxSpeedY": [
+              "300",
+              "300"
+            ],
+            "machineMaxSpeedZ": [
+              "10",
+              "10"
+            ],
+            "machineMaxSpeedE": [
+              "30",
+              "30"
+            ],
+            "machineMaxAccelX": [
+              "5000",
+              "5000"
+            ],
+            "machineMaxAccelY": [
+              "5000",
+              "5000"
+            ],
+            "machineMaxAccelZ": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelExtruding": [
+              "5000",
+              "5000"
+            ],
+            "machineMaxAccelRetracting": [
+              "1000",
+              "1000"
+            ],
+            "machineMaxAccelTravel": [
+              "1500",
+              "1500"
+            ],
+            "machineMaxJerkX": [
+              "5"
+            ],
+            "machineMaxJerkY": [
+              "5"
+            ],
+            "machineMaxJerkZ": [
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "2.5"
+            ],
+            "retractionLength": [
+              "0.5"
+            ],
+            "retractionSpeed": [
+              "35",
+              "35"
+            ],
+            "deretractionSpeed": [
+              "35",
+              "35"
+            ],
+            "retractionMinimumTravel": [
+              "2"
+            ],
+            "retractBeforeWipe": [
+              "70%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0.4",
+              "0.4"
+            ],
+            "zHopTypes": "Normal Lift",
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.32",
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0"
+            ],
+            "silentMode": "0",
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "marlin",
+            "defaultPrintProfile": "0.20mm High-Speed @Sovol SV06",
+            "defaultFilamentProfile": [
+              "Generic PLA @System"
+            ]
+          },
+          "startGcode": "M140 S[bed_temperature_initial_layer_single] ;set bed temp\nM190 S[bed_temperature_initial_layer_single] ;wait for bed temp\nG28\nG90\nG1 X0 F6000\nG1 Y20\nG1 Z0.600 F600\nG1 Y0 F6000\nM400\nM104 S[nozzle_temperature_initial_layer] ;set extruder temp\nM109 S[nozzle_temperature_initial_layer];wait for extruder temp\nG91\nM83\nG1 E25 F300\nG4 P1000\nG1 E-0.200 Z5 F600\nG1 X23.000 F9000\nG1 Z-5.000 F600\nG1 X87.000 E20.88 F1800\nG1 X87.000 E13.92 F1800\nG1 Y1 E0.16 F1800\nG1 X-87.000 E13.92 F1800\nG1 X-87.000 E20.88 F1800\nG1 Y1 E0.24 F1800\nG1 X87.000 E20.88 F1800\nG1 X87.000 E13.92 F1800\nG1 E-0.200 Z1 F600\nM400\n\n",
+          "endGcode": "M117 READY\n\nG1 E0 F1000 ; reset extruder\n\nG91 ; relative positioning\nG1 Z2 F1000 ; lift nozzle\nG90 ; absolute positioning\nG1 X5 Y5 F3000\nG27 P2 ; park extruder\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors\n",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Sovol SV06 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "220x0",
+              "220x220",
+              "0x220"
+            ],
+            "printableHeight": "250",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "undefine",
+            "machineMaxSpeedX": [
+              "80",
+              "100"
+            ],
+            "machineMaxSpeedY": [
+              "80",
+              "100"
+            ],
+            "machineMaxSpeedZ": [
+              "10",
+              "12"
+            ],
+            "machineMaxSpeedE": [
+              "30",
+              "120"
+            ],
+            "machineMaxAccelX": [
+              "500",
+              "960"
+            ],
+            "machineMaxAccelY": [
+              "500",
+              "960"
+            ],
+            "machineMaxAccelZ": [
+              "100",
+              "200"
+            ],
+            "machineMaxAccelExtruding": [
+              "1000",
+              "1250"
+            ],
+            "machineMaxAccelRetracting": [
+              "1000",
+              "1250"
+            ],
+            "machineMaxAccelTravel": [
+              "1500",
+              "1250"
+            ],
+            "machineMaxJerkX": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkY": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkZ": [
+              "0.4",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "5",
+              "4.5"
+            ],
+            "retractionLength": [
+              "0.5"
+            ],
+            "retractionSpeed": [
+              "30"
+            ],
+            "deretractionSpeed": [
+              "30"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "0%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0"
+            ],
+            "zHopTypes": "Normal Lift",
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.25"
+            ],
+            "minLayerHeight": [
+              "0.07"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0"
+            ],
+            "silentMode": "0",
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "marlin",
+            "defaultPrintProfile": "0.20mm Standard @Sovol SV06",
+            "defaultFilamentProfile": [
+              "Generic PLA @System"
+            ]
+          },
+          "startGcode": "G90 ; use absoulte coordinates\nM83 ; extruder relative mode\n\nM104 S150 ; set nozzle temp to 150\n\nG28 ; home all axes\nM420 S1 ;load mesh\n\nM140 S[bed_temperature_initial_layer_single] ; set bed temp\nM190 S[bed_temperature_initial_layer_single] ; wait for bed temp to stabilize\nM104 S[nozzle_temperature_initial_layer] ; set final extruder temp\nM109 S[nozzle_temperature_initial_layer] ; wait for extruder temp\n\nG1 X0.1 Y10 Z5.0 F1500 ; move to start position\nG1 Z0.26 F150 ; Move lower\nG4 S0.5 ; wait 0.5 seconds\n\nG1 X0.1 Y150 Z0.3 F1500 E10 ; prime the nozzle\nG1 X0.3 F1500\nG1 X0.4 Y15 Z0.3 F1500 E15 ; prime the nozzle\nG4 S0.1 ; wait 0.1 seconds\n\nG1 Z0.6 F150 ; lift nozzle\nG92 E0 ; Reset Extruder\nG1 Z2 F150 ; lift nozzle more\n",
+          "endGcode": "M117 READY\n\nG1 E0 F1000 ; reset extruder\n\nG91 ; relative positioning\nG1 Z2 F1000 ; lift nozzle\n\nG90 ; absolute positioning\nG27 P2 ; park extruder\n\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors",
+          "pauseGcode": "M601",
+          "changeFilamentGcode": "M600\nG1 E0.4 F1500 ; prime after color change"
+        },
+        {
+          "name": "Sovol SV06 ACE 0.2 nozzle",
+          "nozzle": 0.2,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "220x0",
+              "220x220",
+              "0x220"
+            ],
+            "printableHeight": "250",
+            "nozzleDiameter": [
+              "0.2"
+            ],
+            "machineMaxSpeedX": [
+              "600",
+              "600"
+            ],
+            "machineMaxSpeedY": [
+              "600",
+              "600"
+            ],
+            "machineMaxSpeedZ": [
+              "10",
+              "10"
+            ],
+            "machineMaxSpeedE": [
+              "25",
+              "25"
+            ],
+            "machineMaxAccelX": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxAccelY": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxAccelZ": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelExtruding": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxAccelRetracting": [
+              "5000",
+              "5000"
+            ],
+            "machineMaxAccelTravel": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxJerkX": [
+              "9"
+            ],
+            "machineMaxJerkY": [
+              "9"
+            ],
+            "machineMaxJerkZ": [
+              "0.5"
+            ],
+            "machineMaxJerkE": [
+              "2.5"
+            ],
+            "retractionLength": [
+              "0.6"
+            ],
+            "retractionSpeed": [
+              "35",
+              "35"
+            ],
+            "deretractionSpeed": [
+              "35",
+              "35"
+            ],
+            "retractionMinimumTravel": [
+              "0.5"
+            ],
+            "retractBeforeWipe": [
+              "100%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0.2"
+            ],
+            "zHopTypes": [
+              "Auto Lift"
+            ],
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.16",
+              "0.16"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0"
+            ],
+            "silentMode": "0",
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "klipper",
+            "defaultPrintProfile": "0.12mm Standard @Sovol SV06 ACE 0.2 nozzle",
+            "defaultFilamentProfile": [
+              "Sovol SV06 ACE PLA"
+            ]
+          },
+          "startGcode": "M140 S[bed_temperature_initial_layer_single] ;set bed temp\nM190 S[bed_temperature_initial_layer_single] ;wait for bed temp\nSTART_PRINT\nG90\nG1 X0 F6000\nG1 Y20\nG1 Z0.200 F600\nG1 Y-4 F6000\nM400\nM104 S[nozzle_temperature_initial_layer] ;set extruder temp\nM109 S[nozzle_temperature_initial_layer];wait for extruder temp\nG91\nM83\nG1 E-0.100 Z5 F600\nG1 X{print_bed_max[1] / 3} F6000\nG1 Z-4.800 F600\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.24} F3000\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.16} F3000\nG1 Y1 E0.16 F3000\nG1 X-{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.16} F3000\nG1 X-{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.24} F3000\nG1 Y1 E0.24 F3000\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.24} F3000\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.16} F3000\nG1 E-0.200 Z1 F600\nM400\n\n",
+          "endGcode": "END_PRINT\n",
+          "pauseGcode": "PAUSE",
+          "changeFilamentGcode": "M600"
+        },
+        {
+          "name": "Sovol SV06 ACE 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "220x0",
+              "220x220",
+              "0x220"
+            ],
+            "printableHeight": "250",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "machineMaxSpeedX": [
+              "600",
+              "600"
+            ],
+            "machineMaxSpeedY": [
+              "600",
+              "600"
+            ],
+            "machineMaxSpeedZ": [
+              "10",
+              "10"
+            ],
+            "machineMaxSpeedE": [
+              "50",
+              "50"
+            ],
+            "machineMaxAccelX": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxAccelY": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxAccelZ": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelExtruding": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxAccelRetracting": [
+              "5000",
+              "5000"
+            ],
+            "machineMaxAccelTravel": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxJerkX": [
+              "9"
+            ],
+            "machineMaxJerkY": [
+              "9"
+            ],
+            "machineMaxJerkZ": [
+              "0.5"
+            ],
+            "machineMaxJerkE": [
+              "2.5"
+            ],
+            "retractionLength": [
+              "0.8"
+            ],
+            "retractionSpeed": [
+              "40",
+              "40"
+            ],
+            "deretractionSpeed": [
+              "40",
+              "40"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "100%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0.4"
+            ],
+            "zHopTypes": [
+              "Auto Lift"
+            ],
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.32",
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0"
+            ],
+            "silentMode": "0",
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "klipper",
+            "defaultPrintProfile": "0.20mm Standard @Sovol SV06 ACE",
+            "defaultFilamentProfile": [
+              "Sovol SV06 ACE PLA"
+            ]
+          },
+          "startGcode": "M140 S[bed_temperature_initial_layer_single] ;set bed temp\nM190 S[bed_temperature_initial_layer_single] ;wait for bed temp\nSTART_PRINT\nG90\nG1 X0 F6000\nG1 Y20\nG1 Z0.400 F600\nG1 Y-4 F6000\nM400\nM104 S[nozzle_temperature_initial_layer] ;set extruder temp\nM109 S[nozzle_temperature_initial_layer];wait for extruder temp\nG91\nM83\nG1 E-0.200 Z5 F600\nG1 X{print_bed_max[1] / 3} F6000\nG1 Z-4.800 F600\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.24} F3000\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.16} F3000\nG1 Y1 E0.16 F3000\nG1 X-{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.16} F3000\nG1 X-{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.24} F3000\nG1 Y1 E0.24 F3000\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.24} F3000\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.16} F3000\nG1 E-0.200 Z1 F600\nM400\n\n",
+          "endGcode": "END_PRINT\n",
+          "pauseGcode": "PAUSE",
+          "changeFilamentGcode": "M600"
+        },
+        {
+          "name": "Sovol SV06 ACE 0.6 nozzle",
+          "nozzle": 0.6,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "220x0",
+              "220x220",
+              "0x220"
+            ],
+            "printableHeight": "250",
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "machineMaxSpeedX": [
+              "600",
+              "600"
+            ],
+            "machineMaxSpeedY": [
+              "600",
+              "600"
+            ],
+            "machineMaxSpeedZ": [
+              "10",
+              "10"
+            ],
+            "machineMaxSpeedE": [
+              "60",
+              "60"
+            ],
+            "machineMaxAccelX": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxAccelY": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxAccelZ": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelExtruding": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxAccelRetracting": [
+              "5000",
+              "5000"
+            ],
+            "machineMaxAccelTravel": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxJerkX": [
+              "9"
+            ],
+            "machineMaxJerkY": [
+              "9"
+            ],
+            "machineMaxJerkZ": [
+              "0.5"
+            ],
+            "machineMaxJerkE": [
+              "2.5"
+            ],
+            "retractionLength": [
+              "1.0"
+            ],
+            "retractionSpeed": [
+              "45",
+              "45"
+            ],
+            "deretractionSpeed": [
+              "45",
+              "45"
+            ],
+            "retractionMinimumTravel": [
+              "1.5"
+            ],
+            "retractBeforeWipe": [
+              "100%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0.6"
+            ],
+            "zHopTypes": [
+              "Auto Lift"
+            ],
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.48",
+              "0.48"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0"
+            ],
+            "silentMode": "0",
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "klipper",
+            "defaultPrintProfile": "0.30mm Standard @Sovol SV06 ACE 0.6 nozzle",
+            "defaultFilamentProfile": [
+              "Sovol SV06 ACE PLA"
+            ]
+          },
+          "startGcode": "M140 S[bed_temperature_initial_layer_single] ;set bed temp\nM190 S[bed_temperature_initial_layer_single] ;wait for bed temp\nSTART_PRINT\nG90\nG1 X0 F6000\nG1 Y20\nG1 Z0.600 F600\nG1 Y-4 F6000\nM400\nM104 S[nozzle_temperature_initial_layer] ;set extruder temp\nM109 S[nozzle_temperature_initial_layer];wait for extruder temp\nG91\nM83\nG1 E-0.300 Z5 F600\nG1 X{print_bed_max[1] / 3} F6000\nG1 Z-4.800 F600\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.24} F3000\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.16} F3000\nG1 Y1 E0.16 F3000\nG1 X-{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.16} F3000\nG1 X-{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.24} F3000\nG1 Y1 E0.24 F3000\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.24} F3000\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.16} F3000\nG1 E-0.200 Z1 F600\nM400\n\n",
+          "endGcode": "END_PRINT\n",
+          "pauseGcode": "PAUSE",
+          "changeFilamentGcode": "M600"
+        },
+        {
+          "name": "Sovol SV06 ACE 0.8 nozzle",
+          "nozzle": 0.8,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "220x0",
+              "220x220",
+              "0x220"
+            ],
+            "printableHeight": "250",
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "machineMaxSpeedX": [
+              "600",
+              "600"
+            ],
+            "machineMaxSpeedY": [
+              "600",
+              "600"
+            ],
+            "machineMaxSpeedZ": [
+              "10",
+              "10"
+            ],
+            "machineMaxSpeedE": [
+              "70",
+              "70"
+            ],
+            "machineMaxAccelX": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxAccelY": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxAccelZ": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelExtruding": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxAccelRetracting": [
+              "5000",
+              "5000"
+            ],
+            "machineMaxAccelTravel": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxJerkX": [
+              "9"
+            ],
+            "machineMaxJerkY": [
+              "9"
+            ],
+            "machineMaxJerkZ": [
+              "0.5"
+            ],
+            "machineMaxJerkE": [
+              "2.5"
+            ],
+            "retractionLength": [
+              "1.2"
+            ],
+            "retractionSpeed": [
+              "45",
+              "45"
+            ],
+            "deretractionSpeed": [
+              "45",
+              "45"
+            ],
+            "retractionMinimumTravel": [
+              "2"
+            ],
+            "retractBeforeWipe": [
+              "100%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0.8"
+            ],
+            "zHopTypes": [
+              "Auto Lift"
+            ],
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.64",
+              "0.64"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0"
+            ],
+            "silentMode": "0",
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "klipper",
+            "defaultPrintProfile": "0.40mm Standard @Sovol SV06 ACE 0.8 nozzle",
+            "defaultFilamentProfile": [
+              "Sovol SV06 ACE PLA"
+            ]
+          },
+          "startGcode": "M140 S[bed_temperature_initial_layer_single] ;set bed temp\nM190 S[bed_temperature_initial_layer_single] ;wait for bed temp\nSTART_PRINT\nG90\nG1 X0 F6000\nG1 Y20\nG1 Z0.800 F600\nG1 Y-4 F6000\nM400\nM104 S[nozzle_temperature_initial_layer] ;set extruder temp\nM109 S[nozzle_temperature_initial_layer];wait for extruder temp\nG91\nM83\nG1 E-0.300 Z5 F600\nG1 X{print_bed_max[1] / 3} F6000\nG1 Z-4.800 F600\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.24} F3000\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.16} F3000\nG1 Y1 E0.16 F3000\nG1 X-{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.16} F3000\nG1 X-{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.24} F3000\nG1 Y1 E0.24 F3000\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.24} F3000\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.16} F3000\nG1 E-0.200 Z1 F600\nM400\n\n",
+          "endGcode": "END_PRINT\n",
+          "pauseGcode": "PAUSE",
+          "changeFilamentGcode": "M600"
+        },
+        {
+          "name": "Sovol SV06 ACE",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.2;0.4;0.6;0.8"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Sovol SV06 Plus 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "300x0",
+              "300x300",
+              "0x300"
+            ],
+            "printableHeight": "340",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "undefine",
+            "machineMaxSpeedX": [
+              "140",
+              "140"
+            ],
+            "machineMaxSpeedY": [
+              "140",
+              "140"
+            ],
+            "machineMaxSpeedZ": [
+              "12",
+              "12"
+            ],
+            "machineMaxSpeedE": [
+              "120",
+              "120"
+            ],
+            "machineMaxAccelX": [
+              "1500",
+              "960"
+            ],
+            "machineMaxAccelY": [
+              "1500",
+              "960"
+            ],
+            "machineMaxAccelZ": [
+              "200",
+              "200"
+            ],
+            "machineMaxAccelExtruding": [
+              "1000",
+              "1250"
+            ],
+            "machineMaxAccelRetracting": [
+              "1000",
+              "1250"
+            ],
+            "machineMaxAccelTravel": [
+              "1500",
+              "1250"
+            ],
+            "machineMaxJerkX": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkY": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkZ": [
+              "2",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "10",
+              "4.5"
+            ],
+            "retractionLength": [
+              "0.5"
+            ],
+            "retractionSpeed": [
+              "30"
+            ],
+            "deretractionSpeed": [
+              "30"
+            ],
+            "retractionMinimumTravel": [
+              "0.5"
+            ],
+            "retractBeforeWipe": [
+              "0%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0"
+            ],
+            "zHopTypes": "Normal Lift",
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.25"
+            ],
+            "minLayerHeight": [
+              "0.07"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0"
+            ],
+            "silentMode": "0",
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "marlin",
+            "defaultPrintProfile": "0.20mm Standard @Sovol SV06Plus",
+            "defaultFilamentProfile": [
+              "Generic PLA @System"
+            ]
+          },
+          "startGcode": "G90 ; use absoulte coordinates\nM83 ; extruder relative mode\n\nM104 S150 ; set nozzle temp to 150\n\nG28 ; home all axes\nM420 S1 ;load mesh\n\nM140 S[bed_temperature_initial_layer_single] ; set bed temp\nM190 S[bed_temperature_initial_layer_single] ; wait for bed temp to stabilize\nM104 S[nozzle_temperature_initial_layer] ; set final extruder temp\nM109 S[nozzle_temperature_initial_layer] ; wait for extruder temp\n\nG1 X0.1 Y10 Z5.0 F1500 ; move to start position\nG1 Z0.26 F150 ; Move lower\nG4 S0.5 ; wait 0.5 seconds\n\nG1 X0.1 Y150 Z0.3 F1500 E10 ; prime the nozzle\nG1 X0.3 F1500\nG1 X0.4 Y15 Z0.3 F1500 E15 ; prime the nozzle\nG4 S0.1 ; wait 0.1 seconds\n\nG1 Z0.6 F150 ; lift nozzle\nG92 E0 ; Reset Extruder\nG1 Z2 F150 ; lift nozzle more\n",
+          "endGcode": "M117 READY\n\nG1 E0 F1000 ; reset extruder\n\nG91 ; relative positioning\nG1 Z2 F1000 ; lift nozzle\n\nG90 ; absolute positioning\nG27 P2 ; park extruder\n\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors",
+          "pauseGcode": "M601",
+          "changeFilamentGcode": "M600\nG1 E0.4 F1500 ; prime after color change"
+        },
+        {
+          "name": "Sovol SV06 Plus ACE 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "300x0",
+              "300x300",
+              "0x300"
+            ],
+            "printableHeight": "350",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "machineMaxSpeedX": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedY": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedZ": [
+              "10",
+              "10"
+            ],
+            "machineMaxSpeedE": [
+              "50",
+              "50"
+            ],
+            "machineMaxAccelX": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxAccelY": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxAccelZ": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelExtruding": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxAccelRetracting": [
+              "5000",
+              "5000"
+            ],
+            "machineMaxAccelTravel": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxJerkX": [
+              "9"
+            ],
+            "machineMaxJerkY": [
+              "9"
+            ],
+            "machineMaxJerkZ": [
+              "0.5"
+            ],
+            "machineMaxJerkE": [
+              "2.5"
+            ],
+            "retractionLength": [
+              "0.8"
+            ],
+            "retractionSpeed": [
+              "40",
+              "40"
+            ],
+            "deretractionSpeed": [
+              "40",
+              "40"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "100%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0.4"
+            ],
+            "zHopTypes": [
+              "Auto Lift"
+            ],
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.32",
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0"
+            ],
+            "silentMode": "0",
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "klipper",
+            "defaultPrintProfile": "0.20mm Standard @Sovol SV06 Plus ACE",
+            "defaultFilamentProfile": [
+              "Sovol SV06 Plus ACE PLA"
+            ]
+          },
+          "startGcode": "M140 S[bed_temperature_initial_layer_single] ;set bed temp\nM190 S[bed_temperature_initial_layer_single] ;wait for bed temp\nSTART_PRINT\nG28\nG90\nG1 X0 F6000\nG1 Y-4\nG1 Z0.200 F600\nM400\nM104 S[nozzle_temperature_initial_layer] ;set extruder temp\nM109 S[nozzle_temperature_initial_layer];wait for extruder temp\nG91\nM83\nG1 E-0.200 Z5 F600\nG1 X{print_bed_max[1] / 3} F6000\nG1 Z-5 F600\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.24} F3000\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.16} F3000\nG1 Y1 E0.16 F3000\nG1 X-{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.16} F3000\nG1 X-{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.24} F3000\nG1 Y1 E0.24 F3000\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.24} F3000\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.16} F3000\nG1 E-0.200 Z1 F600\nM400\n\n",
+          "endGcode": "END_PRINT\n",
+          "pauseGcode": "PAUSE",
+          "changeFilamentGcode": "M600"
+        },
+        {
+          "name": "Sovol SV06 Plus ACE",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.4"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Sovol SV06 Plus",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.4"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "Sovol-SV06-ACE",
+      "name": "Sovol SV06 ACE",
+      "nozzleSizes": [
+        0.2,
+        0.4,
+        0.6,
+        0.8
+      ],
+      "bedModel": "sovol_sv06_ace_buildplate_model.stl",
+      "bedTexture": "sovol_sv06_ace_buildplate_texture.png",
+      "defaultMaterials": [
+        "Sovol SV06 ACE PLA"
+      ],
+      "variants": [
+        {
+          "name": "Sovol SV06 ACE 0.2 nozzle",
+          "nozzle": 0.2,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "220x0",
+              "220x220",
+              "0x220"
+            ],
+            "printableHeight": "250",
+            "nozzleDiameter": [
+              "0.2"
+            ],
+            "machineMaxSpeedX": [
+              "600",
+              "600"
+            ],
+            "machineMaxSpeedY": [
+              "600",
+              "600"
+            ],
+            "machineMaxSpeedZ": [
+              "10",
+              "10"
+            ],
+            "machineMaxSpeedE": [
+              "25",
+              "25"
+            ],
+            "machineMaxAccelX": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxAccelY": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxAccelZ": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelExtruding": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxAccelRetracting": [
+              "5000",
+              "5000"
+            ],
+            "machineMaxAccelTravel": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxJerkX": [
+              "9"
+            ],
+            "machineMaxJerkY": [
+              "9"
+            ],
+            "machineMaxJerkZ": [
+              "0.5"
+            ],
+            "machineMaxJerkE": [
+              "2.5"
+            ],
+            "retractionLength": [
+              "0.6"
+            ],
+            "retractionSpeed": [
+              "35",
+              "35"
+            ],
+            "deretractionSpeed": [
+              "35",
+              "35"
+            ],
+            "retractionMinimumTravel": [
+              "0.5"
+            ],
+            "retractBeforeWipe": [
+              "100%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0.2"
+            ],
+            "zHopTypes": [
+              "Auto Lift"
+            ],
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.16",
+              "0.16"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0"
+            ],
+            "silentMode": "0",
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "klipper",
+            "defaultPrintProfile": "0.12mm Standard @Sovol SV06 ACE 0.2 nozzle",
+            "defaultFilamentProfile": [
+              "Sovol SV06 ACE PLA"
+            ]
+          },
+          "startGcode": "M140 S[bed_temperature_initial_layer_single] ;set bed temp\nM190 S[bed_temperature_initial_layer_single] ;wait for bed temp\nSTART_PRINT\nG90\nG1 X0 F6000\nG1 Y20\nG1 Z0.200 F600\nG1 Y-4 F6000\nM400\nM104 S[nozzle_temperature_initial_layer] ;set extruder temp\nM109 S[nozzle_temperature_initial_layer];wait for extruder temp\nG91\nM83\nG1 E-0.100 Z5 F600\nG1 X{print_bed_max[1] / 3} F6000\nG1 Z-4.800 F600\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.24} F3000\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.16} F3000\nG1 Y1 E0.16 F3000\nG1 X-{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.16} F3000\nG1 X-{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.24} F3000\nG1 Y1 E0.24 F3000\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.24} F3000\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.16} F3000\nG1 E-0.200 Z1 F600\nM400\n\n",
+          "endGcode": "END_PRINT\n",
+          "pauseGcode": "PAUSE",
+          "changeFilamentGcode": "M600"
+        },
+        {
+          "name": "Sovol SV06 ACE 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "220x0",
+              "220x220",
+              "0x220"
+            ],
+            "printableHeight": "250",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "machineMaxSpeedX": [
+              "600",
+              "600"
+            ],
+            "machineMaxSpeedY": [
+              "600",
+              "600"
+            ],
+            "machineMaxSpeedZ": [
+              "10",
+              "10"
+            ],
+            "machineMaxSpeedE": [
+              "50",
+              "50"
+            ],
+            "machineMaxAccelX": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxAccelY": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxAccelZ": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelExtruding": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxAccelRetracting": [
+              "5000",
+              "5000"
+            ],
+            "machineMaxAccelTravel": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxJerkX": [
+              "9"
+            ],
+            "machineMaxJerkY": [
+              "9"
+            ],
+            "machineMaxJerkZ": [
+              "0.5"
+            ],
+            "machineMaxJerkE": [
+              "2.5"
+            ],
+            "retractionLength": [
+              "0.8"
+            ],
+            "retractionSpeed": [
+              "40",
+              "40"
+            ],
+            "deretractionSpeed": [
+              "40",
+              "40"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "100%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0.4"
+            ],
+            "zHopTypes": [
+              "Auto Lift"
+            ],
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.32",
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0"
+            ],
+            "silentMode": "0",
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "klipper",
+            "defaultPrintProfile": "0.20mm Standard @Sovol SV06 ACE",
+            "defaultFilamentProfile": [
+              "Sovol SV06 ACE PLA"
+            ]
+          },
+          "startGcode": "M140 S[bed_temperature_initial_layer_single] ;set bed temp\nM190 S[bed_temperature_initial_layer_single] ;wait for bed temp\nSTART_PRINT\nG90\nG1 X0 F6000\nG1 Y20\nG1 Z0.400 F600\nG1 Y-4 F6000\nM400\nM104 S[nozzle_temperature_initial_layer] ;set extruder temp\nM109 S[nozzle_temperature_initial_layer];wait for extruder temp\nG91\nM83\nG1 E-0.200 Z5 F600\nG1 X{print_bed_max[1] / 3} F6000\nG1 Z-4.800 F600\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.24} F3000\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.16} F3000\nG1 Y1 E0.16 F3000\nG1 X-{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.16} F3000\nG1 X-{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.24} F3000\nG1 Y1 E0.24 F3000\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.24} F3000\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.16} F3000\nG1 E-0.200 Z1 F600\nM400\n\n",
+          "endGcode": "END_PRINT\n",
+          "pauseGcode": "PAUSE",
+          "changeFilamentGcode": "M600"
+        },
+        {
+          "name": "Sovol SV06 ACE 0.6 nozzle",
+          "nozzle": 0.6,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "220x0",
+              "220x220",
+              "0x220"
+            ],
+            "printableHeight": "250",
+            "nozzleDiameter": [
+              "0.6"
+            ],
+            "machineMaxSpeedX": [
+              "600",
+              "600"
+            ],
+            "machineMaxSpeedY": [
+              "600",
+              "600"
+            ],
+            "machineMaxSpeedZ": [
+              "10",
+              "10"
+            ],
+            "machineMaxSpeedE": [
+              "60",
+              "60"
+            ],
+            "machineMaxAccelX": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxAccelY": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxAccelZ": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelExtruding": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxAccelRetracting": [
+              "5000",
+              "5000"
+            ],
+            "machineMaxAccelTravel": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxJerkX": [
+              "9"
+            ],
+            "machineMaxJerkY": [
+              "9"
+            ],
+            "machineMaxJerkZ": [
+              "0.5"
+            ],
+            "machineMaxJerkE": [
+              "2.5"
+            ],
+            "retractionLength": [
+              "1.0"
+            ],
+            "retractionSpeed": [
+              "45",
+              "45"
+            ],
+            "deretractionSpeed": [
+              "45",
+              "45"
+            ],
+            "retractionMinimumTravel": [
+              "1.5"
+            ],
+            "retractBeforeWipe": [
+              "100%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0.6"
+            ],
+            "zHopTypes": [
+              "Auto Lift"
+            ],
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.48",
+              "0.48"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0"
+            ],
+            "silentMode": "0",
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "klipper",
+            "defaultPrintProfile": "0.30mm Standard @Sovol SV06 ACE 0.6 nozzle",
+            "defaultFilamentProfile": [
+              "Sovol SV06 ACE PLA"
+            ]
+          },
+          "startGcode": "M140 S[bed_temperature_initial_layer_single] ;set bed temp\nM190 S[bed_temperature_initial_layer_single] ;wait for bed temp\nSTART_PRINT\nG90\nG1 X0 F6000\nG1 Y20\nG1 Z0.600 F600\nG1 Y-4 F6000\nM400\nM104 S[nozzle_temperature_initial_layer] ;set extruder temp\nM109 S[nozzle_temperature_initial_layer];wait for extruder temp\nG91\nM83\nG1 E-0.300 Z5 F600\nG1 X{print_bed_max[1] / 3} F6000\nG1 Z-4.800 F600\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.24} F3000\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.16} F3000\nG1 Y1 E0.16 F3000\nG1 X-{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.16} F3000\nG1 X-{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.24} F3000\nG1 Y1 E0.24 F3000\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.24} F3000\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.16} F3000\nG1 E-0.200 Z1 F600\nM400\n\n",
+          "endGcode": "END_PRINT\n",
+          "pauseGcode": "PAUSE",
+          "changeFilamentGcode": "M600"
+        },
+        {
+          "name": "Sovol SV06 ACE 0.8 nozzle",
+          "nozzle": 0.8,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "220x0",
+              "220x220",
+              "0x220"
+            ],
+            "printableHeight": "250",
+            "nozzleDiameter": [
+              "0.8"
+            ],
+            "machineMaxSpeedX": [
+              "600",
+              "600"
+            ],
+            "machineMaxSpeedY": [
+              "600",
+              "600"
+            ],
+            "machineMaxSpeedZ": [
+              "10",
+              "10"
+            ],
+            "machineMaxSpeedE": [
+              "70",
+              "70"
+            ],
+            "machineMaxAccelX": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxAccelY": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxAccelZ": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelExtruding": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxAccelRetracting": [
+              "5000",
+              "5000"
+            ],
+            "machineMaxAccelTravel": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxJerkX": [
+              "9"
+            ],
+            "machineMaxJerkY": [
+              "9"
+            ],
+            "machineMaxJerkZ": [
+              "0.5"
+            ],
+            "machineMaxJerkE": [
+              "2.5"
+            ],
+            "retractionLength": [
+              "1.2"
+            ],
+            "retractionSpeed": [
+              "45",
+              "45"
+            ],
+            "deretractionSpeed": [
+              "45",
+              "45"
+            ],
+            "retractionMinimumTravel": [
+              "2"
+            ],
+            "retractBeforeWipe": [
+              "100%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0.8"
+            ],
+            "zHopTypes": [
+              "Auto Lift"
+            ],
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.64",
+              "0.64"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0"
+            ],
+            "silentMode": "0",
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "klipper",
+            "defaultPrintProfile": "0.40mm Standard @Sovol SV06 ACE 0.8 nozzle",
+            "defaultFilamentProfile": [
+              "Sovol SV06 ACE PLA"
+            ]
+          },
+          "startGcode": "M140 S[bed_temperature_initial_layer_single] ;set bed temp\nM190 S[bed_temperature_initial_layer_single] ;wait for bed temp\nSTART_PRINT\nG90\nG1 X0 F6000\nG1 Y20\nG1 Z0.800 F600\nG1 Y-4 F6000\nM400\nM104 S[nozzle_temperature_initial_layer] ;set extruder temp\nM109 S[nozzle_temperature_initial_layer];wait for extruder temp\nG91\nM83\nG1 E-0.300 Z5 F600\nG1 X{print_bed_max[1] / 3} F6000\nG1 Z-4.800 F600\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.24} F3000\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.16} F3000\nG1 Y1 E0.16 F3000\nG1 X-{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.16} F3000\nG1 X-{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.24} F3000\nG1 Y1 E0.24 F3000\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.24} F3000\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.16} F3000\nG1 E-0.200 Z1 F600\nM400\n\n",
+          "endGcode": "END_PRINT\n",
+          "pauseGcode": "PAUSE",
+          "changeFilamentGcode": "M600"
+        }
+      ]
+    },
+    {
+      "id": "Sovol-SV06-Plus",
+      "name": "Sovol SV06 Plus",
+      "nozzleSizes": [
+        0.4
+      ],
+      "bedModel": "sovol_sv06plus_buildplate_model.stl",
+      "bedTexture": "sovol_sv06plus_buildplate_texture.png",
+      "defaultMaterials": [
+        "Generic ABS @System",
+        "Generic PETG @System",
+        "Generic PLA @System"
+      ],
+      "variants": [
+        {
+          "name": "Sovol SV06 Plus 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "300x0",
+              "300x300",
+              "0x300"
+            ],
+            "printableHeight": "340",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "undefine",
+            "machineMaxSpeedX": [
+              "140",
+              "140"
+            ],
+            "machineMaxSpeedY": [
+              "140",
+              "140"
+            ],
+            "machineMaxSpeedZ": [
+              "12",
+              "12"
+            ],
+            "machineMaxSpeedE": [
+              "120",
+              "120"
+            ],
+            "machineMaxAccelX": [
+              "1500",
+              "960"
+            ],
+            "machineMaxAccelY": [
+              "1500",
+              "960"
+            ],
+            "machineMaxAccelZ": [
+              "200",
+              "200"
+            ],
+            "machineMaxAccelExtruding": [
+              "1000",
+              "1250"
+            ],
+            "machineMaxAccelRetracting": [
+              "1000",
+              "1250"
+            ],
+            "machineMaxAccelTravel": [
+              "1500",
+              "1250"
+            ],
+            "machineMaxJerkX": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkY": [
+              "8",
+              "8"
+            ],
+            "machineMaxJerkZ": [
+              "2",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "10",
+              "4.5"
+            ],
+            "retractionLength": [
+              "0.5"
+            ],
+            "retractionSpeed": [
+              "30"
+            ],
+            "deretractionSpeed": [
+              "30"
+            ],
+            "retractionMinimumTravel": [
+              "0.5"
+            ],
+            "retractBeforeWipe": [
+              "0%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0"
+            ],
+            "zHopTypes": "Normal Lift",
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.25"
+            ],
+            "minLayerHeight": [
+              "0.07"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0"
+            ],
+            "silentMode": "0",
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "marlin",
+            "defaultPrintProfile": "0.20mm Standard @Sovol SV06Plus",
+            "defaultFilamentProfile": [
+              "Generic PLA @System"
+            ]
+          },
+          "startGcode": "G90 ; use absoulte coordinates\nM83 ; extruder relative mode\n\nM104 S150 ; set nozzle temp to 150\n\nG28 ; home all axes\nM420 S1 ;load mesh\n\nM140 S[bed_temperature_initial_layer_single] ; set bed temp\nM190 S[bed_temperature_initial_layer_single] ; wait for bed temp to stabilize\nM104 S[nozzle_temperature_initial_layer] ; set final extruder temp\nM109 S[nozzle_temperature_initial_layer] ; wait for extruder temp\n\nG1 X0.1 Y10 Z5.0 F1500 ; move to start position\nG1 Z0.26 F150 ; Move lower\nG4 S0.5 ; wait 0.5 seconds\n\nG1 X0.1 Y150 Z0.3 F1500 E10 ; prime the nozzle\nG1 X0.3 F1500\nG1 X0.4 Y15 Z0.3 F1500 E15 ; prime the nozzle\nG4 S0.1 ; wait 0.1 seconds\n\nG1 Z0.6 F150 ; lift nozzle\nG92 E0 ; Reset Extruder\nG1 Z2 F150 ; lift nozzle more\n",
+          "endGcode": "M117 READY\n\nG1 E0 F1000 ; reset extruder\n\nG91 ; relative positioning\nG1 Z2 F1000 ; lift nozzle\n\nG90 ; absolute positioning\nG27 P2 ; park extruder\n\nM140 S0 ; turn off heatbed\nM104 S0 ; turn off temperature\nM107 ; turn off fan\nM84 X Y E ; disable motors",
+          "pauseGcode": "M601",
+          "changeFilamentGcode": "M600\nG1 E0.4 F1500 ; prime after color change"
+        },
+        {
+          "name": "Sovol SV06 Plus ACE 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "300x0",
+              "300x300",
+              "0x300"
+            ],
+            "printableHeight": "350",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "machineMaxSpeedX": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedY": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedZ": [
+              "10",
+              "10"
+            ],
+            "machineMaxSpeedE": [
+              "50",
+              "50"
+            ],
+            "machineMaxAccelX": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxAccelY": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxAccelZ": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelExtruding": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxAccelRetracting": [
+              "5000",
+              "5000"
+            ],
+            "machineMaxAccelTravel": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxJerkX": [
+              "9"
+            ],
+            "machineMaxJerkY": [
+              "9"
+            ],
+            "machineMaxJerkZ": [
+              "0.5"
+            ],
+            "machineMaxJerkE": [
+              "2.5"
+            ],
+            "retractionLength": [
+              "0.8"
+            ],
+            "retractionSpeed": [
+              "40",
+              "40"
+            ],
+            "deretractionSpeed": [
+              "40",
+              "40"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "100%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0.4"
+            ],
+            "zHopTypes": [
+              "Auto Lift"
+            ],
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.32",
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0"
+            ],
+            "silentMode": "0",
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "klipper",
+            "defaultPrintProfile": "0.20mm Standard @Sovol SV06 Plus ACE",
+            "defaultFilamentProfile": [
+              "Sovol SV06 Plus ACE PLA"
+            ]
+          },
+          "startGcode": "M140 S[bed_temperature_initial_layer_single] ;set bed temp\nM190 S[bed_temperature_initial_layer_single] ;wait for bed temp\nSTART_PRINT\nG28\nG90\nG1 X0 F6000\nG1 Y-4\nG1 Z0.200 F600\nM400\nM104 S[nozzle_temperature_initial_layer] ;set extruder temp\nM109 S[nozzle_temperature_initial_layer];wait for extruder temp\nG91\nM83\nG1 E-0.200 Z5 F600\nG1 X{print_bed_max[1] / 3} F6000\nG1 Z-5 F600\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.24} F3000\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.16} F3000\nG1 Y1 E0.16 F3000\nG1 X-{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.16} F3000\nG1 X-{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.24} F3000\nG1 Y1 E0.24 F3000\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.24} F3000\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.16} F3000\nG1 E-0.200 Z1 F600\nM400\n\n",
+          "endGcode": "END_PRINT\n",
+          "pauseGcode": "PAUSE",
+          "changeFilamentGcode": "M600"
+        },
+        {
+          "name": "Sovol SV06 Plus ACE",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.4"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "Sovol-SV06-Plus-ACE",
+      "name": "Sovol SV06 Plus ACE",
+      "nozzleSizes": [
+        0.4
+      ],
+      "bedModel": "sovol_sv06plus_ace_buildplate_model.stl",
+      "bedTexture": "sovol_sv06plus_ace_buildplate_texture.png",
+      "defaultMaterials": [
+        "Sovol SV06 Plus ACE PLA"
+      ],
+      "variants": [
+        {
+          "name": "Sovol SV06 Plus ACE 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "300x0",
+              "300x300",
+              "0x300"
+            ],
+            "printableHeight": "350",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "machineMaxSpeedX": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedY": [
+              "500",
+              "500"
+            ],
+            "machineMaxSpeedZ": [
+              "10",
+              "10"
+            ],
+            "machineMaxSpeedE": [
+              "50",
+              "50"
+            ],
+            "machineMaxAccelX": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxAccelY": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxAccelZ": [
+              "500",
+              "500"
+            ],
+            "machineMaxAccelExtruding": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxAccelRetracting": [
+              "5000",
+              "5000"
+            ],
+            "machineMaxAccelTravel": [
+              "20000",
+              "20000"
+            ],
+            "machineMaxJerkX": [
+              "9"
+            ],
+            "machineMaxJerkY": [
+              "9"
+            ],
+            "machineMaxJerkZ": [
+              "0.5"
+            ],
+            "machineMaxJerkE": [
+              "2.5"
+            ],
+            "retractionLength": [
+              "0.8"
+            ],
+            "retractionSpeed": [
+              "40",
+              "40"
+            ],
+            "deretractionSpeed": [
+              "40",
+              "40"
+            ],
+            "retractionMinimumTravel": [
+              "1"
+            ],
+            "retractBeforeWipe": [
+              "100%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0.4"
+            ],
+            "zHopTypes": [
+              "Auto Lift"
+            ],
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.32",
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0"
+            ],
+            "silentMode": "0",
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "klipper",
+            "defaultPrintProfile": "0.20mm Standard @Sovol SV06 Plus ACE",
+            "defaultFilamentProfile": [
+              "Sovol SV06 Plus ACE PLA"
+            ]
+          },
+          "startGcode": "M140 S[bed_temperature_initial_layer_single] ;set bed temp\nM190 S[bed_temperature_initial_layer_single] ;wait for bed temp\nSTART_PRINT\nG28\nG90\nG1 X0 F6000\nG1 Y-4\nG1 Z0.200 F600\nM400\nM104 S[nozzle_temperature_initial_layer] ;set extruder temp\nM109 S[nozzle_temperature_initial_layer];wait for extruder temp\nG91\nM83\nG1 E-0.200 Z5 F600\nG1 X{print_bed_max[1] / 3} F6000\nG1 Z-5 F600\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.24} F3000\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.16} F3000\nG1 Y1 E0.16 F3000\nG1 X-{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.16} F3000\nG1 X-{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.24} F3000\nG1 Y1 E0.24 F3000\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.24} F3000\nG1 X{print_bed_max[1] / 6} E{print_bed_max[1] / 6 * 0.16} F3000\nG1 E-0.200 Z1 F600\nM400\n\n",
+          "endGcode": "END_PRINT\n",
+          "pauseGcode": "PAUSE",
+          "changeFilamentGcode": "M600"
+        }
+      ]
+    },
+    {
+      "id": "Sovol-SV07",
+      "name": "Sovol SV07",
+      "nozzleSizes": [
+        0.4
+      ],
+      "bedModel": "sovol_sv07_buildplate_model.stl",
+      "bedTexture": "sovol_sv07_buildplate_texture.png",
+      "defaultMaterials": [
+        "Sovol SV07 PLA"
+      ],
+      "variants": [
+        {
+          "name": "Sovol SV07 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "220x0",
+              "220x220",
+              "0x220"
+            ],
+            "printableHeight": "250",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "machineMaxSpeedX": [
+              "500"
+            ],
+            "machineMaxSpeedY": [
+              "500"
+            ],
+            "machineMaxSpeedZ": [
+              "20"
+            ],
+            "machineMaxSpeedE": [
+              "50"
+            ],
+            "machineMaxAccelX": [
+              "12000"
+            ],
+            "machineMaxAccelY": [
+              "12000"
+            ],
+            "machineMaxAccelZ": [
+              "500"
+            ],
+            "machineMaxAccelExtruding": [
+              "20000"
+            ],
+            "machineMaxAccelRetracting": [
+              "5000"
+            ],
+            "machineMaxJerkX": [
+              "9"
+            ],
+            "machineMaxJerkY": [
+              "9"
+            ],
+            "machineMaxJerkZ": [
+              "0.25"
+            ],
+            "machineMaxJerkE": [
+              "3"
+            ],
+            "retractionLength": [
+              "0.8"
+            ],
+            "retractionSpeed": [
+              "50"
+            ],
+            "deretractionSpeed": [
+              "50"
+            ],
+            "retractionMinimumTravel": [
+              "2"
+            ],
+            "retractBeforeWipe": [
+              "70%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0.4"
+            ],
+            "zHopTypes": "Normal Lift",
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.32"
+            ],
+            "minLayerHeight": [
+              "0.08"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0"
+            ],
+            "silentMode": "0",
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "marlin",
+            "defaultPrintProfile": "0.20mm Standard @Sovol SV07"
+          },
+          "startGcode": "G28\nG90\nG1 X0 F9000\nG1 Y20 F9000\nG1 Z0.300 F600\nG1 Y0 F9000\nG91\nM83\nM140 S[bed_temperature_initial_layer_single] ;set bed temp\nM104 S[nozzle_temperature_initial_layer] ;set extruder temp\nM190 S[bed_temperature_initial_layer_single] ;wait for bed temp\nM109 S[nozzle_temperature_initial_layer];wait for extruder temp\nG1 E25 F480\nG4 P1000\nG1 E-0.200 Z5 F600\nG1 X55.000 Y0.000 F6000\nG1 Z-4.800 F600\nG1 X55.000 E13.2 F3000\nG1 X55.000 E8.8 F3000\nG1 Y1 E0.16 F3000\nG1 X-55.000 E8.8 F3000\nG1 X-55.000 E13.2 F3000\nG1 Y1 E0.24 F3000\nG1 X55.000 E13.2 F3000\nG1 X55.000 E8.8 F3000\nG1 E-0.200 Z1 F600\nM400\n\n",
+          "endGcode": "END_PRINT\n",
+          "pauseGcode": "PAUSE",
+          "changeFilamentGcode": ""
+        },
+        {
+          "name": "Sovol SV07 Plus 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "300x0",
+              "300x300",
+              "0x300"
+            ],
+            "printableHeight": "350",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "undefine",
+            "machineMaxSpeedX": [
+              "500",
+              "100"
+            ],
+            "machineMaxSpeedY": [
+              "500",
+              "100"
+            ],
+            "machineMaxSpeedZ": [
+              "500",
+              "12"
+            ],
+            "machineMaxSpeedE": [
+              "500",
+              "120"
+            ],
+            "machineMaxAccelX": [
+              "8000",
+              "960"
+            ],
+            "machineMaxAccelY": [
+              "8000",
+              "960"
+            ],
+            "machineMaxAccelZ": [
+              "400",
+              "200"
+            ],
+            "machineMaxAccelExtruding": [
+              "4000",
+              "1250"
+            ],
+            "machineMaxAccelRetracting": [
+              "4000",
+              "1250"
+            ],
+            "machineMaxAccelTravel": [
+              "1500",
+              "1250"
+            ],
+            "machineMaxJerkX": [
+              "27",
+              "8"
+            ],
+            "machineMaxJerkY": [
+              "27",
+              "8"
+            ],
+            "machineMaxJerkZ": [
+              "3.6",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "15",
+              "4.5"
+            ],
+            "retractionLength": [
+              "0.5"
+            ],
+            "retractionSpeed": [
+              "140"
+            ],
+            "deretractionSpeed": [
+              "140"
+            ],
+            "retractionMinimumTravel": [
+              "0.5"
+            ],
+            "retractBeforeWipe": [
+              "0%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0"
+            ],
+            "zHopTypes": "Normal Lift",
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.25"
+            ],
+            "minLayerHeight": [
+              "0.07"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0"
+            ],
+            "silentMode": "0",
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "klipper",
+            "defaultPrintProfile": "0.20mm Standard @Sovol SV07 Plus",
+            "defaultFilamentProfile": [
+              "Generic PLA @System"
+            ]
+          },
+          "startGcode": "M190 S[bed_temperature_initial_layer_single] ; Setting bed temprature\nM109 S[nozzle_temperature_initial_layer] ; Setting hot-end temprature\nSTART_PRINT ; Running macro from klipper\n",
+          "endGcode": "END_PRINT",
+          "pauseGcode": "M601",
+          "changeFilamentGcode": "M600\nG1 E0.4 F1500 ; prime after color change"
+        },
+        {
+          "name": "Sovol SV07 Plus",
+          "nozzle": 0,
+          "config": {
+            "nozzleDiameter": "0.4"
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    },
+    {
+      "id": "Sovol-SV07Plus",
+      "name": "Sovol SV07 Plus",
+      "nozzleSizes": [
+        0.4
+      ],
+      "bedModel": "sovol_sv07plus_buildplate_model.stl",
+      "bedTexture": "sovol_sv07plus_buildplate_texture.png",
+      "defaultMaterials": [
+        "Generic ABS @System",
+        "Generic PETG @System",
+        "Generic PLA @System"
+      ],
+      "variants": [
+        {
+          "name": "Sovol SV07 Plus 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "300x0",
+              "300x300",
+              "0x300"
+            ],
+            "printableHeight": "350",
+            "auxiliaryFan": "0",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "undefine",
+            "machineMaxSpeedX": [
+              "500",
+              "100"
+            ],
+            "machineMaxSpeedY": [
+              "500",
+              "100"
+            ],
+            "machineMaxSpeedZ": [
+              "500",
+              "12"
+            ],
+            "machineMaxSpeedE": [
+              "500",
+              "120"
+            ],
+            "machineMaxAccelX": [
+              "8000",
+              "960"
+            ],
+            "machineMaxAccelY": [
+              "8000",
+              "960"
+            ],
+            "machineMaxAccelZ": [
+              "400",
+              "200"
+            ],
+            "machineMaxAccelExtruding": [
+              "4000",
+              "1250"
+            ],
+            "machineMaxAccelRetracting": [
+              "4000",
+              "1250"
+            ],
+            "machineMaxAccelTravel": [
+              "1500",
+              "1250"
+            ],
+            "machineMaxJerkX": [
+              "27",
+              "8"
+            ],
+            "machineMaxJerkY": [
+              "27",
+              "8"
+            ],
+            "machineMaxJerkZ": [
+              "3.6",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "15",
+              "4.5"
+            ],
+            "retractionLength": [
+              "0.5"
+            ],
+            "retractionSpeed": [
+              "140"
+            ],
+            "deretractionSpeed": [
+              "140"
+            ],
+            "retractionMinimumTravel": [
+              "0.5"
+            ],
+            "retractBeforeWipe": [
+              "0%"
+            ],
+            "retractWhenChangingLayer": [
+              "1"
+            ],
+            "zHop": [
+              "0"
+            ],
+            "zHopTypes": "Normal Lift",
+            "wipe": [
+              "1"
+            ],
+            "maxLayerHeight": [
+              "0.25"
+            ],
+            "minLayerHeight": [
+              "0.07"
+            ],
+            "extruderClearanceRadius": "65",
+            "extruderClearanceHeightToRod": "36",
+            "extruderClearanceHeightToLid": "140",
+            "machineMinExtrudingRate": [
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0"
+            ],
+            "silentMode": "0",
+            "singleExtruderMultiMaterial": "1",
+            "gcodeFlavor": "klipper",
+            "defaultPrintProfile": "0.20mm Standard @Sovol SV07 Plus",
+            "defaultFilamentProfile": [
+              "Generic PLA @System"
+            ]
+          },
+          "startGcode": "M190 S[bed_temperature_initial_layer_single] ; Setting bed temprature\nM109 S[nozzle_temperature_initial_layer] ; Setting hot-end temprature\nSTART_PRINT ; Running macro from klipper\n",
+          "endGcode": "END_PRINT",
+          "pauseGcode": "M601",
+          "changeFilamentGcode": "M600\nG1 E0.4 F1500 ; prime after color change"
+        }
+      ]
+    }
+  ],
+  "filaments": [
+    {
+      "name": "Sovol SV06 ACE ABS",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "270"
+        ],
+        "bedTemperature": [
+          "95"
+        ],
+        "bedTemperatureInitialLayer": [
+          "95"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "15"
+        ],
+        "compatiblePrinters": [
+          "Sovol SV06 ACE 0.2 nozzle",
+          "Sovol SV06 ACE 0.4 nozzle",
+          "Sovol SV06 ACE 0.6 nozzle",
+          "Sovol SV06 ACE 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Sovol SV06 ACE PETG",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "245"
+        ],
+        "bedTemperature": [
+          "85"
+        ],
+        "bedTemperatureInitialLayer": [
+          "85"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "15"
+        ],
+        "compatiblePrinters": [
+          "Sovol SV06 ACE 0.2 nozzle",
+          "Sovol SV06 ACE 0.4 nozzle",
+          "Sovol SV06 ACE 0.6 nozzle",
+          "Sovol SV06 ACE 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Sovol SV06 ACE PLA",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "210"
+        ],
+        "bedTemperature": [
+          "60"
+        ],
+        "bedTemperatureInitialLayer": [
+          "60"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "21"
+        ],
+        "slowDownMinSpeed": [
+          "20"
+        ],
+        "compatiblePrinters": [
+          "Sovol SV06 ACE 0.2 nozzle",
+          "Sovol SV06 ACE 0.4 nozzle",
+          "Sovol SV06 ACE 0.6 nozzle",
+          "Sovol SV06 ACE 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Sovol SV06 ACE TPU",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "245"
+        ],
+        "bedTemperature": [
+          "60"
+        ],
+        "bedTemperatureInitialLayer": [
+          "60"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "3.6"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Sovol SV06 ACE 0.2 nozzle",
+          "Sovol SV06 ACE 0.4 nozzle",
+          "Sovol SV06 ACE 0.6 nozzle",
+          "Sovol SV06 ACE 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Sovol SV06 Plus ACE ABS",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "270"
+        ],
+        "bedTemperature": [
+          "95"
+        ],
+        "bedTemperatureInitialLayer": [
+          "95"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "15"
+        ],
+        "compatiblePrinters": [
+          "Sovol SV06 Plus ACE 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Sovol SV06 Plus ACE PETG",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "245"
+        ],
+        "bedTemperature": [
+          "85"
+        ],
+        "bedTemperatureInitialLayer": [
+          "85"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "15"
+        ],
+        "compatiblePrinters": [
+          "Sovol SV06 Plus ACE 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Sovol SV06 Plus ACE PLA",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "210"
+        ],
+        "bedTemperature": [
+          "60"
+        ],
+        "bedTemperatureInitialLayer": [
+          "60"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "21"
+        ],
+        "slowDownMinSpeed": [
+          "20"
+        ],
+        "compatiblePrinters": [
+          "Sovol SV06 Plus ACE 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Sovol SV06 Plus ACE TPU",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "245"
+        ],
+        "bedTemperature": [
+          "60"
+        ],
+        "bedTemperatureInitialLayer": [
+          "60"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "3.6"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Sovol SV06 Plus ACE 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Sovol SV07 PLA",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "200"
+        ],
+        "bedTemperature": [
+          "65"
+        ],
+        "bedTemperatureInitialLayer": [
+          "65"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "24"
+        ],
+        "compatiblePrinters": [
+          "Sovol SV07 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Sovol SV08 ABS",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "270"
+        ],
+        "bedTemperature": [
+          "95"
+        ],
+        "bedTemperatureInitialLayer": [
+          "95"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "21"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Sovol SV08 0.2 nozzle",
+          "Sovol SV08 0.4 nozzle",
+          "Sovol SV08 0.6 nozzle",
+          "Sovol SV08 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Sovol SV08 PETG",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "235"
+        ],
+        "bedTemperature": [
+          "75"
+        ],
+        "bedTemperatureInitialLayer": [
+          "75"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "17"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Sovol SV08 0.2 nozzle",
+          "Sovol SV08 0.4 nozzle",
+          "Sovol SV08 0.6 nozzle",
+          "Sovol SV08 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Sovol SV08 PLA",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "220"
+        ],
+        "bedTemperature": [
+          "65"
+        ],
+        "bedTemperatureInitialLayer": [
+          "65"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "21"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Sovol SV08 0.4 nozzle",
+          "Sovol SV08 0.6 nozzle",
+          "Sovol SV08 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Sovol SV08 PLA @SV08 0.2 nozzle",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "220"
+        ],
+        "bedTemperature": [
+          "65"
+        ],
+        "bedTemperatureInitialLayer": [
+          "65"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "10"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Sovol SV08 0.2 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Sovol SV08 TPU",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "235"
+        ],
+        "bedTemperature": [
+          "65"
+        ],
+        "bedTemperatureInitialLayer": [
+          "65"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "3.6"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Sovol SV08 0.2 nozzle",
+          "Sovol SV08 0.4 nozzle",
+          "Sovol SV08 0.6 nozzle",
+          "Sovol SV08 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Sovol Zero ABS",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "270"
+        ],
+        "bedTemperature": [
+          "100"
+        ],
+        "bedTemperatureInitialLayer": [
+          "100"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "21"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Sovol Zero 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Sovol Zero PC",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "270"
+        ],
+        "bedTemperature": [
+          "110"
+        ],
+        "bedTemperatureInitialLayer": [
+          "110"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "21"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Sovol Zero 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Sovol Zero PETG",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "245"
+        ],
+        "bedTemperature": [
+          "85"
+        ],
+        "bedTemperatureInitialLayer": [
+          "85"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "15"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Sovol Zero 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Sovol Zero PETG HS Nozzle",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "250"
+        ],
+        "bedTemperature": [
+          "85"
+        ],
+        "bedTemperatureInitialLayer": [
+          "85"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "15"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Sovol Zero 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Sovol Zero PLA Basic",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "210"
+        ],
+        "bedTemperature": [
+          "65"
+        ],
+        "bedTemperatureInitialLayer": [
+          "65"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "21"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Sovol Zero 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Sovol Zero PLA Basic HS Nozzle",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "230"
+        ],
+        "bedTemperature": [
+          "65"
+        ],
+        "bedTemperatureInitialLayer": [
+          "65"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "21"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Sovol Zero 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Sovol Zero PLA Silk",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "220"
+        ],
+        "bedTemperature": [
+          "65"
+        ],
+        "bedTemperatureInitialLayer": [
+          "65"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "15"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Sovol Zero 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Sovol Zero PLA Silk HS Nozzle",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "230"
+        ],
+        "bedTemperature": [
+          "65"
+        ],
+        "bedTemperatureInitialLayer": [
+          "65"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "15"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Sovol Zero 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Sovol Zero TPU",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "235"
+        ],
+        "bedTemperature": [
+          "85"
+        ],
+        "bedTemperatureInitialLayer": [
+          "85"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "3.2"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Sovol Zero 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Generic PLA @Sovol SV08 MAX",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "230"
+        ],
+        "bedTemperature": [
+          "65"
+        ],
+        "bedTemperatureInitialLayer": [
+          "65"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "21"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Sovol SV08 MAX 0.4 nozzle",
+          "Sovol SV08 MAX 0.6 nozzle",
+          "Sovol SV08 MAX 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Generic PLA Silk @Sovol SV08 MAX",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "230"
+        ],
+        "bedTemperature": [
+          "65"
+        ],
+        "bedTemperatureInitialLayer": [
+          "65"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "15"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Sovol SV08 MAX 0.4 nozzle",
+          "Sovol SV08 MAX 0.6 nozzle",
+          "Sovol SV08 MAX 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Generic ABS @Sovol SV08 MAX",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "270"
+        ],
+        "bedTemperature": [
+          "95"
+        ],
+        "bedTemperatureInitialLayer": [
+          "95"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "20"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Sovol SV08 MAX 0.4 nozzle",
+          "Sovol SV08 MAX 0.6 nozzle",
+          "Sovol SV08 MAX 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Generic PETG @Sovol SV08 MAX",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "255"
+        ],
+        "bedTemperature": [
+          "80"
+        ],
+        "bedTemperatureInitialLayer": [
+          "80"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "15"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Sovol SV08 MAX 0.4 nozzle",
+          "Sovol SV08 MAX 0.6 nozzle",
+          "Sovol SV08 MAX 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Polymaker PETG @Sovol SV08 MAX",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "270"
+        ],
+        "bedTemperature": [
+          "80"
+        ],
+        "bedTemperatureInitialLayer": [
+          "80"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "12"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Sovol SV08 MAX 0.4 nozzle",
+          "Sovol SV08 MAX 0.6 nozzle",
+          "Sovol SV08 MAX 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "SUNLU PETG @Sovol SV08 MAX",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "255"
+        ],
+        "bedTemperature": [
+          "80"
+        ],
+        "bedTemperatureInitialLayer": [
+          "80"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "13"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Sovol SV08 MAX 0.4 nozzle",
+          "Sovol SV08 MAX 0.6 nozzle",
+          "Sovol SV08 MAX 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Generic TPU @Sovol SV08 MAX",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "240"
+        ],
+        "bedTemperature": [
+          "85"
+        ],
+        "bedTemperatureInitialLayer": [
+          "85"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "3"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Sovol SV08 MAX 0.4 nozzle",
+          "Sovol SV08 MAX 0.6 nozzle",
+          "Sovol SV08 MAX 0.8 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "Generic PC @Sovol SV08 MAX",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "260"
+        ],
+        "bedTemperature": [
+          "100"
+        ],
+        "bedTemperatureInitialLayer": [
+          "100"
+        ],
+        "filamentMaxVolumetricSpeed": [
+          "18"
+        ],
+        "slowDownMinSpeed": [
+          "10"
+        ],
+        "compatiblePrinters": [
+          "Sovol SV08 MAX 0.4 nozzle",
+          "Sovol SV08 MAX 0.6 nozzle",
+          "Sovol SV08 MAX 0.8 nozzle"
+        ]
+      }
+    }
+  ],
+  "processes": [
+    {
+      "name": "fdm_process_common",
+      "config": {
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.08mm High Quality @Sovol SV06 ACE",
+      "config": {
+        "layerHeight": "0.08",
+        "wallLoops": "2",
+        "sparseInfillDensity": "10%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "3",
+        "bottomShellLayers": "3",
+        "compatiblePrinters": [
+          "Sovol SV06 ACE 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.10mm Standard @Sovol SV08 0.2 nozzle",
+      "config": {
+        "layerHeight": "0.10",
+        "wallLoops": "4",
+        "sparseInfillDensity": "10%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "7",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": [
+          "Sovol SV08 0.2 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.12mm Quality @Sovol SV06 ACE",
+      "config": {
+        "layerHeight": "0.12",
+        "wallLoops": "2",
+        "sparseInfillDensity": "10%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "3",
+        "bottomShellLayers": "3",
+        "compatiblePrinters": [
+          "Sovol SV06 ACE 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.12mm Standard @Sovol SV06 ACE 0.2 nozzle",
+      "config": {
+        "layerHeight": "0.12",
+        "wallLoops": "3",
+        "sparseInfillDensity": "10%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "5",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": [
+          "Sovol SV06 ACE 0.2 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.18mm Optimal @Sovol SV01Pro",
+      "config": {
+        "layerHeight": "0.18",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "5",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": [
+          "Sovol SV01 Pro 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.18mm Optimal @Sovol SV02",
+      "config": {
+        "layerHeight": "0.18",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "5",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": [
+          "Sovol SV02 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.18mm Optimal @Sovol SV05",
+      "config": {
+        "layerHeight": "0.18",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "5",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": [
+          "Sovol SV05 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.18mm Optimal @Sovol SV06",
+      "config": {
+        "layerHeight": "0.18",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "5",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": [
+          "Sovol SV06 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.18mm Optimal @Sovol SV06Plus",
+      "config": {
+        "layerHeight": "0.18",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "5",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": [
+          "Sovol SV06 Plus 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.18mm Optimal @Sovol SV07",
+      "config": {
+        "layerHeight": "0.18",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "5",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": [
+          "Sovol SV07 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.18mm Optimal @Sovol SV07 Plus",
+      "config": {
+        "layerHeight": "0.18",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "5",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": [
+          "Sovol SV07 Plus 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.18mm Optimal @Sovol SV08",
+      "config": {
+        "layerHeight": "0.18",
+        "wallLoops": "2",
+        "sparseInfillDensity": "10%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "4",
+        "bottomShellLayers": "3",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.20mm High-Speed @Sovol SV06",
+      "config": {
+        "layerHeight": "0.20",
+        "wallLoops": "3",
+        "sparseInfillDensity": "10%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "4",
+        "bottomShellLayers": "3",
+        "compatiblePrinters": [
+          "Sovol SV06 0.4 High-Speed nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.20mm Standard @Sovol SV01",
+      "config": {
+        "layerHeight": "0.20",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "5",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": [
+          "Sovol SV01 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.20mm Standard @Sovol SV01Pro",
+      "config": {
+        "layerHeight": "0.20",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "5",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": [
+          "Sovol SV01 Pro 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.20mm Standard @Sovol SV02",
+      "config": {
+        "layerHeight": "0.20",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "5",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": [
+          "Sovol SV02 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.20mm Standard @Sovol SV05",
+      "config": {
+        "layerHeight": "0.20",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "5",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": [
+          "Sovol SV05 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.20mm Standard @Sovol SV06",
+      "config": {
+        "layerHeight": "0.20",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "5",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": [
+          "Sovol SV06 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.20mm Standard @Sovol SV06 ACE",
+      "config": {
+        "layerHeight": "0.20",
+        "wallLoops": "2",
+        "sparseInfillDensity": "10%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "3",
+        "bottomShellLayers": "3",
+        "compatiblePrinters": [
+          "Sovol SV06 ACE 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.20mm Standard @Sovol SV06 Plus ACE",
+      "config": {
+        "layerHeight": "0.20",
+        "wallLoops": "2",
+        "sparseInfillDensity": "10%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "4",
+        "bottomShellLayers": "3",
+        "compatiblePrinters": [
+          "Sovol SV06 Plus ACE 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.20mm Standard @Sovol SV06Plus",
+      "config": {
+        "layerHeight": "0.20",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "5",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": [
+          "Sovol SV06 Plus 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.20mm Standard @Sovol SV07",
+      "config": {
+        "layerHeight": "0.2",
+        "wallLoops": "2",
+        "sparseInfillDensity": "10%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "4",
+        "bottomShellLayers": "3",
+        "compatiblePrinters": [
+          "Sovol SV07 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.20mm Standard @Sovol SV07 Plus",
+      "config": {
+        "layerHeight": "0.20",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "5",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": [
+          "Sovol SV07 Plus 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.20mm Standard @Sovol SV08",
+      "config": {
+        "layerHeight": "0.20",
+        "wallLoops": "2",
+        "sparseInfillDensity": "10%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "4",
+        "bottomShellLayers": "3",
+        "compatiblePrinters": [
+          "Sovol SV08 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.20mm Standard @Sovol SV08 0.4 nozzle",
+      "config": {
+        "layerHeight": "0.20",
+        "wallLoops": "2",
+        "sparseInfillDensity": "10%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "4",
+        "bottomShellLayers": "3",
+        "compatiblePrinters": [
+          "Sovol SV08 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.20mm Standard @Sovol Zero 0.4 nozzle",
+      "config": {
+        "layerHeight": "0.20",
+        "wallLoops": "2",
+        "sparseInfillDensity": "10%",
+        "sparseInfillPattern": "grid",
+        "topShellLayers": "4",
+        "bottomShellLayers": "3",
+        "compatiblePrinters": [
+          "Sovol Zero 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.28mm Fast @Sovol SV06 ACE",
+      "config": {
+        "layerHeight": "0.28",
+        "wallLoops": "2",
+        "sparseInfillDensity": "10%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "3",
+        "bottomShellLayers": "3",
+        "compatiblePrinters": [
+          "Sovol SV06 ACE 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.30mm Standard @Sovol SV06 ACE 0.6 nozzle",
+      "config": {
+        "layerHeight": "0.30",
+        "wallLoops": "2",
+        "sparseInfillDensity": "10%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "3",
+        "bottomShellLayers": "3",
+        "compatiblePrinters": [
+          "Sovol SV06 ACE 0.6 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.30mm Standard @Sovol SV08 0.6 nozzle",
+      "config": {
+        "layerHeight": "0.30",
+        "wallLoops": "2",
+        "sparseInfillDensity": "10%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "3",
+        "bottomShellLayers": "3",
+        "compatiblePrinters": [
+          "Sovol SV08 0.6 nozzle"
+        ]
+      }
+    }
+  ]
+}

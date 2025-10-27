@@ -1,0 +1,384 @@
+{
+  "name": "TwoTrees",
+  "version": "02.03.01.10",
+  "printers": [
+    {
+      "id": "TwoTrees_SK1",
+      "name": "TwoTrees SK1",
+      "nozzleSizes": [
+        0.4
+      ],
+      "bedModel": "TwoTrees SK1_buildplate_model.stl",
+      "bedTexture": "",
+      "defaultMaterials": [
+        "TwoTrees Generic 95A TPU @SK1",
+        "TwoTrees Generic PETG @SK1",
+        "TwoTrees Generic HS PLA @SK1",
+        "TwoTrees Generic PLA @SK1",
+        "TwoTrees Generic PLA-CF @SK1",
+        "TwoTrees Generic PLA Matte @SK1",
+        "TwoTrees Generic PLA Silk @SK1"
+      ],
+      "variants": [
+        {
+          "name": "TwoTrees SK1 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "256x0",
+              "256x256",
+              "0x256"
+            ],
+            "printableHeight": "256",
+            "nozzleDiameter": [
+              "0.4"
+            ],
+            "nozzleType": "hardened_steel",
+            "machineMaxSpeedX": [
+              "730",
+              "200"
+            ],
+            "machineMaxSpeedY": [
+              "730",
+              "200"
+            ],
+            "machineMaxSpeedZ": [
+              "15",
+              "12"
+            ],
+            "machineMaxSpeedE": [
+              "50",
+              "120"
+            ],
+            "machineMaxAccelX": [
+              "20000",
+              "1000"
+            ],
+            "machineMaxAccelY": [
+              "20000",
+              "1000"
+            ],
+            "machineMaxAccelZ": [
+              "100",
+              "200"
+            ],
+            "machineMaxAccelExtruding": [
+              "20000",
+              "1250"
+            ],
+            "machineMaxAccelRetracting": [
+              "15000",
+              "1250"
+            ],
+            "machineMaxAccelTravel": [
+              "1500",
+              "1250"
+            ],
+            "machineMaxJerkX": [
+              "5",
+              "10"
+            ],
+            "machineMaxJerkY": [
+              "5",
+              "10"
+            ],
+            "machineMaxJerkZ": [
+              "0.2",
+              "0.4"
+            ],
+            "machineMaxJerkE": [
+              "1",
+              "2.5"
+            ],
+            "retractionLength": "0.4",
+            "retractionSpeed": [
+              "50"
+            ],
+            "deretractionSpeed": [
+              "0"
+            ],
+            "retractionMinimumTravel": [
+              "2"
+            ],
+            "retractBeforeWipe": "100%",
+            "maxLayerHeight": "0.32",
+            "minLayerHeight": "0.08",
+            "machineMinExtrudingRate": [
+              "0",
+              "0"
+            ],
+            "machineMinTravelRate": [
+              "0",
+              "0"
+            ],
+            "defaultPrintProfile": "0.20mm Standard @SK1"
+          },
+          "startGcode": [
+            "M107 ; Turn off the fan\nG21  ; set units to millimeters\nG90  ; use absolute coordinates\nM83  ; use relative distances for extrusion\n\nM104 S220     ; set extruder temp\nM140 S60  ; set bed temp\nM109 S220      ; wait for extruder temp\nM190 S60  ; wait for bed temp\nG1 E-1.5 F2100 ; retract\n\n;G32  ;Load bed mesh\nG28   ;home\nG29   ;bed leveling\n\nM104 S[first_layer_temperature]      ; set extruder temp\nM140 S[first_layer_bed_temperature]  ; set bed temp\nM109 S[first_layer_temperature]      ; wait for extruder temp\nM190 S[first_layer_bed_temperature]  ; wait for bed temp\n\nG0 Z2.0 F600;\nG0 X50 Y10 F12000;\n\nG92 E0.0 ; reset extruder distance position\nG0 Z0.4 F600;\nG1 X100.0 E10 F3000.0 ; intro line\nG92 E0.0 ; reset extruder distance position\nG1 X200.0 E15 F3000.0 ; intro line\nG92 E0.0 ; reset extruder distance position\nG0 Z0.8 F600;\nG1 X100.0 E15 F3000.0 ; intro line\n\nG1 Z0.4 F600     ;Wipe\nG0 Y12 F6000    ;Wipe\nG1 X100 F6000    ;Wipe\nG0 Y8 F12000   ;Wipe\nG1 X200 F6000    ;Wipe\nG1 X190 Y12 F6000 ;Wipe\nG1 X180 Y8 F6000 ;Wipe\nG1 X170 Y12 F6000 ;Wipe\nG1 X160 Y8 F6000 ;Wipe\nG1 X150 Y12 F6000 ;Wipe\n\n\n;G0 Z2.0 F600;\nG92 E0.0 ; reset extruder distance position\n\nSET_VELOCITY_LIMIT ACCEL_TO_DECEL=10000"
+          ],
+          "endGcode": [
+            "M104 S0 ; turn off temperature\nM140 S0 ; turn off heatbed\n\nG92 E0.0     ; reset extruder distance position\nG1 E-1 F2100 ; retract\n\nG0 X50 Y250 F12000;\nM84    ; disable motors\n\nM107   ; turn off fan\n\nSET_VELOCITY_LIMIT ACCEL_TO_DECEL=4000"
+          ],
+          "pauseGcode": "PAUSE",
+          "changeFilamentGcode": "PAUSE"
+        }
+      ]
+    },
+    {
+      "id": "TwoTrees_SP-5_Klipper",
+      "name": "TwoTrees SP-5 Klipper",
+      "nozzleSizes": [
+        0.4
+      ],
+      "bedModel": "SP-5_bed.stl",
+      "bedTexture": "SP5_texture.png",
+      "defaultMaterials": [
+        "TwoTrees Generic ABS",
+        "TwoTrees Generic PLA",
+        "TwoTrees Generic PLA-CF",
+        "TwoTrees Generic PETG",
+        "TwoTrees Generic TPU",
+        "TwoTrees Generic ASA",
+        "TwoTrees Generic PC",
+        "TwoTrees Generic PVA",
+        "TwoTrees Generic PA",
+        "TwoTrees Generic PA-CF"
+      ],
+      "variants": [
+        {
+          "name": "TwoTrees SP-5 Klipper 0.4 nozzle",
+          "nozzle": 0.4,
+          "config": {
+            "printableArea": [
+              "0x0",
+              "310x0",
+              "310x310",
+              "0x310"
+            ],
+            "printableHeight": "350",
+            "nozzleDiameter": [
+              "0.4"
+            ]
+          },
+          "startGcode": "",
+          "endGcode": "",
+          "pauseGcode": "",
+          "changeFilamentGcode": ""
+        }
+      ]
+    }
+  ],
+  "filaments": [
+    {
+      "name": "TwoTrees Generic 95A TPU @SK1",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": "235",
+        "filamentMaxVolumetricSpeed": "15",
+        "slowDownMinSpeed": "10",
+        "compatiblePrinters": [
+          "TwoTrees SK1 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "TwoTrees Generic HS PLA @SK1",
+      "type": "PLA",
+      "config": {
+        "nozzleTemperature": [
+          "220"
+        ],
+        "bedTemperature": "60",
+        "bedTemperatureInitialLayer": "60",
+        "filamentMaxVolumetricSpeed": "25",
+        "slowDownMinSpeed": "50",
+        "compatiblePrinters": [
+          "TwoTrees SK1 0.4 nozzle"
+        ]
+      }
+    }
+  ],
+  "processes": [
+    {
+      "name": "fdm_process_common",
+      "config": {
+        "layerHeight": "0.2",
+        "wallLoops": "3",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "3",
+        "bottomShellLayers": "3",
+        "compatiblePrinters": [
+          "TwoTrees SP-5 Klipper 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.08mm Extra Fine @SK1",
+      "config": {
+        "layerHeight": "0.08",
+        "wallLoops": "2",
+        "topShellLayers": "9",
+        "bottomShellLayers": "7",
+        "compatiblePrinters": [
+          "TwoTrees SK1 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.08mm Extra Fine @TwoTrees",
+      "config": {
+        "layerHeight": "0.08",
+        "topShellLayers": "9",
+        "bottomShellLayers": "7",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.12mm Fine @SK1",
+      "config": {
+        "layerHeight": "0.12",
+        "wallLoops": "2",
+        "topShellLayers": "5",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": [
+          "TwoTrees SK1 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.12mm Fine @TwoTrees",
+      "config": {
+        "layerHeight": "0.12",
+        "topShellLayers": "6",
+        "bottomShellLayers": "5",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.15mm Optimal @TwoTrees",
+      "config": {
+        "layerHeight": "0.15",
+        "topShellLayers": "5",
+        "bottomShellLayers": "4",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.16mm Optimal @SK1",
+      "config": {
+        "layerHeight": "0.16",
+        "wallLoops": "2",
+        "topShellLayers": "4",
+        "bottomShellLayers": "4",
+        "compatiblePrinters": [
+          "TwoTrees SK1 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.20mm Quality @SK1",
+      "config": {
+        "layerHeight": "0.2",
+        "wallLoops": "2",
+        "topShellLayers": "3",
+        "bottomShellLayers": "3",
+        "compatiblePrinters": [
+          "TwoTrees SK1 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.20mm Standard @SK1",
+      "config": {
+        "layerHeight": "0.2",
+        "wallLoops": "2",
+        "topShellLayers": "3",
+        "bottomShellLayers": "3",
+        "compatiblePrinters": [
+          "TwoTrees SK1 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.20mm Standard @TwoTrees",
+      "config": {
+        "layerHeight": "0.2",
+        "topShellLayers": "4",
+        "bottomShellLayers": "3",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.24mm Draft @SK1",
+      "config": {
+        "layerHeight": "0.24",
+        "wallLoops": "2",
+        "topShellLayers": "3",
+        "bottomShellLayers": "3",
+        "compatiblePrinters": [
+          "TwoTrees SK1 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.24mm Draft @TwoTrees",
+      "config": {
+        "layerHeight": "0.24",
+        "topShellLayers": "4",
+        "bottomShellLayers": "3",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "0.24mm HSpeed @SK1",
+      "config": {
+        "layerHeight": "0.24",
+        "wallLoops": "2",
+        "sparseInfillDensity": "10%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "3",
+        "bottomShellLayers": "3",
+        "compatiblePrinters": [
+          "TwoTrees SK1 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.28mm Extra Draft @SK1",
+      "config": {
+        "layerHeight": "0.28",
+        "wallLoops": "2",
+        "topShellLayers": "3",
+        "bottomShellLayers": "3",
+        "compatiblePrinters": [
+          "TwoTrees SK1 0.4 nozzle"
+        ]
+      }
+    },
+    {
+      "name": "0.28mm Extra Draft @TwoTrees",
+      "config": {
+        "layerHeight": "0.28",
+        "topShellLayers": "4",
+        "bottomShellLayers": "3",
+        "compatiblePrinters": []
+      }
+    },
+    {
+      "name": "fdm_process_TwoTrees_common",
+      "config": {
+        "layerHeight": "0.2",
+        "wallLoops": "2",
+        "sparseInfillDensity": "15%",
+        "sparseInfillPattern": "crosshatch",
+        "topShellLayers": "3",
+        "bottomShellLayers": "3",
+        "compatiblePrinters": [
+          "TwoTrees SP-5 0.4 nozzle"
+        ]
+      }
+    }
+  ]
+}
