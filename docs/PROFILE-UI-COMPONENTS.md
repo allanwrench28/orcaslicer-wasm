@@ -3,6 +3,42 @@
 ## Overview
 React components for selecting and managing printer profiles in the OrcaSlicer WASM web UI.
 
+**Key Design Principle**: Profile selection provides smart defaults, but **all settings remain manually editable**. User overrides always take highest priority.
+
+---
+
+## Profile Selection + Manual Tuning Philosophy
+
+### How It Works
+1. **Select a profile** (printer/filament/process) → Settings auto-populate
+2. **Manual edits override profile values** → Your changes take priority
+3. **Change profile** → Settings update, but preserves your manual overrides where sensible
+4. **Reset option** → Clear overrides and return to pure profile defaults
+
+### Merge Priority (Lowest to Highest)
+1. **Default Settings** - Base schema defaults
+2. **Printer Profile** - Machine limits, G-code templates
+3. **Filament Profile** - Temperatures, speeds
+4. **Process Profile** - Layer height, infill, walls
+5. **USER OVERRIDES** ⭐ - Your manual edits (ALWAYS WIN)
+
+Example:
+```typescript
+// Profile says: layer_height = 0.2
+// User manually changes to: layer_height = 0.15
+// Result: 0.15 (user override wins)
+
+// User switches filament profile
+// layer_height STAYS 0.15 (user override preserved)
+// But nozzle_temperature updates to new filament default
+```
+
+### UI Behavior
+- Settings with user overrides show **bold** or **highlighted**
+- "Reset" button next to each setting (reverts to profile default)
+- "Reset All" button (clears all overrides)
+- Visual indicator: "Using profile defaults" vs "Custom settings"
+
 ---
 
 ## Component Architecture
@@ -313,6 +349,58 @@ const processedGcode = replaceGcodeVariables(startGcode, mergedConfig);
 
 // Before: "M104 S[nozzle_temperature_initial_layer]"
 // After:  "M104 S210"
+```
+
+### G-code Customization Support
+
+Users can override G-code in multiple ways:
+
+**1. Edit in Settings Panel** (Recommended)
+- Add G-code fields to settings UI (under "Advanced" section)
+- `machine_start_gcode` text area
+- `machine_end_gcode` text area
+- When user edits these, they override profile G-code
+
+**2. Profile + Variable Override**
+- Keep profile G-code
+- User only changes temperature/speed variables
+- G-code automatically updates with new values
+
+**3. Complete Custom G-code**
+- User replaces entire start/end G-code
+- Stored as user override (highest priority)
+- Can still use variables like `[nozzle_temperature]`
+
+**Implementation**:
+```typescript
+// In mergeProfiles()
+function mergeProfiles(defaults, printer, filament, process, userOverrides) {
+  let merged = { ...defaults };
+  
+  // Apply printer G-code (if no user override)
+  if (printer?.variant && !userOverrides.machine_start_gcode) {
+    merged.machine_start_gcode = printer.variant.startGcode;
+  }
+  
+  if (printer?.variant && !userOverrides.machine_end_gcode) {
+    merged.machine_end_gcode = printer.variant.endGcode;
+  }
+  
+  // ... apply other profile settings ...
+  
+  // User overrides ALWAYS win
+  Object.assign(merged, userOverrides);
+  
+  return merged;
+}
+
+// Before slicing
+if (merged.machine_start_gcode?.includes('[')) {
+  merged.machine_start_gcode = replaceGcodeVariables(
+    merged.machine_start_gcode,
+    merged
+  );
+}
 ```
 
 ---
