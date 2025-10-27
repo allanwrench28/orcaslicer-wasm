@@ -187,6 +187,11 @@ function extractVendorProfiles(vendorName, vendorDir) {
             // Machine limits
             printableArea: variantData.printable_area,
             printableHeight: variantData.printable_height,
+            bedExcludeArea: variantData.bed_exclude_area,
+            
+            // Machine structure
+            printerStructure: variantData.printer_structure,
+            auxiliaryFan: variantData.auxiliary_fan,
             
             // Nozzle
             nozzleDiameter: variantData.nozzle_diameter,
@@ -215,17 +220,33 @@ function extractVendorProfiles(vendorName, vendorDir) {
             // Retraction
             retractionLength: variantData.retraction_length,
             retractionSpeed: variantData.retraction_speed,
-            deretraction_speed: variantData.deretraction_speed,
+            deretractionSpeed: variantData.deretraction_speed,
+            retractionMinimumTravel: variantData.retraction_minimum_travel,
+            retractBeforeWipe: variantData.retract_before_wipe,
+            retractWhenChangingLayer: variantData.retract_when_changing_layer,
+            zHop: variantData.z_hop,
             zHopTypes: variantData.z_hop_types,
+            wipe: variantData.wipe,
             
             // Layer height limits
             maxLayerHeight: variantData.max_layer_height,
             minLayerHeight: variantData.min_layer_height,
             
+            // Clearances
+            extruderClearanceRadius: variantData.extruder_clearance_radius,
+            extruderClearanceHeightToRod: variantData.extruder_clearance_height_to_rod,
+            extruderClearanceHeightToLid: variantData.extruder_clearance_height_to_lid,
+            
+            // Other settings
+            machineMinExtrudingRate: variantData.machine_min_extruding_rate,
+            machineMinTravelRate: variantData.machine_min_travel_rate,
+            silentMode: variantData.silent_mode,
+            singleExtruderMultiMaterial: variantData.single_extruder_multi_material,
+            
             // G-code flavor
             gcodeFlavor: variantData.gcode_flavor,
             
-            // Default profile
+            // Default profiles
             defaultPrintProfile: variantData.default_print_profile,
             defaultFilamentProfile: variantData.default_filament_profile
           },

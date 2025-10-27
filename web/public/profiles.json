@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2025-10-27T21:11:27.839Z",
+  "generatedAt": "2025-10-27T21:22:34.390Z",
   "version": "1.0.0",
   "vendors": [
     {
@@ -31,6 +31,11 @@
                   "0x450"
                 ],
                 "printableHeight": "470",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.4"
                 ],
@@ -97,16 +102,44 @@
                 "retractionSpeed": [
                   "60"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "40"
                 ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.32"
                 ],
                 "minLayerHeight": [
                   "0.08"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "34",
+                "extruderClearanceHeightToLid": "34",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.20mm Standard @Creality CR10Max",
                 "defaultFilamentProfile": [
@@ -151,6 +184,11 @@
                   "0x220"
                 ],
                 "printableHeight": "265",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.2"
                 ],
@@ -217,16 +255,44 @@
                 "retractionSpeed": [
                   "30"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "40"
                 ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.16"
                 ],
                 "minLayerHeight": [
                   "0.04"
                 ],
+                "extruderClearanceRadius": "65",
+                "extruderClearanceHeightToRod": "36",
+                "extruderClearanceHeightToLid": "140",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "klipper",
                 "defaultPrintProfile": "0.20mm Standard @Creality CR10SE 0.2",
                 "defaultFilamentProfile": [
@@ -249,6 +315,11 @@
                   "0x220"
                 ],
                 "printableHeight": "265",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.4"
                 ],
@@ -315,16 +386,44 @@
                 "retractionSpeed": [
                   "30"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "40"
                 ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.32"
                 ],
                 "minLayerHeight": [
                   "0.08"
                 ],
+                "extruderClearanceRadius": "65",
+                "extruderClearanceHeightToRod": "36",
+                "extruderClearanceHeightToLid": "140",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "klipper",
                 "defaultPrintProfile": "0.20mm Standard @Creality CR10SE 0.4",
                 "defaultFilamentProfile": [
@@ -347,6 +446,11 @@
                   "0x220"
                 ],
                 "printableHeight": "265",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.6"
                 ],
@@ -413,16 +517,44 @@
                 "retractionSpeed": [
                   "30"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "40"
                 ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.48"
                 ],
                 "minLayerHeight": [
                   "0.12"
                 ],
+                "extruderClearanceRadius": "65",
+                "extruderClearanceHeightToRod": "36",
+                "extruderClearanceHeightToLid": "140",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "klipper",
                 "defaultPrintProfile": "0.20mm Standard @Creality CR10SE 0.6",
                 "defaultFilamentProfile": [
@@ -445,6 +577,11 @@
                   "0x220"
                 ],
                 "printableHeight": "265",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.8"
                 ],
@@ -511,16 +648,44 @@
                 "retractionSpeed": [
                   "30"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "40"
                 ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.64"
                 ],
                 "minLayerHeight": [
                   "0.16"
                 ],
+                "extruderClearanceRadius": "65",
+                "extruderClearanceHeightToRod": "36",
+                "extruderClearanceHeightToLid": "140",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "klipper",
                 "defaultPrintProfile": "0.20mm Standard @Creality CR10SE 0.8",
                 "defaultFilamentProfile": [
@@ -559,6 +724,11 @@
                   "0x300"
                 ],
                 "printableHeight": "400",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.4"
                 ],
@@ -625,16 +795,44 @@
                 "retractionSpeed": [
                   "60"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "40"
                 ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.36"
                 ],
                 "minLayerHeight": [
                   "0.08"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "34",
+                "extruderClearanceHeightToLid": "34",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.20mm Standard @Creality CR10V2",
                 "defaultFilamentProfile": [
@@ -674,6 +872,11 @@
                   "5x305"
                 ],
                 "printableHeight": "400",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.4"
                 ],
@@ -740,16 +943,44 @@
                 "retractionSpeed": [
                   "60"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "40"
                 ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.36"
                 ],
                 "minLayerHeight": [
                   "0.08"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "34",
+                "extruderClearanceHeightToLid": "34",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.20mm Standard @Creality CR10V3 0.4",
                 "defaultFilamentProfile": [
@@ -772,6 +1003,11 @@
                   "5x305"
                 ],
                 "printableHeight": "400",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.6"
                 ],
@@ -838,16 +1074,44 @@
                 "retractionSpeed": [
                   "60"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "40"
                 ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.42"
                 ],
                 "minLayerHeight": [
                   "0.08"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "34",
+                "extruderClearanceHeightToLid": "34",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.20mm Standard @Creality CR10V3 0.6",
                 "defaultFilamentProfile": [
@@ -888,6 +1152,11 @@
                   "5x395"
                 ],
                 "printableHeight": "400",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.2"
                 ],
@@ -954,16 +1223,44 @@
                 "retractionSpeed": [
                   "60"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "40"
                 ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.32"
                 ],
                 "minLayerHeight": [
                   "0.08"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "34",
+                "extruderClearanceHeightToLid": "34",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.16mm Opitmal @Creality CR-6 0.2",
                 "defaultFilamentProfile": [
@@ -986,6 +1283,11 @@
                   "5x395"
                 ],
                 "printableHeight": "400",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.4"
                 ],
@@ -1052,16 +1354,44 @@
                 "retractionSpeed": [
                   "60"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "40"
                 ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.32"
                 ],
                 "minLayerHeight": [
                   "0.08"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "34",
+                "extruderClearanceHeightToLid": "34",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.20mm Standard @Creality CR-6 0.4",
                 "defaultFilamentProfile": [
@@ -1084,6 +1414,11 @@
                   "5x395"
                 ],
                 "printableHeight": "400",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.6"
                 ],
@@ -1150,16 +1485,44 @@
                 "retractionSpeed": [
                   "60"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "40"
                 ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.32"
                 ],
                 "minLayerHeight": [
                   "0.08"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "34",
+                "extruderClearanceHeightToLid": "34",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.20mm Standard @Creality CR-6 0.6",
                 "defaultFilamentProfile": [
@@ -1182,6 +1545,11 @@
                   "5x395"
                 ],
                 "printableHeight": "400",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.8"
                 ],
@@ -1248,16 +1616,44 @@
                 "retractionSpeed": [
                   "60"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "40"
                 ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.32"
                 ],
                 "minLayerHeight": [
                   "0.08"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "34",
+                "extruderClearanceHeightToLid": "34",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.32mm Standard @Creality CR-6 0.8",
                 "defaultFilamentProfile": [
@@ -1299,6 +1695,11 @@
                   "5x235"
                 ],
                 "printableHeight": "250",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.2"
                 ],
@@ -1365,16 +1766,44 @@
                 "retractionSpeed": [
                   "60"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "40"
                 ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.32"
                 ],
                 "minLayerHeight": [
                   "0.08"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "34",
+                "extruderClearanceHeightToLid": "34",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.16mm Opitmal @Creality CR-6 0.2",
                 "defaultFilamentProfile": [
@@ -1397,6 +1826,11 @@
                   "5x235"
                 ],
                 "printableHeight": "250",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.4"
                 ],
@@ -1463,16 +1897,44 @@
                 "retractionSpeed": [
                   "60"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "40"
                 ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.32"
                 ],
                 "minLayerHeight": [
                   "0.08"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "34",
+                "extruderClearanceHeightToLid": "34",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.20mm Standard @Creality CR-6 0.4",
                 "defaultFilamentProfile": [
@@ -1495,6 +1957,11 @@
                   "5x235"
                 ],
                 "printableHeight": "250",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.6"
                 ],
@@ -1561,16 +2028,44 @@
                 "retractionSpeed": [
                   "60"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "40"
                 ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.32"
                 ],
                 "minLayerHeight": [
                   "0.08"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "34",
+                "extruderClearanceHeightToLid": "34",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.20mm Standard @Creality CR-6 0.6",
                 "defaultFilamentProfile": [
@@ -1593,6 +2088,11 @@
                   "5x235"
                 ],
                 "printableHeight": "250",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.8"
                 ],
@@ -1659,16 +2159,44 @@
                 "retractionSpeed": [
                   "60"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "40"
                 ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.32"
                 ],
                 "minLayerHeight": [
                   "0.08"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "34",
+                "extruderClearanceHeightToLid": "34",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.32mm Standard @Creality CR-6 0.8",
                 "defaultFilamentProfile": [
@@ -1707,6 +2235,11 @@
                   "0x450"
                 ],
                 "printableHeight": "470",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.4"
                 ],
@@ -1773,16 +2306,44 @@
                 "retractionSpeed": [
                   "40"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "40"
                 ],
+                "retractionMinimumTravel": [
+                  "0.8"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.32"
                 ],
                 "minLayerHeight": [
                   "0.08"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "34",
+                "extruderClearanceHeightToLid": "34",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.20mm Standard @Creality CR-M4",
                 "defaultFilamentProfile": [
@@ -1824,6 +2385,11 @@
                   "0x220"
                 ],
                 "printableHeight": "250",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.2"
                 ],
@@ -1890,16 +2456,44 @@
                 "retractionSpeed": [
                   "60"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "40"
                 ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.16"
                 ],
                 "minLayerHeight": [
                   "0.04"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "25",
+                "extruderClearanceHeightToLid": "25",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.20mm Standard @Creality Ender3 0.2",
                 "defaultFilamentProfile": [
@@ -1922,6 +2516,11 @@
                   "0x220"
                 ],
                 "printableHeight": "250",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.4"
                 ],
@@ -1988,16 +2587,44 @@
                 "retractionSpeed": [
                   "60"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "40"
                 ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.36"
                 ],
                 "minLayerHeight": [
                   "0.08"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "25",
+                "extruderClearanceHeightToLid": "25",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.20mm Standard @Creality Ender3",
                 "defaultFilamentProfile": [
@@ -2020,6 +2647,11 @@
                   "0x220"
                 ],
                 "printableHeight": "250",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.6"
                 ],
@@ -2086,16 +2718,44 @@
                 "retractionSpeed": [
                   "60"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "40"
                 ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.48"
                 ],
                 "minLayerHeight": [
                   "0.12"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "25",
+                "extruderClearanceHeightToLid": "25",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.20mm Standard @Creality Ender3 0.6",
                 "defaultFilamentProfile": [
@@ -2118,6 +2778,11 @@
                   "0x220"
                 ],
                 "printableHeight": "250",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.8"
                 ],
@@ -2184,16 +2849,44 @@
                 "retractionSpeed": [
                   "60"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "40"
                 ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.64"
                 ],
                 "minLayerHeight": [
                   "0.16"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "25",
+                "extruderClearanceHeightToLid": "25",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.20mm Standard @Creality Ender3 0.8",
                 "defaultFilamentProfile": [
@@ -2216,6 +2909,11 @@
                   "0x220"
                 ],
                 "printableHeight": "250",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.2"
                 ],
@@ -2282,16 +2980,44 @@
                 "retractionSpeed": [
                   "60"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "40"
                 ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.16"
                 ],
                 "minLayerHeight": [
                   "0.04"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "25",
+                "extruderClearanceHeightToLid": "25",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.20mm Standard @Creality Ender3 Pro 0.2",
                 "defaultFilamentProfile": [
@@ -2314,6 +3040,11 @@
                   "0x220"
                 ],
                 "printableHeight": "250",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.4"
                 ],
@@ -2380,16 +3111,44 @@
                 "retractionSpeed": [
                   "60"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "40"
                 ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.36"
                 ],
                 "minLayerHeight": [
                   "0.08"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "25",
+                "extruderClearanceHeightToLid": "25",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.20mm Standard @Creality Ender3 Pro 0.4",
                 "defaultFilamentProfile": [
@@ -2412,6 +3171,11 @@
                   "0x220"
                 ],
                 "printableHeight": "250",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.6"
                 ],
@@ -2478,16 +3242,44 @@
                 "retractionSpeed": [
                   "60"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "40"
                 ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.48"
                 ],
                 "minLayerHeight": [
                   "0.12"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "25",
+                "extruderClearanceHeightToLid": "25",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.20mm Standard @Creality Ender3 Pro 0.6",
                 "defaultFilamentProfile": [
@@ -2510,6 +3302,11 @@
                   "0x220"
                 ],
                 "printableHeight": "250",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.8"
                 ],
@@ -2576,16 +3373,44 @@
                 "retractionSpeed": [
                   "60"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "40"
                 ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.64"
                 ],
                 "minLayerHeight": [
                   "0.16"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "25",
+                "extruderClearanceHeightToLid": "25",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.20mm Standard @Creality Ender3 Pro 0.8",
                 "defaultFilamentProfile": [
@@ -2619,6 +3444,11 @@
                   "0x220"
                 ],
                 "printableHeight": "270",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.4"
                 ],
@@ -2685,16 +3515,44 @@
                 "retractionSpeed": [
                   "60"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "40"
                 ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.36"
                 ],
                 "minLayerHeight": [
                   "0.08"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "34",
+                "extruderClearanceHeightToLid": "34",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.20mm Standard @Creality Ender3S1",
                 "defaultFilamentProfile": [
@@ -2717,6 +3575,11 @@
                   "0x300"
                 ],
                 "printableHeight": "300",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.2"
                 ],
@@ -2783,16 +3646,44 @@
                 "retractionSpeed": [
                   "45"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "45"
                 ],
+                "retractionMinimumTravel": [
+                  "1"
+                ],
+                "retractBeforeWipe": [
+                  "0%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.16"
                 ],
                 "minLayerHeight": [
                   "0.04"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "34",
+                "extruderClearanceHeightToLid": "34",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.20mm Standard @Creality Ender3S1Plus 0.2",
                 "defaultFilamentProfile": [
@@ -2815,6 +3706,11 @@
                   "0x300"
                 ],
                 "printableHeight": "300",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.4"
                 ],
@@ -2881,16 +3777,44 @@
                 "retractionSpeed": [
                   "45"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "45"
                 ],
+                "retractionMinimumTravel": [
+                  "1"
+                ],
+                "retractBeforeWipe": [
+                  "0%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.36"
                 ],
                 "minLayerHeight": [
                   "0.08"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "34",
+                "extruderClearanceHeightToLid": "34",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.20mm Standard @Creality Ender3S1Plus 0.4",
                 "defaultFilamentProfile": [
@@ -2913,6 +3837,11 @@
                   "0x300"
                 ],
                 "printableHeight": "300",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.6"
                 ],
@@ -2979,16 +3908,44 @@
                 "retractionSpeed": [
                   "45"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "45"
                 ],
+                "retractionMinimumTravel": [
+                  "1"
+                ],
+                "retractBeforeWipe": [
+                  "0%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.48"
                 ],
                 "minLayerHeight": [
                   "0.12"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "34",
+                "extruderClearanceHeightToLid": "34",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.20mm Standard @Creality Ender3S1Plus 0.6",
                 "defaultFilamentProfile": [
@@ -3011,6 +3968,11 @@
                   "0x300"
                 ],
                 "printableHeight": "300",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.8"
                 ],
@@ -3077,16 +4039,44 @@
                 "retractionSpeed": [
                   "45"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "45"
                 ],
+                "retractionMinimumTravel": [
+                  "1"
+                ],
+                "retractBeforeWipe": [
+                  "0%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.64"
                 ],
                 "minLayerHeight": [
                   "0.16"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "34",
+                "extruderClearanceHeightToLid": "34",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.20mm Standard @Creality Ender3S1Plus 0.8",
                 "defaultFilamentProfile": [
@@ -3120,6 +4110,11 @@
                   "0x220"
                 ],
                 "printableHeight": "270",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.4"
                 ],
@@ -3186,16 +4181,44 @@
                 "retractionSpeed": [
                   "30"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "30"
                 ],
+                "retractionMinimumTravel": [
+                  "1"
+                ],
+                "retractBeforeWipe": [
+                  "0%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.36"
                 ],
                 "minLayerHeight": [
                   "0.08"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "34",
+                "extruderClearanceHeightToLid": "34",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.20mm Standard @Creality Ender3S1Pro",
                 "defaultFilamentProfile": [
@@ -3240,6 +4263,10 @@
                   "0x220"
                 ],
                 "printableHeight": "250",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.4"
                 ],
@@ -3306,16 +4333,44 @@
                 "retractionSpeed": [
                   "60"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "40"
                 ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.32"
                 ],
                 "minLayerHeight": [
                   "0.08"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "34",
+                "extruderClearanceHeightToLid": "34",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.20mm Standard @Creality Ender3V2",
                 "defaultFilamentProfile": [
@@ -3338,6 +4393,11 @@
                   "0x220"
                 ],
                 "printableHeight": "250",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.4"
                 ],
@@ -3404,16 +4464,44 @@
                 "retractionSpeed": [
                   "60"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "40"
                 ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.32"
                 ],
                 "minLayerHeight": [
                   "0.08"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "34",
+                "extruderClearanceHeightToLid": "34",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.20mm Standard @Creality Ender3V2 Neo",
                 "defaultFilamentProfile": [
@@ -3458,6 +4546,11 @@
                   "0x220"
                 ],
                 "printableHeight": "250",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "1",
                 "nozzleDiameter": [
                   "0.4"
                 ],
@@ -3524,11 +4617,26 @@
                 "retractionSpeed": [
                   "40"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "40"
+                ],
+                "retractionMinimumTravel": [
+                  "1"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.2"
                 ],
                 "zHopTypes": [
                   "Auto Lift"
+                ],
+                "wipe": [
+                  "1"
                 ],
                 "maxLayerHeight": [
                   "0.35"
@@ -3536,6 +4644,19 @@
                 "minLayerHeight": [
                   "0.1"
                 ],
+                "extruderClearanceRadius": "70",
+                "extruderClearanceHeightToRod": "14",
+                "extruderClearanceHeightToLid": "250",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "klipper",
                 "defaultPrintProfile": "0.20mm Standard @Creality Ender3 V3",
                 "defaultFilamentProfile": [
@@ -3558,6 +4679,11 @@
                   "0x220"
                 ],
                 "printableHeight": "250",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "1",
                 "nozzleDiameter": [
                   "0.6"
                 ],
@@ -3624,11 +4750,26 @@
                 "retractionSpeed": [
                   "40"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "40"
+                ],
+                "retractionMinimumTravel": [
+                  "1"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.2"
                 ],
                 "zHopTypes": [
                   "Auto Lift"
+                ],
+                "wipe": [
+                  "1"
                 ],
                 "maxLayerHeight": [
                   "0.35"
@@ -3636,6 +4777,19 @@
                 "minLayerHeight": [
                   "0.1"
                 ],
+                "extruderClearanceRadius": "70",
+                "extruderClearanceHeightToRod": "14",
+                "extruderClearanceHeightToLid": "250",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "klipper",
                 "defaultPrintProfile": "0.30mm Standard @Creality Ender3 V3",
                 "defaultFilamentProfile": [
@@ -3658,6 +4812,11 @@
                   "0x220"
                 ],
                 "printableHeight": "245",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.2"
                 ],
@@ -3724,16 +4883,44 @@
                 "retractionSpeed": [
                   "30"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "0"
                 ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "100%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.2"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.16"
                 ],
                 "minLayerHeight": [
                   "0.04"
                 ],
+                "extruderClearanceRadius": "90",
+                "extruderClearanceHeightToRod": "47",
+                "extruderClearanceHeightToLid": "34",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "klipper",
                 "defaultPrintProfile": "0.20mm Standard @Creality Ender3V3KE",
                 "defaultFilamentProfile": [
@@ -3756,6 +4943,11 @@
                   "0x220"
                 ],
                 "printableHeight": "245",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.4"
                 ],
@@ -3822,16 +5014,44 @@
                 "retractionSpeed": [
                   "30"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "0"
                 ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "100%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.2"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.32"
                 ],
                 "minLayerHeight": [
                   "0.08"
                 ],
+                "extruderClearanceRadius": "90",
+                "extruderClearanceHeightToRod": "47",
+                "extruderClearanceHeightToLid": "34",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "klipper",
                 "defaultPrintProfile": "0.20mm Standard @Creality Ender3V3KE",
                 "defaultFilamentProfile": [
@@ -3854,6 +5074,11 @@
                   "0x220"
                 ],
                 "printableHeight": "245",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.6"
                 ],
@@ -3920,16 +5145,44 @@
                 "retractionSpeed": [
                   "30"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "0"
                 ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "100%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.2"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.48"
                 ],
                 "minLayerHeight": [
                   "0.12"
                 ],
+                "extruderClearanceRadius": "90",
+                "extruderClearanceHeightToRod": "47",
+                "extruderClearanceHeightToLid": "34",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "klipper",
                 "defaultPrintProfile": "0.20mm Standard @Creality Ender3V3KE",
                 "defaultFilamentProfile": [
@@ -3952,6 +5205,11 @@
                   "0x220"
                 ],
                 "printableHeight": "245",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.8"
                 ],
@@ -4018,16 +5276,44 @@
                 "retractionSpeed": [
                   "30"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "0"
                 ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "100%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.2"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.64"
                 ],
                 "minLayerHeight": [
                   "0.16"
                 ],
+                "extruderClearanceRadius": "90",
+                "extruderClearanceHeightToRod": "47",
+                "extruderClearanceHeightToLid": "34",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "klipper",
                 "defaultPrintProfile": "0.20mm Standard @Creality Ender3V3KE",
                 "defaultFilamentProfile": [
@@ -4061,6 +5347,11 @@
                   "0x300"
                 ],
                 "printableHeight": "330",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "1",
                 "nozzleDiameter": [
                   "0.4"
                 ],
@@ -4127,16 +5418,44 @@
                 "retractionSpeed": [
                   "40"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "40"
                 ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "0%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.12"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.3"
                 ],
                 "minLayerHeight": [
                   "0.08"
                 ],
+                "extruderClearanceRadius": "45",
+                "extruderClearanceHeightToRod": "45",
+                "extruderClearanceHeightToLid": "101",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "klipper",
                 "defaultPrintProfile": "0.20mm Standard @Creality Ender3 V3 Plus",
                 "defaultFilamentProfile": [
@@ -4159,6 +5478,11 @@
                   "0x300"
                 ],
                 "printableHeight": "330",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "1",
                 "nozzleDiameter": [
                   "0.6"
                 ],
@@ -4225,16 +5549,44 @@
                 "retractionSpeed": [
                   "40"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "40"
                 ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "0%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.12"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.3"
                 ],
                 "minLayerHeight": [
                   "0.08"
                 ],
+                "extruderClearanceRadius": "45",
+                "extruderClearanceHeightToRod": "45",
+                "extruderClearanceHeightToLid": "101",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "klipper",
                 "defaultPrintProfile": "0.30mm Standard @Creality Ender3 V3 Plus",
                 "defaultFilamentProfile": [
@@ -4268,6 +5620,11 @@
                   "0x220"
                 ],
                 "printableHeight": "250",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.2"
                 ],
@@ -4334,11 +5691,26 @@
                 "retractionSpeed": [
                   "40"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "30"
+                ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
                 ],
                 "zHopTypes": [
                   "Spiral Lift"
+                ],
+                "wipe": [
+                  "1"
                 ],
                 "maxLayerHeight": [
                   "0.16"
@@ -4346,6 +5718,19 @@
                 "minLayerHeight": [
                   "0.04"
                 ],
+                "extruderClearanceRadius": "90",
+                "extruderClearanceHeightToRod": "47",
+                "extruderClearanceHeightToLid": "34",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin2",
                 "defaultPrintProfile": "0.20mm Standard @Creality Ender3V3SE 0.2",
                 "defaultFilamentProfile": [
@@ -4368,6 +5753,11 @@
                   "0x220"
                 ],
                 "printableHeight": "250",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.4"
                 ],
@@ -4434,11 +5824,26 @@
                 "retractionSpeed": [
                   "40"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "30"
+                ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
                 ],
                 "zHopTypes": [
                   "Spiral Lift"
+                ],
+                "wipe": [
+                  "1"
                 ],
                 "maxLayerHeight": [
                   "0.32"
@@ -4446,6 +5851,19 @@
                 "minLayerHeight": [
                   "0.08"
                 ],
+                "extruderClearanceRadius": "90",
+                "extruderClearanceHeightToRod": "47",
+                "extruderClearanceHeightToLid": "34",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin2",
                 "defaultPrintProfile": "0.20mm Standard @Creality Ender3V3SE 0.4",
                 "defaultFilamentProfile": [
@@ -4468,6 +5886,11 @@
                   "0x220"
                 ],
                 "printableHeight": "250",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.6"
                 ],
@@ -4534,11 +5957,26 @@
                 "retractionSpeed": [
                   "40"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "30"
+                ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
                 ],
                 "zHopTypes": [
                   "Spiral Lift"
+                ],
+                "wipe": [
+                  "1"
                 ],
                 "maxLayerHeight": [
                   "0.48"
@@ -4546,6 +5984,19 @@
                 "minLayerHeight": [
                   "0.12"
                 ],
+                "extruderClearanceRadius": "90",
+                "extruderClearanceHeightToRod": "47",
+                "extruderClearanceHeightToLid": "34",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin2",
                 "defaultPrintProfile": "0.20mm Standard @Creality Ender3V3SE 0.6",
                 "defaultFilamentProfile": [
@@ -4568,6 +6019,11 @@
                   "0x220"
                 ],
                 "printableHeight": "250",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.8"
                 ],
@@ -4634,11 +6090,26 @@
                 "retractionSpeed": [
                   "40"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "30"
+                ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
                 ],
                 "zHopTypes": [
                   "Spiral Lift"
+                ],
+                "wipe": [
+                  "1"
                 ],
                 "maxLayerHeight": [
                   "0.64"
@@ -4646,6 +6117,19 @@
                 "minLayerHeight": [
                   "0.16"
                 ],
+                "extruderClearanceRadius": "90",
+                "extruderClearanceHeightToRod": "47",
+                "extruderClearanceHeightToLid": "34",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin2",
                 "defaultPrintProfile": "0.20mm Standard @Creality Ender3V3SE 0.8",
                 "defaultFilamentProfile": [
@@ -4709,6 +6193,11 @@
                   "0x220"
                 ],
                 "printableHeight": "250",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.2"
                 ],
@@ -4775,16 +6264,44 @@
                 "retractionSpeed": [
                   "60"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "40"
                 ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.16"
                 ],
                 "minLayerHeight": [
                   "0.04"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "25",
+                "extruderClearanceHeightToLid": "25",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.20mm Standard @Creality Ender3 Pro 0.2",
                 "defaultFilamentProfile": [
@@ -4807,6 +6324,11 @@
                   "0x220"
                 ],
                 "printableHeight": "250",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.4"
                 ],
@@ -4873,16 +6395,44 @@
                 "retractionSpeed": [
                   "60"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "40"
                 ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.36"
                 ],
                 "minLayerHeight": [
                   "0.08"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "25",
+                "extruderClearanceHeightToLid": "25",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.20mm Standard @Creality Ender3 Pro 0.4",
                 "defaultFilamentProfile": [
@@ -4905,6 +6455,11 @@
                   "0x220"
                 ],
                 "printableHeight": "250",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.6"
                 ],
@@ -4971,16 +6526,44 @@
                 "retractionSpeed": [
                   "60"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "40"
                 ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.48"
                 ],
                 "minLayerHeight": [
                   "0.12"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "25",
+                "extruderClearanceHeightToLid": "25",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.20mm Standard @Creality Ender3 Pro 0.6",
                 "defaultFilamentProfile": [
@@ -5003,6 +6586,11 @@
                   "0x220"
                 ],
                 "printableHeight": "250",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.8"
                 ],
@@ -5069,16 +6657,44 @@
                 "retractionSpeed": [
                   "60"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "40"
                 ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.64"
                 ],
                 "minLayerHeight": [
                   "0.16"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "25",
+                "extruderClearanceHeightToLid": "25",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.20mm Standard @Creality Ender3 Pro 0.8",
                 "defaultFilamentProfile": [
@@ -5117,6 +6733,11 @@
                   "0x220"
                 ],
                 "printableHeight": "270",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.4"
                 ],
@@ -5183,16 +6804,44 @@
                 "retractionSpeed": [
                   "60"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "40"
                 ],
+                "retractionMinimumTravel": [
+                  "2"
+                ],
+                "retractBeforeWipe": [
+                  "70%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.36"
                 ],
                 "minLayerHeight": [
                   "0.08"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "34",
+                "extruderClearanceHeightToLid": "34",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.20mm Standard @Creality Ender3S1",
                 "defaultFilamentProfile": [
@@ -5215,6 +6864,11 @@
                   "0x300"
                 ],
                 "printableHeight": "300",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.2"
                 ],
@@ -5281,16 +6935,44 @@
                 "retractionSpeed": [
                   "45"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "45"
                 ],
+                "retractionMinimumTravel": [
+                  "1"
+                ],
+                "retractBeforeWipe": [
+                  "0%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.16"
                 ],
                 "minLayerHeight": [
                   "0.04"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "34",
+                "extruderClearanceHeightToLid": "34",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.20mm Standard @Creality Ender3S1Plus 0.2",
                 "defaultFilamentProfile": [
@@ -5313,6 +6995,11 @@
                   "0x300"
                 ],
                 "printableHeight": "300",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.4"
                 ],
@@ -5379,16 +7066,44 @@
                 "retractionSpeed": [
                   "45"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "45"
                 ],
+                "retractionMinimumTravel": [
+                  "1"
+                ],
+                "retractBeforeWipe": [
+                  "0%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.36"
                 ],
                 "minLayerHeight": [
                   "0.08"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "34",
+                "extruderClearanceHeightToLid": "34",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.20mm Standard @Creality Ender3S1Plus 0.4",
                 "defaultFilamentProfile": [
@@ -5411,6 +7126,11 @@
                   "0x300"
                 ],
                 "printableHeight": "300",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.6"
                 ],
@@ -5477,16 +7197,44 @@
                 "retractionSpeed": [
                   "45"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "45"
                 ],
+                "retractionMinimumTravel": [
+                  "1"
+                ],
+                "retractBeforeWipe": [
+                  "0%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.48"
                 ],
                 "minLayerHeight": [
                   "0.12"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "34",
+                "extruderClearanceHeightToLid": "34",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.20mm Standard @Creality Ender3S1Plus 0.6",
                 "defaultFilamentProfile": [
@@ -5509,6 +7257,11 @@
                   "0x300"
                 ],
                 "printableHeight": "300",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.8"
                 ],
@@ -5575,16 +7328,44 @@
                 "retractionSpeed": [
                   "45"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "45"
                 ],
+                "retractionMinimumTravel": [
+                  "1"
+                ],
+                "retractBeforeWipe": [
+                  "0%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.64"
                 ],
                 "minLayerHeight": [
                   "0.16"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "34",
+                "extruderClearanceHeightToLid": "34",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.20mm Standard @Creality Ender3S1Plus 0.8",
                 "defaultFilamentProfile": [
@@ -5618,6 +7399,11 @@
                   "0x220"
                 ],
                 "printableHeight": "270",
+                "bedExcludeArea": [
+                  "0x0"
+                ],
+                "printerStructure": "i3",
+                "auxiliaryFan": "0",
                 "nozzleDiameter": [
                   "0.4"
                 ],
@@ -5684,16 +7470,44 @@
                 "retractionSpeed": [
                   "30"
                 ],
-                "deretraction_speed": [
+                "deretractionSpeed": [
                   "30"
                 ],
+                "retractionMinimumTravel": [
+                  "1"
+                ],
+                "retractBeforeWipe": [
+                  "0%"
+                ],
+                "retractWhenChangingLayer": [
+                  "1"
+                ],
+                "zHop": [
+                  "0.4"
+                ],
                 "zHopTypes": "Normal Lift",
+                "wipe": [
+                  "1"
+                ],
                 "maxLayerHeight": [
                   "0.36"
                 ],
                 "minLayerHeight": [
                   "0.08"
                 ],
+                "extruderClearanceRadius": "47",
+                "extruderClearanceHeightToRod": "34",
+                "extruderClearanceHeightToLid": "34",
+                "machineMinExtrudingRate": [
+                  "0",
+                  "0"
+                ],
+                "machineMinTravelRate": [
+                  "0",
+                  "0"
+                ],
+                "silentMode": "0",
+                "singleExtruderMultiMaterial": "1",
                 "gcodeFlavor": "marlin",
                 "defaultPrintProfile": "0.20mm Standard @Creality Ender3S1Pro",
                 "defaultFilamentProfile": [
