@@ -147,14 +147,31 @@ export function buildSchemaFromWasm(wasmSchema: WasmSchema | Record<string, any>
     const mapping = FIELD_MAPPINGS[uiKey];
     const category = getCategoryFromKey(wasmKey);
     const section = mapping?.section || getSectionFromKey(wasmKey, option.category);
+    
+    // Parse default value based on type
+    let parsedDefault = option.default;
+    const fieldType = mapping?.type || getType(option.type);
+    
+    if (option.default !== undefined && option.default !== null) {
+      if (fieldType === 'int') {
+        parsedDefault = parseInt(String(option.default), 10);
+      } else if (fieldType === 'float' || fieldType === 'percent') {
+        parsedDefault = parseFloat(String(option.default));
+      } else if (fieldType === 'bool') {
+        // Handle boolean stored as "0", "1", "true", "false"
+        const val = String(option.default).toLowerCase();
+        parsedDefault = val === '1' || val === 'true';
+      }
+      // string and enum types stay as-is
+    }
 
     const field: SchemaField = {
       key: uiKey,
       displayName: mapping?.displayName || option.label,
       section,
       category,
-      type: mapping?.type || getType(option.type),
-      default: option.default,
+      type: fieldType,
+      default: parsedDefault,
       min: option.min,
       max: option.max,
       unit: option.unit,
@@ -164,7 +181,7 @@ export function buildSchemaFromWasm(wasmSchema: WasmSchema | Record<string, any>
     };
       
     fieldLookup.set(uiKey, field);
-    initialSettings[uiKey] = option.default;
+    initialSettings[uiKey] = parsedDefault;  // Use parsed value
     wasmKeyLookup.set(uiKey, wasmKey);
       
     // Add to appropriate section
