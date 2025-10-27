@@ -1,0 +1,21 @@
+{
+  "profileName": "Bambu Lab A1 0.4 nozzle",
+  "generatedAt": "2025-10-26T17:33:11.048Z",
+  "config": {
+    "layer_height": 0.2,
+    "first_layer_height": 0.22,
+    "sparse_infill_density": 15,
+    "infill_pattern": "gyroid",
+    "supports_enabled": false,
+    "top_shell_layers": 5,
+    "bottom_shell_layers": 5,
+    "wall_loops": 2,
+    "nozzle_temperature": 205,
+    "nozzle_temperature_initial": 215,
+    "bed_temperature": 65,
+    "bed_temperature_initial": 65,
+    "cooling_fan_speed": 80,
+    "skirt_loops": 2,
+    "material": "PLA"
+  }
+}

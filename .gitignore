@@ -162,3 +162,17 @@ deps/boost-wasm/install/
 deps/boost-wasm/boost_*/
 deps/boost-wasm/boost_*.tar.gz
 emsdk/
+
+# WASM build artifacts and diagnostics
+artifacts/
+func_*.dump
+func_*.wat
+tmp_func*.wasm
+tmp_func*.wat
+slicer.code
+slicer.objdump
+function-map.txt
+web/public/wasm/*.data
+web/public/wasm/*.sym
+web/public/wasm/*.wat
+web/public/wasm/tmp*

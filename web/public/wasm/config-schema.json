@@ -1,0 +1,952 @@
+{
+  "generatedAt": "2025-10-26T00:00:00Z",
+  "optionCount": 69,
+  "categories": [
+    {
+      "id": "material",
+      "label": "Material",
+      "options": [
+        {
+          "key": "material",
+          "label": "Material",
+          "type": "enum",
+          "mode": "simple",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "enum",
+          "enumValues": ["PLA", "PETG", "ABS", "TPU", "Nylon", "Other"],
+          "enumLabels": ["PLA", "PETG", "ABS", "TPU", "Nylon", "Other"],
+          "default": "PLA",
+          "serializationOrdinal": 0
+        }
+      ]
+    },
+    {
+      "id": "temperatures",
+      "label": "Temperatures",
+      "options": [
+        {
+          "key": "nozzle_temperature",
+          "label": "Nozzle Temperature",
+          "type": "int",
+          "mode": "simple",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "number",
+          "min": 150,
+          "max": 310,
+          "default": "210",
+          "serializationOrdinal": 10
+        },
+        {
+          "key": "nozzle_temperature_initial",
+          "label": "First Layer Nozzle Temperature",
+          "type": "int",
+          "mode": "simple",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "number",
+          "min": 150,
+          "max": 320,
+          "default": "215",
+          "serializationOrdinal": 11
+        },
+        {
+          "key": "bed_temperature",
+          "label": "Bed Temperature",
+          "type": "int",
+          "mode": "simple",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "number",
+          "min": 0,
+          "max": 130,
+          "default": "60",
+          "serializationOrdinal": 12
+        },
+        {
+          "key": "bed_temperature_initial",
+          "label": "First Layer Bed Temperature",
+          "type": "int",
+          "mode": "simple",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "number",
+          "min": 0,
+          "max": 130,
+          "default": "65",
+          "serializationOrdinal": 13
+        },
+        {
+          "key": "cooling_fan_speed",
+          "label": "Cooling Fan Speed",
+          "type": "percent",
+          "mode": "simple",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "percent",
+          "min": 0,
+          "max": 100,
+          "default": "100",
+          "serializationOrdinal": 14
+        }
+      ]
+    },
+    {
+      "id": "layer-height",
+      "label": "Layer Height",
+      "options": [
+        {
+          "key": "layer_height",
+          "label": "Layer Height",
+          "type": "float",
+          "mode": "simple",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "number",
+          "min": 0.05,
+          "max": 0.4,
+          "default": "0.2",
+          "serializationOrdinal": 20
+        },
+        {
+          "key": "first_layer_height",
+          "label": "First Layer Height",
+          "type": "float",
+          "mode": "simple",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "number",
+          "min": 0.05,
+          "max": 0.4,
+          "default": "0.2",
+          "serializationOrdinal": 21
+        }
+      ]
+    },
+    {
+      "id": "shells-infill",
+      "label": "Shells & Infill",
+      "options": [
+        {
+          "key": "wall_loops",
+          "label": "Wall Loops",
+          "type": "int",
+          "mode": "simple",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "number",
+          "min": 0,
+          "max": 10,
+          "default": "2",
+          "serializationOrdinal": 30
+        },
+        {
+          "key": "top_shell_layers",
+          "label": "Top Layers",
+          "type": "int",
+          "mode": "simple",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "number",
+          "min": 0,
+          "max": 10,
+          "default": "5",
+          "serializationOrdinal": 31
+        },
+        {
+          "key": "bottom_shell_layers",
+          "label": "Bottom Layers",
+          "type": "int",
+          "mode": "simple",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "number",
+          "min": 0,
+          "max": 10,
+          "default": "5",
+          "serializationOrdinal": 32
+        },
+        {
+          "key": "sparse_infill_density",
+          "label": "Infill Density",
+          "type": "percent",
+          "mode": "simple",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "percent",
+          "min": 0,
+          "max": 100,
+          "default": "15",
+          "serializationOrdinal": 33
+        },
+        {
+          "key": "infill_pattern",
+          "label": "Infill Pattern",
+          "type": "enum",
+          "mode": "simple",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "enum",
+          "enumValues": ["grid", "gyroid", "cubic", "triangles", "rectilinear", "lightning"],
+          "enumLabels": ["Grid", "Gyroid", "Cubic", "Triangles", "Rectilinear", "Lightning"],
+          "default": "grid",
+          "serializationOrdinal": 34
+        },
+        {
+          "key": "skirt_loops",
+          "label": "Skirt Loops",
+          "type": "int",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "number",
+          "min": 0,
+          "max": 10,
+          "default": "2",
+          "serializationOrdinal": 35
+        }
+      ]
+    },
+    {
+      "id": "supports",
+      "label": "Supports",
+      "options": [
+        {
+          "key": "supports_enabled",
+          "label": "Supports Enabled",
+          "type": "bool",
+          "mode": "simple",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "toggle",
+          "default": "false",
+          "serializationOrdinal": 40
+        }
+      ]
+    },
+    {
+      "id": "profile-metadata",
+      "label": "Profile Metadata",
+      "options": [
+        {
+          "key": "type",
+          "label": "Profile Type",
+          "type": "enum",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "enum",
+          "enumValues": ["machine", "process", "filament"],
+          "enumLabels": ["Machine", "Process", "Filament"],
+          "default": "machine",
+          "serializationOrdinal": 100
+        },
+        {
+          "key": "name",
+          "label": "Profile Name",
+          "type": "string",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "text",
+          "default": "",
+          "serializationOrdinal": 101
+        },
+        {
+          "key": "inherits",
+          "label": "Inherits From",
+          "type": "string",
+          "mode": "advanced",
+          "nullable": true,
+          "isVector": false,
+          "guiType": "text",
+          "default": "",
+          "serializationOrdinal": 102
+        },
+        {
+          "key": "from",
+          "label": "Source",
+          "type": "enum",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "enum",
+          "enumValues": ["system", "user", "custom"],
+          "enumLabels": ["System", "User", "Custom"],
+          "default": "system",
+          "serializationOrdinal": 103
+        },
+        {
+          "key": "setting_id",
+          "label": "Setting ID",
+          "type": "string",
+          "mode": "advanced",
+          "nullable": true,
+          "isVector": false,
+          "guiType": "text",
+          "default": "",
+          "serializationOrdinal": 104
+        },
+        {
+          "key": "instantiation",
+          "label": "Instantiate Copy",
+          "type": "bool",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "toggle",
+          "default": "true",
+          "serializationOrdinal": 105
+        },
+        {
+          "key": "description",
+          "label": "Description",
+          "type": "string",
+          "mode": "advanced",
+          "nullable": true,
+          "isVector": false,
+          "guiType": "textarea",
+          "default": "",
+          "serializationOrdinal": 106
+        }
+      ]
+    },
+    {
+      "id": "filament-cooling",
+      "label": "Filament Cooling",
+      "options": [
+        {
+          "key": "fan_cooling_layer_time",
+          "label": "Min Layer Time",
+          "type": "int",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "number",
+          "min": 0,
+          "max": 300,
+          "default": "60",
+          "serializationOrdinal": 200
+        },
+        {
+          "key": "fan_max_speed",
+          "label": "Fan Max Speed",
+          "type": "percent",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "percent",
+          "min": 0,
+          "max": 100,
+          "default": "100",
+          "serializationOrdinal": 201
+        },
+        {
+          "key": "fan_min_speed",
+          "label": "Fan Min Speed",
+          "type": "percent",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "percent",
+          "min": 0,
+          "max": 100,
+          "default": "0",
+          "serializationOrdinal": 202
+        },
+        {
+          "key": "pre_start_fan_time",
+          "label": "Pre-Start Fan Time",
+          "type": "int",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "number",
+          "min": 0,
+          "max": 120,
+          "default": "0",
+          "serializationOrdinal": 203
+        },
+        {
+          "key": "slow_down_layer_time",
+          "label": "Slow Down Layer Time",
+          "type": "int",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "number",
+          "min": 0,
+          "max": 300,
+          "default": "0",
+          "serializationOrdinal": 204
+        }
+      ]
+    },
+    {
+      "id": "filament-cut",
+      "label": "Filament Cut & Flow",
+      "options": [
+        {
+          "key": "filament_long_retractions_when_cut",
+          "label": "Long Retractions When Cut",
+          "type": "int",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "number",
+          "min": 0,
+          "max": 10,
+          "default": "0",
+          "serializationOrdinal": 210
+        },
+        {
+          "key": "filament_retraction_distances_when_cut",
+          "label": "Retraction Distance When Cut",
+          "type": "float",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "number",
+          "min": 0,
+          "max": 100,
+          "default": "0",
+          "serializationOrdinal": 211
+        },
+        {
+          "key": "enable_long_retraction_when_cut",
+          "label": "Enable Long Retraction",
+          "type": "int",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "number",
+          "min": 0,
+          "max": 4,
+          "default": "0",
+          "serializationOrdinal": 212
+        },
+        {
+          "key": "filament_max_volumetric_speed",
+          "label": "Max Volumetric Speed",
+          "type": "float",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "number",
+          "min": 0,
+          "max": 40,
+          "default": "0",
+          "serializationOrdinal": 213
+        }
+      ]
+    },
+    {
+      "id": "build-plate",
+      "label": "Build Plate Temps",
+      "options": [
+        {
+          "key": "hot_plate_temp",
+          "label": "Plate Temperature",
+          "type": "int",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "number",
+          "min": 0,
+          "max": 150,
+          "default": "0",
+          "serializationOrdinal": 220
+        },
+        {
+          "key": "hot_plate_temp_initial_layer",
+          "label": "First Layer Plate Temp",
+          "type": "int",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "number",
+          "min": 0,
+          "max": 150,
+          "default": "0",
+          "serializationOrdinal": 221
+        },
+        {
+          "key": "textured_plate_temp",
+          "label": "Textured Plate Temp",
+          "type": "int",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "number",
+          "min": 0,
+          "max": 150,
+          "default": "0",
+          "serializationOrdinal": 222
+        },
+        {
+          "key": "textured_plate_temp_initial_layer",
+          "label": "Textured Plate First Layer Temp",
+          "type": "int",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "number",
+          "min": 0,
+          "max": 150,
+          "default": "0",
+          "serializationOrdinal": 223
+        }
+      ]
+    },
+    {
+      "id": "process-tuning",
+      "label": "Process Tuning",
+      "options": [
+        {
+          "key": "elefant_foot_compensation",
+          "label": "Elephant Foot Compensation",
+          "type": "float",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "number",
+          "min": -1,
+          "max": 1,
+          "default": "0",
+          "serializationOrdinal": 230
+        }
+      ]
+    },
+    {
+      "id": "machine-geometry",
+      "label": "Machine Geometry",
+      "options": [
+        {
+          "key": "printer_model",
+          "label": "Printer Model",
+          "type": "string",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "text",
+          "default": "",
+          "serializationOrdinal": 300
+        },
+        {
+          "key": "printer_variant",
+          "label": "Printer Variant",
+          "type": "float",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "number",
+          "min": 0,
+          "max": 10,
+          "default": "0",
+          "serializationOrdinal": 301
+        },
+        {
+          "key": "printer_structure",
+          "label": "Printer Structure",
+          "type": "enum",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "enum",
+          "enumValues": ["i3", "corexy", "delta", "scara", "other"],
+          "enumLabels": ["i3", "CoreXY", "Delta", "SCARA", "Other"],
+          "default": "i3",
+          "serializationOrdinal": 302
+        },
+        {
+          "key": "printable_height",
+          "label": "Printable Height",
+          "type": "float",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "number",
+          "min": 0,
+          "max": 1000,
+          "default": "0",
+          "serializationOrdinal": 303
+        },
+        {
+          "key": "nozzle_diameter",
+          "label": "Nozzle Diameter",
+          "type": "float",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "number",
+          "min": 0.1,
+          "max": 1.0,
+          "default": "0.4",
+          "serializationOrdinal": 304
+        },
+        {
+          "key": "nozzle_height",
+          "label": "Nozzle Height",
+          "type": "float",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "number",
+          "min": 0,
+          "max": 50,
+          "default": "0",
+          "serializationOrdinal": 305
+        },
+        {
+          "key": "nozzle_type",
+          "label": "Nozzle Type",
+          "type": "enum",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "enum",
+          "enumValues": ["brass", "hardened_steel", "stainless_steel", "ruby", "tungsten", "other"],
+          "enumLabels": ["Brass", "Hardened Steel", "Stainless Steel", "Ruby", "Tungsten", "Other"],
+          "default": "stainless_steel",
+          "serializationOrdinal": 306
+        },
+        {
+          "key": "nozzle_volume",
+          "label": "Nozzle Volume",
+          "type": "float",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "number",
+          "min": 0,
+          "max": 500,
+          "default": "0",
+          "serializationOrdinal": 307
+        },
+        {
+          "key": "extruder_clearance_dist_to_rod",
+          "label": "Extruder Clearance Distance",
+          "type": "float",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "number",
+          "min": 0,
+          "max": 500,
+          "default": "0",
+          "serializationOrdinal": 308
+        },
+        {
+          "key": "extruder_clearance_height_to_lid",
+          "label": "Extruder Clearance To Lid",
+          "type": "float",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "number",
+          "min": 0,
+          "max": 500,
+          "default": "0",
+          "serializationOrdinal": 309
+        },
+        {
+          "key": "extruder_clearance_height_to_rod",
+          "label": "Extruder Clearance To Rod",
+          "type": "float",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "number",
+          "min": 0,
+          "max": 500,
+          "default": "0",
+          "serializationOrdinal": 310
+        },
+        {
+          "key": "extruder_clearance_max_radius",
+          "label": "Extruder Clearance Radius",
+          "type": "float",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "number",
+          "min": 0,
+          "max": 500,
+          "default": "0",
+          "serializationOrdinal": 311
+        },
+        {
+          "key": "grab_length",
+          "label": "Grab Length",
+          "type": "float",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "number",
+          "min": 0,
+          "max": 100,
+          "default": "0",
+          "serializationOrdinal": 312
+        },
+        {
+          "key": "head_wrap_detect_zone",
+          "label": "Head Wrap Detect Zone",
+          "type": "strings",
+          "mode": "advanced",
+          "nullable": true,
+          "isVector": true,
+          "guiType": "vector",
+          "default": [],
+          "serializationOrdinal": 313
+        },
+        {
+          "key": "machine_load_filament_time",
+          "label": "Load Filament Time",
+          "type": "int",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "number",
+          "min": 0,
+          "max": 600,
+          "default": "0",
+          "serializationOrdinal": 314
+        }
+      ]
+    },
+    {
+      "id": "machine-motion",
+      "label": "Machine Motion",
+      "options": [
+        {
+          "key": "default_acceleration",
+          "label": "Default Acceleration",
+          "type": "int",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "number",
+          "min": 0,
+          "max": 50000,
+          "default": "0",
+          "serializationOrdinal": 320
+        },
+        {
+          "key": "travel_speed",
+          "label": "Travel Speed",
+          "type": "int",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "number",
+          "min": 0,
+          "max": 1000,
+          "default": "0",
+          "serializationOrdinal": 321
+        },
+        {
+          "key": "machine_max_acceleration_extruding",
+          "label": "Max Acceleration Extruding",
+          "type": "ints",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": true,
+          "guiType": "vector",
+          "default": [],
+          "serializationOrdinal": 322
+        },
+        {
+          "key": "machine_max_acceleration_x",
+          "label": "Max Acceleration X",
+          "type": "ints",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": true,
+          "guiType": "vector",
+          "default": [],
+          "serializationOrdinal": 323
+        },
+        {
+          "key": "machine_max_acceleration_y",
+          "label": "Max Acceleration Y",
+          "type": "ints",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": true,
+          "guiType": "vector",
+          "default": [],
+          "serializationOrdinal": 324
+        },
+        {
+          "key": "machine_max_acceleration_z",
+          "label": "Max Acceleration Z",
+          "type": "ints",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": true,
+          "guiType": "vector",
+          "default": [],
+          "serializationOrdinal": 325
+        },
+        {
+          "key": "machine_max_jerk_e",
+          "label": "Max Jerk E",
+          "type": "floats",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": true,
+          "guiType": "vector",
+          "default": [],
+          "serializationOrdinal": 326
+        },
+        {
+          "key": "machine_max_speed_z",
+          "label": "Max Speed Z",
+          "type": "floats",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": true,
+          "guiType": "vector",
+          "default": [],
+          "serializationOrdinal": 327
+        },
+        {
+          "key": "retract_lift_below",
+          "label": "Retract Lift Below",
+          "type": "float",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "number",
+          "min": 0,
+          "max": 1000,
+          "default": "0",
+          "serializationOrdinal": 328
+        },
+        {
+          "key": "auxiliary_fan",
+          "label": "Auxiliary Fan",
+          "type": "bool",
+          "mode": "advanced",
+          "nullable": false,
+          "isVector": false,
+          "guiType": "toggle",
+          "default": "false",
+          "serializationOrdinal": 329
+        }
+      ]
+    },
+    {
+      "id": "profile-defaults",
+      "label": "Profile Defaults",
+      "options": [
+        {
+          "key": "default_filament_profile",
+          "label": "Default Filament Profile",
+          "type": "string",
+          "mode": "advanced",
+          "nullable": true,
+          "isVector": false,
+          "guiType": "text",
+          "default": "",
+          "serializationOrdinal": 400
+        },
+        {
+          "key": "default_print_profile",
+          "label": "Default Print Profile",
+          "type": "string",
+          "mode": "advanced",
+          "nullable": true,
+          "isVector": false,
+          "guiType": "text",
+          "default": "",
+          "serializationOrdinal": 401
+        },
+        {
+          "key": "compatible_printers",
+          "label": "Compatible Printers",
+          "type": "string",
+          "mode": "advanced",
+          "nullable": true,
+          "isVector": false,
+          "guiType": "text",
+          "default": "",
+          "serializationOrdinal": 402
+        },
+        {
+          "key": "upward_compatible_machine",
+          "label": "Upward Compatible Machines",
+          "type": "strings",
+          "mode": "advanced",
+          "nullable": true,
+          "isVector": true,
+          "guiType": "vector",
+          "default": [],
+          "serializationOrdinal": 403
+        }
+      ]
+    },
+    {
+      "id": "gcode-hooks",
+      "label": "G-code Hooks",
+      "options": [
+        {
+          "key": "machine_start_gcode",
+          "label": "Machine Start G-code",
+          "type": "string",
+          "mode": "advanced",
+          "nullable": true,
+          "isVector": false,
+          "guiType": "code",
+          "default": "",
+          "serializationOrdinal": 500
+        },
+        {
+          "key": "machine_end_gcode",
+          "label": "Machine End G-code",
+          "type": "string",
+          "mode": "advanced",
+          "nullable": true,
+          "isVector": false,
+          "guiType": "code",
+          "default": "",
+          "serializationOrdinal": 501
+        },
+        {
+          "key": "layer_change_gcode",
+          "label": "Layer Change G-code",
+          "type": "string",
+          "mode": "advanced",
+          "nullable": true,
+          "isVector": false,
+          "guiType": "code",
+          "default": "",
+          "serializationOrdinal": 502
+        },
+        {
+          "key": "time_lapse_gcode",
+          "label": "Timelapse G-code",
+          "type": "string",
+          "mode": "advanced",
+          "nullable": true,
+          "isVector": false,
+          "guiType": "code",
+          "default": "",
+          "serializationOrdinal": 503
+        },
+        {
+          "key": "change_filament_gcode",
+          "label": "Change Filament G-code",
+          "type": "string",
+          "mode": "advanced",
+          "nullable": true,
+          "isVector": false,
+          "guiType": "code",
+          "default": "",
+          "serializationOrdinal": 504
+        }
+      ]
+    }
+  ]
+}

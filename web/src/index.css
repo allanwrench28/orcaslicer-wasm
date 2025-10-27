@@ -1,0 +1,210 @@
+* { box-sizing: border-box; }
+body { 
+    margin: 0; 
+    padding: 0; 
+    overflow: hidden; 
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-size: 13px;
+}
+.canvas-container { position: relative; cursor: grab; }
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+}
+input[type="number"] { 
+    -moz-appearance: textfield; 
+    appearance: textfield;
+}
+.main-tab { 
+    padding: 8px 24px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+.main-tab:hover { background-color: rgba(0,0,0,0.05); }
+.main-tab.active { 
+    border-bottom-color: #00AE42;
+    color: #00AE42;
+}
+button,
+.toolbar-btn {
+    padding: 6px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.15s;
+    border: none;
+    background: none;
+}
+.toolbar-btn:hover { background-color: rgba(0,0,0,0.06); }
+.toolbar-btn.active { background-color: rgba(0,174,66,0.15); }
+.setting-row {
+    display: flex;
+    align-items: center;
+    padding: 6px 0;
+    gap: 8px;
+}
+.setting-label {
+    flex: 1;
+    font-size: 12px;
+    color: #333;
+}
+.setting-input {
+    width: 70px;
+    padding: 4px 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 12px;
+}
+.slider-input {
+    flex: 1;
+    height: 4px;
+    border-radius: 2px;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background: #ddd;
+}
+.slider-input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #00AE42;
+    cursor: pointer;
+}
+.slider-input::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #00AE42;
+    cursor: pointer;
+    border: none;
+}
+.section-header {
+    padding: 10px 12px;
+    background: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+    font-weight: 600;
+    font-size: 12px;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.section-content {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+.select-input {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 12px;
+    background: white;
+}
+.btn-primary {
+    background: #00AE42;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+.btn-primary:hover { background: #009638; }
+.btn-primary:disabled { 
+    background: #ccc;
+    cursor: not-allowed;
+}
+.object-tree-item {
+    padding: 6px 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+}
+.object-tree-item:hover { background: rgba(0,0,0,0.04); }
+.object-tree-item.selected { background: rgba(0,174,66,0.1); }
+.icon-btn {
+    padding: 4px;
+    border-radius: 3px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.icon-btn:hover { background: rgba(0,0,0,0.06); }
+.dropdown-selector {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+    background: white;
+}
+.dropdown-selector:hover { background: #f9f9f9; }
+.chevron.collapsed {
+    transform: rotate(-90deg);
+}
+
+/* ==========================================================================
+   Drag and Drop Overlay
+   ========================================================================== */
+.drag-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  pointer-events: none; /* Allow drop events to pass through */
+}
+
+.drag-overlay-content {
+  border: 3px dashed #007bff;
+  border-radius: 12px;
+  width: calc(100% - 40px);
+  height: calc(100% - 40px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 123, 255, 0.1);
+}
+
+.drag-overlay-content h2 {
+  color: #007bff;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* Button States */
+.btn-slice:disabled, .btn-download:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.btn-download {
+  padding: 6px 12px;
+  border-radius: 3px;
+  background: var(--orca-green);
+  color: white;
+  font-size: 12px;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+
+.btn-download:hover:not(:disabled) {
+  background: #009638;
+}

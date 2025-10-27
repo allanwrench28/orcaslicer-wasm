@@ -1,5 +1,81 @@
-# orca-wasm-mvp
-Orca → WebAssembly minimal slicer prototype
+# OrcaSlicer WebAssembly Edition
+
+**Run OrcaSlicer's powerful slicing engine directly in your web browser** — no installation, no desktop app, no server required.
+
+## What is This?
+
+This project compiles the core slicing engine of [OrcaSlicer](https://github.com/SoftFever/OrcaSlicer) (based on v2.3.1) to WebAssembly, enabling it to run entirely in modern web browsers. Users can:
+
+- 📦 **Upload 3D models** (STL files) directly in the browser
+- ⚙️ **Configure print settings** through a web-based UI
+- 🔪 **Slice models** using the same algorithms as the desktop OrcaSlicer
+- 💾 **Download G-code** ready for 3D printing
+- 🌐 **Work offline** after the initial page load (PWA-ready architecture)
+
+This is a **pure client-side application** — all processing happens in your browser's WASM runtime. No data is uploaded to servers, ensuring privacy and enabling use without internet connectivity.
+
+## Feature Comparison vs Desktop OrcaSlicer
+
+### ✅ Fully Working Features
+
+These features are **fully functional** and match the desktop OrcaSlicer experience:
+
+- ✅ **Core Slicing Engine** - Complete G-code generation with all slicing algorithms
+- ✅ **Print Settings** - Layer height, speeds, accelerations, temperatures
+- ✅ **Quality Settings** - Wall loops, top/bottom layers, seam position, precise wall
+- ✅ **Infill Patterns** - Grid, Gyroid, Honeycomb, Triangles, Cubic, Lightning, etc.
+- ✅ **Support Generation** - Normal supports, tree supports, hybrid supports
+- ✅ **Advanced Features** - Ironing, fuzzy skin, arc fitting, sandwich mode, polyholes
+- ✅ **Multi-Material** - Multiple extruders and filament changes
+- ✅ **Raft & Brim** - Bed adhesion helpers
+- ✅ **Retraction Settings** - Distance, speed, z-hop
+- ✅ **Speed Profiles** - Per-feature speed control (walls, infill, bridges)
+- ✅ **STL Import** - Full geometry processing and mesh repair
+- ✅ **Profile Management** - Printer, filament, and process profiles
+
+### ⚠️ Currently Disabled Features
+
+These features are **not yet available** in the web version due to technical limitations of the WebAssembly environment:
+
+#### Missing Dependencies
+- ❌ **3D Preview/Visualization** - Requires OpenGL/WebGL integration (in development)
+- ❌ **G-code Preview** - Layer-by-layer visualization not yet implemented
+- ❌ **OpenVDB Support** - Advanced mesh processing library disabled
+- ❌ **OpenCV Support** - Computer vision features unavailable
+- ❌ **STEP/IGES Import** - CAD file formats (requires OpenCASCADE, currently stubbed out)
+- ❌ **PNG/Image Processing** - Thumbnail generation and image analysis disabled
+- ❌ **Text Engraving** - Font rendering requires FreeType (stubbed out)
+
+#### Platform Limitations
+- ❌ **Multi-threading** - Browser WASM threading support incomplete (single-threaded only)
+- ❌ **File System Access** - Direct file I/O replaced with browser upload/download APIs
+- ❌ **Network Features** - Printer connectivity (OctoPrint/Klipper) not applicable to web
+- ❌ **System Integration** - No desktop notifications, file associations, or system tray
+
+#### UI Features
+- ❌ **Desktop GUI** - wxWidgets GUI replaced with web-based React interface
+- ❌ **3D Model Manipulation** - Move, rotate, scale (planned for web UI)
+- ❌ **Paint-on Supports** - Interactive support placement (planned)
+- ❌ **Calibration Tools** - Temperature towers, flow calibration (can be added)
+
+### 🔄 Planned Features
+
+Work is underway or planned to restore these capabilities:
+
+- 🔄 **WebGL 3D Viewer** - Native browser 3D visualization (in progress)
+- 🔄 **G-code Viewer** - Layer-by-layer preview using Three.js
+- 🔄 **Object Manipulation** - Browser-based move/rotate/scale controls
+- 🔄 **PWA Support** - Install as desktop/mobile app with offline capability
+- 🔄 **Multi-threading** - Enable SharedArrayBuffer when browser support improves
+
+## Technical Architecture
+
+- **Core Engine**: OrcaSlicer v2.3.1 C++ codebase compiled with Emscripten
+- **Build System**: Custom PowerShell/Bash build pipeline with dependency management
+- **Web UI**: React + TypeScript with Vite
+- **Communication**: Web Workers for non-blocking WASM execution
+- **File Handling**: Browser File API for uploads/downloads
+- **Dependencies**: Boost, CGAL, Eigen3, OpenMP (single-threaded)
 
 ## Quick Start
 

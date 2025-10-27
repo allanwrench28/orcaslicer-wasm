@@ -6,13 +6,21 @@
 #include <string>
 #include <cstring>
 #include <algorithm>
+#include <cmath>
+#include <cctype>
 #include <unistd.h>
 #include <new>
 #include <errno.h>
 #include <cinttypes>
 #include <limits>
+#include <optional>
+#include <map>
+#include <sstream>
+#include <ctime>
 
 #include <chrono>
+
+#include <nlohmann/json.hpp>
 
 #ifdef __EMSCRIPTEN__
 #include <emscripten.h>
@@ -66,8 +74,8 @@ static void log_memory_usage(const char* label)
 // Instrument global new/delete so we can observe failing allocations at runtime.
 namespace {
 
-static constexpr std::size_t kLargeAllocLogThreshold = 0; // Log all attempts until cap
-static constexpr unsigned int kMaxLoggedAllocations = std::numeric_limits<unsigned int>::max();
+static constexpr std::size_t kLargeAllocLogThreshold = std::numeric_limits<std::size_t>::max(); // Disable alloc attempt spam in release
+static constexpr unsigned int kMaxLoggedAllocations = 0;
 static constexpr std::size_t kAllocTableSize = 1 << 17; // 131072 entries for pointer tracking
 static constexpr std::size_t kAllocTableMask = kAllocTableSize - 1;
 
@@ -416,8 +424,10 @@ void operator delete[](void* ptr, std::size_t, std::align_val_t) noexcept
 #include "../orca/src/libslic3r/Utils.hpp"
 
 using namespace Slic3r;
+using json = nlohmann::json;
 
 static bool g_dump_config = false;
+static std::optional<json> g_last_slice_payload;
 
 static void ensure_resources_initialized()
 {
@@ -689,8 +699,432 @@ static bool set_string_option(DynamicPrintConfig &config, const char *key, const
     return false;
 }
 
+static std::string config_option_type_to_string(ConfigOptionType type)
+{
+    switch (type) {
+    case coNone: return "none";
+    case coFloat: return "float";
+    case coFloats: return "floats";
+    case coInt: return "int";
+    case coInts: return "ints";
+    case coString: return "string";
+    case coStrings: return "strings";
+    case coPercent: return "percent";
+    case coPercents: return "percents";
+    case coFloatOrPercent: return "float_or_percent";
+    case coFloatsOrPercents: return "floats_or_percents";
+    case coPoint: return "point";
+    case coPoints: return "points";
+    case coPoint3: return "point3";
+    case coBool: return "bool";
+    case coBools: return "bools";
+    case coEnum: return "enum";
+    case coEnums: return "enums";
+    default: return "unknown";
+    }
+}
+
+static std::string config_option_mode_to_string(ConfigOptionMode mode)
+{
+    switch (mode) {
+    case comSimple: return "simple";
+    case comAdvanced: return "advanced";
+    case comDevelop: return "develop";
+    default: return "simple";
+    }
+}
+
+static std::string config_option_gui_type_to_string(ConfigOptionDef::GUIType gui_type)
+{
+    using GUIType = ConfigOptionDef::GUIType;
+    switch (gui_type) {
+    case GUIType::undefined: return "undefined";
+    case GUIType::i_enum_open: return "i_enum_open";
+    case GUIType::f_enum_open: return "f_enum_open";
+    case GUIType::color: return "color";
+    case GUIType::select_open: return "select_open";
+    case GUIType::slider: return "slider";
+    case GUIType::legend: return "legend";
+    case GUIType::one_string: return "one_string";
+    default: return "undefined";
+    }
+}
+
+static bool parse_float_or_percent(const json &value, FloatOrPercent &out)
+{
+    if (value.is_object()) {
+        auto it_val = value.find("value");
+        if (it_val == value.end() || !it_val->is_number()) {
+            return false;
+        }
+        out.value = it_val->get<double>();
+        auto it_percent = value.find("percent");
+        out.percent = (it_percent != value.end() && it_percent->is_boolean()) ? it_percent->get<bool>() : false;
+        return true;
+    }
+    if (value.is_number()) {
+        out.value = value.get<double>();
+        out.percent = false;
+        return true;
+    }
+    if (value.is_string()) {
+        const std::string serialized = value.get<std::string>();
+        if (serialized.empty()) {
+            out.value = 0.0;
+            out.percent = false;
+            return true;
+        }
+        bool percent = false;
+        std::string token = serialized;
+        if (!token.empty() && token.back() == '%') {
+            percent = true;
+            token.pop_back();
+        }
+        try {
+            const double parsed = std::stod(token);
+            out.value = parsed;
+            out.percent = percent;
+            return true;
+        } catch (...) {
+            return false;
+        }
+    }
+    return false;
+}
+
+static bool parse_float_or_percent_array(const json &value, std::vector<FloatOrPercent> &out)
+{
+    if (!value.is_array()) {
+        return false;
+    }
+    std::vector<FloatOrPercent> parsed;
+    parsed.reserve(value.size());
+    for (const json &entry : value) {
+        FloatOrPercent fop{0.0, false};
+        if (!parse_float_or_percent(entry, fop)) {
+            return false;
+        }
+        parsed.push_back(fop);
+    }
+    out = std::move(parsed);
+    return true;
+}
+
+static bool apply_config_value(DynamicPrintConfig &config, const ConfigOptionDef &def, const std::string &key, const json &value)
+{
+    const char *ckey = key.c_str();
+
+    switch (def.type) {
+    case coFloat:
+        if (!value.is_number()) {
+            return false;
+        }
+        return set_float_option(config, ckey, value.get<double>());
+    case coFloats: {
+        std::vector<double> numbers;
+        if (value.is_array()) {
+            numbers.reserve(value.size());
+            for (const json &entry : value) {
+                if (!entry.is_number()) {
+                    return false;
+                }
+                numbers.push_back(entry.get<double>());
+            }
+        } else if (value.is_number()) {
+            numbers.push_back(value.get<double>());
+        } else {
+            return false;
+        }
+        return set_float_vector_option(config, ckey, numbers);
+    }
+    case coInt:
+        if (!value.is_number()) {
+            return false;
+        }
+        return set_int_option(config, ckey, static_cast<int>(std::llround(value.get<double>())));
+    case coInts: {
+        std::vector<int> numbers;
+        if (value.is_array()) {
+            numbers.reserve(value.size());
+            for (const json &entry : value) {
+                if (!entry.is_number()) {
+                    return false;
+                }
+                numbers.push_back(static_cast<int>(std::llround(entry.get<double>())));
+            }
+        } else if (value.is_number()) {
+            numbers.push_back(static_cast<int>(std::llround(value.get<double>())));
+        } else {
+            return false;
+        }
+        return set_int_vector_option(config, ckey, numbers);
+    }
+    case coString:
+        if (!value.is_string()) {
+            return false;
+        }
+        return set_string_option(config, ckey, value.get<std::string>());
+    case coStrings: {
+        if (!value.is_array()) {
+            return false;
+        }
+        std::vector<std::string> strings;
+        strings.reserve(value.size());
+        for (const json &entry : value) {
+            if (!entry.is_string()) {
+                return false;
+            }
+            strings.push_back(entry.get<std::string>());
+        }
+        if (auto *opt = config.opt<ConfigOptionStrings>(ckey, true)) {
+            opt->values = strings;
+            return true;
+        }
+        return false;
+    }
+    case coPercent:
+        if (value.is_number()) {
+            return set_percent_option(config, ckey, value.get<double>());
+        }
+        if (value.is_string()) {
+            std::string token = value.get<std::string>();
+            bool percent = false;
+            if (!token.empty() && token.back() == '%') {
+                percent = true;
+                token.pop_back();
+            }
+            try {
+                const double parsed = std::stod(token);
+                return set_percent_option(config, ckey, percent ? parsed : parsed);
+            } catch (...) {
+                return false;
+            }
+        }
+        return false;
+    case coPercents: {
+        std::vector<double> percents;
+        if (value.is_array()) {
+            percents.reserve(value.size());
+            for (const json &entry : value) {
+                if (!entry.is_number()) {
+                    return false;
+                }
+                percents.push_back(entry.get<double>());
+            }
+        } else if (value.is_number()) {
+            percents.push_back(value.get<double>());
+        } else {
+            return false;
+        }
+        if (auto *opt = config.opt<ConfigOptionPercents>(ckey, true)) {
+            assign_vector_values(opt, percents, 0.0);
+            return true;
+        }
+        if (auto *opt_nullable = config.opt<ConfigOptionPercentsNullable>(ckey, true)) {
+            assign_vector_values(opt_nullable, percents, 0.0);
+            return true;
+        }
+        if (percents.size() == 1) {
+            return set_percent_option(config, ckey, percents.front());
+        }
+        return false;
+    }
+    case coFloatOrPercent: {
+        FloatOrPercent parsed{0.0, false};
+        if (!parse_float_or_percent(value, parsed)) {
+            return false;
+        }
+        if (auto *opt = config.opt<ConfigOptionFloatOrPercent>(ckey, true)) {
+            opt->value = parsed.value;
+            opt->percent = parsed.percent;
+            return true;
+        }
+        return false;
+    }
+    case coFloatsOrPercents: {
+        std::vector<FloatOrPercent> parsed;
+        if (!parse_float_or_percent_array(value, parsed)) {
+            return false;
+        }
+        if (auto *opt = config.opt<ConfigOptionFloatsOrPercents>(ckey, true)) {
+            assign_vector_values(opt, parsed, FloatOrPercent{0.0, false});
+            return true;
+        }
+        if (auto *opt_nullable = config.opt<ConfigOptionFloatsOrPercentsNullable>(ckey, true)) {
+            assign_vector_values(opt_nullable, parsed, FloatOrPercent{0.0, false});
+            return true;
+        }
+        return false;
+    }
+    case coPoint: {
+        if (!value.is_array() || value.size() != 2) {
+            return false;
+        }
+        if (!value[0].is_number() || !value[1].is_number()) {
+            return false;
+        }
+        if (auto *opt = config.opt<ConfigOptionPoint>(ckey, true)) {
+            opt->value = Vec2d(value[0].get<double>(), value[1].get<double>());
+            return true;
+        }
+        return false;
+    }
+    case coPoints: {
+        if (!value.is_array()) {
+            return false;
+        }
+        std::vector<Vec2d> points;
+        points.reserve(value.size());
+        for (const json &entry : value) {
+            if (!entry.is_array() || entry.size() != 2) {
+                return false;
+            }
+            if (!entry[0].is_number() || !entry[1].is_number()) {
+                return false;
+            }
+            points.emplace_back(entry[0].get<double>(), entry[1].get<double>());
+        }
+        if (auto *opt = config.opt<ConfigOptionPoints>(ckey, true)) {
+            opt->values = points;
+            return true;
+        }
+        return false;
+    }
+    case coPoint3: {
+        if (!value.is_array() || value.size() != 3) {
+            return false;
+        }
+        if (!value[0].is_number() || !value[1].is_number() || !value[2].is_number()) {
+            return false;
+        }
+        if (auto *opt = config.opt<ConfigOptionPoint3>(ckey, true)) {
+            opt->value = Vec3d(value[0].get<double>(), value[1].get<double>(), value[2].get<double>());
+            return true;
+        }
+        return false;
+    }
+    case coBool:
+        if (!value.is_boolean()) {
+            return false;
+        }
+        return set_bool_option(config, ckey, value.get<bool>());
+    case coBools: {
+        if (!value.is_array()) {
+            return false;
+        }
+        std::vector<unsigned char> bools;
+        bools.reserve(value.size());
+        for (const json &entry : value) {
+            if (!entry.is_boolean()) {
+                return false;
+            }
+            bools.push_back(entry.get<bool>() ? 1 : 0);
+        }
+        if (auto *opt = config.opt<ConfigOptionBools>(ckey, true)) {
+            auto &target = opt->values;
+            target = bools;
+            return true;
+        }
+        if (auto *opt_nullable = config.opt<ConfigOptionBoolsNullable>(ckey, true)) {
+            auto &target = opt_nullable->values;
+            target = bools;
+            return true;
+        }
+        return false;
+    }
+    case coEnum: {
+        int enum_value = 0;
+        if (value.is_number_integer()) {
+            enum_value = value.get<int>();
+        } else if (value.is_string()) {
+            const std::string symbol = value.get<std::string>();
+            bool resolved = false;
+            if (def.enum_keys_map != nullptr) {
+                auto it = def.enum_keys_map->find(symbol);
+                if (it != def.enum_keys_map->end()) {
+                    enum_value = it->second;
+                    resolved = true;
+                }
+            }
+            if (!resolved) {
+                for (const auto &kvp : def.enum_values) {
+                    if (kvp == symbol && def.enum_keys_map != nullptr) {
+                        auto it = def.enum_keys_map->find(kvp);
+                        if (it != def.enum_keys_map->end()) {
+                            enum_value = it->second;
+                            resolved = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            if (!resolved) {
+                return false;
+            }
+        } else {
+            return false;
+        }
+        if (auto *opt = config.opt<ConfigOptionEnumGeneric>(ckey, true)) {
+            opt->value = enum_value;
+            return true;
+        }
+        return false;
+    }
+    case coEnums: {
+        if (!value.is_array()) {
+            return false;
+        }
+        std::vector<int> enums;
+        enums.reserve(value.size());
+        for (const json &entry : value) {
+            if (entry.is_number_integer()) {
+                enums.push_back(entry.get<int>());
+            } else if (entry.is_string()) {
+                const std::string symbol = entry.get<std::string>();
+                bool resolved = false;
+                if (def.enum_keys_map != nullptr) {
+                    auto it = def.enum_keys_map->find(symbol);
+                    if (it != def.enum_keys_map->end()) {
+                        enums.push_back(it->second);
+                        resolved = true;
+                    }
+                }
+                if (!resolved) {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
+        if (auto *opt = config.opt<ConfigOptionEnumsGeneric>(ckey, true)) {
+            opt->values = enums;
+            return true;
+        }
+        if (auto *opt_nullable = config.opt<ConfigOptionEnumsGenericNullable>(ckey, true)) {
+            opt_nullable->values = enums;
+            return true;
+        }
+        return false;
+    }
+    default:
+        break;
+    }
+    return false;
+}
+
+static bool apply_config_value_by_key(DynamicPrintConfig &config, const ConfigDef &defs, const std::string &key, const json &value)
+{
+    const ConfigOptionDef *def = defs.get(key);
+    if (def == nullptr) {
+        return false;
+    }
+    return apply_config_value(config, *def, key, value);
+}
+
 // Simple default config
 static DynamicPrintConfig get_default_config() {
+    fprintf(stderr, "[orc_schema] get_default_config start\n");
+    fflush(stderr);
     // Seed with the full preset so overrides match real option types.
     DynamicPrintConfig config;
     config.apply(FullPrintConfig::defaults());
@@ -723,7 +1157,342 @@ static DynamicPrintConfig get_default_config() {
     ensure(set_bool_option(config, "precise_outer_wall", false), "precise_outer_wall");
     ensure(set_bool_option(config, "thick_internal_bridges", false), "thick_internal_bridges");
 
+    fprintf(stderr, "[orc_schema] get_default_config done\n");
+    fflush(stderr);
     return config;
+}
+
+static std::optional<InfillPattern> parse_infill_pattern(std::string value)
+{
+    std::transform(value.begin(), value.end(), value.begin(), [](unsigned char c) { return static_cast<char>(std::tolower(c)); });
+    if (value == "grid")      return InfillPattern::ipGrid;
+    if (value == "gyroid")    return InfillPattern::ipGyroid;
+    if (value == "cubic")     return InfillPattern::ipCubic;
+    if (value == "triangles") return InfillPattern::ipTriangles;
+    if (value == "rectilinear") return InfillPattern::ipRectilinear;
+    if (value == "lightning") return InfillPattern::ipLightning;
+    return std::nullopt;
+}
+
+static void apply_model_rotation(Model &model, const json &payload)
+{
+    if (!payload.is_object()) {
+        return;
+    }
+    auto rot_it = payload.find("rotation_deg");
+    if (rot_it == payload.end() || !rot_it->is_object()) {
+        return;
+    }
+    constexpr double kDegToRad = 0.01745329251994329576923690768489;
+    const json &rotation = *rot_it;
+    bool rotated = false;
+    auto apply_axis = [&](const char *key, Axis axis) {
+        auto axis_it = rotation.find(key);
+        if (axis_it == rotation.end() || !axis_it->is_number()) {
+            return;
+        }
+        double angle_deg = axis_it->get<double>();
+        if (std::abs(angle_deg) < 1e-6) {
+            return;
+        }
+        const double angle_rad = angle_deg * kDegToRad;
+        for (ModelObject *object : model.objects) {
+            if (object != nullptr) {
+                object->rotate(angle_rad, axis);
+            }
+        }
+        rotated = true;
+    };
+
+    apply_axis("x", Axis::X);
+    apply_axis("y", Axis::Y);
+    apply_axis("z", Axis::Z);
+
+    if (rotated) {
+        for (ModelObject *object : model.objects) {
+            if (object != nullptr) {
+                object->ensure_on_bed(false);
+            }
+        }
+    }
+}
+
+static void apply_config_overrides(DynamicPrintConfig &config, const json &payload)
+{
+    if (!payload.is_object()) {
+        return;
+    }
+
+    const ConfigDef *defs = config.def();
+    if (defs == nullptr) {
+        fprintf(stderr, "[orc_slice] warning: print configuration metadata unavailable; overrides skipped\n");
+        fflush(stderr);
+        return;
+    };
+
+    auto warn_override = [](const std::string &key) {
+        fprintf(stderr, "[orc_slice] warning: failed to apply override for %s\n", key.c_str());
+        fflush(stderr);
+    };
+
+    static const std::map<std::string, std::vector<std::string>> kLegacyAliasMap = {
+        {"supports_enabled", {"enable_support"}},
+        {"cooling_fan_speed", {"fan_max_speed", "fan_min_speed"}},
+        {"nozzle_temperature_initial", {"nozzle_temperature_initial_layer", "first_layer_temperature"}},
+        {"bed_temperature_initial", {"bed_temperature_initial_layer", "first_layer_bed_temperature"}},
+        {"first_layer_height", {"first_layer_height", "initial_layer_print_height"}},
+        {"infill_pattern", {"sparse_infill_pattern"}}
+    };
+
+    auto apply_alias = [&](const std::string &key, const json &value) -> bool {
+        auto alias_it = kLegacyAliasMap.find(key);
+        if (alias_it == kLegacyAliasMap.end()) {
+            return false;
+        }
+        bool applied_any = false;
+        for (const std::string &target : alias_it->second) {
+            if (apply_config_value_by_key(config, *defs, target, value)) {
+                applied_any = true;
+                continue;
+            }
+            if (target == "sparse_infill_pattern" && value.is_string()) {
+                if (auto mapped = parse_infill_pattern(value.get<std::string>())) {
+                    if (set_enum_option(config, "sparse_infill_pattern", *mapped)) {
+                        applied_any = true;
+                    }
+                }
+            }
+        }
+        return applied_any;
+    };
+
+    auto apply_entry = [&](const std::string &key, const json &value) {
+        if (key == "rotation_deg" || key == "config") {
+            return;
+        }
+        if (apply_config_value_by_key(config, *defs, key, value)) {
+            return;
+        }
+        if (apply_alias(key, value)) {
+            return;
+        }
+        warn_override(key);
+    };
+
+    if (auto cfg_it = payload.find("config"); cfg_it != payload.end() && cfg_it->is_object()) {
+        for (const auto &entry : cfg_it->items()) {
+            apply_entry(entry.key(), entry.value());
+        }
+    }
+
+    for (const auto &entry : payload.items()) {
+        const std::string &key = entry.key();
+        if (key == "config" || key == "rotation_deg") {
+            continue;
+        }
+        apply_entry(key, entry.value());
+    }
+}
+
+static std::string slugify_identifier(const std::string &label)
+{
+    std::string id;
+    id.reserve(label.size());
+    for (unsigned char ch : label) {
+        if (std::isalnum(ch)) {
+            id.push_back(static_cast<char>(std::tolower(ch)));
+        } else if (ch == ' ' || ch == '-' || ch == '_') {
+            if (!id.empty() && id.back() != '-') {
+                id.push_back('-');
+            }
+        }
+    }
+    if (id.empty()) {
+        id = "general";
+    }
+    while (!id.empty() && id.back() == '-') {
+        id.pop_back();
+    }
+    return id;
+}
+
+static std::string iso8601_now_utc()
+{
+    using clock = std::chrono::system_clock;
+    const clock::time_point now = clock::now();
+    const std::time_t tt = clock::to_time_t(now);
+    std::tm tm{};
+#if defined(_WIN32)
+    gmtime_s(&tm, &tt);
+#else
+    gmtime_r(&tt, &tm);
+#endif
+    char buffer[32] = {0};
+    if (std::strftime(buffer, sizeof(buffer), "%Y-%m-%dT%H:%M:%SZ", &tm) == 0) {
+        return "1970-01-01T00:00:00Z";
+    }
+    return std::string(buffer);
+}
+
+static json build_config_schema()
+{
+    fprintf(stderr, "[orc_schema] build start\n");
+    fflush(stderr);
+    DynamicPrintConfig config = get_default_config();
+    fprintf(stderr, "[orc_schema] defaults acquired\n");
+    fflush(stderr);
+    const ConfigDef *defs = config.def();
+    json result = json::object();
+    if (defs == nullptr) {
+        result["categories"] = json::array();
+        result["generatedAt"] = iso8601_now_utc();
+        return result;
+    }
+
+    struct OptionEntry {
+        std::string category;
+        json data;
+        size_t ordinal;
+    };
+
+    std::vector<OptionEntry> entries;
+    entries.reserve(defs->options.size());
+
+    for (const auto &kv : defs->options) {
+        const std::string &key = kv.first;
+        const ConfigOptionDef &def = kv.second;
+
+        if (def.readonly) {
+            // Skip read-only telemetry fields to reduce noise.
+            continue;
+        }
+        if (def.printer_technology != ptAny && def.printer_technology != ptFFF && def.printer_technology != ptUnknown) {
+            continue;
+        }
+
+        json option = json::object();
+        option["key"] = key;
+        option["label"] = def.label;
+        if (!def.full_label.empty()) {
+            option["fullLabel"] = def.full_label;
+        }
+        option["type"] = config_option_type_to_string(def.type);
+        option["mode"] = config_option_mode_to_string(def.mode);
+        option["nullable"] = def.nullable;
+        option["isVector"] = !def.is_scalar();
+        option["category"] = def.category.empty() ? "General" : def.category;
+        option["guiType"] = config_option_gui_type_to_string(def.gui_type);
+        if (!def.tooltip.empty()) {
+            option["tooltip"] = def.tooltip;
+        }
+        if (!def.sidetext.empty()) {
+            option["unit"] = def.sidetext;
+        }
+        if (!def.gui_flags.empty()) {
+            option["guiFlags"] = def.gui_flags;
+        }
+        if (!def.aliases.empty()) {
+            option["aliases"] = def.aliases;
+        }
+        if (!def.shortcut.empty()) {
+            option["shortcut"] = def.shortcut;
+        }
+        if (def.height >= 0) {
+            option["height"] = def.height;
+        }
+        if (def.width >= 0) {
+            option["width"] = def.width;
+        }
+        if (def.min != INT_MIN) {
+            option["min"] = def.min;
+        }
+        if (def.max != INT_MAX) {
+            option["max"] = def.max;
+        }
+        if (def.max_literal != 1) {
+            option["maxLiteral"] = def.max_literal;
+        }
+        if (!def.enum_values.empty()) {
+            option["enumValues"] = def.enum_values;
+        }
+        if (!def.enum_labels.empty()) {
+            option["enumLabels"] = def.enum_labels;
+        }
+        if (def.default_value) {
+            if (def.is_scalar()) {
+                option["default"] = def.default_value->serialize();
+            } else if (const auto *vector_option = dynamic_cast<const ConfigOptionVectorBase *>(def.default_value.get())) {
+                option["default"] = vector_option->vserialize();
+            }
+        }
+        option["serializationOrdinal"] = def.serialization_key_ordinal;
+
+        entries.push_back(OptionEntry{
+            def.category.empty() ? std::string("General") : def.category,
+            std::move(option),
+            def.serialization_key_ordinal
+        });
+    }
+
+    std::sort(entries.begin(), entries.end(), [](const OptionEntry &a, const OptionEntry &b) {
+        if (a.ordinal != b.ordinal) {
+            return a.ordinal < b.ordinal;
+        }
+        return a.data["key"].get<std::string>() < b.data["key"].get<std::string>();
+    });
+
+    struct CategoryBucket {
+        std::string label;
+        std::string id;
+        json options = json::array();
+        size_t firstOrdinal = std::numeric_limits<size_t>::max();
+    };
+
+    std::vector<CategoryBucket> buckets;
+    std::map<std::string, size_t> bucket_index;
+
+    for (auto &entry : entries) {
+        const std::string &label = entry.category;
+        auto it = bucket_index.find(label);
+        if (it == bucket_index.end()) {
+            CategoryBucket bucket;
+            bucket.label = label;
+            bucket.id = slugify_identifier(label);
+            bucket.options = json::array();
+            bucket.firstOrdinal = entry.ordinal;
+            buckets.push_back(std::move(bucket));
+            bucket_index[label] = buckets.size() - 1;
+            it = bucket_index.find(label);
+        }
+        CategoryBucket &bucket = buckets[it->second];
+        bucket.options.push_back(entry.data);
+        if (entry.ordinal < bucket.firstOrdinal) {
+            bucket.firstOrdinal = entry.ordinal;
+        }
+    }
+
+    std::sort(buckets.begin(), buckets.end(), [](const CategoryBucket &a, const CategoryBucket &b) {
+        if (a.firstOrdinal != b.firstOrdinal) {
+            return a.firstOrdinal < b.firstOrdinal;
+        }
+        return a.label < b.label;
+    });
+
+    json categories = json::array();
+    for (const CategoryBucket &bucket : buckets) {
+        categories.push_back(json{
+            {"id", bucket.id},
+            {"label", bucket.label},
+            {"options", bucket.options}
+        });
+    }
+
+    result["generatedAt"] = iso8601_now_utc();
+    result["categories"] = categories;
+    result["optionCount"] = entries.size();
+    fprintf(stderr, "[orc_schema] build done optionCount=%zu\n", entries.size());
+    fflush(stderr);
+    return result;
 }
 
 // Helper function to create STL from memory buffer using Orca's STL loader
@@ -771,12 +1540,67 @@ bool load_stl_from_memory(const uint8_t* data, size_t len, Model* model, std::st
 
 extern "C" {
 
+__attribute__((used)) int orc_describe_config(uint8_t **json_out, int *json_len)
+{
+    if (json_out == nullptr || json_len == nullptr) {
+        return -1;
+    }
+    ensure_resources_initialized();
+    try {
+        json schema = build_config_schema();
+        const std::string dump = schema.dump();
+        if (dump.empty()) {
+            *json_out = nullptr;
+            *json_len = 0;
+            return 0;
+        }
+        uint8_t *buffer = static_cast<uint8_t *>(std::malloc(dump.size()));
+        if (buffer == nullptr) {
+            *json_out = nullptr;
+            *json_len = 0;
+            return -2;
+        }
+        std::memcpy(buffer, dump.data(), dump.size());
+        *json_out = buffer;
+        *json_len = static_cast<int>(dump.size());
+        return 0;
+    } catch (const std::exception &ex) {
+        fprintf(stderr, "[orc_slice] error: describe_config exception %s\n", ex.what());
+        fflush(stderr);
+        *json_out = nullptr;
+        *json_len = 0;
+        return -3;
+    } catch (...) {
+        fprintf(stderr, "[orc_slice] error: describe_config unknown exception\n");
+        fflush(stderr);
+        *json_out = nullptr;
+        *json_len = 0;
+        return -3;
+    }
+}
+
 // Optional: capture config (JSON/TOML) once
 __attribute__((used)) int orc_init(const uint8_t* cfg, int len) {
     ensure_resources_initialized();
     g_dump_config = payload_requests_config_dump(cfg, len);
     if (!g_dump_config && std::getenv("ORC_DUMP_CONFIG")) {
         g_dump_config = true;
+    }
+    if (cfg != nullptr && len > 0) {
+        try {
+            std::string payload(reinterpret_cast<const char*>(cfg), static_cast<size_t>(len));
+            if (!payload.empty()) {
+                g_last_slice_payload = json::parse(payload, nullptr, true, true);
+            } else {
+                g_last_slice_payload.reset();
+            }
+        } catch (const std::exception &ex) {
+            fprintf(stderr, "[orc_slice] warning: failed to parse config payload: %s\n", ex.what());
+            fflush(stderr);
+            g_last_slice_payload.reset();
+        }
+    } else {
+        g_last_slice_payload.reset();
     }
     return 0;
 }
@@ -800,6 +1624,10 @@ __attribute__((used)) int orc_slice(const uint8_t* model, int len,
             fprintf(stderr, "[orc_slice] model empty\n");
             fflush(stderr);
             return -2; // No objects in model
+        }
+
+        if (g_last_slice_payload) {
+            apply_model_rotation(orca_model, *g_last_slice_payload);
         }
 
         const BoundingBoxf3 bbox = orca_model.bounding_box_exact();
@@ -851,6 +1679,9 @@ __attribute__((used)) int orc_slice(const uint8_t* model, int len,
             }
         };
         update_object_counts();
+        if (g_last_slice_payload) {
+            apply_config_overrides(config, *g_last_slice_payload);
+        }
         const bool dump_config = g_dump_config || (std::getenv("ORC_DUMP_CONFIG") != nullptr);
         if (dump_config) {
             log_config(config);
